@@ -1,0 +1,86 @@
+/* Waspid design tokens — single source of truth.
+ *
+ * @theme block: colors, typography, radii.
+ *   Picked up by Tailwind 4 and auto-generates utility classes
+ *   (e.g. --color-primary → text-primary / bg-primary / border-primary).
+ *
+ * :root block: legacy / internal CSS variables consumed by name from
+ *   handwritten CSS (editor chrome, workspace surfaces). Not exposed
+ *   as Tailwind utilities — these names are referenced via var(--…).
+ *
+ * No values were redesigned in this consolidation pass. Hex literals
+ * are preserved exactly from their previous locations (tailwind.css,
+ * tailwind.config.js, index.css, hero.ts). The one functional change
+ * is that hero.ts now resolves its "primary" through --color-primary,
+ * unifying the HeroUI primary with the Tailwind primary.
+ */
+
+@theme {
+  /* ---------- Brand ---------- */
+  --color-primary: #c9b974;
+  --color-logo:    #cfb755;
+
+  /* ---------- Surface (backgrounds) ---------- */
+  --color-base:           #0d0f11;
+  --color-base-secondary: #24272e;
+  --color-tertiary:       #454545;
+  --color-tertiary-light: #b7bdc2;
+
+  /* ---------- Content (text) ---------- */
+  --color-content:   #ecedee;
+  --color-content-2: #f9fbfe;
+  --color-basic:     #9099ac;
+
+  /* ---------- State ---------- */
+  --color-danger:  #e76a5e;
+  --color-success: #a5e75e;
+
+  /* ---------- Modal surface (utilities: bg-modal-background, text-modal-primary, …) ---------- */
+  --color-modal-background: #171717;
+  --color-modal-input:      #27272a;
+  --color-modal-primary:    #f3ce49;
+  --color-modal-secondary:  #737373;
+  --color-modal-muted:      #a3a3a3;
+
+  /* ---------- Organization surface (utilities: bg-org-background, text-org-text, …) ---------- */
+  --color-org-border:     #171717;
+  --color-org-background: #262626;
+  --color-org-divider:    #525252;
+  --color-org-button:     #737373;
+  --color-org-text:       #a3a3a3;
+
+  /* ---------- Typography scale ---------- */
+  --font-size-xxs:  0.75rem;   /* 12px */
+  --font-size-xs:   0.875rem;  /* 14px */
+  --font-size-s:    1rem;      /* 16px */
+  --font-size-m:    1.125rem;  /* 18px */
+  --font-size-l:    1.5rem;    /* 24px */
+  --font-size-xl:   2rem;      /* 32px */
+  --font-size-xxl:  2.25rem;   /* 36px */
+  --font-size-xxxl: 3rem;      /* 48px */
+
+  /* ---------- Radii (mirror hero.ts layout.radius) ---------- */
+  --radius-small: 5px;
+  --radius-large: 20px;
+}
+
+/* Legacy / internal CSS variables — referenced directly via var(--…).
+ * Kept under :root so handwritten CSS that already uses these names
+ * continues to resolve. */
+:root {
+  /* Workspace + editor chrome */
+  --bg-dark:               #0c0e10;
+  --bg-light:              #292929;
+  --bg-input:              #393939;
+  --bg-workspace:          #1f2228;
+  --border:                #3c3c4a;
+
+  --text-editor-base:      #9099ac;
+  --text-editor-active:    #c4cbda;
+
+  --bg-editor-sidebar:     #24272e;
+  --bg-editor-active:      #31343d;
+  --border-editor-sidebar: #3c3c4a;
+
+  --bg-neutral-muted:      #afb8c133;
+}

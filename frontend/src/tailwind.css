@@ -1,0 +1,23 @@
+/* Waspid Tailwind entry.
+ *
+ * This file used to mix Tailwind setup, design tokens, and handwritten
+ * utility classes. After the Phase 5 consolidation it is intentionally
+ * thin: plugins + token import + utilities import. Everything else
+ * lives in:
+ *   - frontend/src/styles/tokens.css     (single source of design tokens)
+ *   - frontend/src/styles/utilities.css  (handwritten utility classes)
+ */
+
+@import "tailwindcss";
+
+@plugin '../hero.ts';
+@config "../tailwind.config.js";
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+
+@plugin 'tailwind-scrollbar' {
+  nocompatible: true;
+  preferredstrategy: "pseudoelements";
+}
+
+@import "./styles/tokens.css";
+@import "./styles/utilities.css";
