@@ -4,10 +4,10 @@ from datetime import datetime
 
 from sqlalchemy import and_, desc, select
 from storage.database import a_session_maker
-from storage.openhands_pr import OpenhandsPR
+from storage.waspid_pr import OpenhandsPR
 
-from openhands.app_server.integrations.service_types import ProviderType
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.integrations.service_types import ProviderType
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 class OpenhandsPRStore:
@@ -60,27 +60,27 @@ class OpenhandsPRStore:
                 return True
             return False
 
-    async def update_pr_openhands_stats(
+    async def update_pr_waspid_stats(
         self,
         repo_id: str,
         pr_number: int,
         original_updated_at: datetime,
-        openhands_helped_author: bool,
-        num_openhands_commits: int,
-        num_openhands_review_comments: int,
-        num_openhands_general_comments: int,
+        waspid_helped_author: bool,
+        num_waspid_commits: int,
+        num_waspid_review_comments: int,
+        num_waspid_general_comments: int,
     ) -> bool:
         """
-        Update OpenHands statistics for a PR with row-level locking and timestamp validation.
+        Update Waspid statistics for a PR with row-level locking and timestamp validation.
 
         Args:
             repo_id: Repository identifier
             pr_number: Pull request number
             original_updated_at: Original updated_at timestamp to check for concurrent modifications
-            openhands_helped_author: Whether OpenHands helped the author (1+ commits)
-            num_openhands_commits: Number of commits by OpenHands
-            num_openhands_review_comments: Number of review comments by OpenHands
-            num_openhands_general_comments: Number of PR comments (not review comments) by OpenHands
+            waspid_helped_author: Whether Waspid helped the author (1+ commits)
+            num_waspid_commits: Number of commits by Waspid
+            num_waspid_review_comments: Number of review comments by Waspid
+            num_waspid_general_comments: Number of PR comments (not review comments) by Waspid
 
         Returns:
             True if PR was found and updated, False if not found or timestamp changed
@@ -107,11 +107,11 @@ class OpenhandsPRStore:
                 await session.rollback()
                 return False
 
-            # Update the OpenHands statistics
-            pr.openhands_helped_author = openhands_helped_author
-            pr.num_openhands_commits = num_openhands_commits
-            pr.num_openhands_review_comments = num_openhands_review_comments
-            pr.num_openhands_general_comments = num_openhands_general_comments
+            # Update the Waspid statistics
+            pr.waspid_helped_author = waspid_helped_author
+            pr.num_waspid_commits = num_waspid_commits
+            pr.num_waspid_review_comments = num_waspid_review_comments
+            pr.num_waspid_general_comments = num_waspid_general_comments
             pr.processed = True
 
             await session.merge(pr)

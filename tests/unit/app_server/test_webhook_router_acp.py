@@ -15,19 +15,19 @@ import pytest
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import StaticPool
 
-from openhands.agent_server.models import ConversationInfo, Success
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.agent_server.models import ConversationInfo, Success
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversationInfo,
 )
-from openhands.app_server.app_conversation.sql_app_conversation_info_service import (
+from waspid.app_server.app_conversation.sql_app_conversation_info_service import (
     SQLAppConversationInfoService,
 )
-from openhands.app_server.event_callback.webhook_router import on_conversation_update
-from openhands.app_server.user.specifiy_user_context import SpecifyUserContext
-from openhands.app_server.utils.sql_utils import Base
-from openhands.sdk import Agent
-from openhands.sdk.agent.acp_agent import ACPAgent
-from openhands.sdk.llm import LLM
+from waspid.app_server.event_callback.webhook_router import on_conversation_update
+from waspid.app_server.user.specifiy_user_context import SpecifyUserContext
+from waspid.app_server.utils.sql_utils import Base
+from waspid.sdk import Agent
+from waspid.sdk.agent.acp_agent import ACPAgent
+from waspid.sdk.llm import LLM
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -115,7 +115,7 @@ def _make_acp_conversation_info(acp_command: list[str]) -> ConversationInfo:
 
 @pytest.mark.asyncio
 async def test_llm_conversation_stores_llm_model(async_session, service, sandbox_info):
-    """LLM path stores the real model in llm_model and sets agent_kind='openhands'."""
+    """LLM path stores the real model in llm_model and sets agent_kind='waspid'."""
     llm_info = _make_llm_conversation_info()
     conversation_id = llm_info.id
 
@@ -127,7 +127,7 @@ async def test_llm_conversation_stores_llm_model(async_session, service, sandbox
     )
 
     with patch(
-        'openhands.app_server.event_callback.webhook_router.valid_conversation',
+        'waspid.app_server.event_callback.webhook_router.valid_conversation',
         return_value=existing,
     ):
         result = await on_conversation_update(
@@ -141,7 +141,7 @@ async def test_llm_conversation_stores_llm_model(async_session, service, sandbox
     saved = await service.get_app_conversation_info(conversation_id)
     assert saved is not None
     assert saved.llm_model == 'anthropic/claude-sonnet-4-6'
-    assert saved.agent_kind == 'openhands'
+    assert saved.agent_kind == 'waspid'
 
 
 @pytest.mark.asyncio
@@ -160,7 +160,7 @@ async def test_acp_conversation_sets_agent_kind(async_session, service, sandbox_
     )
 
     with patch(
-        'openhands.app_server.event_callback.webhook_router.valid_conversation',
+        'waspid.app_server.event_callback.webhook_router.valid_conversation',
         return_value=existing,
     ):
         result = await on_conversation_update(
@@ -200,7 +200,7 @@ async def test_acp_server_tag_preserved_on_webhook_update(
     )
 
     with patch(
-        'openhands.app_server.event_callback.webhook_router.valid_conversation',
+        'waspid.app_server.event_callback.webhook_router.valid_conversation',
         return_value=existing,
     ):
         await on_conversation_update(
@@ -241,15 +241,15 @@ async def test_acp_conversation_analytics_llm_model_is_null(
 
     with (
         patch(
-            'openhands.app_server.event_callback.webhook_router.valid_conversation',
+            'waspid.app_server.event_callback.webhook_router.valid_conversation',
             return_value=existing,
         ),
         patch(
-            'openhands.app_server.event_callback.webhook_router.get_analytics_service',
+            'waspid.app_server.event_callback.webhook_router.get_analytics_service',
             return_value=analytics,
         ),
         patch(
-            'openhands.app_server.event_callback.webhook_router.resolve_analytics_context',
+            'waspid.app_server.event_callback.webhook_router.resolve_analytics_context',
             new=AsyncMock(return_value=MagicMock()),
         ),
     ):
@@ -279,8 +279,8 @@ def test_legacy_llm_payload_deserialises_as_agent():
     correctly returns ``False`` — i.e. the on_conversation_update branch
     that writes ``llm_model`` is selected.
     """
-    from openhands.sdk.agent.agent import Agent
-    from openhands.sdk.llm import LLM
+    from waspid.sdk.agent.agent import Agent
+    from waspid.sdk.llm import LLM
 
     agent = Agent(llm=LLM(model='anthropic/claude-sonnet-4-6', usage_id='test-usage'))
     legacy_payload: dict = {

@@ -5,12 +5,12 @@ from unittest.mock import patch
 
 import pytest
 
-from openhands.app_server.utils.logger import (
+from waspid.app_server.utils.logger import (
     LOG_JSON_LEVEL_KEY,
-    OpenHandsLoggerAdapter,
+    WaspidLoggerAdapter,
     json_log_handler,
 )
-from openhands.app_server.utils.logger import openhands_logger as openhands_logger
+from waspid.app_server.utils.logger import waspid_logger as waspid_logger
 
 
 @pytest.fixture
@@ -20,18 +20,18 @@ def test_handler():
     handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(message)s')
     handler.setFormatter(formatter)
-    openhands_logger.addHandler(handler)
-    yield openhands_logger, stream
-    openhands_logger.removeHandler(handler)
+    waspid_logger.addHandler(handler)
+    yield waspid_logger, stream
+    waspid_logger.removeHandler(handler)
 
 
 @pytest.fixture
 def json_handler():
     stream = StringIO()
     json_handler = json_log_handler(logging.INFO, _out=stream)
-    openhands_logger.addHandler(json_handler)
-    yield openhands_logger, stream
-    openhands_logger.removeHandler(json_handler)
+    waspid_logger.addHandler(json_handler)
+    yield waspid_logger, stream
+    waspid_logger.removeHandler(json_handler)
 
 
 def test_openai_api_key_masking(test_handler):
@@ -93,7 +93,7 @@ def test_sensitive_env_vars_masking(test_handler):
     }
 
     with patch.dict(
-        'openhands.app_server.utils.logger.os.environ', environ, clear=True
+        'waspid.app_server.utils.logger.os.environ', environ, clear=True
     ):
         log_message = ' '.join(f"{attr}='{value}'" for attr, value in environ.items())
         logger.info(log_message)
@@ -111,7 +111,7 @@ def test_special_cases_masking(test_handler):
     }
 
     with patch.dict(
-        'openhands.app_server.utils.logger.os.environ', environ, clear=True
+        'waspid.app_server.utils.logger.os.environ', environ, clear=True
     ):
         log_message = ' '.join(
             f"{attr}={value} with no single quotes' and something"
@@ -156,7 +156,7 @@ class TestJsonOutput:
 
     def test_extra_fields_from_adapter(self, json_handler):
         logger, string_io = json_handler
-        subject = OpenHandsLoggerAdapter(logger, extra={'context_field': '..val..'})
+        subject = WaspidLoggerAdapter(logger, extra={'context_field': '..val..'})
         subject.info('Test message', extra={'log_fied': '..val..'})
         output = json.loads(string_io.getvalue())
         del output['timestamp']
@@ -169,7 +169,7 @@ class TestJsonOutput:
 
     def test_extra_fields_from_adapter_can_override(self, json_handler):
         logger, string_io = json_handler
-        subject = OpenHandsLoggerAdapter(logger, extra={'override': 'a'})
+        subject = WaspidLoggerAdapter(logger, extra={'override': 'a'})
         subject.info('Test message', extra={'override': 'b'})
         output = json.loads(string_io.getvalue())
         del output['timestamp']

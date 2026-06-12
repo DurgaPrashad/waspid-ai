@@ -3,7 +3,7 @@
 This guide is for people working on the Waspid codebase and editing the source code.
 If you wish to contribute your changes, see [CONTRIBUTING.md](./CONTRIBUTING.md) for the workflow and conventions before moving on.
 
-> Waspid is built on top of the upstream [OpenHands](https://github.com/OpenHands/OpenHands) agent SDK. Some of the technical paths and tooling here originate upstream and are preserved as-is for SDK compatibility.
+> Waspid is built on top of an upstream MIT-licensed agent SDK (see [CREDITS.md](CREDITS.md)). Some of the technical paths and tooling here originate upstream and are preserved as-is for SDK compatibility.
 
 ## Choose Your Setup
 
@@ -49,7 +49,7 @@ make setup-config
 ```
 
 **Note on Alternative Models:**
-See [our documentation](https://docs.openhands.dev/openhands/usage/llms/llms) for recommended models.
+See [docs/INSTALL.md](docs/INSTALL.md) for recommended models and provider setup.
 
 ### 4. Run the Application
 
@@ -62,7 +62,7 @@ make start-backend  # Backend only on port 3000
 make start-frontend # Frontend only on port 3001
 ```
 
-These targets serve the current Waspid V1 API by default. In the codebase, `make start-backend` runs `openhands.server.listen:app` (the Python module path is preserved from the upstream SDK), and that app includes the `openhands/app_server` V1 routes unless `ENABLE_V1=0`.
+These targets serve the current Waspid V1 API by default. In the codebase, `make start-backend` runs `waspid.server.listen:app` (the Python module path is preserved from the upstream SDK), and that app includes the `waspid/app_server` V1 routes unless `ENABLE_V1=0`.
 
 ---
 
@@ -321,9 +321,9 @@ make help
 - [/README.md](./README.md): Main project overview, features, and basic setup instructions
 - [/Development.md](./Development.md) (this file): Comprehensive guide for developers working on Waspid
 - [/CONTRIBUTING.md](./CONTRIBUTING.md): Guidelines for contributing to the project, including code style and PR process
-- [/openhands/app_server/README.md](./openhands/app_server/README.md): Current V1 application server implementation and REST API modules
+- [/waspid/app_server/README.md](./waspid/app_server/README.md): Current V1 application server implementation and REST API modules
 - [/frontend/README.md](./frontend/README.md): Frontend React application setup and development guide
 - [/containers/README.md](./containers/README.md): Information about Docker containers and deployment
 - [/tests/unit/README.md](./tests/unit/README.md): Guide to writing and running unit tests
 - [/skills/README.md](./skills/README.md): Information about the skills architecture and implementation
-- Upstream agent SDK: [github.com/OpenHands/OpenHands](https://github.com/OpenHands/OpenHands)
+- Upstream agent SDK: see [CREDITS.md](CREDITS.md)

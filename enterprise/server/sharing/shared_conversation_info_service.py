@@ -6,8 +6,8 @@ from server.sharing.shared_conversation_models import (
     SharedConversation,
 )
 
-from openhands.app_server.services.injector import Injector
-from openhands.sdk.utils.models import DiscriminatedUnionMixin
+from waspid.app_server.services.injector import Injector
+from waspid.sdk.utils.models import DiscriminatedUnionMixin
 
 
 class SharedConversationInfoService(ABC):

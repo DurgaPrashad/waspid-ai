@@ -329,7 +329,7 @@ class TestJiraPayloadParser:
     @pytest.fixture
     def parser(self):
         """Create a parser for testing."""
-        return JiraPayloadParser(oh_label='openhands', inline_oh_label='@openhands')
+        return JiraPayloadParser(oh_label='waspid', inline_oh_label='@waspid')
 
     def test_parse_label_event_success(
         self, parser, sample_issue_update_webhook_payload
@@ -348,7 +348,7 @@ class TestJiraPayloadParser:
         assert isinstance(result, JiraPayloadSuccess)
         assert result.payload.event_type == JiraEventType.COMMENT_MENTION
         assert result.payload.issue_key == 'TEST-123'
-        assert '@openhands' in result.payload.comment_body
+        assert '@waspid' in result.payload.comment_body
 
     def test_parse_unknown_event_skipped(self, parser):
         """Test unknown event is skipped."""
@@ -387,7 +387,7 @@ class TestJiraPayloadParser:
         """Test missing required fields returns error."""
         payload = {
             'webhookEvent': 'jira:issue_updated',
-            'changelog': {'items': [{'field': 'labels', 'toString': 'openhands'}]},
+            'changelog': {'items': [{'field': 'labels', 'toString': 'waspid'}]},
             'issue': {'id': '123'},  # Missing key
             'user': {'emailAddress': 'test@test.com'},  # Missing other fields
         }
@@ -404,14 +404,14 @@ class TestJiraPayloadParserStagingLabels:
     def staging_parser(self):
         """Create a parser with staging labels."""
         return JiraPayloadParser(
-            oh_label='openhands-exp', inline_oh_label='@openhands-exp'
+            oh_label='waspid-exp', inline_oh_label='@waspid-exp'
         )
 
     def test_parse_staging_label(self, staging_parser):
         """Test parsing with staging label."""
         payload = {
             'webhookEvent': 'jira:issue_updated',
-            'changelog': {'items': [{'field': 'labels', 'toString': 'openhands-exp'}]},
+            'changelog': {'items': [{'field': 'labels', 'toString': 'waspid-exp'}]},
             'issue': {
                 'id': '123',
                 'key': 'TEST-1',
@@ -433,7 +433,7 @@ class TestJiraPayloadParserStagingLabels:
         """Test prod label is skipped in staging environment."""
         payload = {
             'webhookEvent': 'jira:issue_updated',
-            'changelog': {'items': [{'field': 'labels', 'toString': 'openhands'}]},
+            'changelog': {'items': [{'field': 'labels', 'toString': 'waspid'}]},
         }
         result = staging_parser.parse(payload)
 
@@ -524,7 +524,7 @@ class TestJiraV1Conversation:
         from unittest.mock import AsyncMock, MagicMock
         from uuid import UUID
 
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             AppConversationStartTaskStatus,
         )
 
@@ -571,7 +571,7 @@ class TestJiraV1Conversation:
         """Test create_or_update_conversation handles V1 errors correctly."""
         from unittest.mock import AsyncMock, MagicMock
 
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             AppConversationStartTaskStatus,
         )
 

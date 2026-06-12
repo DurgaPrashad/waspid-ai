@@ -1,11 +1,11 @@
-"""Tests for openhands.app_server.constants module."""
+"""Tests for waspid.app_server.constants module."""
 
 import os
 from unittest.mock import patch
 
 import pytest
 
-from openhands.app_server.constants import (
+from waspid.app_server.constants import (
     BLOCKED_SECRET_NAMES,
     BLOCKED_SECRET_PREFIXES,
     MAX_API_SECRET_NAME_LENGTH,
@@ -155,7 +155,7 @@ class TestConfigurableLimits:
             # Re-import to pick up new env
             import importlib
 
-            import openhands.app_server.constants as constants
+            import waspid.app_server.constants as constants
 
             importlib.reload(constants)
             assert constants.MAX_API_SECRETS_COUNT == 100

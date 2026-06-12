@@ -2,7 +2,7 @@
 Service for forwarding Git provider webhook events to the automation service.
 
 This service is optimized for high-traffic scenarios:
-1. Resolves Git org → OpenHands org_id (via cached OrgGitClaim lookup)
+1. Resolves Git org → Waspid org_id (via cached OrgGitClaim lookup)
 2. For personal repos, resolves to personal org (via cached provider→Keycloak mapping)
 3. Forwards minimal payload to automation service (just org_id + payload)
 4. Access control checks are deferred to automation execution time
@@ -36,8 +36,8 @@ from server.auth.constants import (
 from server.auth.token_manager import TokenManager
 from storage.redis import get_redis_client_async
 
-from openhands.app_server.integrations.provider import ProviderType
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.integrations.provider import ProviderType
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 # Cache TTL constants
 ORG_CLAIM_CACHE_TTL_SECONDS = 3600  # 1 hour for org claims (rarely change)
@@ -223,7 +223,7 @@ class AutomationEventService:
         return {
             'organization': {
                 'git_org': org_context.git_org,
-                'openhands_org_id': str(org_context.org_id),
+                'waspid_org_id': str(org_context.org_id),
             },
             'payload': payload,
         }
@@ -236,7 +236,7 @@ class AutomationEventService:
         self, provider: ProviderType, git_org_name: str
     ) -> UUID | None:
         """
-        Resolve a Git organization name to an OpenHands org_id.
+        Resolve a Git organization name to an Waspid org_id.
 
         Uses Redis caching with 1-hour TTL. Caches both positive and negative
         results to avoid repeated DB queries for unclaimed orgs.
@@ -289,9 +289,9 @@ class AutomationEventService:
         self, provider: ProviderType, provider_user_id: int | str | None
     ) -> UUID | None:
         """
-        Resolve a provider user to their personal OpenHands org.
+        Resolve a provider user to their personal Waspid org.
 
-        For personal repos (owner type is 'User'), the OpenHands org_id
+        For personal repos (owner type is 'User'), the Waspid org_id
         is the user's keycloak user ID. This allows users to set up
         automations on their personal repos without needing an OrgGitClaim.
 
@@ -438,11 +438,11 @@ class AutomationEventService:
         Send the normalized payload to the automation service.
 
         The payload is signed using AUTOMATION_WEBHOOK_SECRET so the
-        automation service can verify it came from the OpenHands server.
+        automation service can verify it came from the Waspid server.
 
         Args:
             provider: The Git provider type
-            org_id: The OpenHands organization ID
+            org_id: The Waspid organization ID
             payload: The event payload to send
         """
         if not AUTOMATION_SERVICE_URL:

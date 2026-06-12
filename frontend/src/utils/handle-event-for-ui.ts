@@ -1,4 +1,4 @@
-import { OpenHandsEvent } from "#/types/v1/core";
+import { WaspidEvent } from "#/types/v1/core";
 import { isACPToolCallEvent, isObservationEvent } from "#/types/v1/type-guards";
 
 /**
@@ -11,9 +11,9 @@ import { isACPToolCallEvent, isObservationEvent } from "#/types/v1/type-guards";
  * the latest state at the original position so the card updates in place.
  */
 export const handleEventForUI = (
-  event: OpenHandsEvent,
-  uiEvents: OpenHandsEvent[],
-): OpenHandsEvent[] => {
+  event: WaspidEvent,
+  uiEvents: WaspidEvent[],
+): WaspidEvent[] => {
   const newUiEvents = [...uiEvents];
 
   if (isACPToolCallEvent(event)) {

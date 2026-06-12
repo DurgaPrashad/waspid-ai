@@ -18,13 +18,13 @@ from integrations.jira.jira_payload import (
 
 @pytest.fixture
 def parser():
-    """Create a JiraPayloadParser with standard OpenHands labels."""
-    return JiraPayloadParser(oh_label='openhands', inline_oh_label='@openhands')
+    """Create a JiraPayloadParser with standard Waspid labels."""
+    return JiraPayloadParser(oh_label='waspid', inline_oh_label='@waspid')
 
 
 @pytest.fixture
 def valid_label_payload():
-    """Create a valid jira:issue_updated payload with OpenHands label."""
+    """Create a valid jira:issue_updated payload with Waspid label."""
     return {
         'webhookEvent': 'jira:issue_updated',
         'issue': {
@@ -41,7 +41,7 @@ def valid_label_payload():
             'items': [
                 {
                     'field': 'labels',
-                    'toString': 'openhands',
+                    'toString': 'waspid',
                 }
             ]
         },
@@ -50,7 +50,7 @@ def valid_label_payload():
 
 @pytest.fixture
 def valid_comment_payload():
-    """Create a valid comment_created payload with OpenHands mention."""
+    """Create a valid comment_created payload with Waspid mention."""
     return {
         'webhookEvent': 'comment_created',
         'issue': {
@@ -59,7 +59,7 @@ def valid_comment_payload():
             'self': 'https://test.atlassian.net/rest/api/2/issue/12345',
         },
         'comment': {
-            'body': '@openhands please fix this bug',
+            'body': '@waspid please fix this bug',
             'author': {
                 'displayName': 'Test User',
                 'accountId': 'account-123',
@@ -221,12 +221,12 @@ class TestEventTypeDetection:
 
 
 class TestLabelFiltering:
-    """Tests for OpenHands label filtering."""
+    """Tests for Waspid label filtering."""
 
-    def test_label_event_without_openhands_label_skipped(
+    def test_label_event_without_waspid_label_skipped(
         self, parser, valid_label_payload
     ):
-        """Verify label events without OpenHands label are skipped."""
+        """Verify label events without Waspid label are skipped."""
         # Arrange - change label to something else
         valid_label_payload['changelog']['items'][0]['toString'] = 'other-label'
 
@@ -235,14 +235,14 @@ class TestLabelFiltering:
 
         # Assert
         assert isinstance(result, JiraPayloadSkipped)
-        assert 'openhands' in result.skip_reason
+        assert 'waspid' in result.skip_reason
 
 
 class TestCommentFiltering:
-    """Tests for OpenHands comment mention filtering."""
+    """Tests for Waspid comment mention filtering."""
 
     def test_comment_without_mention_skipped(self, parser, valid_comment_payload):
-        """Verify comments without OpenHands mention are skipped."""
+        """Verify comments without Waspid mention are skipped."""
         # Arrange - remove mention from comment body
         valid_comment_payload['comment']['body'] = 'Please fix this bug'
 
@@ -251,7 +251,7 @@ class TestCommentFiltering:
 
         # Assert
         assert isinstance(result, JiraPayloadSkipped)
-        assert '@openhands' in result.skip_reason
+        assert '@waspid' in result.skip_reason
 
 
 class TestWorkspaceExtraction:

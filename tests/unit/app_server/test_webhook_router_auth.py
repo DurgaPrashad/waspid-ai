@@ -11,16 +11,16 @@ import pytest
 from fastapi import FastAPI, HTTPException, status
 from fastapi.testclient import TestClient
 
-from openhands.app_server.config_api.config_models import AppMode
-from openhands.app_server.event_callback.webhook_router import (
+from waspid.app_server.config_api.config_models import AppMode
+from waspid.app_server.event_callback.webhook_router import (
     router as webhook_router,
 )
-from openhands.app_server.event_callback.webhook_router import (
+from waspid.app_server.event_callback.webhook_router import (
     valid_conversation,
     valid_sandbox,
 )
-from openhands.app_server.sandbox.sandbox_models import SandboxInfo, SandboxStatus
-from openhands.app_server.user.specifiy_user_context import (
+from waspid.app_server.sandbox.sandbox_models import SandboxInfo, SandboxStatus
+from waspid.app_server.user.specifiy_user_context import (
     USER_CONTEXT_ATTR,
     SpecifyUserContext,
 )
@@ -90,7 +90,7 @@ class TestValidSandbox:
 
         # Act
         with patch(
-            'openhands.app_server.event_callback.webhook_router.get_sandbox_service',
+            'waspid.app_server.event_callback.webhook_router.get_sandbox_service',
             create_sandbox_service_context_manager(mock_sandbox_service),
         ):
             result = await valid_sandbox(
@@ -133,7 +133,7 @@ class TestValidSandbox:
 
         # Act
         with patch(
-            'openhands.app_server.event_callback.webhook_router.get_sandbox_service',
+            'waspid.app_server.event_callback.webhook_router.get_sandbox_service',
             create_sandbox_service_context_manager(mock_sandbox_service),
         ):
             await valid_sandbox(
@@ -169,7 +169,7 @@ class TestValidSandbox:
 
         # Act
         with patch(
-            'openhands.app_server.event_callback.webhook_router.get_sandbox_service',
+            'waspid.app_server.event_callback.webhook_router.get_sandbox_service',
             create_sandbox_service_context_manager(mock_sandbox_service),
         ):
             result = await valid_sandbox(
@@ -208,11 +208,11 @@ class TestValidSandbox:
         # Act
         with (
             patch(
-                'openhands.app_server.event_callback.webhook_router.get_sandbox_service',
+                'waspid.app_server.event_callback.webhook_router.get_sandbox_service',
                 create_sandbox_service_context_manager(mock_sandbox_service),
             ),
             patch(
-                'openhands.app_server.event_callback.webhook_router.app_mode',
+                'waspid.app_server.event_callback.webhook_router.app_mode',
                 AppMode.SAAS,
             ),
         ):
@@ -253,7 +253,7 @@ class TestValidSandbox:
 
         # Act & Assert
         with patch(
-            'openhands.app_server.event_callback.webhook_router.get_sandbox_service',
+            'waspid.app_server.event_callback.webhook_router.get_sandbox_service',
             create_sandbox_service_context_manager(mock_sandbox_service),
         ):
             with pytest.raises(HTTPException) as exc_info:
@@ -369,7 +369,7 @@ class TestValidConversation:
         )
 
         # Act & Assert
-        from openhands.app_server.errors import AuthError
+        from waspid.app_server.errors import AuthError
 
         with pytest.raises(AuthError):
             await valid_conversation(
@@ -443,7 +443,7 @@ class TestWebhookAuthenticationIntegration:
 
         # Act - Call valid_sandbox first
         with patch(
-            'openhands.app_server.event_callback.webhook_router.get_sandbox_service',
+            'waspid.app_server.event_callback.webhook_router.get_sandbox_service',
             create_sandbox_service_context_manager(mock_sandbox_service),
         ):
             sandbox_result = await valid_sandbox(
@@ -476,7 +476,7 @@ class TestWebhookAuthenticationIntegration:
 
         # Act & Assert - Should fail at valid_sandbox
         with patch(
-            'openhands.app_server.event_callback.webhook_router.get_sandbox_service',
+            'waspid.app_server.event_callback.webhook_router.get_sandbox_service',
             create_sandbox_service_context_manager(mock_sandbox_service),
         ):
             with pytest.raises(HTTPException) as exc_info:
@@ -518,7 +518,7 @@ class TestWebhookAuthenticationIntegration:
 
         # Act - valid_sandbox succeeds
         with patch(
-            'openhands.app_server.event_callback.webhook_router.get_sandbox_service',
+            'waspid.app_server.event_callback.webhook_router.get_sandbox_service',
             create_sandbox_service_context_manager(mock_sandbox_service),
         ):
             sandbox_result = await valid_sandbox(
@@ -527,7 +527,7 @@ class TestWebhookAuthenticationIntegration:
             )
 
         # But valid_conversation fails
-        from openhands.app_server.errors import AuthError
+        from waspid.app_server.errors import AuthError
 
         with pytest.raises(AuthError):
             await valid_conversation(

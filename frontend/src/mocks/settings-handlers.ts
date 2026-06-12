@@ -36,7 +36,7 @@ const llmDefaults = (DEFAULT_AGENT_SETTINGS as Record<string, unknown>).llm as
 const DEFAULT_MODEL =
   typeof llmDefaults?.model === "string"
     ? llmDefaults.model
-    : "openhands/claude-opus-4-5-20251101";
+    : "waspid/claude-opus-4-5-20251101";
 
 export const createMockWebClientConfig = (
   overrides: Partial<WebClientConfig> = {},
@@ -80,7 +80,7 @@ const MOCK_AGENT_SETTINGS_SCHEMA: NonNullable<
 > = {
   model_name: "AgentSettings",
   sections: [
-    // Mirrors the SDK schema; the OpenHands UI displays this field on its
+    // Mirrors the SDK schema; the Waspid UI displays this field on its
     // dedicated Agent settings page by key.
     {
       key: "general",
@@ -343,7 +343,7 @@ const MOCK_CONVERSATION_SETTINGS_SCHEMA: NonNullable<
           key: "security_analyzer",
           label: "Security analyzer",
           description:
-            "Choose how OpenHands should analyze actions before asking for confirmation.",
+            "Choose how Waspid should analyze actions before asking for confirmation.",
 
           section: "verification",
           section_label: "Verification",
@@ -406,24 +406,24 @@ const MOCK_MODELS = [
   "openai/gpt-3.5-turbo",
   "openai/gpt-4o",
   "openai/gpt-4o-mini",
-  "openhands/claude-sonnet-4-20250514",
-  "openhands/claude-sonnet-4-5-20250929",
-  "openhands/claude-haiku-4-5-20251001",
-  "openhands/claude-opus-4-5-20251101",
-  "openhands/minimax-m2.7",
+  "waspid/claude-sonnet-4-20250514",
+  "waspid/claude-sonnet-4-5-20250929",
+  "waspid/claude-haiku-4-5-20251001",
+  "waspid/claude-opus-4-5-20251101",
+  "waspid/minimax-m2.7",
   "sambanova/Meta-Llama-3.1-8B-Instruct",
 ];
 
 const MOCK_VERIFIED_MODELS = new Set([
   "anthropic/claude-opus-4-5-20251101",
   "anthropic/claude-sonnet-4-5-20250929",
-  "openhands/claude-opus-4-5-20251101",
-  "openhands/claude-sonnet-4-5-20250929",
-  "openhands/minimax-m2.7",
+  "waspid/claude-opus-4-5-20251101",
+  "waspid/claude-sonnet-4-5-20250929",
+  "waspid/minimax-m2.7",
 ]);
 
 const MOCK_VERIFIED_PROVIDERS = [
-  "openhands",
+  "waspid",
   "anthropic",
   "openai",
   "mistral",
@@ -445,7 +445,7 @@ export const SETTINGS_HANDLERS = [
         "claude-sonnet-4-5-20250929",
       ],
       verified_providers: MOCK_VERIFIED_PROVIDERS,
-      default_model: "openhands/claude-opus-4-5-20251101",
+      default_model: "waspid/claude-opus-4-5-20251101",
     }),
   ),
 
@@ -539,7 +539,7 @@ export const SETTINGS_HANDLERS = [
       faulty_models: [],
       error_message: null,
       updated_at: new Date().toISOString(),
-      github_app_slug: mockSaas ? "openhands" : null,
+      github_app_slug: mockSaas ? "waspid" : null,
       gitlab_enabled: false,
       provider_default_hosts: {
         github: "github.com",

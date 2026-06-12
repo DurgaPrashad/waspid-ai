@@ -1,8 +1,8 @@
-# @openhands/ui
+# @waspid/ui
 
 The shared React component library used by the Waspid frontend. Built with TypeScript and Tailwind CSS.
 
-> The npm package is currently named `@openhands/ui` for upstream-compatibility reasons. A rename to a Waspid-scoped package is a future migration; do not rename it here without coordinating the npm publish flow.
+> The npm package is currently named `@waspid/ui` for upstream-compatibility reasons. A rename to a Waspid-scoped package is a future migration; do not rename it here without coordinating the npm publish flow.
 
 ## Installation
 
@@ -10,23 +10,23 @@ Choose your preferred package manager:
 
 ```bash
 # npm
-npm install @openhands/ui
+npm install @waspid/ui
 
 # yarn
-yarn add @openhands/ui
+yarn add @waspid/ui
 
 # pnpm
-pnpm add @openhands/ui
+pnpm add @waspid/ui
 
 # bun
-bun add @openhands/ui
+bun add @waspid/ui
 ```
 
 ## Quick Start
 
 ```tsx
-import { Button, Typography } from "@openhands/ui";
-import "@openhands/ui/styles";
+import { Button, Typography } from "@waspid/ui";
+import "@waspid/ui/styles";
 
 function App() {
   return (
@@ -86,8 +86,8 @@ bun run build
 bun pm pack
 
 # Install in your target project:
-# Replace `path/to/openhands-ui-x.x.x.tgz` with the actual path to the generated `.tgz` file.
-npm install path/to/openhands-ui-x.x.x.tgz
+# Replace `path/to/waspid-ui-x.x.x.tgz` with the actual path to the generated `.tgz` file.
+npm install path/to/waspid-ui-x.x.x.tgz
 ```
 
 ## Publishing

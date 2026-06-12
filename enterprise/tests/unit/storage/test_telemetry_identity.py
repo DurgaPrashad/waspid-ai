@@ -1,6 +1,6 @@
 """Unit tests for TelemetryIdentity model.
 
-Tests the persistent identity storage for the OpenHands Enterprise Telemetry Service.
+Tests the persistent identity storage for the Waspid Enterprise Telemetry Service.
 """
 
 from datetime import datetime

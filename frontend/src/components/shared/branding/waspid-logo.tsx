@@ -6,12 +6,12 @@ import waspidLogoSrc from "#/assets/branding/waspid-logo.png";
  *
  * The source asset is a 2000×2000 PNG with a solid black background; the
  * brand mark is the gold "WASPID" wordmark on dark. Use `<WaspidLogo />`
- * wherever the previous `OpenHandsLogo` SVG component was used. Width
+ * wherever the previous `WaspidLogo` SVG component was used. Width
  * and height props match the original SVG-component contract so existing
  * sizing call sites continue to render at the same dimensions.
  *
  * `WaspidLogoWhite` is exported as an alias so callers that previously
- * imported `OpenHandsLogoWhite` (the inverted-on-light variant) keep
+ * imported `WaspidLogoWhite` (the inverted-on-light variant) keep
  * working. A dedicated light-theme variant can replace this alias once a
  * transparent / light-mode source asset is supplied.
  */

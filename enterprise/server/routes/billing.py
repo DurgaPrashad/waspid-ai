@@ -22,9 +22,9 @@ from storage.org import Org
 from storage.subscription_access import SubscriptionAccess
 from storage.user_store import UserStore
 
-from openhands.analytics import get_analytics_service
-from openhands.app_server.config import get_global_config
-from openhands.app_server.user_auth import get_user_id
+from waspid.analytics import get_analytics_service
+from waspid.app_server.config import get_global_config
+from waspid.app_server.user_auth import get_user_id
 
 stripe.api_key = STRIPE_API_KEY
 billing_router = APIRouter(prefix='/api/billing', tags=['Billing'])
@@ -198,7 +198,7 @@ async def create_checkout_session(
                     'unit_amount': body.amount * 100,
                     'currency': 'usd',
                     'product_data': {
-                        'name': 'OpenHands Credits',
+                        'name': 'Waspid Credits',
                         'tax_code': 'txcd_10000000',
                     },
                     'tax_behavior': 'exclusive',
@@ -316,7 +316,7 @@ async def success_callback(session_id: str, request: Request):
         try:
             analytics = get_analytics_service()
             if analytics and user:
-                from openhands.analytics.analytics_context import AnalyticsContext
+                from waspid.analytics.analytics_context import AnalyticsContext
 
                 ctx = AnalyticsContext(
                     user_id=billing_session.user_id,

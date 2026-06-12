@@ -14,13 +14,13 @@ from integrations.utils import GITLAB_WEBHOOK_URL
 from storage.gitlab_webhook import GitlabWebhook, WebhookStatus
 from storage.gitlab_webhook_store import GitlabWebhookStore
 
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 if TYPE_CHECKING:
     from integrations.gitlab.gitlab_service import SaaSGitLabService
 
 # Webhook configuration constants
-WEBHOOK_NAME = 'OpenHands Resolver'
+WEBHOOK_NAME = 'Waspid Resolver'
 SCOPES: list[str] = [
     'note_events',
     'merge_requests_events',

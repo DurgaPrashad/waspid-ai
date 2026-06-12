@@ -9,15 +9,15 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from pydantic import SecretStr
 
-from openhands.app_server.file_store import get_file_store
-from openhands.app_server.integrations.provider import (
+from waspid.app_server.file_store import get_file_store
+from waspid.app_server.integrations.provider import (
     CustomSecret,
     ProviderToken,
     ProviderType,
 )
-from openhands.app_server.secrets.file_secrets_store import FileSecretsStore
-from openhands.app_server.secrets.secrets_models import Secrets
-from openhands.app_server.secrets.secrets_router import (
+from waspid.app_server.secrets.file_secrets_store import FileSecretsStore
+from waspid.app_server.secrets.secrets_models import Secrets
+from waspid.app_server.secrets.secrets_router import (
     router as secrets_router,
 )
 
@@ -31,7 +31,7 @@ def test_client():
     # Mock SESSION_API_KEY to None to disable authentication in tests
     with patch.dict(os.environ, {'SESSION_API_KEY': ''}, clear=False):
         # Clear the SESSION_API_KEY to disable auth dependency
-        with patch('openhands.app_server.utils.dependencies._SESSION_API_KEY', None):
+        with patch('waspid.app_server.utils.dependencies._SESSION_API_KEY', None):
             yield TestClient(app)
 
 
@@ -45,7 +45,7 @@ def file_secrets_store(temp_dir):
     file_store = get_file_store('local', temp_dir)
     store = FileSecretsStore(file_store)
     with patch(
-        'openhands.app_server.secrets.file_secrets_store.FileSecretsStore.get_instance',
+        'waspid.app_server.secrets.file_secrets_store.FileSecretsStore.get_instance',
         AsyncMock(return_value=store),
     ):
         yield store
@@ -428,7 +428,7 @@ async def test_add_git_providers_with_host(test_client, file_secrets_store):
 
     # Mock check_provider_tokens to return empty string (no error)
     with patch(
-        'openhands.app_server.secrets.secrets_router.check_provider_tokens',
+        'waspid.app_server.secrets.secrets_router.check_provider_tokens',
         AsyncMock(return_value=''),
     ):
         # Add a GitHub provider with a host
@@ -467,7 +467,7 @@ async def test_add_git_providers_update_host_only(test_client, file_secrets_stor
 
     # Mock check_provider_tokens to return empty string (no error)
     with patch(
-        'openhands.app_server.secrets.secrets_router.check_provider_tokens',
+        'waspid.app_server.secrets.secrets_router.check_provider_tokens',
         AsyncMock(return_value=''),
     ):
         # Update only the host
@@ -506,7 +506,7 @@ async def test_add_git_providers_invalid_token_with_host(
 
     # Mock validate_provider_token to return None (invalid token)
     with patch(
-        'openhands.app_server.integrations.utils.validate_provider_token',
+        'waspid.app_server.integrations.utils.validate_provider_token',
         AsyncMock(return_value=None),
     ):
         # Try to add an invalid GitHub provider with a host
@@ -529,7 +529,7 @@ async def test_add_multiple_git_providers_with_hosts(test_client, file_secrets_s
 
     # Mock check_provider_tokens to return empty string (no error)
     with patch(
-        'openhands.app_server.secrets.secrets_router.check_provider_tokens',
+        'waspid.app_server.secrets.secrets_router.check_provider_tokens',
         AsyncMock(return_value=''),
     ):
         # Add multiple providers with hosts

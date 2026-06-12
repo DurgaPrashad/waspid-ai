@@ -7,7 +7,7 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
-from openhands.app_server.status.status_router import router
+from waspid.app_server.status.status_router import router
 
 
 @pytest.fixture

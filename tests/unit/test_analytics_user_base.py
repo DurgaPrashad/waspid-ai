@@ -6,7 +6,7 @@ from typing import Any
 from unittest.mock import MagicMock
 from uuid import UUID, uuid4
 
-from openhands.analytics.user_base import UserBase
+from waspid.analytics.user_base import UserBase
 
 
 class TestUserBaseProtocol:

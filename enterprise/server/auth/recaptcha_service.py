@@ -11,7 +11,7 @@ from server.auth.constants import (
     SUSPICIOUS_LABELS,
 )
 
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 @dataclass

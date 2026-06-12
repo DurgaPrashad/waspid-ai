@@ -22,7 +22,7 @@ import { useOptimisticUserMessageStore } from "#/stores/optimistic-user-message-
 import { useConfig } from "#/hooks/query/use-config";
 import { useGetTrajectory } from "#/hooks/mutation/use-get-trajectory";
 import { useUnifiedUploadFiles } from "#/hooks/mutation/use-unified-upload-files";
-import { OpenHandsAction } from "#/types/core/actions";
+import { WaspidAction } from "#/types/core/actions";
 import { useEventStore } from "#/stores/use-event-store";
 import { useAgentState } from "#/hooks/use-agent-state";
 import { AgentState } from "#/types/agent-state";
@@ -136,7 +136,7 @@ describe("ChatInterface - Chat Suggestions", () => {
   });
 
   test("should hide chat suggestions when there is a user message", () => {
-    const mockUserEvent: OpenHandsAction = {
+    const mockUserEvent: WaspidAction = {
       id: 1,
       source: "user",
       action: "message",

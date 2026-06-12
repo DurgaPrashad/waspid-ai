@@ -4,7 +4,7 @@ from fastapi import Request
 from server.constants import IS_FEATURE_ENV, IS_LOCAL_ENV, IS_STAGING_ENV
 from starlette.datastructures import URL
 
-from openhands.app_server.config import get_global_config
+from waspid.app_server.config import get_global_config
 
 
 def get_web_url(request: Request):

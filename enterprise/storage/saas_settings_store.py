@@ -13,7 +13,7 @@ from server.routes.org_models import OrgMemberSettingsUpdate
 from sqlalchemy import select
 from sqlalchemy.orm import joinedload
 from storage.database import a_session_maker
-from storage.lite_llm_manager import LiteLlmManager, get_openhands_cloud_key_alias
+from storage.lite_llm_manager import LiteLlmManager, get_waspid_cloud_key_alias
 from storage.org import Org
 from storage.org_member import OrgMember
 from storage.org_member_store import OrgMemberStore
@@ -22,10 +22,10 @@ from storage.user import User
 from storage.user_settings import UserSettings
 from storage.user_store import UserStore
 
-from openhands.app_server.settings.settings_models import Settings
-from openhands.app_server.settings.settings_store import SettingsStore
-from openhands.app_server.utils.jsonpatch_compat import deep_merge
-from openhands.app_server.utils.llm import is_openhands_model
+from waspid.app_server.settings.settings_models import Settings
+from waspid.app_server.settings.settings_store import SettingsStore
+from waspid.app_server.utils.jsonpatch_compat import deep_merge
+from waspid.app_server.utils.llm import is_waspid_model
 
 
 @dataclass
@@ -231,12 +231,12 @@ class SaasSettingsStore(SettingsStore):
             normalized_managed_base_url = LITE_LLM_API_URL.rstrip('/')
             uses_managed_llm_key = (
                 normalized_llm_base_url == normalized_managed_base_url
-                or (normalized_llm_base_url is None and is_openhands_model(llm_model))
+                or (normalized_llm_base_url is None and is_waspid_model(llm_model))
             )
 
             if uses_managed_llm_key:
                 await self._ensure_api_key(
-                    item, str(org_id), openhands_type=is_openhands_model(llm_model)
+                    item, str(org_id), waspid_type=is_waspid_model(llm_model)
                 )
 
             effective_agent_settings_diff = self._get_persisted_agent_settings(item)
@@ -331,9 +331,9 @@ class SaasSettingsStore(SettingsStore):
         return SaasSettingsStore(user_id, effective_org_id=effective_org_id)
 
     async def _ensure_api_key(
-        self, item: Settings, org_id: str, openhands_type: bool = False
+        self, item: Settings, org_id: str, waspid_type: bool = False
     ) -> None:
-        """Generate and set the OpenHands API key for the given settings.
+        """Generate and set the Waspid API key for the given settings.
 
         First checks if an existing key exists for the user and verifies it
         is valid in LiteLLM. If valid, reuses it. Otherwise, generates a new key.
@@ -346,18 +346,18 @@ class SaasSettingsStore(SettingsStore):
             llm_api_key.get_secret_value(),
             self.user_id,
             org_id,
-            openhands_type=openhands_type,
+            waspid_type=waspid_type,
         ):
-            if openhands_type:
+            if waspid_type:
                 generated_key = await LiteLlmManager.generate_key(
                     self.user_id,
                     org_id,
                     None,
-                    {'type': 'openhands'},
+                    {'type': 'waspid'},
                 )
             else:
                 # Must delete any existing key with the same alias first
-                key_alias = get_openhands_cloud_key_alias(self.user_id, org_id)
+                key_alias = get_waspid_cloud_key_alias(self.user_id, org_id)
                 await LiteLlmManager.delete_key_by_alias(key_alias=key_alias)
                 generated_key = await LiteLlmManager.generate_key(
                     self.user_id,
@@ -368,6 +368,6 @@ class SaasSettingsStore(SettingsStore):
 
             item.agent_settings.llm.api_key = SecretStr(generated_key)
             logger.info(
-                'saas_settings_store:store:generated_openhands_key',
+                'saas_settings_store:store:generated_waspid_key',
                 extra={'user_id': self.user_id},
             )

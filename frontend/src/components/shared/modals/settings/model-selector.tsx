@@ -159,10 +159,10 @@ export function ModelSelector({
         </Autocomplete>
       </fieldset>
 
-      {selectedProvider === "openhands" && (
+      {selectedProvider === "waspid" && (
         <HelpLink
-          testId="openhands-account-help"
-          text={t(I18nKey.SETTINGS$NEED_OPENHANDS_ACCOUNT)}
+          testId="waspid-account-help"
+          text={t(I18nKey.SETTINGS$NEED_WASPID_ACCOUNT)}
           linkText={t(I18nKey.SETTINGS$CLICK_HERE)}
           href={PRODUCT_URL.PRODUCTION}
           size="settings"

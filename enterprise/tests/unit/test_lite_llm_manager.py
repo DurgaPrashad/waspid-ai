@@ -16,11 +16,11 @@ from server.constants import (
 from storage.lite_llm_manager import (
     LiteLlmManager,
     get_byor_key_alias,
-    get_openhands_cloud_key_alias,
+    get_waspid_cloud_key_alias,
 )
 from storage.user_settings import UserSettings
 
-from openhands.app_server.settings.settings_models import Settings
+from waspid.app_server.settings.settings_models import Settings
 
 
 def _agent_value(settings: Settings, key: str):
@@ -2141,7 +2141,7 @@ class TestGetAllKeysForUser:
                     'key_name': 'sk-test1234',
                     'key_alias': 'test-alias',
                     'team_id': 'test-org',
-                    'metadata': {'type': 'openhands'},
+                    'metadata': {'type': 'waspid'},
                 },
                 {
                     'key_name': 'sk-test5678',
@@ -2209,14 +2209,14 @@ class TestVerifyExistingKey:
     """Test cases for _verify_existing_key method."""
 
     @pytest.mark.asyncio
-    async def test_verify_existing_key_openhands_type_found(self):
-        """Test _verify_existing_key finds matching OpenHands key."""
+    async def test_verify_existing_key_waspid_type_found(self):
+        """Test _verify_existing_key finds matching Waspid key."""
         mock_keys = [
             {
                 'key_name': 'sk-test1234',
                 'key_alias': 'some-alias',
                 'team_id': 'test-org',
-                'metadata': {'type': 'openhands'},
+                'metadata': {'type': 'waspid'},
             }
         ]
 
@@ -2233,19 +2233,19 @@ class TestVerifyExistingKey:
                 'my-key-ending-with-1234',
                 'test-user-id',
                 'test-org',
-                openhands_type=True,
+                waspid_type=True,
             )
             assert result is True
 
     @pytest.mark.asyncio
-    async def test_verify_existing_key_openhands_type_not_found(self):
+    async def test_verify_existing_key_waspid_type_not_found(self):
         """Test _verify_existing_key returns False when key doesn't match."""
         mock_keys = [
             {
                 'key_name': 'sk-test1234',
                 'key_alias': 'some-alias',
                 'team_id': 'test-org',
-                'metadata': {'type': 'openhands'},
+                'metadata': {'type': 'waspid'},
             }
         ]
 
@@ -2262,19 +2262,19 @@ class TestVerifyExistingKey:
                 'my-key-ending-with-5678',
                 'test-user-id',
                 'test-org',
-                openhands_type=True,
+                waspid_type=True,
             )
             assert result is False
 
     @pytest.mark.asyncio
-    async def test_verify_existing_key_by_alias_openhands_cloud(self):
-        """Test _verify_existing_key finds key by OpenHands Cloud alias."""
+    async def test_verify_existing_key_by_alias_waspid_cloud(self):
+        """Test _verify_existing_key finds key by Waspid Cloud alias."""
         user_id = 'test-user-id'
         org_id = 'test-org'
         mock_keys = [
             {
                 'key_name': 'sk-testABCD',
-                'key_alias': get_openhands_cloud_key_alias(user_id, org_id),
+                'key_alias': get_waspid_cloud_key_alias(user_id, org_id),
                 'team_id': org_id,
                 'metadata': None,
             }
@@ -2292,7 +2292,7 @@ class TestVerifyExistingKey:
                 'my-key-ending-with-ABCD',
                 user_id,
                 org_id,
-                openhands_type=False,
+                waspid_type=False,
             )
             assert result is True
 
@@ -2322,7 +2322,7 @@ class TestVerifyExistingKey:
                 'my-key-ending-with-XYZW',
                 user_id,
                 org_id,
-                openhands_type=False,
+                waspid_type=False,
             )
             assert result is True
 
@@ -2334,7 +2334,7 @@ class TestVerifyExistingKey:
                 'key_name': 'sk-test1234',
                 'key_alias': 'some-alias',
                 'team_id': 'different-org',
-                'metadata': {'type': 'openhands'},
+                'metadata': {'type': 'waspid'},
             }
         ]
 
@@ -2350,7 +2350,7 @@ class TestVerifyExistingKey:
                 'my-key-ending-with-1234',
                 'test-user-id',
                 'test-org',
-                openhands_type=True,
+                waspid_type=True,
             )
             assert result is False
 
@@ -2369,7 +2369,7 @@ class TestVerifyExistingKey:
                 'some-key-value',
                 'test-user-id',
                 'test-org',
-                openhands_type=True,
+                waspid_type=True,
             )
             assert result is False
 
@@ -2381,7 +2381,7 @@ class TestVerifyExistingKey:
                 'key_name': None,
                 'key_alias': 'some-alias',
                 'team_id': 'test-org',
-                'metadata': {'type': 'openhands'},
+                'metadata': {'type': 'waspid'},
             }
         ]
 
@@ -2398,7 +2398,7 @@ class TestVerifyExistingKey:
                 'some-key-value',
                 'test-user-id',
                 'test-org',
-                openhands_type=True,
+                waspid_type=True,
             )
             assert result is False
 
@@ -2410,7 +2410,7 @@ class TestVerifyExistingKey:
                 'key_name': '',
                 'key_alias': 'some-alias',
                 'team_id': 'test-org',
-                'metadata': {'type': 'openhands'},
+                'metadata': {'type': 'waspid'},
             }
         ]
 
@@ -2427,7 +2427,7 @@ class TestVerifyExistingKey:
                 'some-key-value',
                 'test-user-id',
                 'test-org',
-                openhands_type=True,
+                waspid_type=True,
             )
             assert result is False
 

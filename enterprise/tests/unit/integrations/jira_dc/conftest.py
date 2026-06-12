@@ -16,8 +16,8 @@ from storage.jira_dc_conversation import JiraDcConversation
 from storage.jira_dc_user import JiraDcUser
 from storage.jira_dc_workspace import JiraDcWorkspace
 
-from openhands.app_server.integrations.service_types import ProviderType, Repository
-from openhands.app_server.user_auth.user_auth import UserAuth
+from waspid.app_server.integrations.service_types import ProviderType, Repository
+from waspid.app_server.user_auth.user_auth import UserAuth
 
 
 @pytest.fixture
@@ -84,7 +84,7 @@ def sample_job_context():
     return JobContext(
         issue_id='12345',
         issue_key='PROJ-123',
-        user_msg='Fix this bug @openhands',
+        user_msg='Fix this bug @waspid',
         user_email='user@company.com',
         display_name='Test User',
         platform_user_id='testuser',
@@ -101,7 +101,7 @@ def sample_comment_webhook_payload():
     return {
         'webhookEvent': 'comment_created',
         'comment': {
-            'body': 'Please fix this @openhands',
+            'body': 'Please fix this @waspid',
             'author': {
                 'emailAddress': 'user@company.com',
                 'displayName': 'Test User',
@@ -123,7 +123,7 @@ def sample_issue_update_webhook_payload():
     """Sample issue update webhook payload."""
     return {
         'webhookEvent': 'jira:issue_updated',
-        'changelog': {'items': [{'field': 'labels', 'toString': 'openhands'}]},
+        'changelog': {'items': [{'field': 'labels', 'toString': 'waspid'}]},
         'issue': {
             'id': '12345',
             'key': 'PROJ-123',

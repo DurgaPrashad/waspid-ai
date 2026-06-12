@@ -1,15 +1,15 @@
-import { OpenHandsAction } from "#/types/core/actions";
+import { WaspidAction } from "#/types/core/actions";
 import {
   isUserMessage,
   isErrorObservation,
   isAssistantMessage,
-  isOpenHandsAction,
+  isWaspidAction,
   isFinishAction,
   isRejectObservation,
   isMcpObservation,
   isTaskTrackingObservation,
 } from "#/types/core/guards";
-import { OpenHandsObservation } from "#/types/core/observations";
+import { WaspidObservation } from "#/types/core/observations";
 import {
   ErrorEventMessage,
   UserAssistantEventMessage,
@@ -22,7 +22,7 @@ import {
 } from "./event-message-components";
 
 interface EventMessageProps {
-  event: OpenHandsAction | OpenHandsObservation;
+  event: WaspidAction | WaspidObservation;
   hasObservationPair: boolean;
   isAwaitingUserConfirmation: boolean;
   isLastMessage: boolean;
@@ -43,8 +43,8 @@ export function EventMessage({
     return <ErrorEventMessage event={event} />;
   }
 
-  // Observation pairs with OpenHands actions
-  if (hasObservationPair && isOpenHandsAction(event)) {
+  // Observation pairs with Waspid actions
+  if (hasObservationPair && isWaspidAction(event)) {
     return <ObservationPairEventMessage event={event} />;
   }
 

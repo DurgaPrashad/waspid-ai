@@ -4,7 +4,7 @@ import { useEventStore } from "#/stores/use-event-store";
 import { useErrorMessageStore } from "#/stores/error-message-store";
 import { useOptimisticUserMessageStore } from "#/stores/optimistic-user-message-store";
 import { isV1Event } from "#/types/v1/type-guards";
-import { OpenHandsEvent } from "#/types/v1/core";
+import { WaspidEvent } from "#/types/v1/core";
 
 /**
  * Test component to access and display WebSocket connection state
@@ -32,7 +32,7 @@ export function EventStoreComponent() {
       <div data-testid="ui-events-count">{uiEvents.length}</div>
       <div data-testid="latest-event-id">
         {isV1Event(events[events.length - 1])
-          ? (events[events.length - 1] as OpenHandsEvent).id
+          ? (events[events.length - 1] as WaspidEvent).id
           : "none"}
       </div>
     </div>

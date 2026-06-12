@@ -10,6 +10,6 @@ with Mapped types, while remaining backward compatible with existing Column()
 definitions.
 """
 
-from openhands.app_server.utils.sql_utils import Base
+from waspid.app_server.utils.sql_utils import Base
 
 __all__ = ['Base']

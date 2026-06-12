@@ -18,10 +18,10 @@ from server.routes.org_models import (
 from storage.org import Org
 from storage.org_app_settings_store import OrgAppSettingsStore
 
-from openhands.app_server.errors import AuthError
-from openhands.app_server.services.injector import Injector, InjectorState
-from openhands.app_server.user.user_context import UserContext
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.errors import AuthError
+from waspid.app_server.services.injector import Injector, InjectorState
+from waspid.app_server.user.user_context import UserContext
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 @dataclass
@@ -143,7 +143,7 @@ class OrgAppSettingsServiceInjector(Injector[OrgAppSettingsService]):
         self, state: InjectorState, request: Request | None = None
     ) -> AsyncGenerator[OrgAppSettingsService, None]:
         # Local imports to avoid circular dependencies
-        from openhands.app_server.config import get_db_session, get_user_context
+        from waspid.app_server.config import get_db_session, get_user_context
 
         async with (
             get_user_context(state, request) as user_context,

@@ -20,9 +20,9 @@ from storage.gitlab_webhook import GitlabWebhook
 from storage.gitlab_webhook_store import GitlabWebhookStore
 from storage.redis import get_redis_client_async
 
-from openhands.app_server.integrations.gitlab.gitlab_service import GitLabServiceImpl
-from openhands.app_server.user_auth import get_user_id
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.integrations.gitlab.gitlab_service import GitLabServiceImpl
+from waspid.app_server.user_auth import get_user_id
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 gitlab_integration_router = APIRouter(prefix='/integration')
 webhook_store = GitlabWebhookStore()
@@ -83,14 +83,14 @@ async def verify_gitlab_signature(
 async def gitlab_events(
     request: Request,
     x_gitlab_token: str = Header(None),
-    x_openhands_webhook_id: str = Header(None),
-    x_openhands_user_id: str = Header(None),
+    x_waspid_webhook_id: str = Header(None),
+    x_waspid_user_id: str = Header(None),
 ):
     try:
         await verify_gitlab_signature(
             header_webhook_secret=x_gitlab_token,
-            webhook_uuid=x_openhands_webhook_id,
-            user_id=x_openhands_user_id,
+            webhook_uuid=x_waspid_webhook_id,
+            user_id=x_waspid_user_id,
         )
 
         payload_data = await request.json()
@@ -116,7 +116,7 @@ async def gitlab_events(
             source=SourceType.GITLAB,
             message={
                 'payload': payload_data,
-                'installation_id': x_openhands_webhook_id,
+                'installation_id': x_waspid_webhook_id,
             },
         )
 

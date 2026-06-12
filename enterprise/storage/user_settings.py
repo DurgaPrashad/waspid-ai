@@ -85,7 +85,7 @@ class UserSettings(Base):
     )  # False = not migrated, True = migrated
 
     def to_settings(self):
-        from openhands.app_server.settings.settings_models import Settings
+        from waspid.app_server.settings.settings_models import Settings
 
         return Settings(
             agent_settings=self.agent_settings or {},

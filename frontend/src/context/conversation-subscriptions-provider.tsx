@@ -7,9 +7,9 @@ import React, {
   useRef,
 } from "react";
 import { io, Socket } from "socket.io-client";
-import { OpenHandsParsedEvent } from "#/types/core";
+import { WaspidParsedEvent } from "#/types/core";
 import {
-  isOpenHandsEvent,
+  isWaspidEvent,
   isAgentStateChangeObservation,
   isStatusUpdate,
 } from "#/types/core/guards";
@@ -24,7 +24,7 @@ import { Provider } from "#/types/settings";
 interface ConversationSocket {
   socket: Socket;
   isConnected: boolean;
-  events: OpenHandsParsedEvent[];
+  events: WaspidParsedEvent[];
 }
 
 interface ConversationSubscriptionsContextType {
@@ -39,7 +39,7 @@ interface ConversationSubscriptionsContextType {
   }) => void;
   unsubscribeFromConversation: (conversationId: string) => void;
   isSubscribedToConversation: (conversationId: string) => boolean;
-  getEventsForConversation: (conversationId: string) => OpenHandsParsedEvent[];
+  getEventsForConversation: (conversationId: string) => WaspidParsedEvent[];
 }
 
 const ConversationSubscriptionsContext =
@@ -65,8 +65,8 @@ const isErrorEvent = (
   "message" in event &&
   typeof event.message === "string";
 
-const isAgentStatusError = (event: unknown): event is OpenHandsParsedEvent =>
-  isOpenHandsEvent(event) &&
+const isAgentStatusError = (event: unknown): event is WaspidParsedEvent =>
+  isWaspidEvent(event) &&
   isAgentStateChangeObservation(event) &&
   event.extras.agent_state === AgentState.ERROR;
 
@@ -162,7 +162,7 @@ export function ConversationSubscriptionsProvider({
         }
 
         // Update the events for this subscription
-        if (isOpenHandsEvent(event)) {
+        if (isWaspidEvent(event)) {
           setConversationSockets((prev) => {
             // Make sure the conversation still exists in our state
             if (!prev[conversationId]) return prev;
@@ -188,7 +188,7 @@ export function ConversationSubscriptionsProvider({
             renderConversationCreatedToast();
           }
         } else if (
-          isOpenHandsEvent(event) &&
+          isWaspidEvent(event) &&
           isAgentStateChangeObservation(event)
         ) {
           if (event.extras.agent_state === AgentState.FINISHED) {

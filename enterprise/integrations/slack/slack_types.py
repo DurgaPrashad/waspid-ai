@@ -5,7 +5,7 @@ from integrations.types import SummaryExtractionTracker
 from jinja2 import Environment
 from storage.slack_user import SlackUser
 
-from openhands.app_server.user_auth.user_auth import UserAuth
+from waspid.app_server.user_auth.user_auth import UserAuth
 
 
 @dataclass
@@ -53,7 +53,7 @@ class SlackMessageView:
             SlackMessageView if all required fields are available,
             None if required fields are missing or bot token unavailable.
         """
-        from openhands.app_server.utils.logger import openhands_logger as logger
+        from waspid.app_server.utils.logger import waspid_logger as logger
 
         team_id = payload.get('team', {}).get('id') or payload.get('team_id')
         channel_id = (
@@ -99,14 +99,14 @@ class SlackViewInterface(SlackMessageView, SummaryExtractionTracker, ABC):
     """Interface for authenticated Slack views that can create conversations.
 
     All fields are required (non-None) because this interface is only used
-    for users who have linked their Slack account to OpenHands.
+    for users who have linked their Slack account to Waspid.
 
     Inherits from SlackMessageView:
         bot_access_token, slack_user_id, channel_id, message_ts, thread_ts, team_id
     """
 
     user_msg: str
-    slack_to_openhands_user: SlackUser
+    slack_to_waspid_user: SlackUser
     saas_user_auth: UserAuth
     selected_repo: str | None
     should_extract: bool

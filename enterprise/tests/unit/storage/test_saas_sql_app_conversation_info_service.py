@@ -20,12 +20,12 @@ from storage.base import Base
 from storage.org import Org
 from storage.user import User
 
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversationInfo,
     ConversationTrigger,
 )
-from openhands.app_server.integrations.service_types import ProviderType
-from openhands.app_server.user.specifiy_user_context import SpecifyUserContext
+from waspid.app_server.integrations.service_types import ProviderType
+from waspid.app_server.user.specifiy_user_context import SpecifyUserContext
 
 # Test UUIDs
 USER1_ID = UUID('a1111111-1111-1111-1111-111111111111')
@@ -515,7 +515,7 @@ class TestSaasSQLAppConversationInfoServiceAdminContext:
             await user1_service.save_app_conversation_info(conv)
 
         # Now create an ADMIN service
-        from openhands.app_server.user.specifiy_user_context import ADMIN
+        from waspid.app_server.user.specifiy_user_context import ADMIN
 
         admin_service = SaasSQLAppConversationInfoService(
             db_session=async_session_with_users,
@@ -540,7 +540,7 @@ class TestSaasSQLAppConversationInfoServiceAdminContext:
         async_session_with_users: AsyncSession,
     ):
         """Test that ADMIN context can access any conversation regardless of owner."""
-        from openhands.app_server.user.specifiy_user_context import ADMIN
+        from waspid.app_server.user.specifiy_user_context import ADMIN
 
         # Create a conversation as user1
         user1_service = SaasSQLAppConversationInfoService(
@@ -586,7 +586,7 @@ class TestSaasSQLAppConversationInfoServiceAdminContext:
         async_session_with_users: AsyncSession,
     ):
         """Test that _secure_select returns unfiltered query for ADMIN context."""
-        from openhands.app_server.user.specifiy_user_context import ADMIN
+        from waspid.app_server.user.specifiy_user_context import ADMIN
 
         # Create an ADMIN service
         admin_service = SaasSQLAppConversationInfoService(
@@ -615,7 +615,7 @@ class TestSaasSQLAppConversationInfoServiceAdminContext:
         async_session_with_users: AsyncSession,
     ):
         """Test that regular user context properly filters data (control test)."""
-        from openhands.app_server.user.specifiy_user_context import ADMIN
+        from waspid.app_server.user.specifiy_user_context import ADMIN
 
         # Create conversations for different users
         user1_service = SaasSQLAppConversationInfoService(
@@ -684,7 +684,7 @@ class TestSaasSQLAppConversationInfoServiceWebhookFallback:
             StoredConversationMetadataSaas,
         )
 
-        from openhands.app_server.user.specifiy_user_context import ADMIN
+        from waspid.app_server.user.specifiy_user_context import ADMIN
 
         # Arrange: Create service with ADMIN context (user_id=None)
         admin_service = SaasSQLAppConversationInfoService(
@@ -727,7 +727,7 @@ class TestSaasSQLAppConversationInfoServiceWebhookFallback:
             StoredConversationMetadataSaas,
         )
 
-        from openhands.app_server.user.specifiy_user_context import ADMIN
+        from waspid.app_server.user.specifiy_user_context import ADMIN
 
         # Arrange: Create service with ADMIN context (user_id=None)
         admin_service = SaasSQLAppConversationInfoService(
@@ -764,7 +764,7 @@ class TestSaasSQLAppConversationInfoServiceWebhookFallback:
         async_session_with_users: AsyncSession,
     ):
         """Test end-to-end: conversation saved via webhook is visible to the owning user."""
-        from openhands.app_server.user.specifiy_user_context import ADMIN
+        from waspid.app_server.user.specifiy_user_context import ADMIN
 
         # Arrange: Save conversation using ADMIN context (simulating webhook)
         admin_service = SaasSQLAppConversationInfoService(
@@ -1009,9 +1009,9 @@ class TestApiKeyOrgIdHandling:
         """Test that API key's org_id is used when saving conversation via API key auth.
 
         This tests the main bug fix: when a user creates an API key in Personal Workspace,
-        then switches to OpenHands org in browser, and uses the API key to create a
+        then switches to Waspid org in browser, and uses the API key to create a
         conversation, the conversation should be saved in Personal Workspace (API key's org),
-        not OpenHands (user's current org).
+        not Waspid (user's current org).
         """
         from dataclasses import dataclass
 

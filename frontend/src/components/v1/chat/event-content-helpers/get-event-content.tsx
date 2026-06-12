@@ -1,6 +1,6 @@
 import { Trans } from "react-i18next";
 import React from "react";
-import { OpenHandsEvent, ObservationEvent, ActionEvent } from "#/types/v1/core";
+import { WaspidEvent, ObservationEvent, ActionEvent } from "#/types/v1/core";
 import {
   isActionEvent,
   isObservationEvent,
@@ -50,7 +50,7 @@ const getSummaryTitleForActionEvent = (
 };
 
 // Action Event Processing
-const getActionEventTitle = (event: OpenHandsEvent): React.ReactNode => {
+const getActionEventTitle = (event: WaspidEvent): React.ReactNode => {
   // Early return if not an action event
   if (!isActionEvent(event)) {
     return "";
@@ -145,7 +145,7 @@ const getActionEventTitle = (event: OpenHandsEvent): React.ReactNode => {
 
 // Observation Event Processing
 const getObservationEventTitle = (
-  event: OpenHandsEvent,
+  event: WaspidEvent,
   correspondingAction?: ActionEvent,
 ): React.ReactNode => {
   // Early return if not an observation event
@@ -236,7 +236,7 @@ const getObservationEventTitle = (
 };
 
 export const getEventContent = (
-  event: OpenHandsEvent | SkillReadyEvent,
+  event: WaspidEvent | SkillReadyEvent,
   correspondingAction?: ActionEvent,
 ) => {
   let title: React.ReactNode = "";

@@ -3542,7 +3542,7 @@ wheels = [
 ]
 
 [[package]]
-name = "openhands-ai"
+name = "waspid-ai"
 source = { editable = "." }
 dependencies = [
     { name = "aiohttp" },

@@ -11,10 +11,10 @@ from typing import Sequence, Union
 import sqlalchemy as sa
 from alembic import op
 
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversationStartTaskStatus,
 )
-from openhands.app_server.event_callback.event_callback_result_models import (
+from waspid.app_server.event_callback.event_callback_result_models import (
     EventCallbackResultStatus,
 )
 

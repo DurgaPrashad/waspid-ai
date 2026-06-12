@@ -9,7 +9,7 @@ from typing import Union
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
-from openhands.app_server.user_auth import get_user_id
+from waspid.app_server.user_auth import get_user_id
 
 onboarding_router = APIRouter(prefix='/api', tags=['Onboarding'])
 
@@ -33,7 +33,7 @@ async def submit_onboarding(
     """Submit onboarding form selections and fire analytics event."""
     # ACTV-03: onboarding completed
     try:
-        from openhands.analytics import get_analytics_service, resolve_analytics_context
+        from waspid.analytics import get_analytics_service, resolve_analytics_context
 
         analytics = get_analytics_service()
         if analytics and user_id:

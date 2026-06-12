@@ -14,31 +14,31 @@ from storage.org import Org
 from storage.org_member import OrgMember
 from storage.role import Role
 
-from openhands.app_server.settings.settings_models import (
+from waspid.app_server.settings.settings_models import (
     _load_persisted_agent_settings,
     _load_persisted_conversation_settings,
 )
-from openhands.app_server.utils.llm import MASKED_API_KEY, resolve_llm_base_url
-from openhands.sdk.settings import ConversationSettings, OpenHandsAgentSettings
+from waspid.app_server.utils.llm import MASKED_API_KEY, resolve_llm_base_url
+from waspid.sdk.settings import ConversationSettings, WaspidAgentSettings
 
 
 def _validate_persisted_agent_settings(
     raw: dict[str, Any] | None,
-) -> OpenHandsAgentSettings:
+) -> WaspidAgentSettings:
     """Validate persisted ``org.agent_settings`` against the canonical schema.
 
     Routes the raw payload through the shared SDK loader so any schema
     migrations registered with the SDK are applied first. Older rows carry
     the legacy ``agent_kind: 'llm'`` discriminator from the pre-rename SDK;
-    force ``'openhands'`` after migration so the canonical class accepts
+    force ``'waspid'`` after migration so the canonical class accepts
     both shapes. Mirrors :func:`OrgStore.get_agent_settings_from_org` — kept
     inline to avoid a circular import (``org_store`` already imports from this
     module).
     """
     loaded = _load_persisted_agent_settings(raw or {})
     payload = loaded.model_dump(mode='json', context={'expose_secrets': True})
-    payload['agent_kind'] = 'openhands'
-    return OpenHandsAgentSettings.model_validate(payload)
+    payload['agent_kind'] = 'waspid'
+    return WaspidAgentSettings.model_validate(payload)
 
 
 class OrgCreationError(Exception):
@@ -178,8 +178,8 @@ class OrgResponse(BaseModel):
     sandbox_base_container_image: str | None = None
     sandbox_runtime_container_image: str | None = None
     org_version: int = 0
-    agent_settings: OpenHandsAgentSettings = Field(
-        default_factory=OpenHandsAgentSettings
+    agent_settings: WaspidAgentSettings = Field(
+        default_factory=WaspidAgentSettings
     )
     conversation_settings: ConversationSettings = Field(
         default_factory=ConversationSettings
@@ -377,7 +377,7 @@ class OrgUpdate(BaseModel):
         """Get shared updates that need to be propagated to org members.
 
         An empty ``llm_api_key`` means the org-wide custom key is being cleared
-        (e.g. owner switching to a managed/OpenHands provider). It must not
+        (e.g. owner switching to a managed/Waspid provider). It must not
         land in member rows — ``OrgMember.llm_api_key``'s setter has no
         ``if raw else None`` guard because the column is ``nullable=False``,
         so an empty string would become an encrypted empty blob rather than a
@@ -394,8 +394,8 @@ class OrgUpdate(BaseModel):
 class OrgDefaultsSettingsResponse(BaseModel):
     """Response model for organization default settings."""
 
-    agent_settings: OpenHandsAgentSettings = Field(
-        default_factory=OpenHandsAgentSettings
+    agent_settings: WaspidAgentSettings = Field(
+        default_factory=WaspidAgentSettings
     )
     conversation_settings: ConversationSettings = Field(
         default_factory=ConversationSettings
@@ -420,7 +420,7 @@ class OrgDefaultsSettingsResponse(BaseModel):
         """Create response from Org entity.
 
         Denormalizes the SDK's ``litellm_proxy/`` prefix back to
-        ``openhands/`` so the frontend's basic-view provider/model dropdowns
+        ``waspid/`` so the frontend's basic-view provider/model dropdowns
         can be populated, and nulls ``api_key`` so neither the raw secret
         nor the ``MASKED_API_KEY`` marker leaks in the response.
         ``base_url`` is returned exactly as stored so ``org.agent_settings``,
@@ -439,10 +439,10 @@ class OrgDefaultsSettingsResponse(BaseModel):
         )
 
     @staticmethod
-    def _denormalize_llm_for_response(agent_settings: OpenHandsAgentSettings) -> None:
+    def _denormalize_llm_for_response(agent_settings: WaspidAgentSettings) -> None:
         """Rewrite ``agent_settings.llm`` in-place for UI consumption.
 
-        * ``litellm_proxy/X`` → ``openhands/X`` so the basic-view provider
+        * ``litellm_proxy/X`` → ``waspid/X`` so the basic-view provider
           dropdown matches (the SDK's ``AgentSettings`` validator
           normalizes the other direction on load).
         * ``base_url`` is returned **as stored** so the three sync targets
@@ -463,7 +463,7 @@ class OrgDefaultsSettingsResponse(BaseModel):
         """
         llm = agent_settings.llm
         if llm.model and llm.model.startswith('litellm_proxy/'):
-            llm.model = f'openhands/{llm.model.removeprefix("litellm_proxy/")}'
+            llm.model = f'waspid/{llm.model.removeprefix("litellm_proxy/")}'
         llm.api_key = None
 
 
@@ -647,7 +647,7 @@ class GitOrgClaimResponse(BaseModel):
 
 
 class GitOrgAlreadyClaimedError(Exception):
-    """Raised when a Git organization is already claimed by another OpenHands org."""
+    """Raised when a Git organization is already claimed by another Waspid org."""
 
     def __init__(self, provider: str, git_organization: str):
         self.provider = provider

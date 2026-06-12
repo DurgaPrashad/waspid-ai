@@ -16,7 +16,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from storage.org import Org
 from storage.user import User
 
-from openhands.app_server.utils.jsonpatch_compat import deep_merge
+from waspid.app_server.utils.jsonpatch_compat import deep_merge
 
 
 @dataclass

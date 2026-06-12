@@ -2,11 +2,7 @@ import { Link } from "react-router";
 import { Bot, Settings as SettingsIcon } from "lucide-react";
 import { usePaginatedConversations } from "#/hooks/query/use-paginated-conversations";
 import { useSettings } from "#/hooks/query/use-settings";
-import {
-  PageShell,
-  PageHeader,
-  Section,
-} from "#/components/shared/layout";
+import { PageShell, PageHeader, Section } from "#/components/shared/layout";
 import { AgentCard } from "./agent-card";
 import { cn } from "#/utils/utils";
 
@@ -107,10 +103,7 @@ export function AgentsScreen() {
               className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3"
             >
               {conversations.map((conversation) => (
-                <AgentCard
-                  key={conversation.id}
-                  conversation={conversation}
-                />
+                <AgentCard key={conversation.id} conversation={conversation} />
               ))}
             </div>
           )}

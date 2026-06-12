@@ -33,10 +33,7 @@ export function SidebarNavGroup({ group, showDivider }: SidebarNavGroupProps) {
       className="flex flex-col items-center gap-1"
     >
       {showDivider && (
-        <span
-          aria-hidden
-          className="my-2 h-px w-6 bg-tertiary/60"
-        />
+        <span aria-hidden className="my-2 h-px w-6 bg-tertiary/60" />
       )}
       <span id={`sidebar-nav-group-${group.id}`} className="sr-only">
         {group.label}

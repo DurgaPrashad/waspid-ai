@@ -40,13 +40,13 @@ async def _seed_models(async_session_maker):
     async with async_session_maker() as session:
         service = VerifiedModelService(session)
         await service.create_verified_model(
-            model_name='claude-sonnet', provider='openhands'
+            model_name='claude-sonnet', provider='waspid'
         )
         await service.create_verified_model(
             model_name='claude-sonnet', provider='anthropic'
         )
         await service.create_verified_model(
-            model_name='gpt-4o', provider='openhands', is_enabled=False
+            model_name='gpt-4o', provider='waspid', is_enabled=False
         )
 
 
@@ -77,7 +77,7 @@ class TestCreateVerifiedModel:
         async with async_session_maker() as session:
             service = VerifiedModelService(session)
             await service.create_verified_model(
-                model_name='claude', provider='openhands'
+                model_name='claude', provider='waspid'
             )
             model = await service.create_verified_model(
                 model_name='claude', provider='anthropic'
@@ -89,14 +89,14 @@ class TestGetModel:
     async def test_get_model(self, _seed_models, async_session_maker):
         async with async_session_maker() as session:
             service = VerifiedModelService(session)
-            model = await service.get_model('claude-sonnet', 'openhands')
+            model = await service.get_model('claude-sonnet', 'waspid')
             assert model is not None
-            assert model.provider == 'openhands'
+            assert model.provider == 'waspid'
 
     async def test_get_model_not_found(self, _seed_models, async_session_maker):
         async with async_session_maker() as session:
             service = VerifiedModelService(session)
-            assert await service.get_model('nonexistent', 'openhands') is None
+            assert await service.get_model('nonexistent', 'waspid') is None
 
     async def test_get_model_wrong_provider(self, _seed_models, async_session_maker):
         async with async_session_maker() as session:
@@ -133,7 +133,7 @@ class TestSearchVerifiedModels:
     async def test_search_models_by_provider(self, _seed_models, async_session_maker):
         async with async_session_maker() as session:
             service = VerifiedModelService(session)
-            result = await service.search_verified_models(provider='openhands')
+            result = await service.search_verified_models(provider='waspid')
             assert len(result.items) == 1
             assert result.items[0].model_name == 'claude-sonnet'
 
@@ -181,7 +181,7 @@ class TestUpdateVerifiedModel:
         async with async_session_maker() as session:
             service = VerifiedModelService(session)
             updated = await service.update_verified_model(
-                model_name='claude-sonnet', provider='openhands', is_enabled=False
+                model_name='claude-sonnet', provider='waspid', is_enabled=False
             )
             assert updated is not None
             assert updated.is_enabled is False
@@ -191,7 +191,7 @@ class TestUpdateVerifiedModel:
             service = VerifiedModelService(session)
             assert (
                 await service.update_verified_model(
-                    model_name='nonexistent', provider='openhands', is_enabled=False
+                    model_name='nonexistent', provider='waspid', is_enabled=False
                 )
                 is None
             )
@@ -200,7 +200,7 @@ class TestUpdateVerifiedModel:
         async with async_session_maker() as session:
             service = VerifiedModelService(session)
             updated = await service.update_verified_model(
-                model_name='claude-sonnet', provider='openhands'
+                model_name='claude-sonnet', provider='waspid'
             )
             assert updated is not None
             assert updated.is_enabled is True
@@ -210,11 +210,11 @@ class TestDeleteVerifiedModel:
     async def test_delete_model(self, _seed_models, async_session_maker):
         async with async_session_maker() as session:
             service = VerifiedModelService(session)
-            await service.delete_verified_model('claude-sonnet', 'openhands')
+            await service.delete_verified_model('claude-sonnet', 'waspid')
 
         async with async_session_maker() as session:
             service = VerifiedModelService(session)
-            assert await service.get_model('claude-sonnet', 'openhands') is None
+            assert await service.get_model('claude-sonnet', 'waspid') is None
             # Other provider's version should still exist
             assert await service.get_model('claude-sonnet', 'anthropic') is not None
 
@@ -222,4 +222,4 @@ class TestDeleteVerifiedModel:
         async with async_session_maker() as session:
             service = VerifiedModelService(session)
             with pytest.raises(ValueError):
-                assert await service.delete_verified_model('nonexistent', 'openhands')
+                assert await service.delete_verified_model('nonexistent', 'waspid')

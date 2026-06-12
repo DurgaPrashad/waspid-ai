@@ -12,7 +12,7 @@ import contextlib
 
 
 def _get_db_session_injector():
-    from openhands.app_server.config import get_global_config
+    from waspid.app_server.config import get_global_config
 
     _config = get_global_config()
     return _config.db_session

@@ -40,8 +40,8 @@ from storage.org_member_store import OrgMemberStore
 from storage.role import Role
 from storage.role_store import RoleStore
 
-from openhands.app_server.user_auth import get_user_auth, get_user_id
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.user_auth import get_user_auth, get_user_id
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 class Permission(str, Enum):
@@ -351,7 +351,7 @@ async def require_financial_data_access(
 
     Allows access if ANY of these conditions are met:
     1. User has Admin or Owner role in the organization
-    2. User has @openhands.dev email domain
+    2. User has @waspid.dev email domain
 
     This is used for the organization members financial data endpoint.
 
@@ -389,13 +389,13 @@ async def require_financial_data_access(
                 detail='API key is not authorized for this organization',
             )
 
-    # Check if user has @openhands.dev email
+    # Check if user has @waspid.dev email
     user_auth = await get_user_auth(request)
     user_email = await user_auth.get_user_email()
 
-    if user_email and user_email.endswith('@openhands.dev'):
+    if user_email and user_email.endswith('@waspid.dev'):
         logger.debug(
-            'Financial data access granted via @openhands.dev email',
+            'Financial data access granted via @waspid.dev email',
             extra={'user_id': user_id, 'org_id': str(org_id)},
         )
         return user_id
@@ -424,7 +424,7 @@ async def require_financial_data_access(
         )
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail='Access restricted to organization admins, owners, or OpenHands members',
+            detail='Access restricted to organization admins, owners, or Waspid staff',
         )
 
     logger.debug(

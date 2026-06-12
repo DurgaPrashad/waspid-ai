@@ -6143,7 +6143,7 @@ pydantic = ">=1.8"
 [[package]]
 name = "openhands-aci"
 version = "0.3.3"
-description = "An Agent-Computer Interface (ACI) designed for software development agents OpenHands."
+description = "An Agent-Computer Interface (ACI) designed for software development agents Waspid."
 optional = false
 python-versions = "<4.0,>=3.12"
 groups = ["main"]
@@ -6188,7 +6188,7 @@ llama = ["llama-index (>=0.12.29,<0.13.0)", "llama-index-core (>=0.12.29,<0.13.0
 [[package]]
 name = "openhands-agent-server"
 version = "1.22.1"
-description = "OpenHands Agent Server - REST/WebSocket interface for OpenHands AI Agent"
+description = "Waspid Agent Server - REST/WebSocket interface for Waspid AI Agent"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
@@ -6212,7 +6212,7 @@ wsproto = ">=1.2.0"
 [[package]]
 name = "openhands-sdk"
 version = "1.22.1"
-description = "OpenHands SDK - Core functionality for building AI agents"
+description = "Waspid SDK - Core functionality for building AI agents"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
@@ -6244,7 +6244,7 @@ boto3 = ["boto3 (>=1.35.0)"]
 [[package]]
 name = "openhands-tools"
 version = "1.22.1"
-description = "OpenHands Tools - Runtime tools for AI agents"
+description = "Waspid Tools - Runtime tools for AI agents"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]

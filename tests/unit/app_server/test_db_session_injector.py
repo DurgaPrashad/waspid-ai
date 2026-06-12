@@ -30,7 +30,7 @@ sys.modules['asyncpg'] = MagicMock()
 sys.modules['google.cloud.sql.connector'] = MagicMock()
 
 # Import after mocking to avoid import-time issues
-from openhands.app_server.services.db_session_injector import (  # noqa: E402
+from waspid.app_server.services.db_session_injector import (  # noqa: E402
     DbSessionInjector,
 )
 
@@ -92,7 +92,7 @@ class TestDbSessionInjectorConfiguration:
         assert service.persistence_dir == temp_persistence_dir
         assert service.host is None
         assert service.port == 5432  # Default from env var processing
-        assert service.name == 'openhands'  # Default from env var processing
+        assert service.name == 'waspid'  # Default from env var processing
         assert service.user == 'postgres'  # Default from env var processing
         assert (
             service.password.get_secret_value() == 'postgres'
@@ -165,7 +165,7 @@ class TestDbSessionInjectorConnections:
 
         assert isinstance(engine, Engine)
         expected_url = (
-            f'sqlite:///{basic_db_session_injector.persistence_dir}/openhands.db'
+            f'sqlite:///{basic_db_session_injector.persistence_dir}/waspid.db'
         )
         assert str(engine.url) == expected_url
 
@@ -175,13 +175,13 @@ class TestDbSessionInjectorConnections:
         engine = await basic_db_session_injector.get_async_db_engine()
 
         assert isinstance(engine, AsyncEngine)
-        expected_url = f'sqlite+aiosqlite:///{basic_db_session_injector.persistence_dir}/openhands.db'
+        expected_url = f'sqlite+aiosqlite:///{basic_db_session_injector.persistence_dir}/waspid.db'
         assert str(engine.url) == expected_url
 
     def test_postgres_connection_with_host(self, postgres_db_session_injector):
         """Test PostgreSQL connection when host is defined."""
         with patch(
-            'openhands.app_server.services.db_session_injector.create_engine'
+            'waspid.app_server.services.db_session_injector.create_engine'
         ) as mock_create_engine:
             mock_engine = MagicMock()
             mock_create_engine.return_value = mock_engine
@@ -213,7 +213,7 @@ class TestDbSessionInjectorConnections:
     ):
         """Test PostgreSQL async connection when host is defined."""
         with patch(
-            'openhands.app_server.services.db_session_injector.create_async_engine'
+            'waspid.app_server.services.db_session_injector.create_async_engine'
         ) as mock_create_async_engine:
             mock_engine = MagicMock()
             mock_create_async_engine.return_value = mock_engine
@@ -240,7 +240,7 @@ class TestDbSessionInjectorConnections:
             assert call_args[1]['pool_pre_ping']
 
     @patch(
-        'openhands.app_server.services.db_session_injector.DbSessionInjector._create_gcp_engine'
+        'waspid.app_server.services.db_session_injector.DbSessionInjector._create_gcp_engine'
     )
     def test_gcp_connection_configuration(
         self, mock_create_gcp_engine, gcp_db_session_injector
@@ -255,7 +255,7 @@ class TestDbSessionInjectorConnections:
         mock_create_gcp_engine.assert_called_once()
 
     @patch(
-        'openhands.app_server.services.db_session_injector.DbSessionInjector._create_async_gcp_engine'
+        'waspid.app_server.services.db_session_injector.DbSessionInjector._create_async_gcp_engine'
     )
     @pytest.mark.asyncio
     async def test_gcp_async_connection_configuration(
@@ -348,7 +348,7 @@ class TestDbSessionInjectorSessionManagement:
 
         # Mock the async session maker and session
         with patch(
-            'openhands.app_server.services.db_session_injector.async_sessionmaker'
+            'waspid.app_server.services.db_session_injector.async_sessionmaker'
         ) as mock_sessionmaker_class:
             mock_session = AsyncMock()
             mock_session_context = AsyncMock()
@@ -384,7 +384,7 @@ class TestDbSessionInjectorSessionManagement:
 
         # Mock the async session maker and session
         with patch(
-            'openhands.app_server.services.db_session_injector.async_sessionmaker'
+            'waspid.app_server.services.db_session_injector.async_sessionmaker'
         ) as mock_sessionmaker_class:
             mock_session = AsyncMock()
             mock_session_context = AsyncMock()
@@ -479,7 +479,7 @@ class TestDbSessionInjectorEdgeCases:
     def test_none_password_handling(self, temp_persistence_dir):
         """Test handling of None password values."""
         with patch(
-            'openhands.app_server.services.db_session_injector.create_engine'
+            'waspid.app_server.services.db_session_injector.create_engine'
         ) as mock_create_engine:
             mock_engine = MagicMock()
             mock_create_engine.return_value = mock_engine

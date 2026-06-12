@@ -108,7 +108,7 @@ describe("AgentSettingsScreen — minimal generic ACP UX", () => {
     ).toBe("claude-opus-4");
   });
 
-  it("clears acp_* fields when switching back to OpenHands", async () => {
+  it("clears acp_* fields when switching back to Waspid", async () => {
     vi.spyOn(OptionService, "getConfig").mockResolvedValue(baseConfig);
     vi.spyOn(SettingsService, "getSettings").mockResolvedValue({
       ...MOCK_DEFAULT_USER_SETTINGS,
@@ -137,7 +137,7 @@ describe("AgentSettingsScreen — minimal generic ACP UX", () => {
     const dropdown = screen.getByTestId("agent-type-selector");
     await userEvent.click(dropdown);
     const ohOption = await screen.findByRole("option", {
-      name: "SETTINGS$AGENT_TYPE_OPENHANDS",
+      name: "SETTINGS$AGENT_TYPE_WASPID",
     });
     await userEvent.click(ohOption);
 
@@ -151,7 +151,7 @@ describe("AgentSettingsScreen — minimal generic ACP UX", () => {
     // ``Settings.update()`` starts a fresh base when the kind flips and
     // discards any incoming ``acp_*`` fields anyway.
     expect(saveSpy.mock.calls[0][0]).toEqual({
-      agent_settings_diff: { agent_kind: "openhands" },
+      agent_settings_diff: { agent_kind: "waspid" },
     });
   });
 

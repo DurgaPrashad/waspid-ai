@@ -8,15 +8,15 @@ import pytest
 from fastapi import FastAPI, status
 from fastapi.testclient import TestClient
 
-from openhands.app_server.config_api.config_models import LLMModel, Provider
-from openhands.app_server.config_api.config_router import router
-from openhands.app_server.config_api.default_llm_model_service import (
+from waspid.app_server.config_api.config_models import LLMModel, Provider
+from waspid.app_server.config_api.config_router import router
+from waspid.app_server.config_api.default_llm_model_service import (
     _to_llm_models,
     _to_providers,
 )
-from openhands.app_server.utils.dependencies import check_session_api_key
-from openhands.app_server.utils.llm import get_supported_llm_models
-from openhands.app_server.utils.paging_utils import encode_page_id, paginate_results
+from waspid.app_server.utils.dependencies import check_session_api_key
+from waspid.app_server.utils.llm import get_supported_llm_models
+from waspid.app_server.utils.paging_utils import encode_page_id, paginate_results
 
 
 class TestLLMModel:

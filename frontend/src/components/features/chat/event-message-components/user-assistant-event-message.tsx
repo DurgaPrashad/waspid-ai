@@ -1,4 +1,4 @@
-import { OpenHandsAction } from "#/types/core/actions";
+import { WaspidAction } from "#/types/core/actions";
 import { isUserMessage, isAssistantMessage } from "#/types/core/guards";
 import { ChatMessage } from "../chat-message";
 import { ImageCarousel } from "../../images/image-carousel";
@@ -7,7 +7,7 @@ import { ConfirmationButtons } from "#/components/shared/buttons/confirmation-bu
 import { parseMessageFromEvent } from "../event-content-helpers/parse-message-from-event";
 
 interface UserAssistantEventMessageProps {
-  event: OpenHandsAction;
+  event: WaspidAction;
   shouldShowConfirmationButtons: boolean;
 }
 

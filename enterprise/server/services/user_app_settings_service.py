@@ -17,9 +17,9 @@ from server.routes.user_app_settings_models import (
 )
 from storage.user_app_settings_store import UserAppSettingsStore
 
-from openhands.app_server.services.injector import Injector, InjectorState
-from openhands.app_server.user.user_context import UserContext
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.services.injector import Injector, InjectorState
+from waspid.app_server.user.user_context import UserContext
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 @dataclass
@@ -116,7 +116,7 @@ class UserAppSettingsServiceInjector(Injector[UserAppSettingsService]):
         self, state: InjectorState, request: Request | None = None
     ) -> AsyncGenerator[UserAppSettingsService, None]:
         # Local imports to avoid circular dependencies
-        from openhands.app_server.config import get_db_session, get_user_context
+        from waspid.app_server.config import get_db_session, get_user_context
 
         async with (
             get_user_context(state, request) as user_context,

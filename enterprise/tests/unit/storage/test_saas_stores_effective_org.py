@@ -223,8 +223,8 @@ async def test_secrets_store_store_uses_effective_org_id_when_set():
     # model so encryption / model_dump behave correctly.
     from pydantic import SecretStr
 
-    from openhands.app_server.integrations.provider import CustomSecret
-    from openhands.app_server.secrets.secrets_models import Secrets
+    from waspid.app_server.integrations.provider import CustomSecret
+    from waspid.app_server.secrets.secrets_models import Secrets
 
     item = Secrets(
         custom_secrets={
@@ -276,8 +276,8 @@ async def test_secrets_store_store_falls_back_to_current_org_when_unset():
 
     from pydantic import SecretStr
 
-    from openhands.app_server.integrations.provider import CustomSecret
-    from openhands.app_server.secrets.secrets_models import Secrets
+    from waspid.app_server.integrations.provider import CustomSecret
+    from waspid.app_server.secrets.secrets_models import Secrets
 
     item = Secrets(
         custom_secrets={

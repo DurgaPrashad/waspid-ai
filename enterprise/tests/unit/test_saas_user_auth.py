@@ -22,8 +22,8 @@ from server.auth.saas_user_auth import (
 from storage.api_key_store import ApiKeyValidationResult
 from storage.user_authorization import UserAuthorizationType
 
-from openhands.app_server.integrations.provider import ProviderToken, ProviderType
-from openhands.app_server.secrets.secrets_models import Secrets
+from waspid.app_server.integrations.provider import ProviderToken, ProviderType
+from waspid.app_server.secrets.secrets_models import Secrets
 
 
 @pytest.fixture
@@ -71,8 +71,8 @@ def mock_token_manager():
 
 @pytest.fixture
 def mock_config():
-    from openhands.app_server.services.jwt_service import JwtService
-    from openhands.app_server.utils.encryption_key import EncryptionKey
+    from waspid.app_server.services.jwt_service import JwtService
+    from waspid.app_server.utils.encryption_key import EncryptionKey
 
     jwt_svc = JwtService(
         keys=[EncryptionKey(kid='test', key=SecretStr('test_secret'), active=True)]
@@ -926,16 +926,16 @@ async def test_saas_user_auth_from_signed_token_domain_blocking_inactive(mock_co
 
 
 # =============================================================================
-# Tests for OPENHANDS_API_KEY injection
+# Tests for WASPID_API_KEY injection
 # =============================================================================
 
 
-class TestOpenHandsApiKey:
-    """Tests for OPENHANDS_API_KEY system secret generation and injection."""
+class TestWaspidApiKey:
+    """Tests for WASPID_API_KEY system secret generation and injection."""
 
     @pytest.mark.asyncio
-    async def test_get_openhands_api_key_creates_system_key(self):
-        """Test that _get_openhands_api_key creates a system key via ApiKeyStore."""
+    async def test_get_waspid_api_key_creates_system_key(self):
+        """Test that _get_waspid_api_key creates a system key via ApiKeyStore."""
         user_id = 'test_user_id'
         org_id = uuid.uuid4()
         expected_api_key = 'sk-oh-test-key-12345'
@@ -962,7 +962,7 @@ class TestOpenHandsApiKey:
             mock_api_key_store_cls.get_instance.return_value = mock_api_key_store
 
             # Act
-            result = await user_auth._get_openhands_api_key()
+            result = await user_auth._get_waspid_api_key()
 
             # Assert
             assert result == expected_api_key
@@ -970,12 +970,12 @@ class TestOpenHandsApiKey:
             mock_api_key_store.get_or_create_system_api_key.assert_called_once_with(
                 user_id=user_id,
                 org_id=org_id,
-                name='OPENHANDS_API_KEY',
+                name='WASPID_API_KEY',
             )
 
     @pytest.mark.asyncio
-    async def test_get_openhands_api_key_raises_for_missing_user(self):
-        """Test that _get_openhands_api_key raises ValueError if user not found.
+    async def test_get_waspid_api_key_raises_for_missing_user(self):
+        """Test that _get_waspid_api_key raises ValueError if user not found.
 
         The error message now collapses ``user not found`` and
         ``user without org`` into a single ``has no current organization``
@@ -996,11 +996,11 @@ class TestOpenHandsApiKey:
             with pytest.raises(
                 ValueError, match=f'User {user_id} has no current organization'
             ):
-                await user_auth._get_openhands_api_key()
+                await user_auth._get_waspid_api_key()
 
     @pytest.mark.asyncio
-    async def test_get_openhands_api_key_raises_for_user_without_org(self):
-        """Test that _get_openhands_api_key raises ValueError if user has no org."""
+    async def test_get_waspid_api_key_raises_for_user_without_org(self):
+        """Test that _get_waspid_api_key raises ValueError if user has no org."""
         user_id = 'test_user_id'
 
         # Create mock user with no current organization
@@ -1017,11 +1017,11 @@ class TestOpenHandsApiKey:
 
             # Act & Assert
             with pytest.raises(ValueError, match='has no current organization'):
-                await user_auth._get_openhands_api_key()
+                await user_auth._get_waspid_api_key()
 
     @pytest.mark.asyncio
-    async def test_get_secrets_includes_openhands_api_key(self):
-        """Test that get_secrets injects OPENHANDS_API_KEY into custom_secrets."""
+    async def test_get_secrets_includes_waspid_api_key(self):
+        """Test that get_secrets injects WASPID_API_KEY into custom_secrets."""
         user_id = 'test_user_id'
         org_id = uuid.uuid4()
         expected_api_key = 'sk-oh-test-key-12345'
@@ -1030,7 +1030,7 @@ class TestOpenHandsApiKey:
         mock_user = MagicMock()
         mock_user.current_org_id = org_id
 
-        # Create mock secrets from store (without OPENHANDS_API_KEY)
+        # Create mock secrets from store (without WASPID_API_KEY)
         mock_stored_secrets = Secrets(
             custom_secrets={
                 'MY_SECRET': {
@@ -1071,14 +1071,14 @@ class TestOpenHandsApiKey:
 
             # Assert
             assert result is not None
-            assert 'OPENHANDS_API_KEY' in result.custom_secrets
+            assert 'WASPID_API_KEY' in result.custom_secrets
             assert (
-                result.custom_secrets['OPENHANDS_API_KEY'].secret.get_secret_value()
+                result.custom_secrets['WASPID_API_KEY'].secret.get_secret_value()
                 == expected_api_key
             )
             assert (
                 'system-managed'
-                in result.custom_secrets['OPENHANDS_API_KEY'].description
+                in result.custom_secrets['WASPID_API_KEY'].description
             )
             # Original secret should still be present
             assert 'MY_SECRET' in result.custom_secrets
@@ -1171,7 +1171,7 @@ class TestOpenHandsApiKey:
             # Act
             result = await user_auth.get_secrets()
 
-            # Assert - should have only OPENHANDS_API_KEY
+            # Assert - should have only WASPID_API_KEY
             assert result is not None
-            assert 'OPENHANDS_API_KEY' in result.custom_secrets
+            assert 'WASPID_API_KEY' in result.custom_secrets
             assert len(result.custom_secrets) == 1

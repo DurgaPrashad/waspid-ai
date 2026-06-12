@@ -13,7 +13,7 @@
     ],
     "python.analysis.packageIndexDepths": [
         {
-            "name": "openhands",
+            "name": "waspid",
             "depth": 10,
             "includeAllSymbols": true
         }

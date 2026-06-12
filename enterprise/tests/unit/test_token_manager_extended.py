@@ -4,9 +4,9 @@ import pytest
 from pydantic import SecretStr
 from server.auth.token_manager import TokenManager
 
-from openhands.app_server.integrations.service_types import ProviderType
-from openhands.app_server.services.jwt_service import JwtService
-from openhands.app_server.utils.encryption_key import EncryptionKey
+from waspid.app_server.integrations.service_types import ProviderType
+from waspid.app_server.services.jwt_service import JwtService
+from waspid.app_server.utils.encryption_key import EncryptionKey
 
 
 def _make_jwt_service(secret: str = 'test_secret') -> JwtService:

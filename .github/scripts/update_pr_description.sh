@@ -13,8 +13,8 @@ DOCKER_RUN_COMMAND="docker run -it --rm \
   -p 3000:3000 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   --add-host host.docker.internal:host-gateway \
-  --name openhands-app-${SHORT_SHA} \
-  docker.openhands.dev/openhands/openhands:${SHORT_SHA}"
+  --name waspid-app-${SHORT_SHA} \
+  docker.waspid.dev/waspid/waspid:${SHORT_SHA}"
 
 # Get the current PR body
 PR_BODY=$(gh pr view "$PR_NUMBER" --json body --jq .body)

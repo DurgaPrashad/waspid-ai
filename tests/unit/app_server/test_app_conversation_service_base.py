@@ -12,13 +12,13 @@ from uuid import uuid4
 
 import pytest
 
-from openhands.app_server.app_conversation.app_conversation_models import AgentType
-from openhands.app_server.app_conversation.app_conversation_service_base import (
+from waspid.app_server.app_conversation.app_conversation_models import AgentType
+from waspid.app_server.app_conversation.app_conversation_service_base import (
     AppConversationServiceBase,
 )
-from openhands.app_server.sandbox.sandbox_models import SandboxInfo
-from openhands.app_server.user.user_context import UserContext
-from openhands.sdk.skills import Skill
+from waspid.app_server.sandbox.sandbox_models import SandboxInfo
+from waspid.app_server.user.user_context import UserContext
+from waspid.sdk.skills import Skill
 
 
 class MockUserInfo:
@@ -294,7 +294,7 @@ async def test_clone_or_init_git_repo_custom_timeout(service):
 
 
 @patch(
-    'openhands.app_server.app_conversation.app_conversation_service_base.LLMSummarizingCondenser'
+    'waspid.app_server.app_conversation.app_conversation_service_base.LLMSummarizingCondenser'
 )
 def test_create_condenser_default_agent_with_none_max_size(mock_condenser_class):
     """Test _create_condenser for DEFAULT agent with condenser_max_size = None uses default."""
@@ -331,7 +331,7 @@ def test_create_condenser_default_agent_with_none_max_size(mock_condenser_class)
 
 
 @patch(
-    'openhands.app_server.app_conversation.app_conversation_service_base.LLMSummarizingCondenser'
+    'waspid.app_server.app_conversation.app_conversation_service_base.LLMSummarizingCondenser'
 )
 def test_create_condenser_default_agent_with_custom_max_size(mock_condenser_class):
     """Test _create_condenser for DEFAULT agent with custom condenser_max_size."""
@@ -367,7 +367,7 @@ def test_create_condenser_default_agent_with_custom_max_size(mock_condenser_clas
 
 
 @patch(
-    'openhands.app_server.app_conversation.app_conversation_service_base.LLMSummarizingCondenser'
+    'waspid.app_server.app_conversation.app_conversation_service_base.LLMSummarizingCondenser'
 )
 def test_create_condenser_plan_agent_with_none_max_size(mock_condenser_class):
     """Test _create_condenser for PLAN agent with condenser_max_size = None uses default."""
@@ -404,7 +404,7 @@ def test_create_condenser_plan_agent_with_none_max_size(mock_condenser_class):
 
 
 @patch(
-    'openhands.app_server.app_conversation.app_conversation_service_base.LLMSummarizingCondenser'
+    'waspid.app_server.app_conversation.app_conversation_service_base.LLMSummarizingCondenser'
 )
 def test_create_condenser_plan_agent_with_custom_max_size(mock_condenser_class):
     """Test _create_condenser for PLAN agent with custom condenser_max_size."""
@@ -471,7 +471,7 @@ def test_create_security_analyzer_returns_llm_analyzer():
     result = service._create_security_analyzer_from_string(security_analyzer_str)
 
     # Assert
-    from openhands.sdk.security import LLMSecurityAnalyzer
+    from waspid.sdk.security import LLMSecurityAnalyzer
 
     assert isinstance(result, LLMSecurityAnalyzer)
 
@@ -486,7 +486,7 @@ def test_create_security_analyzer_logs_warning_for_unknown_value():
 
     # Act
     with patch(
-        'openhands.app_server.app_conversation.app_conversation_service_base._logger'
+        'waspid.app_server.app_conversation.app_conversation_service_base._logger'
     ) as mock_logger:
         result = service._create_security_analyzer_from_string(unknown_value)
 
@@ -508,7 +508,7 @@ def test_select_confirmation_policy_when_disabled_returns_never_confirm():
     policy = service._select_confirmation_policy(confirmation_mode, security_analyzer)
 
     # Assert
-    from openhands.sdk.security import NeverConfirm
+    from waspid.sdk.security import NeverConfirm
 
     assert isinstance(policy, NeverConfirm)
 
@@ -526,7 +526,7 @@ def test_select_confirmation_policy_llm_returns_confirm_risky():
     policy = service._select_confirmation_policy(confirmation_mode, security_analyzer)
 
     # Assert
-    from openhands.sdk.security import ConfirmRisky
+    from waspid.sdk.security import ConfirmRisky
 
     assert isinstance(policy, ConfirmRisky)
 
@@ -546,7 +546,7 @@ def test_select_confirmation_policy_non_llm_returns_always_confirm(
     policy = service._select_confirmation_policy(confirmation_mode, security_analyzer)
 
     # Assert
-    from openhands.sdk.security import AlwaysConfirm
+    from waspid.sdk.security import AlwaysConfirm
 
     assert isinstance(policy, AlwaysConfirm)
 
@@ -653,7 +653,7 @@ async def test_set_security_analyzer_successfully_calls_agent_server():
             return_value=analyzer,
         ) as mock_create,
         patch(
-            'openhands.app_server.app_conversation.app_conversation_service_base._logger'
+            'waspid.app_server.app_conversation.app_conversation_service_base._logger'
         ) as mock_logger,
     ):
         # Act
@@ -704,7 +704,7 @@ async def test_set_security_analyzer_logs_warning_on_failure():
             return_value=analyzer,
         ) as mock_create,
         patch(
-            'openhands.app_server.app_conversation.app_conversation_service_base._logger'
+            'waspid.app_server.app_conversation.app_conversation_service_base._logger'
         ) as mock_logger,
     ):
         # Act
@@ -1018,13 +1018,13 @@ class TestLoadAndMergeAllSkills:
 
     @pytest.mark.asyncio
     @patch(
-        'openhands.app_server.app_conversation.app_conversation_service_base.load_skills_from_agent_server'
+        'waspid.app_server.app_conversation.app_conversation_service_base.load_skills_from_agent_server'
     )
     @patch(
-        'openhands.app_server.app_conversation.app_conversation_service_base.build_org_config'
+        'waspid.app_server.app_conversation.app_conversation_service_base.build_org_config'
     )
     @patch(
-        'openhands.app_server.app_conversation.app_conversation_service_base.build_sandbox_config'
+        'waspid.app_server.app_conversation.app_conversation_service_base.build_sandbox_config'
     )
     async def test_loads_skills_successfully(
         self,
@@ -1043,7 +1043,7 @@ class TestLoadAndMergeAllSkills:
             mock_workspace = AsyncMock()
             mock_workspace.working_dir = '/workspace'
 
-            from openhands.app_server.sandbox.sandbox_models import ExposedUrl
+            from waspid.app_server.sandbox.sandbox_models import ExposedUrl
 
             sandbox = Mock(spec=SandboxInfo)
             exposed_url = ExposedUrl(
@@ -1078,7 +1078,7 @@ class TestLoadAndMergeAllSkills:
 
     @pytest.mark.asyncio
     @patch(
-        'openhands.app_server.app_conversation.app_conversation_service_base.load_skills_from_agent_server'
+        'waspid.app_server.app_conversation.app_conversation_service_base.load_skills_from_agent_server'
     )
     async def test_returns_empty_list_when_no_agent_server_url(self, mock_load_skills):
         """Test returns empty list when agent-server URL is not available."""
@@ -1090,7 +1090,7 @@ class TestLoadAndMergeAllSkills:
             )
 
             AsyncMock()
-            from openhands.app_server.sandbox.sandbox_models import ExposedUrl
+            from waspid.app_server.sandbox.sandbox_models import ExposedUrl
 
             sandbox = Mock(spec=SandboxInfo)
             exposed_url = ExposedUrl(
@@ -1109,13 +1109,13 @@ class TestLoadAndMergeAllSkills:
 
     @pytest.mark.asyncio
     @patch(
-        'openhands.app_server.app_conversation.app_conversation_service_base.load_skills_from_agent_server'
+        'waspid.app_server.app_conversation.app_conversation_service_base.load_skills_from_agent_server'
     )
     @patch(
-        'openhands.app_server.app_conversation.app_conversation_service_base.build_org_config'
+        'waspid.app_server.app_conversation.app_conversation_service_base.build_org_config'
     )
     @patch(
-        'openhands.app_server.app_conversation.app_conversation_service_base.build_sandbox_config'
+        'waspid.app_server.app_conversation.app_conversation_service_base.build_sandbox_config'
     )
     async def test_uses_project_dir_when_no_repository(
         self,
@@ -1132,7 +1132,7 @@ class TestLoadAndMergeAllSkills:
             )
 
             AsyncMock()
-            from openhands.app_server.sandbox.sandbox_models import ExposedUrl
+            from waspid.app_server.sandbox.sandbox_models import ExposedUrl
 
             sandbox = Mock(spec=SandboxInfo)
             exposed_url = ExposedUrl(
@@ -1156,13 +1156,13 @@ class TestLoadAndMergeAllSkills:
 
     @pytest.mark.asyncio
     @patch(
-        'openhands.app_server.app_conversation.app_conversation_service_base.load_skills_from_agent_server'
+        'waspid.app_server.app_conversation.app_conversation_service_base.load_skills_from_agent_server'
     )
     @patch(
-        'openhands.app_server.app_conversation.app_conversation_service_base.build_org_config'
+        'waspid.app_server.app_conversation.app_conversation_service_base.build_org_config'
     )
     @patch(
-        'openhands.app_server.app_conversation.app_conversation_service_base.build_sandbox_config'
+        'waspid.app_server.app_conversation.app_conversation_service_base.build_sandbox_config'
     )
     async def test_handles_exception_gracefully(
         self,
@@ -1179,7 +1179,7 @@ class TestLoadAndMergeAllSkills:
             )
 
             AsyncMock()
-            from openhands.app_server.sandbox.sandbox_models import ExposedUrl
+            from waspid.app_server.sandbox.sandbox_models import ExposedUrl
 
             sandbox = Mock(spec=SandboxInfo)
             exposed_url = ExposedUrl(

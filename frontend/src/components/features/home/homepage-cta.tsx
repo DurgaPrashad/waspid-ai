@@ -56,7 +56,7 @@ export function HomepageCTA({ setShouldShowCTA }: HomepageCTAProps) {
 
         <a
           data-testid="homepage-cta-learn-more"
-          href="https://openhands.dev/enterprise/"
+          href="https://github.com/DurgaPrashad/waspid-ai/blob/main/enterprise/README.md"
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleLearnMoreClick}

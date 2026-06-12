@@ -12,7 +12,7 @@ from integrations.models import Message, SourceType
 from integrations.types import UserData
 
 
-def _comment_message(*, body: str = 'Hey @openhands fix') -> Message:
+def _comment_message(*, body: str = 'Hey @waspid fix') -> Message:
     return Message(
         source=SourceType.BITBUCKET_DATA_CENTER,
         message={
@@ -64,7 +64,7 @@ def _pr_comment_view(parent_id: int | None = 42) -> BitbucketDCPRComment:
         description='',
         previous_comments=[],
         branch_name='feature/x',
-        comment_body='Hey @openhands fix',
+        comment_body='Hey @waspid fix',
         parent_comment_id=parent_id,
     )
 
@@ -88,7 +88,7 @@ def _inline_view() -> BitbucketDCInlinePRComment:
         description='',
         previous_comments=[],
         branch_name='feature/x',
-        comment_body='@openhands rename',
+        comment_body='@waspid rename',
         parent_comment_id=None,
         file_location='src/x.py',
         line_number=12,

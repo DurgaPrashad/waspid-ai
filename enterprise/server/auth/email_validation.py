@@ -12,7 +12,7 @@ def extract_base_email(email: str) -> str | None:
     Examples:
         extract_base_email("joe+test@example.com") -> "joe@example.com"
         extract_base_email("joe@example.com") -> "joe@example.com"
-        extract_base_email("joe+openhands+test@example.com") -> "joe@example.com"
+        extract_base_email("joe+waspid+test@example.com") -> "joe@example.com"
 
     Args:
         email: The email address to process

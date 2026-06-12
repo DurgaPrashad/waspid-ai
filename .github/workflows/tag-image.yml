@@ -18,8 +18,8 @@ jobs:
     strategy:
       matrix:
         image:
-          - ghcr.io/openhands/openhands
-          - ghcr.io/openhands/enterprise-server
+          - ghcr.io/waspid/waspid
+          - ghcr.io/waspid/enterprise-server
     steps:
       - name: Login to GHCR
         uses: docker/login-action@v4

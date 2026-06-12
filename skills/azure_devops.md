@@ -21,7 +21,7 @@ If you encounter authentication issues when pushing to Azure DevOps (such as pas
 Here are some instructions for pushing, but ONLY do this if the user asks you to:
 * NEVER push directly to the `main` or `master` branch
 * Git config (username and email) is pre-set. Do not modify.
-* You may already be on a branch starting with `openhands-workspace`. Create a new branch with a better name before pushing.
+* You may already be on a branch starting with `waspid-workspace`. Create a new branch with a better name before pushing.
 * Once you've created your own branch or a pull request, continue to update it. Do NOT create a new one unless you are explicitly asked to. Update the PR title and description as necessary, but don't change the branch name.
 * Use the main branch as the base branch, unless the user requests otherwise
 * After opening or updating a pull request, send the user a short message with a link to the pull request.

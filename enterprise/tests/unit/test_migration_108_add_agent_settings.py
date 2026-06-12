@@ -53,7 +53,7 @@ def test_user_settings_are_split_into_agent_and_conversation_buckets():
 def test_org_member_diffs_use_nested_llm_and_conversation_settings():
     row = {
         'max_iterations': 50,
-        'llm_model': 'openhands/claude-3',
+        'llm_model': 'waspid/claude-3',
         'llm_base_url': 'https://proxy.example.com',
         'mcp_config': {'mcpServers': {'admin': {'url': 'https://mcp.example.com'}}},
         'agent_settings_diff': {},
@@ -68,7 +68,7 @@ def test_org_member_diffs_use_nested_llm_and_conversation_settings():
     assert agent_settings_diff == {
         'schema_version': 1,
         'llm': {
-            'model': 'openhands/claude-3',
+            'model': 'waspid/claude-3',
             'base_url': 'https://proxy.example.com',
         },
         'mcp_config': {'mcpServers': {'admin': {'url': 'https://mcp.example.com'}}},

@@ -67,7 +67,7 @@ const setupHooks = (
     profiles?: LlmProfileSummary[];
     activeProfile?: string | null;
     conversationModel?: string | null;
-    agentKind?: "openhands" | "acp";
+    agentKind?: "waspid" | "acp";
   } = {},
 ) => {
   mockUseLlmProfiles.mockReturnValue({
@@ -79,7 +79,7 @@ const setupHooks = (
   mockUseActiveConversation.mockReturnValue({
     data: {
       llm_model: options.conversationModel ?? null,
-      agent_kind: options.agentKind ?? "openhands",
+      agent_kind: options.agentKind ?? "waspid",
     },
   });
 };

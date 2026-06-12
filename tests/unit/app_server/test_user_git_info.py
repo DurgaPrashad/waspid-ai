@@ -20,7 +20,7 @@ class TestGetCurrentUserGitInfo:
 
     async def test_returns_user_git_info_when_authenticated(self, mock_user_context):
         """Authenticated user with git info returns the git info."""
-        from openhands.app_server.integrations.service_types import UserGitInfo
+        from waspid.app_server.integrations.service_types import UserGitInfo
 
         expected_git_info = UserGitInfo(
             id='user-123',
@@ -33,7 +33,7 @@ class TestGetCurrentUserGitInfo:
         mock_user_context.get_user_git_info = AsyncMock(return_value=expected_git_info)
 
         # Import inside test to avoid circular imports at collection time
-        from openhands.app_server.user.user_router import get_current_user_git_info
+        from waspid.app_server.user.user_router import get_current_user_git_info
 
         result = await get_current_user_git_info(user_context=mock_user_context)
 
@@ -47,7 +47,7 @@ class TestGetCurrentUserGitInfo:
 
     async def test_returns_user_git_info_with_minimal_fields(self, mock_user_context):
         """User git info with only required fields returns successfully."""
-        from openhands.app_server.integrations.service_types import UserGitInfo
+        from waspid.app_server.integrations.service_types import UserGitInfo
 
         minimal_git_info = UserGitInfo(
             id='user-456',
@@ -56,7 +56,7 @@ class TestGetCurrentUserGitInfo:
         )
         mock_user_context.get_user_git_info = AsyncMock(return_value=minimal_git_info)
 
-        from openhands.app_server.user.user_router import get_current_user_git_info
+        from waspid.app_server.user.user_router import get_current_user_git_info
 
         result = await get_current_user_git_info(user_context=mock_user_context)
 
@@ -78,7 +78,7 @@ class TestGetCurrentUserGitInfo:
 
         mock_user_context.get_user_git_info = AsyncMock(return_value=None)
 
-        from openhands.app_server.user.user_router import get_current_user_git_info
+        from waspid.app_server.user.user_router import get_current_user_git_info
 
         with pytest.raises(HTTPException) as exc_info:
             await get_current_user_git_info(user_context=mock_user_context)
@@ -91,7 +91,7 @@ class TestGetCurrentUserGitInfo:
         self, mock_user_context
     ):
         """Ensure None values in optional fields don't trigger 401."""
-        from openhands.app_server.integrations.service_types import UserGitInfo
+        from waspid.app_server.integrations.service_types import UserGitInfo
 
         git_info = UserGitInfo(
             id='user-789',
@@ -103,7 +103,7 @@ class TestGetCurrentUserGitInfo:
         )
         mock_user_context.get_user_git_info = AsyncMock(return_value=git_info)
 
-        from openhands.app_server.user.user_router import get_current_user_git_info
+        from waspid.app_server.user.user_router import get_current_user_git_info
 
         result = await get_current_user_git_info(user_context=mock_user_context)
 
@@ -117,7 +117,7 @@ class TestGetCurrentUserGitInfo:
             side_effect=Exception('Database error')
         )
 
-        from openhands.app_server.user.user_router import get_current_user_git_info
+        from waspid.app_server.user.user_router import get_current_user_git_info
 
         with pytest.raises(Exception, match='Database error'):
             await get_current_user_git_info(user_context=mock_user_context)
@@ -128,7 +128,7 @@ class TestUserGitInfoModel:
 
     def test_user_git_info_full_fields(self):
         """Test UserGitInfo with all fields populated."""
-        from openhands.app_server.integrations.service_types import UserGitInfo
+        from waspid.app_server.integrations.service_types import UserGitInfo
 
         git_info = UserGitInfo(
             id='full-user',
@@ -148,7 +148,7 @@ class TestUserGitInfoModel:
 
     def test_user_git_info_model_dump_json(self):
         """Test UserGitInfo serializes correctly to JSON."""
-        from openhands.app_server.integrations.service_types import UserGitInfo
+        from waspid.app_server.integrations.service_types import UserGitInfo
 
         git_info = UserGitInfo(
             id='json-user',
@@ -169,7 +169,7 @@ class TestUserGitInfoModel:
 
     def test_user_git_info_model_dump(self):
         """Test UserGitInfo model_dump works correctly."""
-        from openhands.app_server.integrations.service_types import UserGitInfo
+        from waspid.app_server.integrations.service_types import UserGitInfo
 
         git_info = UserGitInfo(
             id='dump-user',

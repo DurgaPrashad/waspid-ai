@@ -231,18 +231,18 @@ describe("HomeScreen", () => {
       "home-screen-new-conversation-section",
     );
     expect(homeScreenNewConversationSection).toHaveClass(
-      "flex",
-      "flex-col",
-      "md:flex-row",
+      "grid",
+      "grid-cols-1",
+      "md:grid-cols-2",
     );
 
     const homeScreenRecentConversationsSection = screen.getByTestId(
       "home-screen-recent-conversations-section",
     );
     expect(homeScreenRecentConversationsSection).toHaveClass(
-      "flex",
-      "flex-col",
-      "md:flex-row",
+      "grid",
+      "grid-cols-1",
+      "md:grid-cols-2",
     );
   });
 

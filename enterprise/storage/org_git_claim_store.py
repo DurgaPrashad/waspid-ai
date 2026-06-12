@@ -10,7 +10,7 @@ from sqlalchemy import and_, select
 from storage.database import a_session_maker
 from storage.org_git_claim import OrgGitClaim
 
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 class OrgGitClaimStore:
@@ -26,7 +26,7 @@ class OrgGitClaimStore:
         """Create a new Git organization claim.
 
         Args:
-            org_id: OpenHands organization UUID
+            org_id: Waspid organization UUID
             provider: Git provider ('github', 'gitlab', 'bitbucket')
             git_organization: Name of the Git organization being claimed
             claimed_by: User UUID who is making the claim
@@ -86,10 +86,10 @@ class OrgGitClaimStore:
 
     @staticmethod
     async def get_claims_by_org_id(org_id: UUID) -> list[OrgGitClaim]:
-        """Get all Git organization claims for an OpenHands organization.
+        """Get all Git organization claims for an Waspid organization.
 
         Args:
-            org_id: OpenHands organization UUID
+            org_id: Waspid organization UUID
 
         Returns:
             List of OrgGitClaim records
@@ -106,7 +106,7 @@ class OrgGitClaimStore:
 
         Args:
             claim_id: Claim UUID to delete
-            org_id: OpenHands organization UUID (for ownership verification)
+            org_id: Waspid organization UUID (for ownership verification)
 
         Returns:
             True if deleted, False if not found

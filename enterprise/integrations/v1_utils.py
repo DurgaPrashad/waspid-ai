@@ -7,8 +7,8 @@ from pydantic import SecretStr
 from server.auth.saas_user_auth import SaasUserAuth
 from server.auth.token_manager import TokenManager
 
-from openhands.app_server.user_auth.user_auth import UserAuth
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.user_auth.user_auth import UserAuth
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 def is_budget_exceeded_error(error_message: str) -> bool:
@@ -70,7 +70,7 @@ async def handle_callback_error(
                 BUDGET_EXCEEDED_USER_MESSAGE if budget_exceeded else error_str
             )
             await post_error_func(
-                f'OpenHands encountered an error: **{error_detail}**\n\n'
+                f'Waspid encountered an error: **{error_detail}**\n\n'
                 f'[See the conversation]({CONVERSATION_URL.format(conversation_id)}) '
                 'for more information.'
             )

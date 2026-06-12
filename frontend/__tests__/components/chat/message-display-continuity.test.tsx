@@ -15,7 +15,7 @@ import { useUnifiedUploadFiles } from "#/hooks/mutation/use-unified-upload-files
 import { useEventStore } from "#/stores/use-event-store";
 import { useAgentState } from "#/hooks/use-agent-state";
 import { AgentState } from "#/types/agent-state";
-import { OpenHandsAction } from "#/types/core/actions";
+import { WaspidAction } from "#/types/core/actions";
 
 // Module-level mocks
 vi.mock("#/context/ws-client-provider");
@@ -67,7 +67,7 @@ const renderWithQueryClient = (
   );
 
 // V0 user event (numeric id, action property)
-const createV0UserEvent = (): OpenHandsAction => ({
+const createV0UserEvent = (): WaspidAction => ({
   id: 1,
   source: "user",
   action: "message",

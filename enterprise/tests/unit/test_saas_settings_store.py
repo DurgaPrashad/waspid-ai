@@ -4,8 +4,8 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import pytest
 from pydantic import SecretStr
 
-from openhands.app_server.settings.settings_models import Settings
-from openhands.app_server.settings.settings_models import Settings as DataSettings
+from waspid.app_server.settings.settings_models import Settings
+from waspid.app_server.settings.settings_models import Settings as DataSettings
 
 
 def _agent_value(settings: Settings, key: str):
@@ -312,14 +312,14 @@ async def test_ensure_api_key_keeps_valid_key():
     """When the existing key is valid, it should be kept unchanged."""
     store = SaasSettingsStore('test-user-id-123')
     existing_key = 'sk-existing-key'
-    item = _make_settings(model='openhands/gpt-4', api_key=existing_key)
+    item = _make_settings(model='waspid/gpt-4', api_key=existing_key)
 
     with patch(
         'storage.saas_settings_store.LiteLlmManager.verify_existing_key',
         new_callable=AsyncMock,
         return_value=True,
     ):
-        await store._ensure_api_key(item, 'org-123', openhands_type=True)
+        await store._ensure_api_key(item, 'org-123', waspid_type=True)
 
         # Key should remain unchanged when it's valid
         assert _secret_value(item, 'llm.api_key') is not None
@@ -331,7 +331,7 @@ async def test_ensure_api_key_generates_new_key_when_verification_fails():
     """When verification fails, a new key should be generated."""
     store = SaasSettingsStore('test-user-id-123')
     new_key = 'sk-new-key'
-    item = _make_settings(model='openhands/gpt-4', api_key='sk-invalid-key')
+    item = _make_settings(model='waspid/gpt-4', api_key='sk-invalid-key')
 
     with (
         patch(
@@ -345,7 +345,7 @@ async def test_ensure_api_key_generates_new_key_when_verification_fails():
             return_value=new_key,
         ),
     ):
-        await store._ensure_api_key(item, 'org-123', openhands_type=True)
+        await store._ensure_api_key(item, 'org-123', waspid_type=True)
 
         assert _secret_value(item, 'llm.api_key') is not None
         assert _secret_value(item, 'llm.api_key') == new_key
@@ -505,10 +505,10 @@ async def test_store_updates_org_defaults_and_all_members_for_shared_keys(
 
 
 @pytest.mark.asyncio
-async def test_store_keeps_openhands_managed_keys_member_specific(
+async def test_store_keeps_waspid_managed_keys_member_specific(
     session_maker, async_session_maker, org_with_multiple_members_fixture
 ):
-    """Managed OpenHands keys should not be copied from one member to everyone else."""
+    """Managed Waspid keys should not be copied from one member to everyone else."""
     from sqlalchemy import select
     from storage.org import Org
     from storage.org_member import OrgMember
@@ -520,7 +520,7 @@ async def test_store_keeps_openhands_managed_keys_member_specific(
 
     store = SaasSettingsStore(admin_user_id)
     new_settings = _make_settings(
-        model='openhands/claude-opus-4-5-20251101',
+        model='waspid/claude-opus-4-5-20251101',
         base_url=LITE_LLM_API_URL,
         max_iterations=75,
         api_key='admin-managed-api-key',
@@ -539,7 +539,7 @@ async def test_store_keeps_openhands_managed_keys_member_specific(
     with session_maker() as session:
         org = session.execute(select(Org).where(Org.id == org_id)).scalars().first()
         assert org is not None
-        # Settings normalizes openhands/ → litellm_proxy/ during construction
+        # Settings normalizes waspid/ → litellm_proxy/ during construction
         assert (
             org.agent_settings['llm']['model']
             == 'litellm_proxy/claude-opus-4-5-20251101'
@@ -641,10 +641,10 @@ async def test_store_saves_mcp_config_in_agent_settings(
 
 
 @pytest.mark.asyncio
-async def test_store_skips_ensure_api_key_for_non_openhands_model_without_base_url(
+async def test_store_skips_ensure_api_key_for_non_waspid_model_without_base_url(
     session_maker, async_session_maker, org_with_multiple_members_fixture
 ):
-    """When saving a non-OpenHands model with no base URL (basic view BYOR),
+    """When saving a non-Waspid model with no base URL (basic view BYOR),
     _ensure_api_key should NOT be called, preserving the user's custom API key.
 
     This is the primary bug fix: users selecting e.g. OpenAI in basic view and
@@ -669,16 +669,16 @@ async def test_store_skips_ensure_api_key_for_non_openhands_model_without_base_u
 
 
 @pytest.mark.asyncio
-async def test_store_calls_ensure_api_key_for_openhands_model_without_base_url(
+async def test_store_calls_ensure_api_key_for_waspid_model_without_base_url(
     session_maker, async_session_maker, org_with_multiple_members_fixture
 ):
-    """OpenHands models still require proxy-key verification without a base URL."""
+    """Waspid models still require proxy-key verification without a base URL."""
     fixture = org_with_multiple_members_fixture
     admin_user_id = str(fixture['admin_user_id'])
     store = SaasSettingsStore(admin_user_id)
 
     settings = _make_settings(
-        model='openhands/claude-opus-4-5-20251101',
+        model='waspid/claude-opus-4-5-20251101',
         api_key='sk-stale-openai-key',
     )
 
@@ -771,7 +771,7 @@ async def test_store_and_load_llm_profiles_round_trip(
     """Saved llm_profiles must persist on the User row and round-trip through
     store → load. Without the user.llm_profiles column they are silently
     dropped on store and always default to empty on load."""
-    from openhands.sdk.llm import LLM
+    from waspid.sdk.llm import LLM
 
     fixture = org_with_multiple_members_fixture
     admin_user_id = str(fixture['admin_user_id'])
@@ -884,7 +884,7 @@ async def test_llm_profiles_are_encrypted_at_rest(
     from sqlalchemy import select, text
     from storage.user import User
 
-    from openhands.sdk.llm import LLM
+    from waspid.sdk.llm import LLM
 
     fixture = org_with_multiple_members_fixture
     admin_user_id = fixture['admin_user_id']

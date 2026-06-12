@@ -37,12 +37,12 @@ async def get_session_api_key(conversation_id: str) -> str | None:
     Returns:
         The session API key, or None if not available
     """
-    from openhands.app_server.config import (
+    from waspid.app_server.config import (
         get_app_conversation_info_service,
         get_sandbox_service,
     )
-    from openhands.app_server.services.injector import InjectorState
-    from openhands.app_server.user.specifiy_user_context import (
+    from waspid.app_server.services.injector import InjectorState
+    from waspid.app_server.user.specifiy_user_context import (
         ADMIN,
         USER_CONTEXT_ATTR,
     )

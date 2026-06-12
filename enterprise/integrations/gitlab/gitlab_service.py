@@ -7,15 +7,15 @@ from server.auth.token_manager import TokenManager
 from storage.gitlab_webhook import GitlabWebhook, WebhookStatus
 from storage.gitlab_webhook_store import GitlabWebhookStore
 
-from openhands.app_server.integrations.gitlab.gitlab_service import GitLabService
-from openhands.app_server.integrations.service_types import (
+from waspid.app_server.integrations.gitlab.gitlab_service import GitLabService
+from waspid.app_server.integrations.service_types import (
     ProviderType,
     RateLimitError,
     Repository,
     RequestMethod,
 )
-from openhands.app_server.types import AppMode
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.types import AppMode
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 class SaaSGitLabService(GitLabService):
@@ -483,7 +483,7 @@ class SaaSGitLabService(GitLabService):
                 - str: A reason message explaining the result
         """
 
-        description = 'Cloud OpenHands Resolver'
+        description = 'Cloud Waspid Resolver'
 
         # Set up webhook parameters
         webhook_data = {
@@ -500,8 +500,8 @@ class SaaSGitLabService(GitLabService):
         # Add custom headers with user id
         if self.external_auth_id:
             webhook_data['custom_headers'] = [
-                {'key': 'X-OpenHands-User-ID', 'value': self.external_auth_id},
-                {'key': 'X-OpenHands-Webhook-ID', 'value': webhook_uuid},
+                {'key': 'X-Waspid-User-ID', 'value': self.external_auth_id},
+                {'key': 'X-Waspid-Webhook-ID', 'value': webhook_uuid},
             ]
 
         if resource_type == GitLabResourceType.GROUP:

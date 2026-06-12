@@ -53,7 +53,7 @@ def _make_message(
 
 @pytest.mark.asyncio
 async def test_factory_creates_pr_comment_view_for_pr_comment_added_with_mention():
-    msg = _make_message(body='Hey @openhands please fix typo', parent_id=42)
+    msg = _make_message(body='Hey @waspid please fix typo', parent_id=42)
 
     view = await BitbucketDCFactory.create_bitbucket_dc_view_from_payload(
         msg, keycloak_user_id='kc-installer'
@@ -69,7 +69,7 @@ async def test_factory_creates_pr_comment_view_for_pr_comment_added_with_mention
 @pytest.mark.asyncio
 async def test_factory_creates_inline_view_when_anchor_present():
     msg = _make_message(
-        body='@openhands rename this',
+        body='@waspid rename this',
         anchor={
             'path': 'src/x.py',
             'line': 12,
@@ -95,13 +95,13 @@ def test_is_pr_comment_returns_false_when_mention_absent():
 
 
 def test_is_pr_comment_returns_false_for_unknown_event_key():
-    msg = _make_message(body='@openhands fix', event_key='repo:refs_changed')
+    msg = _make_message(body='@waspid fix', event_key='repo:refs_changed')
     assert BitbucketDCFactory.is_pr_comment(msg) is False
 
 
 @pytest.mark.asyncio
 async def test_factory_records_actor_slug_and_assigns_keycloak_user_id():
-    msg = _make_message(body='@openhands fix')
+    msg = _make_message(body='@waspid fix')
 
     view = await BitbucketDCFactory.create_bitbucket_dc_view_from_payload(
         msg, keycloak_user_id='kc-installer'

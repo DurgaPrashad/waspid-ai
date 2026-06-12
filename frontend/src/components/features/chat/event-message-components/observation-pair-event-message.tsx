@@ -1,6 +1,6 @@
 import React from "react";
-import { OpenHandsAction } from "#/types/core/actions";
-import { isOpenHandsAction } from "#/types/core/guards";
+import { WaspidAction } from "#/types/core/actions";
+import { isWaspidAction } from "#/types/core/guards";
 import { ChatMessage } from "../chat-message";
 
 const hasThoughtProperty = (
@@ -8,13 +8,13 @@ const hasThoughtProperty = (
 ): obj is { thought: string } => "thought" in obj && !!obj.thought;
 
 interface ObservationPairEventMessageProps {
-  event: OpenHandsAction;
+  event: WaspidAction;
 }
 
 export function ObservationPairEventMessage({
   event,
 }: ObservationPairEventMessageProps) {
-  if (!isOpenHandsAction(event)) {
+  if (!isWaspidAction(event)) {
     return null;
   }
 

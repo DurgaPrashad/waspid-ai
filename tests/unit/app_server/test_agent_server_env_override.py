@@ -16,16 +16,16 @@ from unittest.mock import patch
 
 import pytest
 
-from openhands.app_server.sandbox.docker_sandbox_spec_service import (
+from waspid.app_server.sandbox.docker_sandbox_spec_service import (
     get_default_sandbox_specs as get_default_docker_sandbox_specs,
 )
-from openhands.app_server.sandbox.process_sandbox_spec_service import (
+from waspid.app_server.sandbox.process_sandbox_spec_service import (
     get_default_sandbox_specs as get_default_process_sandbox_specs,
 )
-from openhands.app_server.sandbox.remote_sandbox_spec_service import (
+from waspid.app_server.sandbox.remote_sandbox_spec_service import (
     get_default_sandbox_specs as get_default_remote_sandbox_specs,
 )
-from openhands.app_server.sandbox.sandbox_spec_service import (
+from waspid.app_server.sandbox.sandbox_spec_service import (
     AUTO_FORWARD_PREFIXES,
     get_agent_server_env,
 )
@@ -485,7 +485,7 @@ class TestProcessSandboxSpecEnvironmentOverride:
 
             # Should have exactly the expected variables
             assert set(spec.initial_env.keys()) == expected_defaults
-            assert spec.initial_env['TMUX_TMPDIR'] == '/tmp/openhands-tmux'
+            assert spec.initial_env['TMUX_TMPDIR'] == '/tmp/waspid-tmux'
             assert spec.working_dir == '.'
 
 
@@ -732,7 +732,7 @@ class TestDockerSandboxServiceEnvIntegration:
 
         import httpx
 
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxService,
             ExposedPort,
         )
@@ -817,7 +817,7 @@ class TestDockerSandboxServiceEnvIntegration:
 
         import httpx
 
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxService,
             ExposedPort,
             _get_use_host_network_default,
@@ -892,7 +892,7 @@ class TestDockerSandboxServiceEnvIntegration:
 
         import httpx
 
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxService,
             ExposedPort,
             _get_use_host_network_default,

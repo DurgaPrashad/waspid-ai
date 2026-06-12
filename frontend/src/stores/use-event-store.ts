@@ -1,11 +1,11 @@
 import { create } from "zustand";
-import { OpenHandsEvent } from "#/types/v1/core";
+import { WaspidEvent } from "#/types/v1/core";
 import { handleEventForUI } from "#/utils/handle-event-for-ui";
-import { OpenHandsParsedEvent } from "#/types/core";
+import { WaspidParsedEvent } from "#/types/core";
 import { isV1Event } from "#/types/v1/type-guards";
 
 // While we transition to v1 events, our store can handle both v0 and v1 events
-export type OHEvent = (OpenHandsEvent | OpenHandsParsedEvent) & {
+export type OHEvent = (WaspidEvent | WaspidParsedEvent) & {
   isFromPlanningAgent?: boolean;
 };
 

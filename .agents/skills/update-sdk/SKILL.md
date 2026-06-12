@@ -1,11 +1,11 @@
 ---
 name: update-sdk
-description: This skill should be used when the user asks to "update SDK", "bump SDK version", "pin SDK to a commit", "test unreleased SDK", "update agent-server image", "bump the version", "prepare a release", "what files change for a release", or needs to know how SDK packages are managed in the OpenHands repository. For detailed reference material, see references/docker-image-locations.md and references/sdk-pinning-examples.md in this skill directory.
+description: This skill should be used when the user asks to "update SDK", "bump SDK version", "pin SDK to a commit", "test unreleased SDK", "update agent-server image", "bump the version", "prepare a release", "what files change for a release", or needs to know how SDK packages are managed in the Waspid repository. For detailed reference material, see references/docker-image-locations.md and references/sdk-pinning-examples.md in this skill directory.
 ---
 
 # Update SDK
 
-Bump SDK packages (`openhands-sdk`, `openhands-agent-server`, `openhands-tools`), pin them to unreleased commits for testing, and cut an OpenHands release.
+Bump SDK packages (`waspid-sdk`, `waspid-agent-server`, `waspid-tools`), pin them to unreleased commits for testing, and cut an Waspid release.
 
 ## Quick Summary — How Many Files Change?
 
@@ -23,8 +23,8 @@ Land as a separate PR before the release. Examples: `929dcc3` (SDK 1.11.5), `cd2
 
 | File | What to change |
 |------|----------------|
-| `pyproject.toml` | `openhands-sdk`, `openhands-agent-server`, `openhands-tools` in **two** sections: the `dependencies` array (PEP 508) **and** `[tool.poetry.dependencies]` |
-| `openhands/app_server/sandbox/sandbox_spec_service.py` | `AGENT_SERVER_IMAGE` constant — set to `ghcr.io/openhands/agent-server:<version>-python` |
+| `pyproject.toml` | `waspid-sdk`, `waspid-agent-server`, `waspid-tools` in **two** sections: the `dependencies` array (PEP 508) **and** `[tool.poetry.dependencies]` |
+| `waspid/app_server/sandbox/sandbox_spec_service.py` | `AGENT_SERVER_IMAGE` constant — set to `ghcr.io/waspid/agent-server:<version>-python` |
 
 Then regenerate lock files:
 ```bash
@@ -37,7 +37,7 @@ For the complete inventory of every file containing a hardcoded Docker image tag
 
 | File | Image reference | Updated during SDK bump? |
 |------|----------------|:------------------------:|
-| `openhands/app_server/sandbox/sandbox_spec_service.py` | `AGENT_SERVER_IMAGE = 'ghcr.io/openhands/agent-server:<tag>-python'` | ✅ Yes |
+| `waspid/app_server/sandbox/sandbox_spec_service.py` | `AGENT_SERVER_IMAGE = 'ghcr.io/waspid/agent-server:<tag>-python'` | ✅ Yes |
 | `docker-compose.yml` | `AGENT_SERVER_IMAGE_TAG` default | ✅ Should be |
 | `containers/dev/compose.yml` | `AGENT_SERVER_IMAGE_REPOSITORY` + `_TAG` defaults | ✅ Should be |
 
@@ -63,11 +63,11 @@ A release commit updates the version string across 3 files. Gold-standard exampl
 | `frontend/package.json` | `"version": "X.Y.Z"` |
 | `frontend/package-lock.json` | `"version": "X.Y.Z"` in **two** places (root object and `packages[""]`) |
 
-> **Note:** `openhands/version.py` reads the version from `pyproject.toml` at runtime — no manual edit needed there.
+> **Note:** `waspid/version.py` reads the version from `pyproject.toml` at runtime — no manual edit needed there.
 
 ### Compose Files (2 files)
 
-Both compose files should use `ghcr.io/openhands/agent-server` with the current SDK version tag.
+Both compose files should use `ghcr.io/waspid/agent-server` with the current SDK version tag.
 
 | File | What to verify |
 |------|----------------|
@@ -79,8 +79,8 @@ Both compose files should use `ghcr.io/openhands/agent-server` with the current 
 #### Step 1: Verify the SDK bump has landed
 
 ```bash
-grep -n "openhands-sdk\|openhands-agent-server\|openhands-tools" pyproject.toml
-grep -n "AGENT_SERVER_IMAGE" openhands/app_server/sandbox/sandbox_spec_service.py
+grep -n "waspid-sdk\|waspid-agent-server\|waspid-tools" pyproject.toml
+grep -n "AGENT_SERVER_IMAGE" waspid/app_server/sandbox/sandbox_spec_service.py
 grep "AGENT_SERVER_IMAGE_TAG" docker-compose.yml containers/dev/compose.yml
 ```
 
@@ -97,7 +97,7 @@ Create a `saas-rel-X.Y.Z` branch from the tagged commit for the SaaS deployment 
 
 #### Step 3: Images get tagged automatically
 
-Every push to `main` / `saas-rel-*` / `oss-rel-*` builds and publishes `ghcr.io/openhands/openhands` and `ghcr.io/openhands/enterprise-server` images for that commit (tagged by SHA, short SHA, and branch name).
+Every push to `main` / `saas-rel-*` / `oss-rel-*` builds and publishes `ghcr.io/waspid/waspid` and `ghcr.io/waspid/enterprise-server` images for that commit (tagged by SHA, short SHA, and branch name).
 
 Pushing a git tag `X.Y.Z` then tags the images for that commit with `X.Y.Z`, `X.Y`, `X`, and `latest`. Non-semver tags just get their literal name applied.
 
@@ -112,7 +112,7 @@ For detailed examples of all pinning formats (commit, branch, uv-only), see `ref
 | File | What to change |
 |------|----------------|
 | `pyproject.toml` | Pin all 3 SDK packages in **both** `dependencies` and `[tool.poetry.dependencies]` |
-| `openhands/app_server/sandbox/sandbox_spec_service.py` | `AGENT_SERVER_IMAGE` — use the merge-commit SHA tag, NOT the head-commit SHA |
+| `waspid/app_server/sandbox/sandbox_spec_service.py` | `AGENT_SERVER_IMAGE` — use the merge-commit SHA tag, NOT the head-commit SHA |
 | `docker-compose.yml` | `AGENT_SERVER_IMAGE_TAG` default (for local development) |
 | `poetry.lock` | Auto-regenerated via `poetry lock` |
 | `uv.lock` | Auto-regenerated via `uv lock` |

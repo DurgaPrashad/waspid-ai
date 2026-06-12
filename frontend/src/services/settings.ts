@@ -3,7 +3,7 @@ import { Settings } from "#/types/settings";
 export const LATEST_SETTINGS_VERSION = 5;
 
 export const DEFAULT_SETTINGS: Settings = {
-  llm_model: "openhands/claude-opus-4-5-20251101",
+  llm_model: "waspid/claude-opus-4-5-20251101",
   llm_base_url: "",
   agent: "CodeActAgent",
   language: "en",
@@ -32,8 +32,8 @@ export const DEFAULT_SETTINGS: Settings = {
   max_budget_per_task: null,
   email: "",
   email_verified: true,
-  git_user_name: "openhands",
-  git_user_email: "openhands@all-hands.dev",
+  git_user_name: "waspid",
+  git_user_email: "waspid@waspid.ai",
   v1_enabled: true,
   sandbox_grouping_strategy: "NO_GROUPING",
   agent_settings_schema: null,
@@ -41,7 +41,7 @@ export const DEFAULT_SETTINGS: Settings = {
     schema_version: 1,
     agent: "CodeActAgent",
     llm: {
-      model: "openhands/claude-opus-4-5-20251101",
+      model: "waspid/claude-opus-4-5-20251101",
     },
     condenser: {
       enabled: true,

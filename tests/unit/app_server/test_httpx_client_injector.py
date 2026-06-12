@@ -11,7 +11,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from openhands.app_server.services.httpx_client_injector import HttpxClientInjector
+from waspid.app_server.services.httpx_client_injector import HttpxClientInjector
 
 
 class MockRequest:

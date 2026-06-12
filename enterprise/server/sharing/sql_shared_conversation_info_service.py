@@ -26,13 +26,13 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from storage.stored_conversation_metadata_saas import StoredConversationMetadataSaas
 
-from openhands.agent_server.utils import utc_now
-from openhands.app_server.app_conversation.sql_app_conversation_info_service import (
+from waspid.agent_server.utils import utc_now
+from waspid.app_server.app_conversation.sql_app_conversation_info_service import (
     StoredConversationMetadata,
 )
-from openhands.app_server.integrations.provider import ProviderType
-from openhands.app_server.services.injector import InjectorState
-from openhands.sdk.llm import MetricsSnapshot, TokenUsage
+from waspid.app_server.integrations.provider import ProviderType
+from waspid.app_server.services.injector import InjectorState
+from waspid.sdk.llm import MetricsSnapshot, TokenUsage
 
 logger = logging.getLogger(__name__)
 
@@ -166,7 +166,7 @@ class SQLSharedConversationInfoServiceInjector(SharedConversationInfoServiceInje
         self, state: InjectorState, request: Request | None = None
     ) -> AsyncGenerator[SharedConversationInfoService, None]:
         # Define inline to prevent circular lookup
-        from openhands.app_server.config import get_db_session
+        from waspid.app_server.config import get_db_session
 
         async with get_db_session(state, request) as db_session:
             service = SQLSharedConversationInfoService(db_session=db_session)

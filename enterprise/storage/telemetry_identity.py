@@ -1,7 +1,7 @@
 """SQLAlchemy model for telemetry identity.
 
 This model stores persistent identity information that must survive container restarts
-for the OpenHands Enterprise Telemetry Service.
+for the Waspid Enterprise Telemetry Service.
 """
 
 from datetime import UTC, datetime
@@ -51,7 +51,7 @@ class TelemetryIdentity(Base):
 
         Args:
             customer_id: Unique identifier for the customer
-            instance_id: Unique identifier for this OpenHands instance
+            instance_id: Unique identifier for this Waspid instance
             **kwargs: Additional keyword arguments for SQLAlchemy
         """
         super().__init__(**kwargs)
@@ -77,7 +77,7 @@ class TelemetryIdentity(Base):
 
         Args:
             customer_id: Unique identifier for the customer
-            instance_id: Unique identifier for this OpenHands instance
+            instance_id: Unique identifier for this Waspid instance
         """
         if customer_id is not None:
             self.customer_id = customer_id

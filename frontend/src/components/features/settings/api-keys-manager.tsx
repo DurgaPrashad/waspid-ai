@@ -288,7 +288,7 @@ export function ApiKeysManager() {
         />
 
         <h3 className="text-xl font-medium text-white">
-          {t(I18nKey.SETTINGS$OPENHANDS_API_KEYS)}
+          {t(I18nKey.SETTINGS$WASPID_API_KEYS)}
         </h3>
 
         <div className="flex items-center justify-between">
@@ -307,7 +307,7 @@ export function ApiKeysManager() {
             components={{
               a: (
                 <a
-                  href="https://docs.all-hands.dev/usage/cloud/cloud-api"
+                  href="https://github.com/DurgaPrashad/waspid-ai/blob/main/docs/API.md"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:underline"

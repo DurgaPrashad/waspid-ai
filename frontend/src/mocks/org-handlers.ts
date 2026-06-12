@@ -178,7 +178,7 @@ const INITIAL_MOCK_MEMBERS: Record<string, OrganizationMember[]> = {
     {
       org_id: "3",
       user_id: "6",
-      email: "robert@all-hands.dev",
+      email: "robert@waspid.ai",
       role: "owner",
       llm_api_key: "**********",
       max_iterations: 20,
@@ -190,7 +190,7 @@ const INITIAL_MOCK_MEMBERS: Record<string, OrganizationMember[]> = {
     {
       org_id: "3",
       user_id: "7",
-      email: "ray@all-hands.dev",
+      email: "ray@waspid.ai",
       role: "admin",
       llm_api_key: "**********",
       max_iterations: 20,
@@ -202,7 +202,7 @@ const INITIAL_MOCK_MEMBERS: Record<string, OrganizationMember[]> = {
     {
       org_id: "3",
       user_id: "8",
-      email: "chuck@all-hands.dev",
+      email: "chuck@waspid.ai",
       role: "member",
       llm_api_key: "**********",
       max_iterations: 20,
@@ -214,7 +214,7 @@ const INITIAL_MOCK_MEMBERS: Record<string, OrganizationMember[]> = {
     {
       org_id: "3",
       user_id: "9",
-      email: "stephan@all-hands.dev",
+      email: "stephan@waspid.ai",
       role: "member",
       llm_api_key: "**********",
       max_iterations: 20,
@@ -226,7 +226,7 @@ const INITIAL_MOCK_MEMBERS: Record<string, OrganizationMember[]> = {
     {
       org_id: "3",
       user_id: "10",
-      email: "tim@all-hands.dev",
+      email: "tim@waspid.ai",
       role: "member",
       llm_api_key: "**********",
       max_iterations: 20,

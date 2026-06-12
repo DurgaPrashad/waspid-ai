@@ -64,6 +64,46 @@
   --radius-large: 20px;
 }
 
+/* ----------------------------------------------------------------------
+ * Waspid Premium (light) theme — cream / beige / charcoal.
+ *
+ * The target enterprise palette (see docs/REALIGNMENT_AUDIT.md):
+ *   cream #F4EFE0 · light beige #FAF8F1 · charcoal #1F1F1F · white.
+ *
+ * Opt-in via data-theme="waspid-light" on <html>. NOT yet the default:
+ * ~128 components still carry hardcoded dark-theme colors (text-white,
+ * bg-[#0…]) that must be migrated to semantic tokens with per-surface
+ * visual QA before the default flips.
+ * ---------------------------------------------------------------------- */
+[data-theme='waspid-light'] {
+  --color-primary: #1f1f1f;
+  --color-logo:    #1f1f1f;
+
+  --color-base:           #f4efe0;
+  --color-base-secondary: #faf8f1;
+  --color-tertiary:       #d9d2bd;
+  --color-tertiary-light: #6f6a5a;
+
+  --color-content:   #1f1f1f;
+  --color-content-2: #141414;
+  --color-basic:     #6f6a5a;
+
+  --color-danger:  #b3402f;
+  --color-success: #3f7d2c;
+
+  --color-modal-background: #ffffff;
+  --color-modal-input:      #faf8f1;
+  --color-modal-primary:    #1f1f1f;
+  --color-modal-secondary:  #6f6a5a;
+  --color-modal-muted:      #8a8472;
+
+  --color-org-border:     #d9d2bd;
+  --color-org-background: #faf8f1;
+  --color-org-divider:    #d9d2bd;
+  --color-org-button:     #1f1f1f;
+  --color-org-text:       #4a463a;
+}
+
 /* Legacy / internal CSS variables — referenced directly via var(--…).
  * Kept under :root so handwritten CSS that already uses these names
  * continues to resolve. */

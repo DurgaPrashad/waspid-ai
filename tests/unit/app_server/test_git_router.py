@@ -10,25 +10,25 @@ import pytest
 from fastapi import FastAPI, status
 from fastapi.testclient import TestClient
 
-from openhands.app_server.git.git_models import SortOrder
-from openhands.app_server.git.git_router import (
+from waspid.app_server.git.git_models import SortOrder
+from waspid.app_server.git.git_router import (
     router,
     search_branches,
     search_repositories,
     search_suggested_tasks,
     search_user_installations,
 )
-from openhands.app_server.integrations.provider import ProviderToken
-from openhands.app_server.integrations.service_types import (
+from waspid.app_server.integrations.provider import ProviderToken
+from waspid.app_server.integrations.service_types import (
     Branch,
     ProviderType,
     Repository,
     SuggestedTask,
     TaskType,
 )
-from openhands.app_server.user.user_context import UserContext
-from openhands.app_server.utils.dependencies import check_session_api_key
-from openhands.app_server.utils.paging_utils import encode_page_id, paginate_results
+from waspid.app_server.user.user_context import UserContext
+from waspid.app_server.utils.dependencies import check_session_api_key
+from waspid.app_server.utils.paging_utils import encode_page_id, paginate_results
 
 
 class TestPagination:
@@ -135,7 +135,7 @@ class TestInstallationsEndpoint:
     def test_returns_403_when_no_provider_tokens(self, test_client):
         """Test that 403 is returned when no provider tokens."""
         with patch(
-            'openhands.app_server.user.auth_user_context.AuthUserContext.get_provider_tokens',
+            'waspid.app_server.user.auth_user_context.AuthUserContext.get_provider_tokens',
             AsyncMock(return_value=None),
         ):
             response = test_client.get(
@@ -146,7 +146,7 @@ class TestInstallationsEndpoint:
     def test_returns_422_for_unsupported_provider(self, test_client):
         """Test that 422 is returned for unsupported provider."""
         with patch(
-            'openhands.app_server.user.auth_user_context.AuthUserContext.get_provider_tokens',
+            'waspid.app_server.user.auth_user_context.AuthUserContext.get_provider_tokens',
             AsyncMock(return_value={'github': 'token'}),
         ):
             response = test_client.get(
@@ -160,7 +160,7 @@ class TestSearchUserInstallations:
     """Test suite for search_user_installations function."""
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_returns_paginated_installations(self, mock_handler_cls):
         """Test that installations are returned with pagination."""
         # Arrange
@@ -188,7 +188,7 @@ class TestSearchUserInstallations:
         assert result.next_page_id == encode_page_id(2)
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_returns_second_page_correctly(self, mock_handler_cls):
         """Test that second page of installations is returned correctly."""
         # Arrange
@@ -220,7 +220,7 @@ class TestSearchRepositories:
     """Test suite for search_repositories function (handles both user repos and search)."""
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_returns_user_repositories_without_query(self, mock_handler_cls):
         """Test that repositories_search returns user repositories when no query is provided."""
         # Arrange
@@ -274,7 +274,7 @@ class TestSearchRepositories:
         assert result.next_page_id is None  # No more pages
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_search_repositories_with_query(self, mock_handler_cls):
         """Test repository search when query is provided.
 
@@ -339,7 +339,7 @@ class TestSearchRepositories:
         assert result.items[1].id == '11'
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_search_repositories_sort_order_asc(self, mock_handler_cls):
         """Test that sort_order ascending is parsed correctly."""
         # Arrange
@@ -371,7 +371,7 @@ class TestSearchRepositories:
         assert call_kwargs.get('order') == 'asc'
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_search_repositories_default_sort_order(self, mock_handler_cls):
         """Test default sort order when sort_order is not provided."""
         # Arrange
@@ -403,7 +403,7 @@ class TestSearchRepositories:
         assert call_kwargs.get('order') == 'desc'  # Default
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_pagination_works_across_pages(self, mock_handler_cls):
         """Test that pagination works correctly across multiple pages.
 
@@ -497,7 +497,7 @@ class TestSearchRepositories:
         assert result_page2.next_page_id == encode_page_id(3)
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_passes_sort_parameter_to_provider(self, mock_handler_cls):
         """Test that sort parameter is passed through to the provider handler."""
         # Arrange
@@ -528,7 +528,7 @@ class TestSearchRepositories:
         assert call_kwargs.get('sort') == 'pushed'
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_passes_installation_id_to_provider(self, mock_handler_cls):
         """Test that installation_id filtering is passed through to the provider."""
         # Arrange
@@ -560,7 +560,7 @@ class TestSearchRepositories:
         assert call_kwargs.get('installation_id') == 'app-123'
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_returns_paginated_search_results(self, mock_handler_cls):
         """Test that search repositories are returned with pagination when query is provided."""
         # Arrange
@@ -624,7 +624,7 @@ class TestSearchRepositories:
         assert result.next_page_id == encode_page_id(2)
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_parses_sort_order_correctly(self, mock_handler_cls):
         """Test that sort_order enum is parsed into sort and order components."""
         # Arrange
@@ -656,7 +656,7 @@ class TestSearchRepositories:
         assert call_kwargs.get('order') == 'asc'
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_returns_empty_first_page(self, mock_handler_cls):
         """Test that empty results return empty items with no next_page_id."""
         # Arrange
@@ -688,7 +688,7 @@ class TestSearchRepositories:
     def test_returns_403_when_no_provider_tokens(self, test_client, monkeypatch):
         """Test that 403 is returned when no provider tokens."""
         with patch(
-            'openhands.app_server.user.auth_user_context.AuthUserContext.get_provider_tokens',
+            'waspid.app_server.user.auth_user_context.AuthUserContext.get_provider_tokens',
             AsyncMock(return_value=None),
         ):
             response = test_client.get(
@@ -703,7 +703,7 @@ class TestSearchBranches:
     """Test suite for search_branches function."""
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_returns_paginated_branches(self, mock_handler_cls):
         """Test that search branches are returned with pagination."""
         # Arrange
@@ -741,7 +741,7 @@ class TestSearchBranches:
         assert result.next_page_id == encode_page_id(2)
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_passes_parameters_to_provider(self, mock_handler_cls):
         """Test that all parameters are passed through to the provider."""
         # Arrange
@@ -777,7 +777,7 @@ class TestSearchBranches:
     def test_returns_403_when_no_provider_tokens(self, test_client):
         """Test that 403 is returned when no provider tokens."""
         with patch(
-            'openhands.app_server.user.auth_user_context.AuthUserContext.get_provider_tokens',
+            'waspid.app_server.user.auth_user_context.AuthUserContext.get_provider_tokens',
             AsyncMock(return_value=None),
         ):
             response = test_client.get(
@@ -796,7 +796,7 @@ class TestSearchSuggestedTasks:
     """Test suite for search_suggested_tasks function."""
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_returns_paginated_tasks(self, mock_handler_cls):
         """Test that suggested tasks are returned with pagination."""
         # Arrange
@@ -849,7 +849,7 @@ class TestSearchSuggestedTasks:
         assert result.next_page_id == encode_page_id(2)
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_returns_second_page(self, mock_handler_cls):
         """Test that second page returns correct items."""
         # Arrange
@@ -901,7 +901,7 @@ class TestSearchSuggestedTasks:
         assert result.next_page_id is None
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.git.git_router.ProviderHandler')
+    @patch('waspid.app_server.git.git_router.ProviderHandler')
     async def test_returns_empty_when_no_tasks(self, mock_handler_cls):
         """Test that empty results return empty items."""
         # Arrange
@@ -930,7 +930,7 @@ class TestSearchSuggestedTasks:
     def test_returns_403_when_no_provider_tokens(self, test_client):
         """Test that 403 is returned when no provider tokens."""
         with patch(
-            'openhands.app_server.user.auth_user_context.AuthUserContext.get_provider_tokens',
+            'waspid.app_server.user.auth_user_context.AuthUserContext.get_provider_tokens',
             AsyncMock(return_value=None),
         ):
             response = test_client.get('/git/suggested-tasks/search')

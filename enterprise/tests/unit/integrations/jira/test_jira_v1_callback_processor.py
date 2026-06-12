@@ -14,11 +14,11 @@ from integrations.jira.jira_v1_callback_processor import (
     JiraV1CallbackProcessor,
 )
 
-from openhands.app_server.event_callback.event_callback_models import EventCallback
-from openhands.app_server.event_callback.event_callback_result_models import (
+from waspid.app_server.event_callback.event_callback_models import EventCallback
+from waspid.app_server.event_callback.event_callback_result_models import (
     EventCallbackResultStatus,
 )
-from openhands.sdk.event import ConversationStateUpdateEvent
+from waspid.sdk.event import ConversationStateUpdateEvent
 
 
 @pytest.fixture
@@ -262,7 +262,7 @@ class TestPostSummaryToJira:
         # Check that body contains the summary message
         json_body = call_args[1]['json']
         assert 'body' in json_body
-        assert 'OpenHands resolved this issue' in json_body['body']
+        assert 'Waspid resolved this issue' in json_body['body']
         assert 'Test summary content' in json_body['body']
 
         # Check auth

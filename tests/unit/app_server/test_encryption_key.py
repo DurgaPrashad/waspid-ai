@@ -16,7 +16,7 @@ import base62
 import pytest
 from pydantic import SecretStr, TypeAdapter
 
-from openhands.app_server.utils.encryption_key import (
+from waspid.app_server.utils.encryption_key import (
     EncryptionKey,
     get_default_encryption_keys,
 )

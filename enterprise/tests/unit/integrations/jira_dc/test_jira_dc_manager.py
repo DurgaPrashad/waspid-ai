@@ -18,8 +18,8 @@ from integrations.jira_dc.jira_dc_view import (
 )
 from integrations.models import Message, SourceType
 
-from openhands.app_server.integrations.service_types import ProviderType, Repository
-from openhands.app_server.types import (
+from waspid.app_server.integrations.service_types import ProviderType, Repository
+from waspid.app_server.types import (
     LLMAuthenticationError,
     MissingSettingsError,
     SessionExpiredError,
@@ -274,14 +274,14 @@ class TestParseWebhook:
         assert job_context is not None
         assert job_context.issue_id == '12345'
         assert job_context.issue_key == 'PROJ-123'
-        assert job_context.user_msg == 'Please fix this @openhands'
+        assert job_context.user_msg == 'Please fix this @waspid'
         assert job_context.user_email == 'user@company.com'
         assert job_context.display_name == 'Test User'
         assert job_context.workspace_name == 'jira.company.com'
         assert job_context.base_api_url == 'https://jira.company.com'
 
     def test_parse_webhook_comment_without_mention(self, jira_dc_manager):
-        """Test parsing comment without @openhands mention."""
+        """Test parsing comment without @waspid mention."""
         payload = {
             'webhookEvent': 'comment_created',
             'comment': {
@@ -302,10 +302,10 @@ class TestParseWebhook:
         job_context = jira_dc_manager.parse_webhook(payload)
         assert job_context is None
 
-    def test_parse_webhook_issue_update_with_openhands_label(
+    def test_parse_webhook_issue_update_with_waspid_label(
         self, jira_dc_manager, sample_issue_update_webhook_payload
     ):
-        """Test parsing issue update with openhands label."""
+        """Test parsing issue update with waspid label."""
         job_context = jira_dc_manager.parse_webhook(sample_issue_update_webhook_payload)
 
         assert job_context is not None
@@ -315,8 +315,8 @@ class TestParseWebhook:
         assert job_context.user_email == 'user@company.com'
         assert job_context.display_name == 'Test User'
 
-    def test_parse_webhook_issue_update_without_openhands_label(self, jira_dc_manager):
-        """Test parsing issue update without openhands label."""
+    def test_parse_webhook_issue_update_without_waspid_label(self, jira_dc_manager):
+        """Test parsing issue update without waspid label."""
         payload = {
             'webhookEvent': 'jira:issue_updated',
             'changelog': {'items': [{'field': 'labels', 'toString': 'bug,urgent'}]},
@@ -350,7 +350,7 @@ class TestParseWebhook:
         payload = {
             'webhookEvent': 'comment_created',
             'comment': {
-                'body': 'Please fix this @openhands',
+                'body': 'Please fix this @waspid',
                 'author': {
                     'emailAddress': 'user@company.com',
                     'displayName': 'Test User',

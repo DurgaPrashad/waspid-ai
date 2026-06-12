@@ -15,8 +15,8 @@ Required environment variables:
 Optional environment variables:
 - KEYCLOAK_CLIENT_ID: Client ID for Keycloak
 - KEYCLOAK_CLIENT_SECRET: Client secret for Keycloak
-- RESEND_FROM_EMAIL: Email address to use as the sender (default: "OpenHands Team <no-reply@welcome.openhands.dev>")
-- RESEND_REPLY_TO_EMAIL: Email address for replies (default: "contact@openhands.dev")
+- RESEND_FROM_EMAIL: Email address to use as the sender (default: "Waspid Team <no-reply@welcome.waspid.dev>")
+- RESEND_REPLY_TO_EMAIL: Email address for replies (default: "contact@waspid.dev")
 - BATCH_SIZE: Number of users to process in each batch (default: 100)
 - MAX_RETRIES: Maximum number of retries for API calls (default: 3)
 - INITIAL_BACKOFF_SECONDS: Initial backoff time for retries (default: 1)
@@ -43,7 +43,7 @@ from tenacity import (
     wait_exponential,
 )
 
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 # Get Keycloak configuration from environment variables
 KEYCLOAK_SERVER_URL = os.environ.get('KEYCLOAK_SERVER_URL', '')
@@ -52,7 +52,7 @@ KEYCLOAK_CLIENT_ID = os.environ.get('KEYCLOAK_CLIENT_ID', '')
 KEYCLOAK_CLIENT_SECRET = os.environ.get('KEYCLOAK_CLIENT_SECRET', '')
 KEYCLOAK_ADMIN_PASSWORD = os.environ.get('KEYCLOAK_ADMIN_PASSWORD', '')
 
-# Logger is imported from openhands.app_server.utils.logger
+# Logger is imported from waspid.app_server.utils.logger
 
 # Get configuration from environment variables
 RESEND_API_KEY = os.environ.get('RESEND_API_KEY')
@@ -291,31 +291,25 @@ def send_welcome_email(
         # Prepare email parameters
         params = {
             'from': os.environ.get(
-                'RESEND_FROM_EMAIL', 'OpenHands Team <no-reply@welcome.openhands.dev>'
+                'RESEND_FROM_EMAIL', 'Waspid Team <no-reply@waspid.ai>'
             ),
             'reply_to': os.environ.get(
-                'RESEND_REPLY_TO_EMAIL', 'contact@openhands.dev'
+                'RESEND_REPLY_TO_EMAIL', 'support@waspid.ai'
             ),
             'to': [email],
-            'subject': 'Welcome to OpenHands Cloud',
+            'subject': 'Welcome to Waspid Cloud',
             'html': f"""
             <div>
                 <p>{greeting}</p>
-                <p>Thanks for joining OpenHands Cloud — we're excited to help you start building with the world's leading open source AI coding agent!</p>
+                <p>Thanks for joining Waspid Cloud — we're excited to help you build, deploy, and monitor your AI workforce!</p>
                 <p><strong>Here are three quick ways to get started:</strong></p>
                 <ol>
-                    <li><a href="https://docs.openhands.dev/openhands/usage/cloud/openhands-cloud#next-steps"><strong>Connect your Git repo</strong></a> – Link your <a href="https://docs.openhands.dev/openhands/usage/cloud/github-installation">GitHub</a> or <a href="https://docs.openhands.dev/openhands/usage/cloud/gitlab-installation">GitLab</a> repository in seconds so OpenHands can begin understanding your codebase and suggest tasks.</li>
-                    <li><a href="https://docs.openhands.dev/openhands/usage/cloud/github-installation#working-on-github-issues-and-pull-requests-using-openhands"><strong>Use OpenHands on an issue or pull request</strong></a> – Label an issue with 'openhands' or mention @openhands on any PR comment to generate explanations, tests, refactors, or doc fixes tailored to the exact lines you're reviewing.</li>
-                    <li><a href="https://dub.sh/openhands"><strong>Join the community</strong></a> – Join our Slack Community to share tips, feedback, and help shape the next features on our roadmap.</li>
+                    <li><strong>Design your first workforce</strong> – Open the Workforce Command Center, describe what you want to build, and let the Workforce Architect assemble the agents for you.</li>
+                    <li><strong>Connect your tools</strong> – Link your Git provider, Slack, Jira, and other systems from the Integration Hub so your workforce can operate where your team already works.</li>
+                    <li><strong>Deploy a workflow</strong> – Launch a workflow and follow every run, approval, and deliverable from the Monitoring dashboard.</li>
                 </ol>
-                <p>Have questions? Want to share feedback? Just reply to this email—we're here to help.</p>
-                <p>Happy coding!</p>
-                <p>The OpenHands team</p>
-                <p>--</p>
-                <p>OpenHands</p>
-                <p>24 Oak Street</p>
-                <p>Cambridge MA 02139</p>
-                <p>https://openhands.dev</p>
+                <p>Have questions? Want to share feedback? Just reply to this email or write to support@waspid.ai—we're here to help.</p>
+                <p>The Waspid team</p>
             </div>
             """,
         }
@@ -334,7 +328,7 @@ def _get_resend_synced_user_store() -> ResendSyncedUserStore:
 
     This is separated into a function to allow for easier testing/mocking.
     """
-    from openhands.app_server.config import get_global_config
+    from waspid.app_server.config import get_global_config
 
     config = get_global_config()
     db_session_injector = config.db_session

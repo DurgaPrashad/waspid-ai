@@ -31,7 +31,7 @@ jobs:
               uses: dawidd6/action-download-artifact@v15
               continue-on-error: true
               with:
-                  workflow: pr-review-by-openhands.yml
+                  workflow: pr-review-by-waspid.yml
                   name: pr-review-trace-${{ github.event.pull_request.number }}
                   path: trace-info
                   search_artifacts: true
@@ -53,7 +53,7 @@ jobs:
               if: steps.check-trace.outputs.trace_exists == 'true'
               uses: actions/checkout@v6
               with:
-                  repository: OpenHands/extensions
+                  repository: Waspid/extensions
                   path: extensions
 
             - name: Set up Python

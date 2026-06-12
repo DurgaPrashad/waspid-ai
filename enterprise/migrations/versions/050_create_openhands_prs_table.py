@@ -1,4 +1,4 @@
-"""Create openhands_prs table
+"""Create waspid_prs table
 
 Revision ID: 050
 Revises: 049
@@ -21,7 +21,7 @@ depends_on: Union[str, Sequence[str], None] = None
 def upgrade() -> None:
     # Create enum types
     op.create_table(
-        'openhands_prs',
+        'waspid_prs',
         sa.Column('id', sa.Integer(), sa.Identity(), nullable=False, primary_key=True),
         sa.Column('repo_id', sa.String(), nullable=False),
         sa.Column('repo_name', sa.String(), nullable=False),
@@ -66,38 +66,38 @@ def upgrade() -> None:
         sa.Column('num_additions', sa.Integer(), nullable=True),
         sa.Column('num_deletions', sa.Integer(), nullable=True),
         sa.Column('merged', sa.Boolean(), nullable=True),
-        sa.Column('openhands_helped_author', sa.Boolean(), nullable=True),
-        sa.Column('num_openhands_commits', sa.Integer(), nullable=True),
-        sa.Column('num_openhands_review_comments', sa.Integer(), nullable=True),
-        sa.Column('num_openhands_general_comments', sa.Integer(), nullable=True),
+        sa.Column('waspid_helped_author', sa.Boolean(), nullable=True),
+        sa.Column('num_waspid_commits', sa.Integer(), nullable=True),
+        sa.Column('num_waspid_review_comments', sa.Integer(), nullable=True),
+        sa.Column('num_waspid_general_comments', sa.Integer(), nullable=True),
     )
 
     # Create indexes for efficient querying
     op.create_index(
-        'ix_openhands_prs_repo_id', 'openhands_prs', ['repo_id'], unique=False
+        'ix_waspid_prs_repo_id', 'waspid_prs', ['repo_id'], unique=False
     )
     op.create_index(
-        'ix_openhands_prs_pr_number', 'openhands_prs', ['pr_number'], unique=False
+        'ix_waspid_prs_pr_number', 'waspid_prs', ['pr_number'], unique=False
     )
     op.create_index(
-        'ix_openhands_prs_status', 'openhands_prs', ['status'], unique=False
+        'ix_waspid_prs_status', 'waspid_prs', ['status'], unique=False
     )
 
     # Create unique constraint on repo_id + pr_number combination
     op.create_index(
-        'ix_openhands_prs_repo_pr_unique',
-        'openhands_prs',
+        'ix_waspid_prs_repo_pr_unique',
+        'waspid_prs',
         ['repo_id', 'pr_number'],
         unique=True,
     )
 
 
 def downgrade() -> None:
-    op.drop_index('ix_openhands_prs_repo_id', table_name='openhands_prs')
-    op.drop_index('ix_openhands_prs_pr_number', table_name='openhands_prs')
-    op.drop_index('ix_openhands_prs_status', table_name='openhands_prs')
-    op.drop_index('ix_openhands_prs_repo_pr_unique', table_name='openhands_prs')
-    op.drop_table('openhands_prs')
+    op.drop_index('ix_waspid_prs_repo_id', table_name='waspid_prs')
+    op.drop_index('ix_waspid_prs_pr_number', table_name='waspid_prs')
+    op.drop_index('ix_waspid_prs_status', table_name='waspid_prs')
+    op.drop_index('ix_waspid_prs_repo_pr_unique', table_name='waspid_prs')
+    op.drop_table('waspid_prs')
 
     # Drop enum types
     op.execute('DROP TYPE IF EXISTS prstatus')

@@ -24,9 +24,9 @@ from storage.org_store import OrgStore
 from storage.role_store import RoleStore
 from storage.user_store import UserStore
 
-from openhands.app_server.settings.settings_models import Settings
-from openhands.app_server.utils.logger import openhands_logger as logger
-from openhands.sdk.settings import ConversationSettings, default_agent_settings
+from waspid.app_server.settings.settings_models import Settings
+from waspid.app_server.utils.logger import waspid_logger as logger
+from waspid.sdk.settings import ConversationSettings, default_agent_settings
 
 
 class OrgService:

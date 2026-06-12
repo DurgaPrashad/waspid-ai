@@ -1,5 +1,5 @@
-import { OpenHandsParsedEvent } from "#/types/core";
-import { OpenHandsEvent } from "#/types/v1/core";
+import { WaspidParsedEvent } from "#/types/core";
+import { WaspidEvent } from "#/types/v1/core";
 import {
   isActionEvent,
   isObservationEvent,
@@ -11,7 +11,7 @@ import {
   isV1Event,
 } from "#/types/v1/type-guards";
 
-export const shouldRenderEvent = (event: OpenHandsEvent) => {
+export const shouldRenderEvent = (event: WaspidEvent) => {
   // Explicitly exclude system events that should not be rendered in chat
   if (isConversationStateUpdateEvent(event)) {
     return false;
@@ -74,7 +74,7 @@ export const shouldRenderEvent = (event: OpenHandsEvent) => {
   return false;
 };
 
-export const hasUserEvent = (events: OpenHandsEvent[]) =>
+export const hasUserEvent = (events: WaspidEvent[]) =>
   events.some((event) => event.source === "user");
 
 /**
@@ -85,5 +85,5 @@ export const hasUserEvent = (events: OpenHandsEvent[]) =>
  * to the rendering rules are picked up everywhere.
  */
 export const getRenderedV1Events = (
-  events: ReadonlyArray<OpenHandsEvent | OpenHandsParsedEvent>,
-): OpenHandsEvent[] => events.filter(isV1Event).filter(shouldRenderEvent);
+  events: ReadonlyArray<WaspidEvent | WaspidParsedEvent>,
+): WaspidEvent[] => events.filter(isV1Event).filter(shouldRenderEvent);

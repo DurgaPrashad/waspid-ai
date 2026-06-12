@@ -13,12 +13,12 @@ from uuid import uuid4
 import botocore.exceptions
 import pytest
 
-from openhands.app_server.event import aws_event_service
-from openhands.app_server.event.aws_event_service import (
+from waspid.app_server.event import aws_event_service
+from waspid.app_server.event.aws_event_service import (
     AwsEventService,
     AwsEventServiceInjector,
 )
-from openhands.sdk.event import PauseEvent, TokenEvent
+from waspid.sdk.event import PauseEvent, TokenEvent
 
 
 @pytest.fixture

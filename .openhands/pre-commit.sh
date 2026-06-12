@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Running OpenHands pre-commit hook..."
+echo "Running Waspid pre-commit hook..."
 echo "This hook runs selective linting based on changed files."
 
 # Store the exit code to return at the end
@@ -18,7 +18,7 @@ has_backend_changes=false
 for file in $STAGED_FILES; do
     if [[ $file == frontend/* ]]; then
         has_frontend_changes=true
-    elif [[ $file == openhands/* || $file == evaluation/* || $file == tests/* ]]; then
+    elif [[ $file == waspid/* || $file == evaluation/* || $file == tests/* ]]; then
         has_backend_changes=true
     fi
 done

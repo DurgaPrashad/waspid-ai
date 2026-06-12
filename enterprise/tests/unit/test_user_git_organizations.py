@@ -12,9 +12,9 @@ import pytest
 from fastapi import HTTPException, status
 from pydantic import SecretStr
 
-from openhands.app_server.integrations.provider import ProviderToken
-from openhands.app_server.integrations.service_types import ProviderType
-from openhands.app_server.user.user_context import UserContext
+from waspid.app_server.integrations.provider import ProviderToken
+from waspid.app_server.integrations.service_types import ProviderType
+from waspid.app_server.user.user_context import UserContext
 
 
 def _make_user_context(provider_tokens, user_id: str = 'user-1') -> UserContext:
@@ -72,7 +72,7 @@ async def test_raises_400_when_provider_unsupported():
         (
             ProviderType.GITHUB,
             'get_organizations_from_installations',
-            ['All-Hands-AI', 'OpenHands'],
+            ['All-Hands-AI', 'Waspid'],
         ),
         (
             ProviderType.GITLAB,
@@ -101,7 +101,7 @@ async def test_returns_organizations_for_supported_provider(
     )
 
     with patch(
-        'openhands.app_server.integrations.provider.ProviderHandler.get_service'
+        'waspid.app_server.integrations.provider.ProviderHandler.get_service'
     ) as mock_get_service:
         mock_service = mock_get_service.return_value
         setattr(mock_service, service_method, AsyncMock(return_value=service_return))

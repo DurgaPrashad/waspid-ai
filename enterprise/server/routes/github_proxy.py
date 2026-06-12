@@ -9,7 +9,7 @@ from fastapi import FastAPI, Request, Response
 from fastapi.responses import RedirectResponse
 from server.logger import logger
 
-from openhands.app_server.utils.http_session import httpx_verify_option
+from waspid.app_server.utils.http_session import httpx_verify_option
 
 GITHUB_PROXY_ENDPOINTS = bool(os.environ.get('GITHUB_PROXY_ENDPOINTS'))
 

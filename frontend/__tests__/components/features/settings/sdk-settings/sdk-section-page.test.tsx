@@ -177,7 +177,7 @@ describe("SdkSectionPage", () => {
               section: "llm",
               section_label: "LLM",
               value_type: "string",
-              default: "openhands/claude-opus-4-5-20251101",
+              default: "waspid/claude-opus-4-5-20251101",
               choices: [],
               depends_on: [],
               prominence: "critical",
@@ -206,7 +206,7 @@ describe("SdkSectionPage", () => {
       buildSettings({
         agent_settings_schema: schema,
         agent_settings: {
-          "llm.model": "openhands/claude-opus-4-5-20251101",
+          "llm.model": "waspid/claude-opus-4-5-20251101",
         },
       }),
     );

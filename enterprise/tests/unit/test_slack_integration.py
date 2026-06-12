@@ -11,12 +11,12 @@ from integrations.slack.slack_manager import (
 from integrations.slack.slack_view import SlackNewConversationView
 from storage.slack_user import SlackUser
 
-from openhands.app_server.integrations.service_types import (
+from waspid.app_server.integrations.service_types import (
     ProviderTimeoutError,
     ProviderType,
     Repository,
 )
-from openhands.app_server.user_auth.user_auth import UserAuth
+from waspid.app_server.user_auth.user_auth import UserAuth
 
 
 @pytest.fixture
@@ -52,9 +52,9 @@ def slack_new_conversation_view(mock_slack_user, mock_user_auth):
     """Create a SlackNewConversationView instance for testing."""
     return SlackNewConversationView(
         bot_access_token='xoxb-test-token',
-        user_msg='Hello OpenHands!',
+        user_msg='Hello Waspid!',
         slack_user_id='U1234567890',
-        slack_to_openhands_user=mock_slack_user,
+        slack_to_waspid_user=mock_slack_user,
         saas_user_auth=mock_user_auth,
         channel_id='C1234567890',
         message_ts='1234567890.123456',
@@ -70,7 +70,7 @@ def slack_new_conversation_view(mock_slack_user, mock_user_auth):
 @pytest.mark.parametrize(
     'message,expected',
     [
-        ('OpenHands/Openhands', ['OpenHands/Openhands']),
+        ('Waspid/Openhands', ['Waspid/Openhands']),
         (
             'help me with repo',
             [],
@@ -106,7 +106,7 @@ class TestRepoVerificationHandling:
         mock_get_redis_client_async.return_value = mock_redis
 
         # Setup: Modify message to include exactly one repo reference to trigger verification
-        slack_new_conversation_view.user_msg = 'Help me with OpenHands/OpenHands repo'
+        slack_new_conversation_view.user_msg = 'Help me with Waspid/Waspid repo'
 
         # Setup: verify_repo_provider raises ProviderTimeoutError
         mock_provider_handler = MagicMock()
@@ -254,12 +254,12 @@ class TestRepoVerificationHandling:
         mock_get_redis_client_async.return_value = mock_redis
 
         # Setup: Modify message to include exactly one repo reference
-        slack_new_conversation_view.user_msg = 'Help me with OpenHands/OpenHands repo'
+        slack_new_conversation_view.user_msg = 'Help me with Waspid/Waspid repo'
 
         # Setup: verify_repo_provider returns a valid repo
         mock_repo = Repository(
             id='123',
-            full_name='OpenHands/OpenHands',
+            full_name='Waspid/Waspid',
             git_provider=ProviderType.GITHUB,
             is_public=True,
         )
@@ -279,7 +279,7 @@ class TestRepoVerificationHandling:
         mock_send_message.assert_not_called()
 
         # Verify: selected_repo was set
-        assert slack_new_conversation_view.selected_repo == 'OpenHands/OpenHands'
+        assert slack_new_conversation_view.selected_repo == 'Waspid/Waspid'
 
 
 class TestBuildRepoOptions:
@@ -525,9 +525,9 @@ class TestUserMsgStorage:
             (
                 '1234567890.123456',
                 '1234567890.111111',
-                'Hello OpenHands, help me with my code',
+                'Hello Waspid, help me with my code',
             ),
-            ('1234567890.123456', None, 'Hello OpenHands'),
+            ('1234567890.123456', None, 'Hello Waspid'),
             ('9999999999.999999', '8888888888.888888', 'Another test message'),
         ],
         ids=['with_thread', 'without_thread', 'different_timestamps'],
@@ -575,7 +575,7 @@ class TestUserMsgStorage:
 
         message_ts = '1234567890.123456'
         thread_ts = '1234567890.111111'
-        user_msg = 'Hello OpenHands'
+        user_msg = 'Hello Waspid'
 
         # Should raise SlackError when Redis fails
         with pytest.raises(SlackError) as exc_info:
@@ -589,10 +589,10 @@ class TestUserMsgStorage:
         'redis_return_value,expected_result',
         [
             (
-                b'Hello OpenHands, help me with my code',
-                'Hello OpenHands, help me with my code',
+                b'Hello Waspid, help me with my code',
+                'Hello Waspid, help me with my code',
             ),
-            ('Hello OpenHands', 'Hello OpenHands'),  # String instead of bytes
+            ('Hello Waspid', 'Hello Waspid'),  # String instead of bytes
         ],
         ids=['bytes_response', 'string_response'],
     )

@@ -57,13 +57,13 @@ jobs:
       - name: Build Environment
         run: make build
       - name: Run Unit Tests
-        run: PYTHONPATH=".:$PYTHONPATH" poetry run pytest --forked -n auto -s ./tests/unit --cov=openhands --cov-branch
+        run: PYTHONPATH=".:$PYTHONPATH" poetry run pytest --forked -n auto -s ./tests/unit --cov=waspid --cov-branch
         env:
           COVERAGE_FILE: ".coverage.${{ matrix.python_version }}"
       - name: Store coverage file
         uses: actions/upload-artifact@v7
         with:
-          name: coverage-openhands
+          name: coverage-waspid
           path: |
             .coverage.${{ matrix.python_version }}
             .coverage.runtime.${{ matrix.python_version }}

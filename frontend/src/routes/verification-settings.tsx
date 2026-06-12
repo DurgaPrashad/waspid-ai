@@ -6,11 +6,11 @@ import { requireOrgDefaultsRedirect } from "#/utils/org/saas-redirect-to-org-def
 // Defensive de-dup: agent_settings.verification still carries
 // `confirmation_mode` and `security_analyzer` for back-compat, but the SDK
 // deprecated them in 1.17.0 (see VerificationSettings field validators in
-// openhands-sdk) and moved the canonical copies to ConversationSettings.
+// waspid-sdk) and moved the canonical copies to ConversationSettings.
 // Render only the conversation-source versions so these fields don't show
 // up twice on the page.
 //
-// TODO: drop this set once openhands-sdk 1.22.0 lands and the deprecated
+// TODO: drop this set once waspid-sdk 1.22.0 lands and the deprecated
 // VerificationSettings.{confirmation_mode,security_analyzer} fields are
 // fully removed.
 const CONVERSATION_OWNED_AGENT_VERIFICATION_FIELD_KEYS = new Set([

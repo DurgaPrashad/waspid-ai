@@ -5,11 +5,11 @@ from unittest.mock import MagicMock, patch
 import pytest
 from pydantic import SecretStr
 
-from openhands.app_server.file_store.files import FileStore
-from openhands.app_server.settings.file_settings_store import FileSettingsStore
-from openhands.app_server.settings.settings_models import Settings
-from openhands.sdk.llm import LLM
-from openhands.sdk.settings import ConversationSettings, OpenHandsAgentSettings
+from waspid.app_server.file_store.files import FileStore
+from waspid.app_server.settings.file_settings_store import FileSettingsStore
+from waspid.app_server.settings.settings_models import Settings
+from waspid.sdk.llm import LLM
+from waspid.sdk.settings import ConversationSettings, WaspidAgentSettings
 
 
 @pytest.fixture(autouse=True)
@@ -39,7 +39,7 @@ async def test_store_and_load_data(file_settings_store):
     # Test data
     init_data = Settings(
         language='python',
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             agent='test-agent',
             llm=LLM(
                 model='test-model',
@@ -155,7 +155,7 @@ async def test_load_skips_seeding_when_no_legacy_model(file_settings_store):
 async def test_get_instance():
     mock_store = MagicMock(spec=FileStore)
 
-    with patch('openhands.app_server.config.get_global_config') as mock_get_config:
+    with patch('waspid.app_server.config.get_global_config') as mock_get_config:
         mock_config = MagicMock()
         mock_config.file_store = mock_store
         mock_get_config.return_value = mock_config

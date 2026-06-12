@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 import pytest
 
-from openhands.app_server.web_client.web_client_deployment_mode import (
+from waspid.app_server.web_client.web_client_deployment_mode import (
     get_deployment_mode,
 )
 
@@ -19,15 +19,15 @@ class TestGetDeploymentMode:
             ('app.all-hands.dev', 'cloud'),
             ('staging.all-hands.dev', 'cloud'),
             ('feature-123.staging.all-hands.dev', 'cloud'),
-            ('app.openhands.ai', 'cloud'),
-            ('subdomain.openhands.ai', 'cloud'),
+            ('app.waspid.ai', 'cloud'),
+            ('subdomain.waspid.ai', 'cloud'),
             # Customer domains should return 'self_hosted'
-            ('openhands.acme.com', 'self_hosted'),
+            ('waspid.acme.com', 'self_hosted'),
             ('internal.company.io', 'self_hosted'),
             ('dev.mycompany.net', 'self_hosted'),
             # Edge cases - not subdomains
             ('all-hands.dev', 'self_hosted'),
-            ('openhands.ai', 'self_hosted'),
+            ('waspid.ai', 'self_hosted'),
             # Malicious domains
             ('fake-all-hands.dev', 'self_hosted'),
             ('app.all-hands.dev.evil.com', 'self_hosted'),

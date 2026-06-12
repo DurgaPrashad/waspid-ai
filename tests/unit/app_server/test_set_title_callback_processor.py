@@ -7,20 +7,20 @@ from uuid import uuid4
 import httpx
 import pytest
 
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversation,
 )
-from openhands.app_server.event_callback.event_callback_models import (
+from waspid.app_server.event_callback.event_callback_models import (
     EventCallback,
     EventCallbackStatus,
 )
-from openhands.app_server.event_callback.set_title_callback_processor import (
+from waspid.app_server.event_callback.set_title_callback_processor import (
     SetTitleCallbackProcessor,
 )
-from openhands.app_server.utils.docker_utils import (
+from waspid.app_server.utils.docker_utils import (
     replace_localhost_hostname_for_docker,
 )
-from openhands.sdk import Message, MessageEvent, TextContent
+from waspid.sdk import Message, MessageEvent, TextContent
 
 
 class _FakeHttpxClient:
@@ -97,20 +97,20 @@ async def test_set_title_callback_processor_fetches_title_from_conversation():
 
     with (
         patch(
-            'openhands.app_server.config.get_app_conversation_service',
+            'waspid.app_server.config.get_app_conversation_service',
             get_app_conversation_service,
         ),
         patch(
-            'openhands.app_server.config.get_app_conversation_info_service',
+            'waspid.app_server.config.get_app_conversation_info_service',
             get_app_conversation_info_service,
         ),
         patch(
-            'openhands.app_server.config.get_event_callback_service',
+            'waspid.app_server.config.get_event_callback_service',
             get_event_callback_service,
         ),
-        patch('openhands.app_server.config.get_httpx_client', get_httpx_client),
+        patch('waspid.app_server.config.get_httpx_client', get_httpx_client),
         patch(
-            'openhands.app_server.event_callback.'
+            'waspid.app_server.event_callback.'
             'set_title_callback_processor.asyncio.sleep',
             new=AsyncMock(),
         ),
@@ -181,20 +181,20 @@ async def test_set_title_callback_processor_no_title_yet_returns_none():
 
     with (
         patch(
-            'openhands.app_server.config.get_app_conversation_service',
+            'waspid.app_server.config.get_app_conversation_service',
             get_app_conversation_service,
         ),
         patch(
-            'openhands.app_server.config.get_app_conversation_info_service',
+            'waspid.app_server.config.get_app_conversation_info_service',
             get_app_conversation_info_service,
         ),
         patch(
-            'openhands.app_server.config.get_event_callback_service',
+            'waspid.app_server.config.get_event_callback_service',
             get_event_callback_service,
         ),
-        patch('openhands.app_server.config.get_httpx_client', get_httpx_client),
+        patch('waspid.app_server.config.get_httpx_client', get_httpx_client),
         patch(
-            'openhands.app_server.event_callback.'
+            'waspid.app_server.event_callback.'
             'set_title_callback_processor.asyncio.sleep',
             new=AsyncMock(),
         ),
@@ -262,25 +262,25 @@ async def test_set_title_callback_processor_request_errors_return_none():
 
     with (
         patch(
-            'openhands.app_server.config.get_app_conversation_service',
+            'waspid.app_server.config.get_app_conversation_service',
             get_app_conversation_service,
         ),
         patch(
-            'openhands.app_server.config.get_app_conversation_info_service',
+            'waspid.app_server.config.get_app_conversation_info_service',
             get_app_conversation_info_service,
         ),
         patch(
-            'openhands.app_server.config.get_event_callback_service',
+            'waspid.app_server.config.get_event_callback_service',
             get_event_callback_service,
         ),
-        patch('openhands.app_server.config.get_httpx_client', get_httpx_client),
+        patch('waspid.app_server.config.get_httpx_client', get_httpx_client),
         patch(
-            'openhands.app_server.event_callback.'
+            'waspid.app_server.event_callback.'
             'set_title_callback_processor.asyncio.sleep',
             new=AsyncMock(),
         ),
         patch(
-            'openhands.app_server.event_callback.'
+            'waspid.app_server.event_callback.'
             'set_title_callback_processor._logger.warning'
         ) as logger_warning,
     ):

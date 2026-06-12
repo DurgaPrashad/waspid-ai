@@ -4,7 +4,7 @@ import { I18nKey } from "#/i18n/declaration";
 import { AgentState } from "#/types/agent-state";
 import { generateAgentStateChangeEvent } from "#/services/agent-state-service";
 import { ActionTooltip } from "../action-tooltip";
-import { isOpenHandsAction, isActionOrObservation } from "#/types/core/guards";
+import { isWaspidAction, isActionOrObservation } from "#/types/core/guards";
 import { ActionSecurityRisk } from "#/stores/security-analyzer-store";
 import { RiskAlert } from "#/components/shared/risk-alert";
 import WarningIcon from "#/icons/u-warning.svg?react";
@@ -33,7 +33,7 @@ export function ConfirmationButtons() {
     .slice()
     .reverse()
     .find((ev) => {
-      if (!isOpenHandsAction(ev) || ev.source !== "agent") return false;
+      if (!isWaspidAction(ev) || ev.source !== "agent") return false;
       const args = ev.args as Record<string, unknown>;
       return args?.confirmation_state === "awaiting_confirmation";
     });

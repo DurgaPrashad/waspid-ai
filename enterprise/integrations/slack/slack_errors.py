@@ -80,7 +80,7 @@ _USER_MESSAGES: dict[SlackErrorCode, str] = {
         'Please try again in a few moments.'
     ),
     SlackErrorCode.USER_NOT_AUTHENTICATED: (
-        '🔐 Please link your Slack account to OpenHands: '
+        '🔐 Please link your Slack account to Waspid: '
         '[Click here to Login]({login_link})'
     ),
     SlackErrorCode.PROVIDER_TIMEOUT: (
@@ -89,19 +89,19 @@ _USER_MESSAGES: dict[SlackErrorCode, str] = {
     ),
     SlackErrorCode.PROVIDER_AUTH_FAILED: (
         '🔐 Authentication with your git provider failed. '
-        f'Please re-login at [OpenHands Cloud]({HOST_URL}) and try again.'
+        f'Please re-login at [Waspid Cloud]({HOST_URL}) and try again.'
     ),
     SlackErrorCode.LLM_AUTH_FAILED: (
         '@{username} please set a valid LLM API key in '
-        f'[OpenHands Cloud]({HOST_URL}) before starting a job.'
+        f'[Waspid Cloud]({HOST_URL}) before starting a job.'
     ),
     SlackErrorCode.MISSING_SETTINGS: (
         '{username} please re-login into '
-        f'[OpenHands Cloud]({HOST_URL}) before starting a job.'
+        f'[Waspid Cloud]({HOST_URL}) before starting a job.'
     ),
     SlackErrorCode.MISSING_SLACK_SCOPES: (
         '⚠️ The Slack app is missing required permissions. '
-        f'Please ask your workspace admin to re-install the OpenHands Slack App at {HOST_URL}/slack/install '
+        f'Please ask your workspace admin to re-install the Waspid Slack App at {HOST_URL}/slack/install '
         'to authorize the updated permissions.'
     ),
     SlackErrorCode.UNEXPECTED_ERROR: (

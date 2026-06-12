@@ -31,7 +31,8 @@ type Card = {
 export function PlatformReadinessGrid() {
   const { data: config } = useConfig();
   const { data: settings, isFetching: isFetchingSettings } = useSettings();
-  const { providers, isLoadingSettings: isLoadingProviders } = useUserProviders();
+  const { providers, isLoadingSettings: isLoadingProviders } =
+    useUserProviders();
 
   const isSaas = config?.app_mode === "saas";
   const isLoading = isFetchingSettings || isLoadingProviders;

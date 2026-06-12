@@ -22,7 +22,7 @@ from server.routes.orgs import (
 from sqlalchemy.exc import IntegrityError
 from storage.org_git_claim import OrgGitClaim
 
-from openhands.app_server.user_auth import get_user_id
+from waspid.app_server.user_auth import get_user_id
 
 TEST_USER_ID = str(uuid.uuid4())
 
@@ -41,7 +41,7 @@ def user_id():
 def make_claim():
     """Factory to create mock OrgGitClaim objects."""
 
-    def _make(org_id, provider='github', git_organization='OpenHands', claimed_by=None):
+    def _make(org_id, provider='github', git_organization='Waspid', claimed_by=None):
         claim = MagicMock(spec=OrgGitClaim)
         claim.id = uuid.uuid4()
         claim.org_id = org_id
@@ -85,7 +85,7 @@ class TestGetGitClaims:
         WHEN: GET /api/organizations/{org_id}/git-claims is called
         THEN: All claims are returned with correct details
         """
-        claim1 = make_claim(org_id, provider='github', git_organization='OpenHands')
+        claim1 = make_claim(org_id, provider='github', git_organization='Waspid')
         claim2 = make_claim(org_id, provider='gitlab', git_organization='AcmeCo')
 
         with patch(
@@ -98,7 +98,7 @@ class TestGetGitClaims:
         assert result[0].id == str(claim1.id)
         assert result[0].org_id == str(org_id)
         assert result[0].provider == 'github'
-        assert result[0].git_organization == 'OpenHands'
+        assert result[0].git_organization == 'Waspid'
         assert result[0].claimed_by == str(claim1.claimed_by)
         assert result[0].claimed_at == '2026-04-01T12:00:00'
         assert result[1].id == str(claim2.id)
@@ -141,7 +141,7 @@ class TestClaimGitOrganization:
         mock_claim = make_claim(org_id, claimed_by=uuid.UUID(user_id))
         request = MagicMock()
         request.provider = 'github'
-        request.git_organization = 'OpenHands'
+        request.git_organization = 'Waspid'
 
         with (
             patch(
@@ -162,19 +162,19 @@ class TestClaimGitOrganization:
         assert response.id == str(mock_claim.id)
         assert response.org_id == str(org_id)
         assert response.provider == 'github'
-        assert response.git_organization == 'OpenHands'
+        assert response.git_organization == 'Waspid'
         assert response.claimed_by == user_id
         mock_create.assert_called_once_with(
             org_id=org_id,
             provider='github',
-            git_organization='OpenHands',
+            git_organization='Waspid',
             claimed_by=uuid.UUID(user_id),
         )
 
     @pytest.mark.asyncio
     async def test_claim_fails_when_already_claimed(self, org_id, user_id, make_claim):
         """
-        GIVEN: A Git organization already claimed by another OpenHands org
+        GIVEN: A Git organization already claimed by another Waspid org
         WHEN: POST /api/organizations/{org_id}/git-claims is called
         THEN: A 409 Conflict error is returned
         """
@@ -209,7 +209,7 @@ class TestClaimGitOrganization:
         # Arrange
         request = MagicMock()
         request.provider = 'github'
-        request.git_organization = 'OpenHands'
+        request.git_organization = 'Waspid'
 
         with patch(
             'server.routes.orgs.OrgGitClaimStore.get_claim_by_provider_and_git_org',
@@ -372,8 +372,8 @@ class TestGitOrgClaimRequestValidation:
         """git_organization is lowercased to prevent case-sensitive duplicates."""
         from server.routes.org_models import GitOrgClaimRequest
 
-        req = GitOrgClaimRequest(provider='github', git_organization='OpenHands')
-        assert req.git_organization == 'openhands'
+        req = GitOrgClaimRequest(provider='github', git_organization='Waspid')
+        assert req.git_organization == 'waspid'
 
 
 # =============================================================================
@@ -509,7 +509,7 @@ class TestGitClaimsHTTPIntegration:
         mock_claim.id = uuid.uuid4()
         mock_claim.org_id = org_id
         mock_claim.provider = 'github'
-        mock_claim.git_organization = 'openhands'
+        mock_claim.git_organization = 'waspid'
         mock_claim.claimed_by = uuid.UUID(TEST_USER_ID)
         mock_claim.claimed_at = datetime(2026, 4, 1, 12, 0, 0)
 
@@ -530,14 +530,14 @@ class TestGitClaimsHTTPIntegration:
             client = TestClient(mock_app)
             response = client.post(
                 f'/api/organizations/{org_id}/git-claims',
-                json={'provider': 'github', 'git_organization': 'OpenHands'},
+                json={'provider': 'github', 'git_organization': 'Waspid'},
             )
 
         assert response.status_code == status.HTTP_201_CREATED
         data = response.json()
         assert data['org_id'] == str(org_id)
         assert data['provider'] == 'github'
-        assert data['git_organization'] == 'openhands'
+        assert data['git_organization'] == 'waspid'
 
     def test_delete_claim_success_returns_200(self, mock_app, mock_owner_role):
         """
@@ -579,7 +579,7 @@ class TestGitClaimsHTTPIntegration:
         mock_claim.id = uuid.uuid4()
         mock_claim.org_id = org_id
         mock_claim.provider = 'github'
-        mock_claim.git_organization = 'openhands'
+        mock_claim.git_organization = 'waspid'
         mock_claim.claimed_by = uuid.UUID(TEST_USER_ID)
         mock_claim.claimed_at = datetime(2026, 4, 1, 12, 0, 0)
 
@@ -600,4 +600,4 @@ class TestGitClaimsHTTPIntegration:
         data = response.json()
         assert len(data) == 1
         assert data[0]['provider'] == 'github'
-        assert data[0]['git_organization'] == 'openhands'
+        assert data[0]['git_organization'] == 'waspid'

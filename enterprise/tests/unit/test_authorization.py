@@ -1035,9 +1035,9 @@ class TestRequireFinancialDataAccess:
     """Tests for require_financial_data_access compound authorization dependency."""
 
     @pytest.mark.asyncio
-    async def test_grants_access_for_openhands_email(self):
+    async def test_grants_access_for_waspid_email(self):
         """
-        GIVEN: User with @openhands.dev email
+        GIVEN: User with @waspid.dev email
         WHEN: require_financial_data_access is called
         THEN: Returns user_id (access granted)
         """
@@ -1046,7 +1046,7 @@ class TestRequireFinancialDataAccess:
         # Arrange
         user_id = str(uuid4())
         org_id = uuid4()
-        mock_request = _create_mock_request_with_email(user_email='admin@openhands.dev')
+        mock_request = _create_mock_request_with_email(user_email='admin@waspid.dev')
 
         with patch(
             'server.auth.authorization.get_user_auth',
@@ -1063,7 +1063,7 @@ class TestRequireFinancialDataAccess:
     @pytest.mark.asyncio
     async def test_grants_access_for_owner_role(self):
         """
-        GIVEN: User with owner role in organization (non-@openhands.dev email)
+        GIVEN: User with owner role in organization (non-@waspid.dev email)
         WHEN: require_financial_data_access is called
         THEN: Returns user_id (access granted)
         """
@@ -1097,7 +1097,7 @@ class TestRequireFinancialDataAccess:
     @pytest.mark.asyncio
     async def test_grants_access_for_admin_role(self):
         """
-        GIVEN: User with admin role in organization (non-@openhands.dev email)
+        GIVEN: User with admin role in organization (non-@waspid.dev email)
         WHEN: require_financial_data_access is called
         THEN: Returns user_id (access granted)
         """
@@ -1129,9 +1129,9 @@ class TestRequireFinancialDataAccess:
             assert result == user_id
 
     @pytest.mark.asyncio
-    async def test_denies_access_for_member_role_without_openhands_email(self):
+    async def test_denies_access_for_member_role_without_waspid_email(self):
         """
-        GIVEN: User with member role (not admin/owner) and non-@openhands.dev email
+        GIVEN: User with member role (not admin/owner) and non-@waspid.dev email
         WHEN: require_financial_data_access is called
         THEN: Raises 403 Forbidden
         """
@@ -1161,7 +1161,7 @@ class TestRequireFinancialDataAccess:
                 )
 
             assert exc_info.value.status_code == 403
-            assert 'admins, owners, or OpenHands' in exc_info.value.detail
+            assert 'admins, owners, or Waspid' in exc_info.value.detail
 
     @pytest.mark.asyncio
     async def test_denies_access_for_non_member(self):
@@ -1232,7 +1232,7 @@ class TestRequireFinancialDataAccess:
         api_key_org_id = uuid4()  # Org A
         target_org_id = uuid4()  # Org B
         mock_request = _create_mock_request_with_email(
-            api_key_org_id=api_key_org_id, user_email='admin@openhands.dev'
+            api_key_org_id=api_key_org_id, user_email='admin@waspid.dev'
         )
 
         # Act & Assert

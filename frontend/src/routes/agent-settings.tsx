@@ -77,7 +77,7 @@ export default function AgentSettingsScreen() {
   const isAcpEnabled = !!config?.feature_flags?.enable_acp;
   const acpProviders = config?.acp_providers ?? EMPTY_ACP_PROVIDERS;
 
-  // ── Sub-agents (OpenHands mode) ──────────────────────────────────────────
+  // ── Sub-agents (native mode) ──────────────────────────────────────────
   const fields = useMemo(
     () => schema?.sections.flatMap((section) => section.fields),
     [schema],
@@ -99,7 +99,7 @@ export default function AgentSettingsScreen() {
   }, [initialSubAgentsEnabled]);
 
   // ── ACP (ACP mode) ───────────────────────────────────────────────────────
-  const [agentType, setAgentType] = useState<"openhands" | "acp">("openhands");
+  const [agentType, setAgentType] = useState<"waspid" | "acp">("waspid");
   const [commandText, setCommandText] = useState("");
   const [acpModel, setAcpModel] = useState("");
   const [isDirty, setIsDirty] = useState(false);
@@ -130,7 +130,7 @@ export default function AgentSettingsScreen() {
       const savedModel = settings.agent_settings?.acp_model;
       setAcpModel(typeof savedModel === "string" ? savedModel : "");
     } else {
-      setAgentType("openhands");
+      setAgentType("waspid");
       setCommandText("");
       setAcpModel("");
     }
@@ -175,7 +175,7 @@ export default function AgentSettingsScreen() {
       // Agent-kind flip: backend resets the new kind to defaults, so send
       // the kind alone (sub-agents toggle resets too — preserved as a
       // deferred follow-up).
-      agentSettingsDiff = { agent_kind: "openhands" };
+      agentSettingsDiff = { agent_kind: "waspid" };
     } else {
       // Only sub-agents toggled, no kind change.
       agentSettingsDiff = { enable_sub_agents: isSubAgentsEnabled };
@@ -214,15 +214,15 @@ export default function AgentSettingsScreen() {
               label={t(I18nKey.SETTINGS$AGENT)}
               items={[
                 {
-                  key: "openhands",
-                  label: t(I18nKey.SETTINGS$AGENT_TYPE_OPENHANDS),
+                  key: "waspid",
+                  label: t(I18nKey.SETTINGS$AGENT_TYPE_WASPID),
                 },
                 { key: "acp", label: t(I18nKey.SETTINGS$AGENT_TYPE_ACP) },
               ]}
               selectedKey={agentType}
               onSelectionChange={(key) => {
                 if (!key) return;
-                const newType = key as "openhands" | "acp";
+                const newType = key as "waspid" | "acp";
                 setAgentType(newType);
                 if (newType === "acp" && !commandText) {
                   const preferred = acpProviders[0];
@@ -236,7 +236,7 @@ export default function AgentSettingsScreen() {
           </section>
         )}
 
-        {/* OpenHands: sub-agents toggle */}
+        {/* Native agent: sub-agents toggle */}
         {!isAcp && (
           <section className="grid gap-4 xl:grid-cols-2">
             {subAgentsField ? (

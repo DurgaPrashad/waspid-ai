@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 import pytest
 
-from openhands.app_server.utils.search_utils import (
+from waspid.app_server.utils.search_utils import (
     iterate,
     offset_to_page_id,
     page_id_to_offset,

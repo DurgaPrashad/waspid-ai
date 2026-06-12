@@ -5,9 +5,9 @@ from fastapi import Depends
 from pydantic import BaseModel
 from server.auth.token_manager import KeycloakUserInfo
 
-from openhands.agent_server.env_parser import from_env
-from openhands.app_server.services.injector import Injector
-from openhands.sdk.utils.models import DiscriminatedUnionMixin
+from waspid.agent_server.env_parser import from_env
+from waspid.app_server.services.injector import Injector
+from waspid.sdk.utils.models import DiscriminatedUnionMixin
 
 logger = logging.getLogger(__name__)
 

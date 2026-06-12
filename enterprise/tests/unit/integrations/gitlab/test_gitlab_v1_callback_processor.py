@@ -16,19 +16,19 @@ from integrations.gitlab.gitlab_v1_callback_processor import (
     GitlabV1CallbackProcessor,
 )
 
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversationInfo,
 )
-from openhands.app_server.event_callback.event_callback_models import EventCallback
-from openhands.app_server.event_callback.event_callback_result_models import (
+from waspid.app_server.event_callback.event_callback_models import EventCallback
+from waspid.app_server.event_callback.event_callback_result_models import (
     EventCallbackResultStatus,
 )
-from openhands.app_server.sandbox.sandbox_models import (
+from waspid.app_server.sandbox.sandbox_models import (
     ExposedUrl,
     SandboxInfo,
     SandboxStatus,
 )
-from openhands.sdk.event import ConversationStateUpdateEvent
+from waspid.sdk.event import ConversationStateUpdateEvent
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -197,9 +197,9 @@ class TestGitlabV1CallbackProcessor:
     # Successful paths
     # ------------------------------------------------------------------ #
 
-    @patch('openhands.app_server.config.get_app_conversation_info_service')
-    @patch('openhands.app_server.config.get_sandbox_service')
-    @patch('openhands.app_server.config.get_httpx_client')
+    @patch('waspid.app_server.config.get_app_conversation_info_service')
+    @patch('waspid.app_server.config.get_sandbox_service')
+    @patch('waspid.app_server.config.get_httpx_client')
     @patch('integrations.gitlab.gitlab_v1_callback_processor.get_summary_instruction')
     @patch('integrations.gitlab.gitlab_service.SaaSGitLabService')
     async def test_successful_callback_execution_issue(
@@ -263,9 +263,9 @@ class TestGitlabV1CallbackProcessor:
         assert kwargs['headers']['X-Session-API-Key'] == 'test_api_key'
         assert kwargs['json']['question'] == 'Please provide a summary'
 
-    @patch('openhands.app_server.config.get_app_conversation_info_service')
-    @patch('openhands.app_server.config.get_sandbox_service')
-    @patch('openhands.app_server.config.get_httpx_client')
+    @patch('waspid.app_server.config.get_app_conversation_info_service')
+    @patch('waspid.app_server.config.get_sandbox_service')
+    @patch('waspid.app_server.config.get_httpx_client')
     @patch('integrations.gitlab.gitlab_v1_callback_processor.get_summary_instruction')
     @patch('integrations.gitlab.gitlab_service.SaaSGitLabService')
     async def test_successful_callback_execution_mr(
@@ -324,9 +324,9 @@ class TestGitlabV1CallbackProcessor:
         with pytest.raises(RuntimeError, match='Missing keycloak user ID for GitLab'):
             await gitlab_callback_processor._post_summary_to_gitlab('Test summary')
 
-    @patch('openhands.app_server.config.get_app_conversation_info_service')
-    @patch('openhands.app_server.config.get_sandbox_service')
-    @patch('openhands.app_server.config.get_httpx_client')
+    @patch('waspid.app_server.config.get_app_conversation_info_service')
+    @patch('waspid.app_server.config.get_sandbox_service')
+    @patch('waspid.app_server.config.get_httpx_client')
     @patch('integrations.gitlab.gitlab_v1_callback_processor.get_summary_instruction')
     @patch('integrations.gitlab.gitlab_service.SaaSGitLabService')
     async def test_exception_handling_posts_error_to_gitlab(
@@ -373,13 +373,13 @@ class TestGitlabV1CallbackProcessor:
         mock_gitlab_service.reply_to_issue.assert_called_once()
         call_args = mock_gitlab_service.reply_to_issue.call_args
         error_comment = call_args[0][3]  # 4th positional arg is the body
-        assert 'OpenHands encountered an error' in error_comment
+        assert 'Waspid encountered an error' in error_comment
         assert 'Simulated agent server error' in error_comment
         assert f'conversations/{conversation_id}' in error_comment
 
-    @patch('openhands.app_server.config.get_app_conversation_info_service')
-    @patch('openhands.app_server.config.get_sandbox_service')
-    @patch('openhands.app_server.config.get_httpx_client')
+    @patch('waspid.app_server.config.get_app_conversation_info_service')
+    @patch('waspid.app_server.config.get_sandbox_service')
+    @patch('waspid.app_server.config.get_httpx_client')
     @patch('integrations.gitlab.gitlab_v1_callback_processor.get_summary_instruction')
     @patch('integrations.gitlab.gitlab_service.SaaSGitLabService')
     @patch('integrations.gitlab.gitlab_v1_callback_processor._logger')
@@ -440,7 +440,7 @@ class TestGitlabV1CallbackProcessor:
         mock_gitlab_service.reply_to_issue.assert_called_once()
         call_args = mock_gitlab_service.reply_to_issue.call_args
         posted_comment = call_args[0][3]  # 4th positional arg is the body
-        assert 'OpenHands encountered an error' in posted_comment
+        assert 'Waspid encountered an error' in posted_comment
         assert 'LLM budget has been exceeded' in posted_comment
         assert 'please re-fill' in posted_comment
         # Should NOT contain the raw error message

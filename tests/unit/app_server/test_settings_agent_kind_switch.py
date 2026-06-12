@@ -1,6 +1,6 @@
 """Unit tests for ``Settings.update`` agent-kind switch behaviour.
 
-The discriminated ``OpenHandsAgentSettings | ACPAgentSettings`` union means a
+The discriminated ``WaspidAgentSettings | ACPAgentSettings`` union means a
 naive deep-merge of the incoming kind's fields onto the outgoing kind's dump
 produces a mongrel (e.g. ``llm`` plus ``acp_command``) that fails validation
 and 500s the settings endpoint. The fix is to start from a fresh base for
@@ -13,7 +13,7 @@ is tracked as a follow-up.
 
 from __future__ import annotations
 
-from openhands.app_server.settings.settings_models import Settings
+from waspid.app_server.settings.settings_models import Settings
 
 
 def _set_acp(
@@ -32,12 +32,12 @@ def _set_acp(
     }
 
 
-def _set_openhands(
+def _set_waspid(
     *,
     llm_model: str | None = None,
     mcp_config: dict | None = None,
 ) -> dict:
-    diff: dict = {'agent_kind': 'openhands'}
+    diff: dict = {'agent_kind': 'waspid'}
     if llm_model is not None:
         diff['llm'] = {'model': llm_model}
     if mcp_config is not None:
@@ -54,13 +54,13 @@ def test_kind_switch_does_not_raise():
     ``AgentSettingsConfig`` accepts.
     """
     s = Settings()
-    s.update(_set_openhands(llm_model='anthropic/claude-sonnet-4-5'))
+    s.update(_set_waspid(llm_model='anthropic/claude-sonnet-4-5'))
 
     s.update(_set_acp())
     assert s.agent_settings.agent_kind == 'acp'
 
-    s.update(_set_openhands())
-    assert s.agent_settings.agent_kind == 'openhands'
+    s.update(_set_waspid())
+    assert s.agent_settings.agent_kind == 'waspid'
 
 
 def test_kind_switch_resets_new_kind_to_defaults():
@@ -70,7 +70,7 @@ def test_kind_switch_resets_new_kind_to_defaults():
     new kind — preserving it across switches is the follow-up feature.
     """
     s = Settings()
-    s.update(_set_openhands(llm_model='anthropic/claude-sonnet-4-5'))
+    s.update(_set_waspid(llm_model='anthropic/claude-sonnet-4-5'))
 
     s.update(_set_acp())
 
@@ -104,8 +104,8 @@ def test_kind_switch_with_inline_field_override():
     s = Settings()
     s.update(_set_acp())
 
-    s.update(_set_openhands(llm_model='model-c'))
-    assert s.agent_settings.agent_kind == 'openhands'
+    s.update(_set_waspid(llm_model='model-c'))
+    assert s.agent_settings.agent_kind == 'waspid'
     assert s.agent_settings.llm.model == 'model-c'
 
 
@@ -114,6 +114,6 @@ def test_replace_mcp_config_in_kind_switch():
     s = Settings()
     s.update(_set_acp())
 
-    s.update(_set_openhands(mcp_config={'mcpServers': {'foo': {'command': 'foo-bin'}}}))
+    s.update(_set_waspid(mcp_config={'mcpServers': {'foo': {'command': 'foo-bin'}}}))
     assert s.agent_settings.mcp_config is not None
     assert 'foo' in s.agent_settings.mcp_config.mcpServers

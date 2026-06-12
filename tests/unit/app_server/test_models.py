@@ -3,20 +3,20 @@ from uuid import UUID, uuid4
 
 import pytest
 
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversationInfo,
     AppConversationStartRequest,
     AppConversationUpdateRequest,
 )
-from openhands.app_server.event_callback.event_callback_models import (
+from waspid.app_server.event_callback.event_callback_models import (
     EventCallback,
     EventCallbackProcessor,
 )
-from openhands.app_server.event_callback.event_callback_result_models import (
+from waspid.app_server.event_callback.event_callback_result_models import (
     EventCallbackResult,
     EventCallbackResultStatus,
 )
-from openhands.sdk import Event
+from waspid.sdk import Event
 
 
 @pytest.mark.asyncio

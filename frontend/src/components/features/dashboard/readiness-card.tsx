@@ -94,7 +94,10 @@ export function ReadinessCard({
             config.pill,
           )}
         >
-          <span aria-hidden className={cn("h-1.5 w-1.5 rounded-full", config.dot)} />
+          <span
+            aria-hidden
+            className={cn("h-1.5 w-1.5 rounded-full", config.dot)}
+          />
           {statusLabel || config.label}
         </span>
       </div>

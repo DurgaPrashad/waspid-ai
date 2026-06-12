@@ -1,4 +1,4 @@
-"""Shared Event router for OpenHands Server.
+"""Shared Event router for Waspid Server.
 
 All endpoints in this router are unauthenticated — shared conversations are
 public.  To avoid returning internal system state that the viewer does not
@@ -18,11 +18,11 @@ from server.sharing.shared_event_service import (
     SharedEventServiceInjector,
 )
 
-from openhands.agent_server.models import EventPage, EventSortOrder
-from openhands.app_server.event_callback.event_callback_models import EventKind
-from openhands.app_server.utils.environment import StorageProvider, get_storage_provider
-from openhands.sdk import Event
-from openhands.sdk.event.conversation_state import ConversationStateUpdateEvent
+from waspid.agent_server.models import EventPage, EventSortOrder
+from waspid.app_server.event_callback.event_callback_models import EventKind
+from waspid.app_server.utils.environment import StorageProvider, get_storage_provider
+from waspid.sdk import Event
+from waspid.sdk.event.conversation_state import ConversationStateUpdateEvent
 
 
 def _is_viewable(event: Event) -> bool:
@@ -34,7 +34,7 @@ def get_shared_event_service_injector() -> SharedEventServiceInjector:
     """Get the appropriate SharedEventServiceInjector based on configuration.
 
     Uses get_storage_provider() to determine the storage backend.
-    See openhands.app_server.utils.environment for supported environment variables.
+    See waspid.app_server.utils.environment for supported environment variables.
 
     Note: Shared events only support AWS and GCP storage. Filesystem storage
     falls back to GCP for shared events.

@@ -16,14 +16,14 @@ from integrations.types import PRStatus, ResolverViewInterface
 from integrations.utils import HOST
 from pydantic import SecretStr
 from server.auth.constants import GITHUB_APP_CLIENT_ID, GITHUB_APP_PRIVATE_KEY
-from storage.openhands_pr import OpenhandsPR
-from storage.openhands_pr_store import OpenhandsPRStore
+from storage.waspid_pr import OpenhandsPR
+from storage.waspid_pr_store import OpenhandsPRStore
 
-from openhands.app_server.config import get_global_config
-from openhands.app_server.conversation_paths import get_conversation_dir
-from openhands.app_server.integrations.github.github_service import GithubServiceImpl
-from openhands.app_server.integrations.service_types import ProviderType
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.config import get_global_config
+from waspid.app_server.conversation_paths import get_conversation_dir
+from waspid.app_server.integrations.github.github_service import GithubServiceImpl
+from waspid.app_server.integrations.service_types import ProviderType
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 file_store = get_global_config().file_store
 
@@ -118,15 +118,15 @@ class GitHubDataCollector:
         token_data = self.github_integration.get_access_token(installation_id)
         return token_data.token
 
-    def _check_openhands_author(self, name, login) -> bool:
+    def _check_waspid_author(self, name, login) -> bool:
         return (
-            name == 'openhands'
-            or login == 'openhands'
-            or login == 'openhands-agent'
-            or login == 'openhands-ai'
-            or login == 'openhands-staging'
-            or login == 'openhands-exp'
-            or (login and 'openhands' in login.lower())
+            name == 'waspid'
+            or login == 'waspid'
+            or login == 'waspid-agent'
+            or login == 'waspid-ai'
+            or login == 'waspid-staging'
+            or login == 'waspid-exp'
+            or (login and 'waspid' in login.lower())
         )
 
     def _get_issue_comments(
@@ -172,7 +172,7 @@ class GitHubDataCollector:
         trigger_type: TriggerType,
     ) -> None:
         """
-        Save issue data when it's labeled with openhands
+        Save issue data when it's labeled with waspid
 
             1. Save under {conversation_dir}/{conversation_id}/github_data/issue_{issue_number}.json
             2. Save issue snapshot (title, body, comments)
@@ -322,15 +322,15 @@ class GitHubDataCollector:
                 }
                 review_comments.append(review_comment_data)
 
-    def _count_openhands_activity(
+    def _count_waspid_activity(
         self, commits: list, review_comments: list, pr_comments: list
     ) -> tuple[int, int, int]:
-        """Count OpenHands commits, review comments, and general PR comments"""
-        openhands_commit_count = 0
-        openhands_review_comment_count = 0
-        openhands_general_comment_count = 0
+        """Count Waspid commits, review comments, and general PR comments"""
+        waspid_commit_count = 0
+        waspid_review_comment_count = 0
+        waspid_general_comment_count = 0
 
-        # Count commits by OpenHands (check both name and login)
+        # Count commits by Waspid (check both name and login)
         for commit in commits:
             author = commit.get('author', {})
             author_name = author.get('name', '').lower()
@@ -340,10 +340,10 @@ class GitHubDataCollector:
                 else ''
             )
 
-            if self._check_openhands_author(author_name, author_login):
-                openhands_commit_count += 1
+            if self._check_waspid_author(author_name, author_login):
+                waspid_commit_count += 1
 
-        # Count review comments by OpenHands
+        # Count review comments by Waspid
         for review_comment in review_comments:
             author_login = (
                 review_comment.get('author', '').lower()
@@ -351,22 +351,22 @@ class GitHubDataCollector:
                 else ''
             )
             author_name = ''  # Initialize to avoid reference before assignment
-            if self._check_openhands_author(author_name, author_login):
-                openhands_review_comment_count += 1
+            if self._check_waspid_author(author_name, author_login):
+                waspid_review_comment_count += 1
 
-        # Count general PR comments by OpenHands
+        # Count general PR comments by Waspid
         for pr_comment in pr_comments:
             author_login = (
                 pr_comment.get('author', '').lower() if pr_comment.get('author') else ''
             )
             author_name = ''  # Initialize to avoid reference before assignment
-            if self._check_openhands_author(author_name, author_login):
-                openhands_general_comment_count += 1
+            if self._check_waspid_author(author_name, author_login):
+                waspid_general_comment_count += 1
 
         return (
-            openhands_commit_count,
-            openhands_review_comment_count,
-            openhands_general_comment_count,
+            waspid_commit_count,
+            waspid_review_comment_count,
+            waspid_general_comment_count,
         )
 
     def _build_final_data_structure(
@@ -376,9 +376,9 @@ class GitHubDataCollector:
         commits: list,
         pr_comments: list,
         review_comments: list,
-        openhands_commit_count: int,
-        openhands_review_comment_count: int,
-        openhands_general_comment_count: int = 0,
+        waspid_commit_count: int,
+        waspid_review_comment_count: int,
+        waspid_general_comment_count: int = 0,
     ) -> dict:
         """Build the final data structure for JSON storage"""
 
@@ -406,15 +406,15 @@ class GitHubDataCollector:
                 'state': pr_data.get('state'),
                 'merge_commit_sha': merge_commit_sha,
             },
-            'openhands_stats': {
-                'num_commits': openhands_commit_count,
-                'num_review_comments': openhands_review_comment_count,
-                'num_general_comments': openhands_general_comment_count,
-                'helped_author': openhands_commit_count > 0,
+            'waspid_stats': {
+                'num_commits': waspid_commit_count,
+                'num_review_comments': waspid_review_comment_count,
+                'num_general_comments': waspid_general_comment_count,
+                'helped_author': waspid_commit_count > 0,
             },
         }
 
-    async def save_full_pr(self, openhands_pr: OpenhandsPR) -> None:
+    async def save_full_pr(self, waspid_pr: OpenhandsPR) -> None:
         """
         Save PR information including metadata and commit details using GraphQL
 
@@ -423,27 +423,27 @@ class GitHubDataCollector:
         - PR metadata (number, title, body, author, comments)
         - Commit information (sha, authors, message, stats)
         - Merge status
-        - Num openhands commits
-        - Num openhands review comments
+        - Num waspid commits
+        - Num waspid review comments
         """
-        pr_number = openhands_pr.pr_number
-        if openhands_pr.installation_id is None:
+        pr_number = waspid_pr.pr_number
+        if waspid_pr.installation_id is None:
             logger.warning(
-                f'Skipping PR {openhands_pr.repo_name}#{pr_number}: missing installation_id'
+                f'Skipping PR {waspid_pr.repo_name}#{pr_number}: missing installation_id'
             )
             return
-        installation_id = int(openhands_pr.installation_id)
-        repo_id = openhands_pr.repo_id
+        installation_id = int(waspid_pr.installation_id)
+        repo_id = waspid_pr.repo_id
 
         # Get installation token and create Github client
-        # This will fail if the user decides to revoke OpenHands' access to their repo
+        # This will fail if the user decides to revoke Waspid' access to their repo
         # In this case, we will simply return when the exception occurs
         # This will not lead to infinite loops when processing PRs as we log number of attempts and cap max attempts independently from this
         try:
             installation_token = self._get_installation_access_token(installation_id)
         except Exception as e:
             logger.warning(
-                f'Failed to generate token for {openhands_pr.repo_name}: {e}'
+                f'Failed to generate token for {waspid_pr.repo_name}: {e}'
             )
             return
 
@@ -539,15 +539,15 @@ class GitHubDataCollector:
         if not pr_data or not repo_data:
             return
 
-        # Count OpenHands activity using modular method
+        # Count Waspid activity using modular method
         (
-            openhands_commit_count,
-            openhands_review_comment_count,
-            openhands_general_comment_count,
-        ) = self._count_openhands_activity(commits, review_comments, pr_comments)
+            waspid_commit_count,
+            waspid_review_comment_count,
+            waspid_general_comment_count,
+        ) = self._count_waspid_activity(commits, review_comments, pr_comments)
 
         logger.info(
-            f'[Github]: PR #{pr_number} - OpenHands commits: {openhands_commit_count}, review comments: {openhands_review_comment_count}, general comments: {openhands_general_comment_count}'
+            f'[Github]: PR #{pr_number} - Waspid commits: {waspid_commit_count}, review comments: {waspid_review_comment_count}, general comments: {waspid_general_comment_count}'
         )
         logger.info(
             f'[Github]: PR #{pr_number} - Total collected: {len(commits)} commits, {len(pr_comments)} PR comments, {len(review_comments)} review comments'
@@ -560,29 +560,29 @@ class GitHubDataCollector:
             commits,
             pr_comments,
             review_comments,
-            openhands_commit_count,
-            openhands_review_comment_count,
-            openhands_general_comment_count,
+            waspid_commit_count,
+            waspid_review_comment_count,
+            waspid_general_comment_count,
         )
 
-        # Update the OpenhandsPR object with OpenHands statistics
+        # Update the OpenhandsPR object with Waspid statistics
         store = OpenhandsPRStore.get_instance()
-        openhands_helped_author = openhands_commit_count > 0
+        waspid_helped_author = waspid_commit_count > 0
 
-        # Update the PR with OpenHands statistics
-        update_success = await store.update_pr_openhands_stats(
+        # Update the PR with Waspid statistics
+        update_success = await store.update_pr_waspid_stats(
             repo_id=repo_id,
             pr_number=pr_number,
-            original_updated_at=openhands_pr.updated_at,
-            openhands_helped_author=openhands_helped_author,
-            num_openhands_commits=openhands_commit_count,
-            num_openhands_review_comments=openhands_review_comment_count,
-            num_openhands_general_comments=openhands_general_comment_count,
+            original_updated_at=waspid_pr.updated_at,
+            waspid_helped_author=waspid_helped_author,
+            num_waspid_commits=waspid_commit_count,
+            num_waspid_review_comments=waspid_review_comment_count,
+            num_waspid_general_comments=waspid_general_comment_count,
         )
 
         if not update_success:
             logger.warning(
-                f'[Github]: Failed to update OpenHands stats for PR #{pr_number} in repo {repo_id} - PR may have been modified concurrently'
+                f'[Github]: Failed to update Waspid stats for PR #{pr_number} in repo {repo_id} - PR may have been modified concurrently'
             )
 
         # Save to file
@@ -594,7 +594,7 @@ class GitHubDataCollector:
         )
         self._save_data(file_name, data)
         logger.info(
-            f'[Github]: Saved full PR #{pr_number} for repo {repo_id} with OpenHands stats: commits={openhands_commit_count}, reviews={openhands_review_comment_count}, general_comments={openhands_general_comment_count}, helped={openhands_helped_author}'
+            f'[Github]: Saved full PR #{pr_number} for repo {repo_id} with Waspid stats: commits={waspid_commit_count}, reviews={waspid_review_comment_count}, general_comments={waspid_general_comment_count}, helped={waspid_helped_author}'
         )
 
     def _check_for_conversation_url(self, body):
@@ -666,9 +666,9 @@ class GitHubDataCollector:
             created_at=created_at,
             closed_at=closed_at,
             # These properties will be enriched later
-            openhands_helped_author=None,
-            num_openhands_commits=None,
-            num_openhands_review_comments=None,
+            waspid_helped_author=None,
+            num_waspid_commits=None,
+            num_waspid_review_comments=None,
             num_general_comments=num_general_comments,
         )
 

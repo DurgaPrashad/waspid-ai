@@ -23,19 +23,19 @@ from storage.jira_dc_integration_store import JiraDcIntegrationStore
 from storage.jira_dc_user import JiraDcUser
 from storage.jira_dc_workspace import JiraDcWorkspace
 
-from openhands.agent_server.models import SendMessageRequest
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.agent_server.models import SendMessageRequest
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversationStartRequest,
     AppConversationStartTaskStatus,
     ConversationTrigger,
 )
-from openhands.app_server.config import get_app_conversation_service
-from openhands.app_server.integrations.provider import ProviderHandler, ProviderType
-from openhands.app_server.services.injector import InjectorState
-from openhands.app_server.user.specifiy_user_context import USER_CONTEXT_ATTR
-from openhands.app_server.user_auth.user_auth import UserAuth
-from openhands.app_server.utils.logger import openhands_logger as logger
-from openhands.sdk import TextContent
+from waspid.app_server.config import get_app_conversation_service
+from waspid.app_server.integrations.provider import ProviderHandler, ProviderType
+from waspid.app_server.services.injector import InjectorState
+from waspid.app_server.user.specifiy_user_context import USER_CONTEXT_ATTR
+from waspid.app_server.user_auth.user_auth import UserAuth
+from waspid.app_server.utils.logger import waspid_logger as logger
+from waspid.sdk import TextContent
 
 integration_store = JiraDcIntegrationStore.get_instance()
 
@@ -248,18 +248,18 @@ class JiraDcExistingConversationView(JiraDcViewInterface):
         """Send a message to an existing V1 conversation using the agent server API."""
         import httpx
 
-        from openhands.app_server.config import (
+        from waspid.app_server.config import (
             get_app_conversation_info_service,
             get_httpx_client,
             get_sandbox_service,
         )
-        from openhands.app_server.event_callback.util import (
+        from waspid.app_server.event_callback.util import (
             ensure_conversation_found,
             get_agent_server_url_from_sandbox,
         )
-        from openhands.app_server.sandbox.sandbox_models import SandboxStatus
-        from openhands.app_server.services.injector import InjectorState
-        from openhands.app_server.user.specifiy_user_context import (
+        from waspid.app_server.sandbox.sandbox_models import SandboxStatus
+        from waspid.app_server.services.injector import InjectorState
+        from waspid.app_server.user.specifiy_user_context import (
             ADMIN,
             USER_CONTEXT_ATTR,
         )

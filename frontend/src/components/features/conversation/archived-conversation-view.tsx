@@ -5,7 +5,7 @@ import { Messages as V1Messages } from "#/components/v1/chat";
 import { shouldRenderEvent } from "#/components/v1/chat/event-content-helpers/should-render-event";
 import { LoadingSpinner } from "#/components/shared/loading-spinner";
 import { handleEventForUI } from "#/utils/handle-event-for-ui";
-import { OpenHandsEvent } from "#/types/v1/core";
+import { WaspidEvent } from "#/types/v1/core";
 import { useFilteredEvents } from "#/hooks/use-filtered-events";
 import { useConversationWebSocket } from "#/contexts/conversation-websocket-context";
 import { ArchivedBanner } from "#/components/features/chat/archived-banner";
@@ -27,7 +27,7 @@ export function ArchivedConversationView() {
     () =>
       v1FullEvents
         .reduce<
-          OpenHandsEvent[]
+          WaspidEvent[]
         >((uiEvents, event) => handleEventForUI(event, uiEvents), [])
         .filter(shouldRenderEvent),
     [v1FullEvents],

@@ -16,7 +16,7 @@ import pytest
 @pytest.fixture(autouse=True)
 def reset_global_config():
     """Reset the global config before and after each test."""
-    import openhands.app_server.config as config_module
+    import waspid.app_server.config as config_module
 
     original_config = config_module._global_config
     config_module._global_config = None
@@ -39,8 +39,8 @@ class TestConfigFromEnvEventServiceSelection:
 
     def test_defaults_to_filesystem_when_no_env_set(self):
         """Test that FilesystemEventServiceInjector is used when no FILE_STORE is set."""
-        from openhands.app_server.config import config_from_env
-        from openhands.app_server.event.filesystem_event_service import (
+        from waspid.app_server.config import config_from_env
+        from waspid.app_server.event.filesystem_event_service import (
             FilesystemEventServiceInjector,
         )
 
@@ -51,8 +51,8 @@ class TestConfigFromEnvEventServiceSelection:
 
     def test_uses_google_cloud_when_file_store_google_cloud(self):
         """Test that GoogleCloudEventServiceInjector is used when FILE_STORE=google_cloud."""
-        from openhands.app_server.config import config_from_env
-        from openhands.app_server.event.google_cloud_event_service import (
+        from waspid.app_server.config import config_from_env
+        from waspid.app_server.event.google_cloud_event_service import (
             GoogleCloudEventServiceInjector,
         )
 
@@ -68,8 +68,8 @@ class TestConfigFromEnvEventServiceSelection:
 
     def test_uses_gcp_when_provider_gcp(self):
         """Test that GoogleCloudEventServiceInjector is used when SHARED_EVENT_STORAGE_PROVIDER=gcp."""
-        from openhands.app_server.config import config_from_env
-        from openhands.app_server.event.google_cloud_event_service import (
+        from waspid.app_server.config import config_from_env
+        from waspid.app_server.event.google_cloud_event_service import (
             GoogleCloudEventServiceInjector,
         )
 
@@ -83,8 +83,8 @@ class TestConfigFromEnvEventServiceSelection:
 
     def test_uses_aws_when_provider_aws(self):
         """Test that AwsEventServiceInjector is used when SHARED_EVENT_STORAGE_PROVIDER=aws."""
-        from openhands.app_server.config import config_from_env
-        from openhands.app_server.event.aws_event_service import (
+        from waspid.app_server.config import config_from_env
+        from waspid.app_server.event.aws_event_service import (
             AwsEventServiceInjector,
         )
 
@@ -100,7 +100,7 @@ class TestConfigFromEnvEventServiceSelection:
 
     def test_aws_requires_file_store_path(self):
         """Test that AWS provider requires FILE_STORE_PATH to be set."""
-        from openhands.app_server.config import config_from_env
+        from waspid.app_server.config import config_from_env
 
         env = _get_clean_env()
         env['SHARED_EVENT_STORAGE_PROVIDER'] = 'aws'
@@ -114,8 +114,8 @@ class TestConfigFromEnvEventServiceSelection:
 
     def test_provider_takes_precedence_over_file_store(self):
         """Test that SHARED_EVENT_STORAGE_PROVIDER takes precedence over FILE_STORE."""
-        from openhands.app_server.config import config_from_env
-        from openhands.app_server.event.aws_event_service import (
+        from waspid.app_server.config import config_from_env
+        from waspid.app_server.event.aws_event_service import (
             AwsEventServiceInjector,
         )
 
@@ -132,8 +132,8 @@ class TestConfigFromEnvEventServiceSelection:
 
     def test_provider_gcp_takes_precedence_over_file_store_s3(self):
         """Test that SHARED_EVENT_STORAGE_PROVIDER=gcp takes precedence over FILE_STORE=s3."""
-        from openhands.app_server.config import config_from_env
-        from openhands.app_server.event.google_cloud_event_service import (
+        from waspid.app_server.config import config_from_env
+        from waspid.app_server.event.google_cloud_event_service import (
             GoogleCloudEventServiceInjector,
         )
 
@@ -150,8 +150,8 @@ class TestConfigFromEnvEventServiceSelection:
 
     def test_provider_is_case_insensitive(self):
         """Test that SHARED_EVENT_STORAGE_PROVIDER is case insensitive."""
-        from openhands.app_server.config import config_from_env
-        from openhands.app_server.event.aws_event_service import (
+        from waspid.app_server.config import config_from_env
+        from waspid.app_server.event.aws_event_service import (
             AwsEventServiceInjector,
         )
 
@@ -165,8 +165,8 @@ class TestConfigFromEnvEventServiceSelection:
 
     def test_provider_gcp_is_case_insensitive(self):
         """Test that SHARED_EVENT_STORAGE_PROVIDER=GCP is case insensitive."""
-        from openhands.app_server.config import config_from_env
-        from openhands.app_server.event.google_cloud_event_service import (
+        from waspid.app_server.config import config_from_env
+        from waspid.app_server.event.google_cloud_event_service import (
             GoogleCloudEventServiceInjector,
         )
 

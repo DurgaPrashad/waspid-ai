@@ -4,7 +4,7 @@ import {
   ObservationEvent,
   MessageEvent,
   SecurityRisk,
-  OpenHandsEvent,
+  WaspidEvent,
 } from "#/types/v1/core";
 import { ACPToolCallEvent } from "#/types/v1/core/events/acp-tool-call-event";
 import { handleEventForUI } from "#/utils/handle-event-for-ui";
@@ -101,7 +101,7 @@ describe("handleEventForUI", () => {
   });
 
   it("should handle empty uiEvents array", () => {
-    const initialUiEvents: OpenHandsEvent[] = [];
+    const initialUiEvents: WaspidEvent[] = [];
     const result = handleEventForUI(mockObservationEvent, initialUiEvents);
 
     expect(result).toEqual([mockObservationEvent]);

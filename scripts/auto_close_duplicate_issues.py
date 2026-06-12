@@ -15,11 +15,11 @@ from typing import Any
 GITHUB_API_BASE_URL = 'https://api.github.com'
 MAX_PAGES = 100
 DUPLICATE_CANDIDATE_LABEL = 'duplicate-candidate'
-DUPLICATE_VETO_MARKER = '<!-- openhands-duplicate-veto -->'
+DUPLICATE_VETO_MARKER = '<!-- waspid-duplicate-veto -->'
 AUTOMATION_BOT_LOGINS = {'all-hands-bot'}
 REPOSITORY_PATTERN = re.compile(r'^[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+$')
 DUPLICATE_MARKER_RE = re.compile(
-    r'<!-- openhands-duplicate-check canonical=(?P<canonical>\d+) '
+    r'<!-- waspid-duplicate-check canonical=(?P<canonical>\d+) '
     r'auto-close=(?P<auto_close>true|false) -->'
 )
 
@@ -44,7 +44,7 @@ def github_headers() -> dict[str, str]:
     return {
         'Authorization': f'Bearer {token}',
         'Accept': 'application/vnd.github+json',
-        'User-Agent': 'openhands-duplicate-auto-close',
+        'User-Agent': 'waspid-duplicate-auto-close',
         'X-GitHub-Api-Version': '2022-11-28',
     }
 
@@ -283,7 +283,7 @@ def post_veto_note(repository: str, issue_number: int, *, dry_run: bool) -> bool
                 f'{DUPLICATE_CANDIDATE_LABEL} label.\n\n'
                 f'{DUPLICATE_VETO_MARKER}\n'
                 '_This comment was created by an AI assistant '
-                '(OpenHands) on behalf of the repository maintainer._'
+                '(Waspid) on behalf of the repository maintainer._'
             )
         },
     )
@@ -315,7 +315,7 @@ def close_issue_as_duplicate(
                 'If this is incorrect, please add a comment and it can be '
                 'reopened.\n\n'
                 '_This comment was created by an AI assistant '
-                '(OpenHands) on behalf of the repository maintainer._'
+                '(Waspid) on behalf of the repository maintainer._'
             )
         },
     )

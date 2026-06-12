@@ -1,12 +1,12 @@
 # Contributing
 
-Thanks for your interest in contributing to Waspid! Waspid is an enterprise AI workforce operating system, built on top of the upstream [OpenHands](https://github.com/OpenHands/OpenHands) open-source agent SDK.
+Thanks for your interest in contributing to Waspid! Waspid is an enterprise AI workforce operating system, built on top of an upstream MIT-licensed open-source agent SDK (see [CREDITS.md](CREDITS.md)).
 
 ## Our Vision
 
 Waspid is built around the belief that AI agents will fundamentally change how organizations operate — from support and sales to engineering and operations — and that running AI as infrastructure (rather than as a chatbot) is what makes that transformation real.
 
-We believe the foundation should be open. That is why Waspid is built on, and contributes back to, the OpenHands agent SDK ecosystem.
+We believe the foundation should be open. That is why Waspid is built on, and contributes back to, the open-source agent SDK ecosystem it depends on (see [CREDITS.md](CREDITS.md)).
 
 ## Getting Started
 
@@ -15,7 +15,7 @@ We believe the foundation should be open. That is why Waspid is built on, and co
 - **Use Waspid** and report issues you encounter
 - **Give feedback** through the UI feedback controls in the dashboard
 - **Improve docs** in this repository
-- **Contribute upstream** to the OpenHands SDK at [github.com/OpenHands/OpenHands](https://github.com/OpenHands/OpenHands) when the change belongs in the agent runtime itself
+- **Contribute upstream** to the agent SDK (links in [CREDITS.md](CREDITS.md)) when the change belongs in the agent runtime itself
 
 ### Set Up Your Development Environment
 
@@ -29,13 +29,13 @@ Full details in our [Development Guide](./Development.md).
 ### Find Your First Issue
 
 - Browse the issue tracker for this Waspid repository
-- For changes to the agent runtime itself, the upstream OpenHands SDK is the right home — see [github.com/OpenHands/OpenHands](https://github.com/OpenHands/OpenHands)
+- For changes to the agent runtime itself, the upstream agent SDK is the right home — see [CREDITS.md](CREDITS.md)
 
 ## Understanding the Codebase
 
 - **[Frontend](./frontend/README.md)** - React application
-- **[App Server (V1)](./openhands/app_server/README.md)** - Current FastAPI application server and REST API modules
-- **[Evaluation](https://github.com/OpenHands/benchmarks)** - Testing and benchmarks
+- **[App Server (V1)](./waspid/app_server/README.md)** - Current FastAPI application server and REST API modules
+- **Evaluation** - Testing and benchmarks live in the upstream SDK ecosystem (see [CREDITS.md](CREDITS.md))
 
 ## What Can You Build?
 
@@ -53,7 +53,7 @@ For bigger changes, please open a discussion or design issue first so we can ali
 - Agent evaluation
 - Multi-agent systems
 
-For changes to the core agent loop, contribute upstream to the [OpenHands SDK](https://github.com/OpenHands/OpenHands). The agent runtime is consumed here as a pinned package.
+For changes to the core agent loop, contribute upstream to the agent SDK (see [CREDITS.md](CREDITS.md)). The agent runtime is consumed here as a pinned package.
 
 ### Backend & Infrastructure
 - Python development
@@ -92,7 +92,7 @@ Discuss major changes in a GitHub issue before opening a PR.
 You'll need to fork the Waspid repository to send a Pull Request. You can learn more
 about how to fork a GitHub repo and open a PR with your changes in [this article](https://medium.com/swlh/forks-and-pull-requests-how-to-contribute-to-github-repos-8843fac34ce8).
 
-If your change belongs in the agent runtime rather than the Waspid control plane, send it upstream to the [OpenHands SDK](https://github.com/OpenHands/OpenHands) instead.
+If your change belongs in the agent runtime rather than the Waspid control plane, send it upstream to the agent SDK instead (see [CREDITS.md](CREDITS.md)).
 
 ### Pull Request Title Format
 
@@ -136,4 +136,4 @@ Note that just making many PRs does not immediately imply that you will become a
 ## Need Help?
 
 - **GitHub Issues**: open an issue on the Waspid repository
-- **Upstream agent runtime**: [github.com/OpenHands/OpenHands](https://github.com/OpenHands/OpenHands) for SDK-level changes
+- **Upstream agent runtime**: see [CREDITS.md](CREDITS.md) for SDK-level changes

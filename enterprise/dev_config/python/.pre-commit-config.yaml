@@ -46,14 +46,14 @@ repos:
           - types-toml
           - types-redis
           - lxml
-          # OpenHands package in repo root
+          # Waspid package in repo root
           - ./
           - stripe==11.5.0
           - pygithub==2.6.1
           - sqlalchemy>=2.0
         # Use -p (package) to avoid dual module name conflict when using MYPYPATH
         # MYPYPATH=enterprise allows resolving bare imports like "from integrations.xxx"
-        # Note: tests package excluded to avoid conflict with core openhands tests
+        # Note: tests package excluded to avoid conflict with core waspid tests
         entry: bash -c 'MYPYPATH=enterprise mypy --config-file enterprise/dev_config/python/mypy.ini -p integrations -p server -p storage -p sync'
         always_run: true
         pass_filenames: false

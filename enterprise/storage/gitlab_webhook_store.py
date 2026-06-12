@@ -8,7 +8,7 @@ from sqlalchemy.dialects.postgresql import insert
 from storage.database import a_session_maker
 from storage.gitlab_webhook import GitlabWebhook
 
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 @dataclass

@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y \
 	&& apt-get autoremove -y
 
 ###
-FROM dind AS openhands
+FROM dind AS waspid
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -89,7 +89,7 @@ chmod a+x /version.sh
 EOF
 
 ###
-FROM openhands AS dev
+FROM waspid AS dev
 
 RUN apt-get update && apt-get install -y \
 	dnsutils \

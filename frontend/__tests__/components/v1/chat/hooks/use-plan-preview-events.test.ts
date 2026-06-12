@@ -5,7 +5,7 @@ import {
   shouldShowPlanPreview,
 } from "#/components/v1/chat/hooks/use-plan-preview-events";
 import {
-  OpenHandsEvent,
+  WaspidEvent,
   MessageEvent,
   ObservationEvent,
   PlanningFileEditorObservation,
@@ -85,7 +85,7 @@ describe("usePlanPreviewEvents", () => {
   });
 
   it("should return empty set when no PlanningFileEditorObservation events exist", () => {
-    const events: OpenHandsEvent[] = [
+    const events: WaspidEvent[] = [
       createUserMessageEvent("user-1"),
       createOtherObservationEvent("obs-1"),
     ];
@@ -96,7 +96,7 @@ describe("usePlanPreviewEvents", () => {
   });
 
   it("should return event ID for single PlanningFileEditorObservation in one phase", () => {
-    const events: OpenHandsEvent[] = [
+    const events: WaspidEvent[] = [
       createUserMessageEvent("user-1"),
       createPlanningObservationEvent("plan-obs-1"),
     ];
@@ -108,7 +108,7 @@ describe("usePlanPreviewEvents", () => {
   });
 
   it("should return only the last PlanningFileEditorObservation when multiple exist in one phase", () => {
-    const events: OpenHandsEvent[] = [
+    const events: WaspidEvent[] = [
       createUserMessageEvent("user-1"),
       createPlanningObservationEvent("plan-obs-1"),
       createPlanningObservationEvent("plan-obs-2"),
@@ -126,7 +126,7 @@ describe("usePlanPreviewEvents", () => {
   });
 
   it("should return one event ID per phase when multiple phases exist", () => {
-    const events: OpenHandsEvent[] = [
+    const events: WaspidEvent[] = [
       createUserMessageEvent("user-1"),
       createPlanningObservationEvent("plan-obs-1"),
       createPlanningObservationEvent("plan-obs-2"),
@@ -146,7 +146,7 @@ describe("usePlanPreviewEvents", () => {
   });
 
   it("should handle phase with no PlanningFileEditorObservation", () => {
-    const events: OpenHandsEvent[] = [
+    const events: WaspidEvent[] = [
       createUserMessageEvent("user-1"),
       createOtherObservationEvent("obs-1"),
       createUserMessageEvent("user-2"),
@@ -161,7 +161,7 @@ describe("usePlanPreviewEvents", () => {
   });
 
   it("should handle events starting with non-user message", () => {
-    const events: OpenHandsEvent[] = [
+    const events: WaspidEvent[] = [
       createOtherObservationEvent("obs-1"),
       createUserMessageEvent("user-1"),
       createPlanningObservationEvent("plan-obs-1"),
@@ -175,7 +175,7 @@ describe("usePlanPreviewEvents", () => {
   });
 
   it("should exclude PlanningFileEditorObservation for non-Plan.md paths", () => {
-    const events: OpenHandsEvent[] = [
+    const events: WaspidEvent[] = [
       createUserMessageEvent("user-1"),
       createPlanningObservationEvent("plan-obs-1", "action-1", "settings.py"),
       createPlanningObservationEvent("plan-obs-2", "action-2", "use-add-mcp.ts"),
@@ -187,7 +187,7 @@ describe("usePlanPreviewEvents", () => {
   });
 
   it("should include only Plan.md observations when mixed with other file edits", () => {
-    const events: OpenHandsEvent[] = [
+    const events: WaspidEvent[] = [
       createUserMessageEvent("user-1"),
       createPlanningObservationEvent("plan-obs-1", "action-1", "settings.py"),
       createPlanningObservationEvent("plan-obs-2", "action-2", "/workspace/PLAN.md"),

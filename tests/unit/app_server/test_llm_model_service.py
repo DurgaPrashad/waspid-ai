@@ -4,15 +4,15 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from openhands.app_server.config_api.config_models import (
+from waspid.app_server.config_api.config_models import (
     LLMModelPage,
     ProviderPage,
 )
-from openhands.app_server.config_api.default_llm_model_service import (
+from waspid.app_server.config_api.default_llm_model_service import (
     DefaultLLMModelService,
     DefaultLLMModelServiceInjector,
 )
-from openhands.app_server.config_api.llm_model_service import LLMModelService
+from waspid.app_server.config_api.llm_model_service import LLMModelService
 
 
 class TestDefaultLLMModelServiceSearchModels:
@@ -27,12 +27,12 @@ class TestDefaultLLMModelServiceSearchModels:
         assert len(result.items) > 0
 
     @pytest.mark.asyncio
-    async def test_includes_openhands_models(self):
+    async def test_includes_waspid_models(self):
         service = DefaultLLMModelService()
         result = await service.search_llm_models(limit=10000)
 
         providers = {m.provider for m in result.items}
-        assert 'openhands' in providers
+        assert 'waspid' in providers
 
     @pytest.mark.asyncio
     async def test_includes_clarifai_models(self):

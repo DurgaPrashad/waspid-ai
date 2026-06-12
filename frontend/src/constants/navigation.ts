@@ -2,6 +2,7 @@ import {
   Activity,
   Bot,
   Building2,
+  Factory,
   LayoutDashboard,
   Plug,
   Rocket,
@@ -51,8 +52,8 @@ export const PRIMARY_NAV: NavGroup[] = [
     items: [
       {
         id: "dashboard",
-        label: "Operations Center",
-        description: "Workforce overview, readiness, and recent operations",
+        label: "Command Center",
+        description: "Build workforces, platform readiness, recent operations",
         icon: LayoutDashboard,
         status: "active",
         to: "/",
@@ -66,9 +67,19 @@ export const PRIMARY_NAV: NavGroup[] = [
         to: "/agents",
       },
       {
+        id: "workforce-builder",
+        label: "Workforce Builder",
+        description:
+          "Describe an objective; the Architect designs the AI workforce",
+        icon: Factory,
+        status: "active",
+        to: "/workforce",
+      },
+      {
         id: "workflows",
         label: "Workflows",
-        description: "Orchestrate multi-agent automations and long-running operations",
+        description:
+          "Orchestrate multi-agent automations and long-running operations",
         icon: Workflow,
         status: "active",
         to: "/workflows",

@@ -1,5 +1,5 @@
-import { OpenHandsObservation } from "./types/core/observations";
-import { OpenHandsAction } from "./types/core/actions";
+import { WaspidObservation } from "./types/core/observations";
+import { WaspidAction } from "./types/core/actions";
 
 export type Message = {
   sender: "user" | "assistant";
@@ -11,6 +11,6 @@ export type Message = {
   pending?: boolean;
   translationID?: string;
   eventID?: number;
-  observation?: { payload: OpenHandsObservation };
-  action?: { payload: OpenHandsAction };
+  observation?: { payload: WaspidObservation };
+  action?: { payload: WaspidAction };
 };

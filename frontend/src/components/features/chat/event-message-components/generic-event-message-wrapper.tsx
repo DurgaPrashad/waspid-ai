@@ -1,7 +1,7 @@
 import React from "react";
-import { OpenHandsAction } from "#/types/core/actions";
-import { OpenHandsObservation } from "#/types/core/observations";
-import { isOpenHandsAction, isOpenHandsObservation } from "#/types/core/guards";
+import { WaspidAction } from "#/types/core/actions";
+import { WaspidObservation } from "#/types/core/observations";
+import { isWaspidAction, isWaspidObservation } from "#/types/core/guards";
 import { ChatMessage } from "../chat-message";
 import { GenericEventMessage } from "../generic-event-message";
 import { ConfirmationButtons } from "#/components/shared/buttons/confirmation-buttons";
@@ -13,7 +13,7 @@ const hasThoughtProperty = (
 ): obj is { thought: string } => "thought" in obj && !!obj.thought;
 
 interface GenericEventMessageWrapperProps {
-  event: OpenHandsAction | OpenHandsObservation;
+  event: WaspidAction | WaspidObservation;
   shouldShowConfirmationButtons: boolean;
 }
 
@@ -23,7 +23,7 @@ export function GenericEventMessageWrapper({
 }: GenericEventMessageWrapperProps) {
   return (
     <div>
-      {isOpenHandsAction(event) &&
+      {isWaspidAction(event) &&
         hasThoughtProperty(event.args) &&
         event.action !== "think" && (
           <ChatMessage type="agent" message={event.args.thought} />
@@ -33,7 +33,7 @@ export function GenericEventMessageWrapper({
         title={getEventContent(event).title}
         details={getEventContent(event).details}
         success={
-          isOpenHandsObservation(event)
+          isWaspidObservation(event)
             ? getObservationResult(event)
             : undefined
         }

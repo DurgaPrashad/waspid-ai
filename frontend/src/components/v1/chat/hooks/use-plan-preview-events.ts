@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { OpenHandsEvent } from "#/types/v1/core";
+import { WaspidEvent } from "#/types/v1/core";
 import {
   isUserMessageEvent,
   isPlanningFileEditorObservationEvent,
@@ -13,9 +13,9 @@ import {
  * @param events - The full list of events
  * @returns Array of phases, where each phase is an array of events
  */
-function groupEventsByPhase(events: OpenHandsEvent[]): OpenHandsEvent[][] {
-  const phases: OpenHandsEvent[][] = [];
-  let currentPhase: OpenHandsEvent[] = [];
+function groupEventsByPhase(events: WaspidEvent[]): WaspidEvent[][] {
+  const phases: WaspidEvent[][] = [];
+  let currentPhase: WaspidEvent[] = [];
 
   for (const event of events) {
     if (isUserMessageEvent(event)) {
@@ -48,7 +48,7 @@ const isPlanFilePath = (path: string | null): boolean =>
  * @returns The event ID of the last Plan.md observation, or null
  */
 function findLastPlanningObservationInPhase(
-  phase: OpenHandsEvent[],
+  phase: WaspidEvent[],
 ): string | null {
   for (let i = phase.length - 1; i >= 0; i -= 1) {
     const event = phase[i];
@@ -84,7 +84,7 @@ export interface PlanPreviewEventInfo {
  * @param allEvents - Full list of v1 events (for phase detection)
  * @returns Set of event IDs that should render PlanPreview
  */
-export function usePlanPreviewEvents(allEvents: OpenHandsEvent[]): Set<string> {
+export function usePlanPreviewEvents(allEvents: WaspidEvent[]): Set<string> {
   return useMemo(() => {
     const planPreviewEventIds = new Set<string>();
 

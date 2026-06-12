@@ -26,10 +26,10 @@ class TestGetSessionExpiredMessage:
         assert 'login again' in result
 
     def test_message_with_username_contains_host_url(self):
-        """Test that the message contains the OpenHands Cloud URL."""
+        """Test that the message contains the Waspid Cloud URL."""
         result = get_session_expired_message('testuser')
         assert HOST_URL in result
-        assert 'OpenHands Cloud' in result
+        assert 'Waspid Cloud' in result
 
     def test_different_usernames(self):
         """Test that different usernames produce different messages."""
@@ -51,10 +51,10 @@ class TestGetSessionExpiredMessage:
         assert 'login again' in result
 
     def test_message_without_username_contains_host_url(self):
-        """Test that the message without username contains the OpenHands Cloud URL."""
+        """Test that the message without username contains the Waspid Cloud URL."""
         result = get_session_expired_message()
         assert HOST_URL in result
-        assert 'OpenHands Cloud' in result
+        assert 'Waspid Cloud' in result
 
     def test_message_without_username_does_not_contain_at_prefix(self):
         """Test that the message without username does not contain @ prefix."""
@@ -72,8 +72,8 @@ class TestGetSessionExpiredMessage:
 class TestGetUserNotFoundMessage:
     """Test cases for get_user_not_found_message function.
 
-    This function is used to notify users when they try to use OpenHands features
-    but haven't created an OpenHands account yet (no Keycloak account exists).
+    This function is used to notify users when they try to use Waspid features
+    but haven't created a Waspid account yet (no Keycloak account exists).
     """
 
     def test_message_with_username_contains_at_prefix(self):
@@ -84,7 +84,7 @@ class TestGetUserNotFoundMessage:
     def test_message_with_username_contains_sign_up_text(self):
         """Test that the message contains sign up text."""
         result = get_user_not_found_message('testuser')
-        assert "haven't created an OpenHands account" in result
+        assert "haven't created a Waspid account" in result
 
     def test_message_with_username_contains_sign_up_instruction(self):
         """Test that the message contains sign up instruction."""
@@ -92,10 +92,10 @@ class TestGetUserNotFoundMessage:
         assert 'sign up' in result.lower()
 
     def test_message_with_username_contains_host_url(self):
-        """Test that the message contains the OpenHands Cloud URL."""
+        """Test that the message contains the Waspid Cloud URL."""
         result = get_user_not_found_message('testuser')
         assert HOST_URL in result
-        assert 'OpenHands Cloud' in result
+        assert 'Waspid Cloud' in result
 
     def test_different_usernames(self):
         """Test that different usernames produce different messages."""
@@ -109,7 +109,7 @@ class TestGetUserNotFoundMessage:
     def test_message_without_username_contains_sign_up_text(self):
         """Test that the message without username contains sign up text."""
         result = get_user_not_found_message()
-        assert "haven't created an OpenHands account" in result
+        assert "haven't created a Waspid account" in result
 
     def test_message_without_username_contains_sign_up_instruction(self):
         """Test that the message without username contains sign up instruction."""
@@ -117,10 +117,10 @@ class TestGetUserNotFoundMessage:
         assert 'sign up' in result.lower()
 
     def test_message_without_username_contains_host_url(self):
-        """Test that the message without username contains the OpenHands Cloud URL."""
+        """Test that the message without username contains the Waspid Cloud URL."""
         result = get_user_not_found_message()
         assert HOST_URL in result
-        assert 'OpenHands Cloud' in result
+        assert 'Waspid Cloud' in result
 
     def test_message_without_username_does_not_contain_at_prefix(self):
         """Test that the message without username does not contain @ prefix."""

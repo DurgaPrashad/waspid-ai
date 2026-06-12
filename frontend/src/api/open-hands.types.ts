@@ -3,7 +3,7 @@ import { RuntimeStatus } from "#/types/runtime-status";
 import { Provider } from "#/types/settings";
 
 /** Backend ``AppConversationInfo.agent_kind`` discriminator. */
-export type AgentKind = "openhands" | "acp";
+export type AgentKind = "waspid" | "acp";
 
 /**
  * Conversation tags. The backend stamps ``acp_server`` (the ACP provider

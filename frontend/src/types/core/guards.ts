@@ -1,8 +1,8 @@
-import { OpenHandsParsedEvent } from ".";
+import { WaspidParsedEvent } from ".";
 import {
   UserMessageAction,
   AssistantMessageAction,
-  OpenHandsAction,
+  WaspidAction,
   SystemMessageAction,
   CommandAction,
   FinishAction,
@@ -13,14 +13,14 @@ import {
   CommandObservation,
   ErrorObservation,
   MCPObservation,
-  OpenHandsObservation,
+  WaspidObservation,
   TaskTrackingObservation,
 } from "./observations";
 import { StatusUpdate } from "./variances";
 
-export const isOpenHandsEvent = (
+export const isWaspidEvent = (
   event: unknown,
-): event is OpenHandsParsedEvent =>
+): event is WaspidParsedEvent =>
   typeof event === "object" &&
   event !== null &&
   "id" in event &&
@@ -28,76 +28,76 @@ export const isOpenHandsEvent = (
   "message" in event &&
   "timestamp" in event;
 
-export const isOpenHandsAction = (
-  event: OpenHandsParsedEvent,
-): event is OpenHandsAction => "action" in event;
+export const isWaspidAction = (
+  event: WaspidParsedEvent,
+): event is WaspidAction => "action" in event;
 
-export const isOpenHandsObservation = (
-  event: OpenHandsParsedEvent,
-): event is OpenHandsObservation => "observation" in event;
+export const isWaspidObservation = (
+  event: WaspidParsedEvent,
+): event is WaspidObservation => "observation" in event;
 
 export const isUserMessage = (
-  event: OpenHandsParsedEvent,
+  event: WaspidParsedEvent,
 ): event is UserMessageAction =>
-  isOpenHandsAction(event) &&
+  isWaspidAction(event) &&
   event.source === "user" &&
   event.action === "message";
 
 export const isAssistantMessage = (
-  event: OpenHandsParsedEvent,
+  event: WaspidParsedEvent,
 ): event is AssistantMessageAction =>
-  isOpenHandsAction(event) &&
+  isWaspidAction(event) &&
   event.source === "agent" &&
   (event.action === "message" || event.action === "finish");
 
 export const isErrorObservation = (
-  event: OpenHandsParsedEvent,
+  event: WaspidParsedEvent,
 ): event is ErrorObservation =>
-  isOpenHandsObservation(event) && event.observation === "error";
+  isWaspidObservation(event) && event.observation === "error";
 
 export const isCommandAction = (
-  event: OpenHandsParsedEvent,
-): event is CommandAction => isOpenHandsAction(event) && event.action === "run";
+  event: WaspidParsedEvent,
+): event is CommandAction => isWaspidAction(event) && event.action === "run";
 
 export const isAgentStateChangeObservation = (
-  event: OpenHandsParsedEvent,
+  event: WaspidParsedEvent,
 ): event is AgentStateChangeObservation =>
-  isOpenHandsObservation(event) && event.observation === "agent_state_changed";
+  isWaspidObservation(event) && event.observation === "agent_state_changed";
 
 export const isCommandObservation = (
-  event: OpenHandsParsedEvent,
+  event: WaspidParsedEvent,
 ): event is CommandObservation =>
-  isOpenHandsObservation(event) && event.observation === "run";
+  isWaspidObservation(event) && event.observation === "run";
 
 export const isFinishAction = (
-  event: OpenHandsParsedEvent,
+  event: WaspidParsedEvent,
 ): event is FinishAction =>
-  isOpenHandsAction(event) && event.action === "finish";
+  isWaspidAction(event) && event.action === "finish";
 
 export const isSystemMessage = (
-  event: OpenHandsParsedEvent,
+  event: WaspidParsedEvent,
 ): event is SystemMessageAction =>
-  isOpenHandsAction(event) && event.action === "system";
+  isWaspidAction(event) && event.action === "system";
 
 export const isRejectObservation = (
-  event: OpenHandsParsedEvent,
-): event is OpenHandsObservation =>
-  isOpenHandsObservation(event) && event.observation === "user_rejected";
+  event: WaspidParsedEvent,
+): event is WaspidObservation =>
+  isWaspidObservation(event) && event.observation === "user_rejected";
 
 export const isMcpObservation = (
-  event: OpenHandsParsedEvent,
+  event: WaspidParsedEvent,
 ): event is MCPObservation =>
-  isOpenHandsObservation(event) && event.observation === "mcp";
+  isWaspidObservation(event) && event.observation === "mcp";
 
 export const isTaskTrackingAction = (
-  event: OpenHandsParsedEvent,
+  event: WaspidParsedEvent,
 ): event is TaskTrackingAction =>
-  isOpenHandsAction(event) && event.action === "task_tracking";
+  isWaspidAction(event) && event.action === "task_tracking";
 
 export const isTaskTrackingObservation = (
-  event: OpenHandsParsedEvent,
+  event: WaspidParsedEvent,
 ): event is TaskTrackingObservation =>
-  isOpenHandsObservation(event) && event.observation === "task_tracking";
+  isWaspidObservation(event) && event.observation === "task_tracking";
 
 export const isStatusUpdate = (event: unknown): event is StatusUpdate =>
   typeof event === "object" &&
@@ -107,6 +107,6 @@ export const isStatusUpdate = (event: unknown): event is StatusUpdate =>
   "id" in event;
 
 export const isActionOrObservation = (
-  event: OpenHandsParsedEvent,
-): event is OpenHandsAction | OpenHandsObservation =>
-  isOpenHandsAction(event) || isOpenHandsObservation(event);
+  event: WaspidParsedEvent,
+): event is WaspidAction | WaspidObservation =>
+  isWaspidAction(event) || isWaspidObservation(event);

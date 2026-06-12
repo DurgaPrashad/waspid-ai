@@ -54,7 +54,7 @@ const renderRecentConversation = (conversation: V1AppConversation) =>
   );
 
 describe("RecentConversation - llm_model", () => {
-  it("should render the OpenHands brand label when llm_model is provided", () => {
+  it("should render the Waspid brand label when llm_model is provided", () => {
     renderRecentConversation({
       ...baseConversation,
       llm_model: "anthropic/claude-sonnet-4-20250514",
@@ -63,7 +63,7 @@ describe("RecentConversation - llm_model", () => {
     const model = screen.getByTestId("recent-conversation-llm-model");
     expect(model).toBeInTheDocument();
     // Visible label is the harness brand; raw model is preserved on hover.
-    expect(model).toHaveTextContent("OpenHands");
+    expect(model).toHaveTextContent("Waspid");
     expect(model).toHaveAttribute(
       "title",
       "anthropic/claude-sonnet-4-20250514",
@@ -72,7 +72,7 @@ describe("RecentConversation - llm_model", () => {
 
     const textSpan = model.querySelector("span.truncate");
     expect(textSpan).toBeInTheDocument();
-    expect(textSpan).toHaveTextContent("OpenHands");
+    expect(textSpan).toHaveTextContent("Waspid");
   });
 
   it("should render plain 'ACP' for ACP-agent conversations", () => {

@@ -1,7 +1,7 @@
 """
 Unit tests for email validation dependency (get_admin_user_id).
 
-Tests the FastAPI dependency that validates @openhands.dev email domain.
+Tests the FastAPI dependency that validates @waspid.dev email domain.
 """
 
 from unittest.mock import AsyncMock, MagicMock, patch
@@ -26,15 +26,15 @@ def mock_user_auth():
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_success(mock_request, mock_user_auth):
+async def test_get_waspid_user_id_success(mock_request, mock_user_auth):
     """
-    GIVEN: Valid user ID and @openhands.dev email
+    GIVEN: Valid user ID and @waspid.dev email
     WHEN: get_admin_user_id is called
     THEN: User ID is returned successfully
     """
     # Arrange
     user_id = 'test-user-123'
-    mock_user_auth.get_user_email.return_value = 'test@openhands.dev'
+    mock_user_auth.get_user_email.return_value = 'test@waspid.dev'
 
     with patch('server.email_validation.get_user_auth', return_value=mock_user_auth):
         # Act
@@ -46,7 +46,7 @@ async def test_get_openhands_user_id_success(mock_request, mock_user_auth):
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_no_user_id(mock_request):
+async def test_get_waspid_user_id_no_user_id(mock_request):
     """
     GIVEN: No user ID provided (None)
     WHEN: get_admin_user_id is called
@@ -64,7 +64,7 @@ async def test_get_openhands_user_id_no_user_id(mock_request):
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_no_email(mock_request, mock_user_auth):
+async def test_get_waspid_user_id_no_email(mock_request, mock_user_auth):
     """
     GIVEN: User ID provided but email is None
     WHEN: get_admin_user_id is called
@@ -84,9 +84,9 @@ async def test_get_openhands_user_id_no_email(mock_request, mock_user_auth):
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_invalid_domain(mock_request, mock_user_auth):
+async def test_get_waspid_user_id_invalid_domain(mock_request, mock_user_auth):
     """
-    GIVEN: User ID and email with non-@openhands.dev domain
+    GIVEN: User ID and email with non-@waspid.dev domain
     WHEN: get_admin_user_id is called
     THEN: 403 Forbidden is raised
     """
@@ -100,11 +100,11 @@ async def test_get_openhands_user_id_invalid_domain(mock_request, mock_user_auth
             await get_admin_user_id(mock_request, user_id)
 
         assert exc_info.value.status_code == 403
-        assert 'openhands.dev' in exc_info.value.detail.lower()
+        assert 'waspid.dev' in exc_info.value.detail.lower()
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_empty_string_user_id(mock_request):
+async def test_get_waspid_user_id_empty_string_user_id(mock_request):
     """
     GIVEN: Empty string user ID
     WHEN: get_admin_user_id is called
@@ -122,15 +122,15 @@ async def test_get_openhands_user_id_empty_string_user_id(mock_request):
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_case_sensitivity(mock_request, mock_user_auth):
+async def test_get_waspid_user_id_case_sensitivity(mock_request, mock_user_auth):
     """
-    GIVEN: Email with uppercase @OPENHANDS.DEV domain
+    GIVEN: Email with uppercase @WASPID.DEV domain
     WHEN: get_admin_user_id is called
     THEN: 403 Forbidden is raised (case-sensitive check)
     """
     # Arrange
     user_id = 'test-user-123'
-    mock_user_auth.get_user_email.return_value = 'test@OPENHANDS.DEV'
+    mock_user_auth.get_user_email.return_value = 'test@WASPID.DEV'
 
     with patch('server.email_validation.get_user_auth', return_value=mock_user_auth):
         # Act & Assert
@@ -141,17 +141,17 @@ async def test_get_openhands_user_id_case_sensitivity(mock_request, mock_user_au
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_subdomain_not_allowed(
+async def test_get_waspid_user_id_subdomain_not_allowed(
     mock_request, mock_user_auth
 ):
     """
-    GIVEN: Email with subdomain like @test.openhands.dev
+    GIVEN: Email with subdomain like @test.waspid.dev
     WHEN: get_admin_user_id is called
     THEN: 403 Forbidden is raised
     """
     # Arrange
     user_id = 'test-user-123'
-    mock_user_auth.get_user_email.return_value = 'test@test.openhands.dev'
+    mock_user_auth.get_user_email.return_value = 'test@test.waspid.dev'
 
     with patch('server.email_validation.get_user_auth', return_value=mock_user_auth):
         # Act & Assert
@@ -162,17 +162,17 @@ async def test_get_openhands_user_id_subdomain_not_allowed(
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_similar_domain_not_allowed(
+async def test_get_waspid_user_id_similar_domain_not_allowed(
     mock_request, mock_user_auth
 ):
     """
-    GIVEN: Email with similar but different domain like @openhands.dev.fake.com
+    GIVEN: Email with similar but different domain like @waspid.dev.fake.com
     WHEN: get_admin_user_id is called
     THEN: 403 Forbidden is raised
     """
     # Arrange
     user_id = 'test-user-123'
-    mock_user_auth.get_user_email.return_value = 'test@openhands.dev.fake.com'
+    mock_user_auth.get_user_email.return_value = 'test@waspid.dev.fake.com'
 
     with patch('server.email_validation.get_user_auth', return_value=mock_user_auth):
         # Act & Assert
@@ -183,7 +183,7 @@ async def test_get_openhands_user_id_similar_domain_not_allowed(
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_logs_warning_on_invalid_domain(
+async def test_get_waspid_user_id_logs_warning_on_invalid_domain(
     mock_request, mock_user_auth
 ):
     """
@@ -213,15 +213,15 @@ async def test_get_openhands_user_id_logs_warning_on_invalid_domain(
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_with_plus_addressing(mock_request, mock_user_auth):
+async def test_get_waspid_user_id_with_plus_addressing(mock_request, mock_user_auth):
     """
-    GIVEN: Email with plus addressing (test+tag@openhands.dev)
+    GIVEN: Email with plus addressing (test+tag@waspid.dev)
     WHEN: get_admin_user_id is called
     THEN: User ID is returned successfully
     """
     # Arrange
     user_id = 'test-user-123'
-    mock_user_auth.get_user_email.return_value = 'test+tag@openhands.dev'
+    mock_user_auth.get_user_email.return_value = 'test+tag@waspid.dev'
 
     with patch('server.email_validation.get_user_auth', return_value=mock_user_auth):
         # Act
@@ -232,17 +232,17 @@ async def test_get_openhands_user_id_with_plus_addressing(mock_request, mock_use
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_with_dots_in_local_part(
+async def test_get_waspid_user_id_with_dots_in_local_part(
     mock_request, mock_user_auth
 ):
     """
-    GIVEN: Email with dots in local part (first.last@openhands.dev)
+    GIVEN: Email with dots in local part (first.last@waspid.dev)
     WHEN: get_admin_user_id is called
     THEN: User ID is returned successfully
     """
     # Arrange
     user_id = 'test-user-123'
-    mock_user_auth.get_user_email.return_value = 'first.last@openhands.dev'
+    mock_user_auth.get_user_email.return_value = 'first.last@waspid.dev'
 
     with patch('server.email_validation.get_user_auth', return_value=mock_user_auth):
         # Act
@@ -253,7 +253,7 @@ async def test_get_openhands_user_id_with_dots_in_local_part(
 
 
 @pytest.mark.asyncio
-async def test_get_openhands_user_id_empty_email(mock_request, mock_user_auth):
+async def test_get_waspid_user_id_empty_email(mock_request, mock_user_auth):
     """
     GIVEN: Empty string email
     WHEN: get_admin_user_id is called

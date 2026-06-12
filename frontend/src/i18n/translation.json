@@ -1512,7 +1512,7 @@
     "uk": "Почнімо будувати!",
     "ca": "Comencem a construir!"
   },
-  "HOME$OPENHANDS_DESCRIPTION": {
+  "HOME$WASPID_DESCRIPTION": {
     "en": "Waspid is your enterprise AI workforce operating system — deploy and orchestrate AI agents across voice, browser automation, workflows, APIs, and operations.",
     "ja": "WaspidはAI駆動の開発を使用してソフトウェアの開発と維持を容易にします。",
     "zh-CN": "Waspid使用AI驱动的开发方式，轻松构建和维护软件。",
@@ -6102,7 +6102,7 @@
     "uk": "аватар користувача",
     "ca": "avatar d'usuari"
   },
-  "BRANDING$OPENHANDS": {
+  "BRANDING$WASPID": {
     "en": "Waspid",
     "ja": "Waspid",
     "zh-CN": "Waspid",
@@ -6119,7 +6119,7 @@
     "uk": "Waspid",
     "ca": "Waspid"
   },
-  "BRANDING$OPENHANDS_LOGO": {
+  "BRANDING$WASPID_LOGO": {
     "en": "Waspid Logo",
     "ja": "Waspidロゴ",
     "zh-CN": "Waspid标志",
@@ -6391,7 +6391,7 @@
     "uk": "Почистити залкжності",
     "ca": "Neteja les dependències"
   },
-  "CONFIGURATION$OPENHANDS_WORKSPACE_DIRECTORY_INPUT_LABEL": {
+  "CONFIGURATION$WASPID_WORKSPACE_DIRECTORY_INPUT_LABEL": {
     "en": "Waspid Workspace directory",
     "zh-CN": "Waspid工作区目录",
     "de": "Waspid Arbeitsverzeichnis",
@@ -6952,7 +6952,7 @@
     "uk": "LLM модель",
     "ca": "Model de LLM"
   },
-  "CONFIGURATION$OPENHANDS_WORKSPACE_DIRECTORY_INPUT_PLACEHOLDER": {
+  "CONFIGURATION$WASPID_WORKSPACE_DIRECTORY_INPUT_PLACEHOLDER": {
     "en": "Default: ./workspace",
     "zh-CN": "输入工作区目录路径",
     "de": "Standard: ./workspace",
@@ -10097,8 +10097,8 @@
     "uk": "Натисніть тут, щоб отримати інструкції",
     "ca": "Feu clic aquí per obtenir instruccions"
   },
-  "SETTINGS$NEED_OPENHANDS_ACCOUNT": {
-    "en": "Need an Waspid Account?",
+  "SETTINGS$NEED_WASPID_ACCOUNT": {
+    "en": "Need a Waspid Account?",
     "ja": "Waspidアカウントが必要ですか？",
     "zh-CN": "需要Waspid账户？",
     "zh-TW": "需要Waspid帳戶？",
@@ -10216,7 +10216,7 @@
     "uk": "Ключі API дозволяють вам програмно автентифікуватися за допомогою API Waspid. Зберігайте свої ключі API в безпеці; будь-хто, хто має ваш ключ API, може отримати доступ до вашого облікового запису. Для отримання додаткової інформації про використання API, перегляньте нашу <a>документацію API</a>.",
     "ca": "Les claus d'API us permeten autenticar-vos amb l'API d'Waspid de manera programàtica. Manteniu les vostres claus d'API segures; qualsevol persona amb la vostra clau d'API pot accedir al vostre compte. Per obtenir més informació sobre com fer servir l'API, consulteu la nostra <a>documentació de l'API</a>."
   },
-  "SETTINGS$OPENHANDS_API_KEY_HELP": {
+  "SETTINGS$WASPID_API_KEY_HELP": {
     "en": "You can find your Waspid API Key in the <a>API Keys</a> tab of Waspid Cloud.",
     "ja": "Waspid APIキーはWaspid Cloudの<a>APIキー</a>タブで確認できます。",
     "zh-CN": "您可以在Waspid Cloud的<a>API密钥</a>标签页中找到您的Waspid API密钥。",
@@ -10233,7 +10233,7 @@
     "uk": "Ви можете знайти свій ключ API Waspid у вкладці <a>Ключі API</a> Waspid Cloud.",
     "ca": "Podeu trobar la vostra clau d'API d'Waspid a la pestanya <a>Claus d'API</a> d'Waspid Cloud."
   },
-  "SETTINGS$OPENHANDS_API_KEY_HELP_TEXT": {
+  "SETTINGS$WASPID_API_KEY_HELP_TEXT": {
     "en": "You can find your Waspid API Key in the",
     "ja": "Waspid APIキーは",
     "zh-CN": "您可以在",
@@ -10250,7 +10250,7 @@
     "uk": "Ви можете знайти свій ключ API Waspid у",
     "ca": "Podeu trobar la vostra clau d'API d'Waspid a la"
   },
-  "SETTINGS$OPENHANDS_API_KEY_HELP_SUFFIX": {
+  "SETTINGS$WASPID_API_KEY_HELP_SUFFIX": {
     "en": "tab of Waspid Cloud.",
     "ja": "タブで確認できます。",
     "zh-CN": "标签页中找到您的Waspid API密钥。",
@@ -14415,7 +14415,7 @@
     "uk": "Клас агента:",
     "ca": "Classe de l'agent:"
   },
-  "SYSTEM_MESSAGE_MODAL$OPENHANDS_VERSION": {
+  "SYSTEM_MESSAGE_MODAL$WASPID_VERSION": {
     "en": "Waspid Version:",
     "zh-CN": "Waspid 版本：",
     "zh-TW": "Waspid 版本：",
@@ -14569,21 +14569,21 @@
     "ca": "Error en acceptar les condicions del servei"
   },
   "TIPS$CUSTOMIZE_MICROAGENT": {
-    "en": "You can customize Waspid for your repo using an available microagent. Ask Waspid to put a description of the repo, including how to run the code, into .openhands/microagents/repo.md.",
-    "ja": "利用可能なマイクロエージェントを使用して、リポジトリ用にWaspidをカスタマイズできます。Waspidに、コードの実行方法を含むリポジトリの説明を.openhands/microagents/repo.mdに入れるよう依頼してください。",
-    "zh-CN": "您可以使用可用微代理为您的仓库自定义Waspid。请Waspid将仓库的描述（包括如何运行代码）放入.openhands/microagents/repo.md。",
-    "zh-TW": "您可以使用可用微代理為您的倉庫自定義Waspid。請Waspid將倉庫的描述（包括如何運行代碼）放入.openhands/microagents/repo.md。",
-    "ko-KR": "사용 가능한 마이크로에이전트를 사용하여 저장소에 맞게 Waspid를 사용자 정의할 수 있습니다. Waspid에게 코드 실행 방법을 포함한 저장소 설명을 .openhands/microagents/repo.md에 넣도록 요청하세요.",
-    "no": "Du kan tilpasse Waspid for ditt repo ved å bruke en tilgjengelig mikroagent. Be Waspid om å legge en beskrivelse av repoet, inkludert hvordan du kjører koden, i .openhands/microagents/repo.md.",
-    "it": "Puoi personalizzare Waspid per il tuo repository utilizzando un microagente disponibile. Chiedi a Waspid di inserire una descrizione del repository, incluso come eseguire il codice, in .openhands/microagents/repo.md.",
-    "pt": "Você pode personalizar o Waspid para seu repositório usando um microagente disponível. Peça ao Waspid para colocar uma descrição do repositório, incluindo como executar o código, em .openhands/microagents/repo.md.",
-    "es": "Puede personalizar Waspid para su repositorio utilizando un microagente disponible. Pídale a Waspid que ponga una descripción del repositorio, incluido cómo ejecutar el código, en .openhands/microagents/repo.md.",
-    "ar": "يمكنك تخصيص Waspid لمستودعك باستخدام وكيل مصغر متاح. اطلب من Waspid وضع وصف للمستودع، بما في ذلك كيفية تشغيل الكود، في .openhands/microagents/repo.md.",
-    "de": "Sie können Waspid für Ihr Repository mit einem verfügbaren Mikroagenten anpassen. Bitten Sie Waspid, eine Beschreibung des Repositorys, einschließlich der Ausführung des Codes, in .openhands/microagents/repo.md zu platzieren.",
-    "fr": "Vous pouvez personnaliser Waspid pour votre dépôt en utilisant un micro-agent disponible. Demandez à Waspid de mettre une description du dépôt, y compris comment exécuter le code, dans .openhands/microagents/repo.md.",
-    "tr": "Kullanılabilir bir mikro ajan kullanarak Waspid'i deponuz için özelleştirebilirsiniz. Waspid'ten deponun açıklamasını, kodun nasıl çalıştırılacağı dahil, .openhands/microagents/repo.md dosyasına koymasını isteyin.",
-    "uk": "Ви можете налаштувати Waspid для свого репозиторію за допомогою доступного мікроагента. Попросіть Waspid розмістити опис репозиторію, включаючи інформацію про те, як запустити код, у файлі .openhands/microagents/repo.md.",
-    "ca": "Podeu personalitzar Waspid per al vostre repositori fent servir un microagent disponible. Demaneu a Waspid que posi una descripció del repositori, incloent com executar el codi, a .openhands/microagents/repo.md."
+    "en": "You can customize Waspid for your repo using an available microagent. Ask Waspid to put a description of the repo, including how to run the code, into .waspid/microagents/repo.md.",
+    "ja": "利用可能なマイクロエージェントを使用して、リポジトリ用にWaspidをカスタマイズできます。Waspidに、コードの実行方法を含むリポジトリの説明を.waspid/microagents/repo.mdに入れるよう依頼してください。",
+    "zh-CN": "您可以使用可用微代理为您的仓库自定义Waspid。请Waspid将仓库的描述（包括如何运行代码）放入.waspid/microagents/repo.md。",
+    "zh-TW": "您可以使用可用微代理為您的倉庫自定義Waspid。請Waspid將倉庫的描述（包括如何運行代碼）放入.waspid/microagents/repo.md。",
+    "ko-KR": "사용 가능한 마이크로에이전트를 사용하여 저장소에 맞게 Waspid를 사용자 정의할 수 있습니다. Waspid에게 코드 실행 방법을 포함한 저장소 설명을 .waspid/microagents/repo.md에 넣도록 요청하세요.",
+    "no": "Du kan tilpasse Waspid for ditt repo ved å bruke en tilgjengelig mikroagent. Be Waspid om å legge en beskrivelse av repoet, inkludert hvordan du kjører koden, i .waspid/microagents/repo.md.",
+    "it": "Puoi personalizzare Waspid per il tuo repository utilizzando un microagente disponibile. Chiedi a Waspid di inserire una descrizione del repository, incluso come eseguire il codice, in .waspid/microagents/repo.md.",
+    "pt": "Você pode personalizar o Waspid para seu repositório usando um microagente disponível. Peça ao Waspid para colocar uma descrição do repositório, incluindo como executar o código, em .waspid/microagents/repo.md.",
+    "es": "Puede personalizar Waspid para su repositorio utilizando un microagente disponible. Pídale a Waspid que ponga una descripción del repositorio, incluido cómo ejecutar el código, en .waspid/microagents/repo.md.",
+    "ar": "يمكنك تخصيص Waspid لمستودعك باستخدام وكيل مصغر متاح. اطلب من Waspid وضع وصف للمستودع، بما في ذلك كيفية تشغيل الكود، في .waspid/microagents/repo.md.",
+    "de": "Sie können Waspid für Ihr Repository mit einem verfügbaren Mikroagenten anpassen. Bitten Sie Waspid, eine Beschreibung des Repositorys, einschließlich der Ausführung des Codes, in .waspid/microagents/repo.md zu platzieren.",
+    "fr": "Vous pouvez personnaliser Waspid pour votre dépôt en utilisant un micro-agent disponible. Demandez à Waspid de mettre une description du dépôt, y compris comment exécuter le code, dans .waspid/microagents/repo.md.",
+    "tr": "Kullanılabilir bir mikro ajan kullanarak Waspid'i deponuz için özelleştirebilirsiniz. Waspid'ten deponun açıklamasını, kodun nasıl çalıştırılacağı dahil, .waspid/microagents/repo.md dosyasına koymasını isteyin.",
+    "uk": "Ви можете налаштувати Waspid для свого репозиторію за допомогою доступного мікроагента. Попросіть Waspid розмістити опис репозиторію, включаючи інформацію про те, як запустити код, у файлі .waspid/microagents/repo.md.",
+    "ca": "Podeu personalitzar Waspid per al vostre repositori fent servir un microagent disponible. Demaneu a Waspid que posi una descripció del repositori, incloent com executar el codi, a .waspid/microagents/repo.md."
   },
   "CONVERSATION$NO_SKILLS": {
     "en": "No available skills found for this conversation.",
@@ -14824,21 +14824,21 @@
     "ca": "No s'han pogut obtenir les habilitats. Torneu-ho a intentar més tard."
   },
   "TIPS$SETUP_SCRIPT": {
-    "en": "You can add .openhands/setup.sh to your repository to automatically run a setup script every time you start an Waspid conversation.",
-    "ja": "Waspidの会話を開始するたびに自動的にセットアップスクリプトを実行するために、.openhands/setup.shをリポジトリに追加できます。",
-    "zh-CN": "您可以将.openhands/setup.sh添加到您的仓库中，以便在每次启动Waspid对话时自动运行设置脚本。",
-    "zh-TW": "您可以將.openhands/setup.sh添加到您的倉庫中，以便在每次啟動Waspid對話時自動運行設置腳本。",
-    "ko-KR": "Waspid 대화를 시작할 때마다 자동으로 설정 스크립트를 실행하도록 .openhands/setup.sh를 저장소에 추가할 수 있습니다.",
-    "no": "Du kan legge til .openhands/setup.sh i ditt repository for å automatisk kjøre et oppsettskript hver gang du starter en Waspid-samtale.",
-    "it": "Puoi aggiungere .openhands/setup.sh al tuo repository per eseguire automaticamente uno script di configurazione ogni volta che avvii una conversazione Waspid.",
-    "pt": "Você pode adicionar .openhands/setup.sh ao seu repositório para executar automaticamente um script de configuração toda vez que iniciar uma conversa Waspid.",
-    "es": "Puede agregar .openhands/setup.sh a su repositorio para ejecutar automáticamente un script de configuración cada vez que inicie una conversación de Waspid.",
-    "ar": "يمكنك إضافة .openhands/setup.sh إلى مستودعك لتشغيل نص إعداد تلقائيًا في كل مرة تبدأ فيها محادثة Waspid.",
-    "fr": "Vous pouvez ajouter .openhands/setup.sh à votre dépôt pour exécuter automatiquement un script de configuration chaque fois que vous démarrez une conversation Waspid.",
-    "tr": "Waspid konuşması başlattığınız her seferinde otomatik olarak bir kurulum betiği çalıştırmak için deponuza .openhands/setup.sh ekleyebilirsiniz.",
-    "de": "Sie können .openhands/setup.sh zu Ihrem Repository hinzufügen, um jedes Mal, wenn Sie ein Waspid-Gespräch starten, automatisch ein Setup-Skript auszuführen.",
-    "uk": "Ви можете додати .openhands/setup.sh до свого репозиторію, щоб автоматично запускати скрипт налаштування щоразу, коли ви починаєте розмову Waspid.",
-    "ca": "Podeu afegir .openhands/setup.sh al vostre repositori per executar automàticament un script de configuració cada vegada que inicieu una conversa d'Waspid."
+    "en": "You can add .waspid/setup.sh to your repository to automatically run a setup script every time you start a Waspid conversation.",
+    "ja": "Waspidの会話を開始するたびに自動的にセットアップスクリプトを実行するために、.waspid/setup.shをリポジトリに追加できます。",
+    "zh-CN": "您可以将.waspid/setup.sh添加到您的仓库中，以便在每次启动Waspid对话时自动运行设置脚本。",
+    "zh-TW": "您可以將.waspid/setup.sh添加到您的倉庫中，以便在每次啟動Waspid對話時自動運行設置腳本。",
+    "ko-KR": "Waspid 대화를 시작할 때마다 자동으로 설정 스크립트를 실행하도록 .waspid/setup.sh를 저장소에 추가할 수 있습니다.",
+    "no": "Du kan legge til .waspid/setup.sh i ditt repository for å automatisk kjøre et oppsettskript hver gang du starter en Waspid-samtale.",
+    "it": "Puoi aggiungere .waspid/setup.sh al tuo repository per eseguire automaticamente uno script di configurazione ogni volta che avvii una conversazione Waspid.",
+    "pt": "Você pode adicionar .waspid/setup.sh ao seu repositório para executar automaticamente um script de configuração toda vez que iniciar uma conversa Waspid.",
+    "es": "Puede agregar .waspid/setup.sh a su repositorio para ejecutar automáticamente un script de configuración cada vez que inicie una conversación de Waspid.",
+    "ar": "يمكنك إضافة .waspid/setup.sh إلى مستودعك لتشغيل نص إعداد تلقائيًا في كل مرة تبدأ فيها محادثة Waspid.",
+    "fr": "Vous pouvez ajouter .waspid/setup.sh à votre dépôt pour exécuter automatiquement un script de configuration chaque fois que vous démarrez une conversation Waspid.",
+    "tr": "Waspid konuşması başlattığınız her seferinde otomatik olarak bir kurulum betiği çalıştırmak için deponuza .waspid/setup.sh ekleyebilirsiniz.",
+    "de": "Sie können .waspid/setup.sh zu Ihrem Repository hinzufügen, um jedes Mal, wenn Sie ein Waspid-Gespräch starten, automatisch ein Setup-Skript auszuführen.",
+    "uk": "Ви можете додати .waspid/setup.sh до свого репозиторію, щоб автоматично запускати скрипт налаштування щоразу, коли ви починаєте розмову Waspid.",
+    "ca": "Podeu afegir .waspid/setup.sh al vostre repositori per executar automàticament un script de configuració cada vegada que inicieu una conversa d'Waspid."
   },
   "TIPS$VSCODE_INSTANCE": {
     "en": "Every Waspid conversation comes with a VS Code instance, where you can interact with the development environment.",
@@ -14926,21 +14926,21 @@
     "ca": "Podeu executar Waspid com a CLI, similar a Claude Code."
   },
   "TIPS$GITHUB_HOOK": {
-    "en": "Waspid Cloud offers a GitHub hook, so you can say \"@openhands fix the merge conflicts\" or \"@openhands fix the feedback on this PR\" right inside the GitHub UI.",
-    "ja": "Waspid CloudはGitHubフックを提供しているため、GitHub UI内で「@openhands マージの競合を修正して」や「@openhands このPRのフィードバックを修正して」と言うことができます。",
-    "zh-CN": "Waspid Cloud提供GitHub钩子，因此您可以在GitHub UI中直接说\"@openhands 修复合并冲突\"或\"@openhands 修复此PR上的反馈\"。",
-    "zh-TW": "Waspid Cloud提供GitHub鉤子，因此您可以在GitHub UI中直接說\"@openhands 修復合併衝突\"或\"@openhands 修復此PR上的反饋\"。",
-    "ko-KR": "Waspid Cloud는 GitHub 훅을 제공하므로 GitHub UI 내에서 \"@openhands 병합 충돌 수정\" 또는 \"@openhands 이 PR의 피드백 수정\"이라고 말할 수 있습니다.",
-    "no": "Waspid Cloud tilbyr en GitHub-hook, så du kan si \"@openhands fix the merge conflicts\" eller \"@openhands fix the feedback on this PR\" direkte i GitHub-grensesnittet.",
-    "it": "Waspid Cloud offre un hook GitHub, così puoi dire \"@openhands fix the merge conflicts\" o \"@openhands fix the feedback on this PR\" direttamente nell'interfaccia di GitHub.",
-    "pt": "O Waspid Cloud oferece um hook do GitHub, para que você possa dizer \"@openhands fix the merge conflicts\" ou \"@openhands fix the feedback on this PR\" diretamente na interface do GitHub.",
-    "es": "Waspid Cloud ofrece un hook de GitHub, por lo que puede decir \"@openhands fix the merge conflicts\" o \"@openhands fix the feedback on this PR\" directamente en la interfaz de GitHub.",
-    "ar": "يوفر Waspid Cloud خطافًا لـ GitHub، لذلك يمكنك قول \"@openhands أصلح تعارضات الدمج\" أو \"@openhands أصلح التعليقات على طلب السحب هذا\" مباشرة داخل واجهة GitHub.",
-    "fr": "Waspid Cloud propose un hook GitHub, vous pouvez donc dire \"@openhands fix the merge conflicts\" ou \"@openhands fix the feedback on this PR\" directement dans l'interface GitHub.",
-    "tr": "Waspid Cloud, GitHub kancası sunar, böylece GitHub arayüzünde doğrudan \"@openhands birleştirme çakışmalarını düzelt\" veya \"@openhands bu PR'daki geri bildirimi düzelt\" diyebilirsiniz.",
-    "de": "Waspid Cloud bietet einen GitHub-Hook, sodass Sie \"@openhands fix the merge conflicts\" oder \"@openhands fix the feedback on this PR\" direkt in der GitHub-Benutzeroberfläche sagen können.",
-    "uk": "Waspid Cloud пропонує хук GitHub, тож ви можете сказати «@openhands виправити конфлікти злиття» або «@openhands виправити відгук про цей PR» прямо в інтерфейсі GitHub.",
-    "ca": "Waspid Cloud ofereix un hook de GitHub, de manera que podeu dir \"@openhands corregeix els conflictes de fusió\" o \"@openhands corregeix els comentaris d'aquesta PR\" directament dins de la interfície de GitHub."
+    "en": "Waspid Cloud offers a GitHub hook, so you can say \"@waspid fix the merge conflicts\" or \"@waspid fix the feedback on this PR\" right inside the GitHub UI.",
+    "ja": "Waspid CloudはGitHubフックを提供しているため、GitHub UI内で「@waspid マージの競合を修正して」や「@waspid このPRのフィードバックを修正して」と言うことができます。",
+    "zh-CN": "Waspid Cloud提供GitHub钩子，因此您可以在GitHub UI中直接说\"@waspid 修复合并冲突\"或\"@waspid 修复此PR上的反馈\"。",
+    "zh-TW": "Waspid Cloud提供GitHub鉤子，因此您可以在GitHub UI中直接說\"@waspid 修復合併衝突\"或\"@waspid 修復此PR上的反饋\"。",
+    "ko-KR": "Waspid Cloud는 GitHub 훅을 제공하므로 GitHub UI 내에서 \"@waspid 병합 충돌 수정\" 또는 \"@waspid 이 PR의 피드백 수정\"이라고 말할 수 있습니다.",
+    "no": "Waspid Cloud tilbyr en GitHub-hook, så du kan si \"@waspid fix the merge conflicts\" eller \"@waspid fix the feedback on this PR\" direkte i GitHub-grensesnittet.",
+    "it": "Waspid Cloud offre un hook GitHub, così puoi dire \"@waspid fix the merge conflicts\" o \"@waspid fix the feedback on this PR\" direttamente nell'interfaccia di GitHub.",
+    "pt": "O Waspid Cloud oferece um hook do GitHub, para que você possa dizer \"@waspid fix the merge conflicts\" ou \"@waspid fix the feedback on this PR\" diretamente na interface do GitHub.",
+    "es": "Waspid Cloud ofrece un hook de GitHub, por lo que puede decir \"@waspid fix the merge conflicts\" o \"@waspid fix the feedback on this PR\" directamente en la interfaz de GitHub.",
+    "ar": "يوفر Waspid Cloud خطافًا لـ GitHub، لذلك يمكنك قول \"@waspid أصلح تعارضات الدمج\" أو \"@waspid أصلح التعليقات على طلب السحب هذا\" مباشرة داخل واجهة GitHub.",
+    "fr": "Waspid Cloud propose un hook GitHub, vous pouvez donc dire \"@waspid fix the merge conflicts\" ou \"@waspid fix the feedback on this PR\" directement dans l'interface GitHub.",
+    "tr": "Waspid Cloud, GitHub kancası sunar, böylece GitHub arayüzünde doğrudan \"@waspid birleştirme çakışmalarını düzelt\" veya \"@waspid bu PR'daki geri bildirimi düzelt\" diyebilirsiniz.",
+    "de": "Waspid Cloud bietet einen GitHub-Hook, sodass Sie \"@waspid fix the merge conflicts\" oder \"@waspid fix the feedback on this PR\" direkt in der GitHub-Benutzeroberfläche sagen können.",
+    "uk": "Waspid Cloud пропонує хук GitHub, тож ви можете сказати «@waspid виправити конфлікти злиття» або «@waspid виправити відгук про цей PR» прямо в інтерфейсі GitHub.",
+    "ca": "Waspid Cloud ofereix un hook de GitHub, de manera que podeu dir \"@waspid corregeix els conflictes de fusió\" o \"@waspid corregeix els comentaris d'aquesta PR\" directament dins de la interfície de GitHub."
   },
   "TIPS$BLOG_SIGNUP": {
     "en": "Sign up for the Waspid Blog to hear about new features and the latest releases.",
@@ -15232,21 +15232,21 @@
     "ca": "Correu electrònic de verificació enviat"
   },
   "SETTINGS$EMAIL_VERIFICATION_REQUIRED": {
-    "en": "You must verify your email address before using All Hands",
-    "ja": "All Handsを使用する前にメールアドレスを確認する必要があります",
-    "zh-CN": "使用All Hands前，您必须验证您的电子邮件地址",
-    "zh-TW": "使用All Hands前，您必須驗證您的電子郵件地址",
-    "ko-KR": "All Hands를 사용하기 전에 이메일 주소를 확인해야 합니다",
-    "no": "Du må bekrefte e-postadressen din før du bruker All Hands",
-    "it": "Devi verificare il tuo indirizzo email prima di utilizzare All Hands",
-    "pt": "Você deve verificar seu endereço de e-mail antes de usar o All Hands",
-    "es": "Debe verificar su dirección de correo electrónico antes de usar All Hands",
-    "ar": "يجب عليك التحقق من عنوان بريدك الإلكتروني قبل استخدام All Hands",
-    "fr": "Vous devez vérifier votre adresse e-mail avant d'utiliser All Hands",
-    "tr": "All Hands'i kullanmadan önce e-posta adresinizi doğrulamanız gerekiyor",
-    "de": "Sie müssen Ihre E-Mail-Adresse bestätigen, bevor Sie All Hands verwenden können",
-    "uk": "Ви повинні підтвердити свою електронну адресу перед використанням All Hands",
-    "ca": "Heu de verificar la vostra adreça de correu electrònic abans de fer servir All Hands"
+    "en": "You must verify your email address before using Waspid",
+    "ja": "Waspidを使用する前にメールアドレスを確認する必要があります",
+    "zh-CN": "使用Waspid前，您必须验证您的电子邮件地址",
+    "zh-TW": "使用Waspid前，您必須驗證您的電子郵件地址",
+    "ko-KR": "Waspid를 사용하기 전에 이메일 주소를 확인해야 합니다",
+    "no": "Du må bekrefte e-postadressen din før du bruker Waspid",
+    "it": "Devi verificare il tuo indirizzo email prima di utilizzare Waspid",
+    "pt": "Você deve verificar seu endereço de e-mail antes de usar o Waspid",
+    "es": "Debe verificar su dirección de correo electrónico antes de usar Waspid",
+    "ar": "يجب عليك التحقق من عنوان بريدك الإلكتروني قبل استخدام Waspid",
+    "fr": "Vous devez vérifier votre adresse e-mail avant d'utiliser Waspid",
+    "tr": "Waspid'i kullanmadan önce e-posta adresinizi doğrulamanız gerekiyor",
+    "de": "Sie müssen Ihre E-Mail-Adresse bestätigen, bevor Sie Waspid verwenden können",
+    "uk": "Ви повинні підтвердити свою електронну адресу перед використанням Waspid",
+    "ca": "Heu de verificar la vostra adreça de correu electrònic abans de fer servir Waspid"
   },
   "SETTINGS$INVALID_EMAIL_FORMAT": {
     "en": "Please enter a valid email address",
@@ -16183,7 +16183,7 @@
     "uk": "Підключити провайдера Git для управління секретами",
     "ca": "Connecteu un proveïdor de Git per gestionar els secrets"
   },
-  "SETTINGS$OPENHANDS_API_KEYS": {
+  "SETTINGS$WASPID_API_KEYS": {
     "en": "Waspid API Keys",
     "ja": "Waspid APIキー",
     "zh-CN": "Waspid API密钥",
@@ -16456,21 +16456,21 @@
     "ca": "Ja existeix un compte amb aquesta adreça de correu electrònic."
   },
   "AUTH$RECAPTCHA_BLOCKED": {
-    "en": "Access blocked due to suspicious activity. If you believe this is an error, please contact contact@openhands.dev for assistance.",
-    "ja": "不審なアクティビティのためアクセスがブロックされました。これが誤りだと思われる場合は、contact@openhands.dev までお問い合わせください。",
-    "zh-CN": "由于可疑活动，访问已被阻止。如果您认为这是错误的，请联系 contact@openhands.dev 寻求帮助。",
-    "zh-TW": "由於可疑活動，存取已被封鎖。如果您認為這是錯誤的，請聯繫 contact@openhands.dev 尋求協助。",
-    "ko-KR": "의심스러운 활동으로 인해 접근이 차단되었습니다. 오류라고 생각되시면 contact@openhands.dev로 문의해 주세요.",
-    "no": "Tilgang blokkert på grunn av mistenkelig aktivitet. Hvis du mener dette er en feil, vennligst kontakt contact@openhands.dev for hjelp.",
-    "it": "Accesso bloccato a causa di attività sospetta. Se ritieni che si tratti di un errore, contatta contact@openhands.dev per assistenza.",
-    "pt": "Acesso bloqueado devido a atividade suspeita. Se você acredita que isso é um erro, entre em contato com contact@openhands.dev para obter ajuda.",
-    "es": "Acceso bloqueado debido a actividad sospechosa. Si cree que esto es un error, comuníquese con contact@openhands.dev para obtener ayuda.",
-    "ar": "تم حظر الوصول بسبب نشاط مشبوه. إذا كنت تعتقد أن هذا خطأ، يرجى الاتصال بـ contact@openhands.dev للحصول على المساعدة.",
-    "fr": "Accès bloqué en raison d'une activité suspecte. Si vous pensez qu'il s'agit d'une erreur, veuillez contacter contact@openhands.dev pour obtenir de l'aide.",
-    "tr": "Şüpheli aktivite nedeniyle erişim engellendi. Bunun bir hata olduğunu düşünüyorsanız, yardım için lütfen contact@openhands.dev ile iletişime geçin.",
-    "de": "Zugriff aufgrund verdächtiger Aktivitäten blockiert. Wenn Sie glauben, dass dies ein Fehler ist, wenden Sie sich bitte an contact@openhands.dev.",
-    "uk": "Доступ заблоковано через підозрілу активність. Якщо ви вважаєте, що це помилка, зверніться до contact@openhands.dev за допомогою.",
-    "ca": "Accés bloquejat a causa d'activitat sospitosa. Si creieu que és un error, contacteu amb contact@openhands.dev per obtenir ajuda."
+    "en": "Access blocked due to suspicious activity. If you believe this is an error, please contact support@waspid.ai for assistance.",
+    "ja": "不審なアクティビティのためアクセスがブロックされました。これが誤りだと思われる場合は、support@waspid.ai までお問い合わせください。",
+    "zh-CN": "由于可疑活动，访问已被阻止。如果您认为这是错误的，请联系 support@waspid.ai 寻求帮助。",
+    "zh-TW": "由於可疑活動，存取已被封鎖。如果您認為這是錯誤的，請聯繫 support@waspid.ai 尋求協助。",
+    "ko-KR": "의심스러운 활동으로 인해 접근이 차단되었습니다. 오류라고 생각되시면 support@waspid.ai로 문의해 주세요.",
+    "no": "Tilgang blokkert på grunn av mistenkelig aktivitet. Hvis du mener dette er en feil, vennligst kontakt support@waspid.ai for hjelp.",
+    "it": "Accesso bloccato a causa di attività sospetta. Se ritieni che si tratti di un errore, contatta support@waspid.ai per assistenza.",
+    "pt": "Acesso bloqueado devido a atividade suspeita. Se você acredita que isso é um erro, entre em contato com support@waspid.ai para obter ajuda.",
+    "es": "Acceso bloqueado debido a actividad sospechosa. Si cree que esto es un error, comuníquese con support@waspid.ai para obtener ayuda.",
+    "ar": "تم حظر الوصول بسبب نشاط مشبوه. إذا كنت تعتقد أن هذا خطأ، يرجى الاتصال بـ support@waspid.ai للحصول على المساعدة.",
+    "fr": "Accès bloqué en raison d'une activité suspecte. Si vous pensez qu'il s'agit d'une erreur, veuillez contacter support@waspid.ai pour obtenir de l'aide.",
+    "tr": "Şüpheli aktivite nedeniyle erişim engellendi. Bunun bir hata olduğunu düşünüyorsanız, yardım için lütfen support@waspid.ai ile iletişime geçin.",
+    "de": "Zugriff aufgrund verdächtiger Aktivitäten blockiert. Wenn Sie glauben, dass dies ein Fehler ist, wenden Sie sich bitte an support@waspid.ai.",
+    "uk": "Доступ заблоковано через підозрілу активність. Якщо ви вважаєте, що це помилка, зверніться до support@waspid.ai за допомогою.",
+    "ca": "Accés bloquejat a causa d'activitat sospitosa. Si creieu que és un error, contacteu amb support@waspid.ai per obtenir ajuda."
   },
   "AUTH$LETS_GET_STARTED": {
     "en": "Let's get started",
@@ -19388,7 +19388,7 @@
     "no": "Mikroagenter er spesialiserte prompt som forbedrer Waspid med domenespesifikk kunnskap. De gir ekspertråd, automatiserer vanlige oppgaver og sikrer konsistente praksiser på tvers av prosjekter.",
     "it": "I microagenti sono prompt specializzati che arricchiscono Waspid con conoscenze specifiche di dominio. Forniscono guida esperta, automatizzano attività comuni e garantiscono pratiche coerenti tra i progetti.",
     "pt": "Microagentes são prompts especializados que aprimoram o Waspid com conhecimento específico de domínio. Eles fornecem orientação especializada, automatizam tarefas comuns e garantem práticas consistentes em todos os projetos.",
-    "es": "Los microagentes son prompts especializados que mejoran Waspid con conocimientos específicos de dominio. Proporcionan orientación experta, automatizan tareas comunes y aseguran prácticas consistentes en los proyectos.",
+    "es": "Los microagentes son prompts especializados que mejora Waspid con conocimientos específicos de dominio. Proporcionan orientación experta, automatizan tareas comunes y aseguran prácticas consistentes en los proyectos.",
     "ar": "الميكرووكلاء هم مطالبات متخصصة تعزز Waspid بمعرفة متخصصة في المجال. يقدمون إرشادات خبراء، ويؤتمتون المهام الشائعة، ويضمنون ممارسات متسقة عبر المشاريع.",
     "fr": "Les microagents sont des invites spécialisées qui enrichissent Waspid avec des connaissances spécifiques au domaine. Ils fournissent des conseils d'experts, automatisent les tâches courantes et garantissent des pratiques cohérentes dans les projets.",
     "tr": "Mikro ajanlar, Waspid'i alanına özgü bilgilerle geliştiren özel istemlerdir. Uzman rehberliği sağlar, yaygın görevleri otomatikleştirir ve projeler arasında tutarlı uygulamalar sunar.",
@@ -23493,7 +23493,7 @@
     "uk": "Дізнатися більше",
     "ca": "Més informació"
   },
-  "ENTERPRISE$GET_OPENHANDS_TITLE": {
+  "ENTERPRISE$GET_WASPID_TITLE": {
     "en": "Get Waspid for Enterprise",
     "ja": "Waspid Enterpriseを入手",
     "zh-CN": "获取 Waspid 企业版",
@@ -23510,7 +23510,7 @@
     "tr": "Kurumsal Waspid Edinin",
     "uk": "Отримайте Waspid для підприємств"
   },
-  "ENTERPRISE$GET_OPENHANDS_SUBTITLE": {
+  "ENTERPRISE$GET_WASPID_SUBTITLE": {
     "en": "Run Waspid Cloud with multi-tenant isolation, RBAC, and enterprise integrations — the AI workforce control plane for your organization.",
     "ja": "クラウドを使用すると、どこからでもWaspidにアクセスし、チームとこれまでにない方法で連携できます。",
     "zh-CN": "云端让您可以随时随地访问 Waspid，并以前所未有的方式与团队协作。",
@@ -24275,7 +24275,7 @@
     "tr": "Konuşmalarınızı hangi ajanın yöneteceğini seçin. ACP, burada yapılandırdığınız harici bir ajan alt sürecini çalıştırır.",
     "uk": "Виберіть агента, який обробляє ваші розмови. ACP запускає зовнішній підпроцес агента, який ви налаштовуєте тут."
   },
-  "SETTINGS$AGENT_TYPE_OPENHANDS": {
+  "SETTINGS$AGENT_TYPE_WASPID": {
     "en": "Waspid",
     "ja": "Waspid",
     "zh-CN": "Waspid",

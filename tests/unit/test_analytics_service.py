@@ -5,12 +5,12 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from openhands.analytics import (
+from waspid.analytics import (
     AnalyticsService,
     get_analytics_service,
     init_analytics_service,
 )
-from openhands.analytics.analytics_constants import (
+from waspid.analytics.analytics_constants import (
     CONVERSATION_CREATED,
     CONVERSATION_DELETED,
     CONVERSATION_ERRORED,
@@ -25,10 +25,10 @@ from openhands.analytics.analytics_constants import (
     USER_LOGGED_IN,
     USER_SIGNED_UP,
 )
-from openhands.analytics.analytics_context import AnalyticsContext
-from openhands.analytics.analytics_service import AnalyticsService as DirectService
-from openhands.analytics.oss_install_id import get_or_create_install_id
-from openhands.server.types import AppMode
+from waspid.analytics.analytics_context import AnalyticsContext
+from waspid.analytics.analytics_service import AnalyticsService as DirectService
+from waspid.analytics.oss_install_id import get_or_create_install_id
+from waspid.server.types import AppMode
 
 
 def make_ctx(
@@ -53,7 +53,7 @@ def make_ctx(
 @pytest.fixture(autouse=True)
 def reset_singleton():
     """Reset the module-level singleton before each test."""
-    import openhands.analytics as analytics_module
+    import waspid.analytics as analytics_module
 
     original = analytics_module._analytics_service
     analytics_module._analytics_service = None
@@ -65,7 +65,7 @@ def reset_singleton():
 def mock_posthog():
     """Patch posthog.Posthog and return the mock instance."""
     with patch(
-        'openhands.analytics.analytics_service.Posthog', autospec=True
+        'waspid.analytics.analytics_service.Posthog', autospec=True
     ) as MockClass:
         mock_client = MagicMock()
         MockClass.return_value = mock_client
@@ -79,7 +79,7 @@ def oss_service(mock_posthog):
     service = DirectService(
         api_key='test-key',
         host='https://posthog.example.com',
-        app_mode=AppMode.OPENHANDS,
+        app_mode=AppMode.WASPID,
         is_feature_env=False,
     )
     return service, mock_client
@@ -105,7 +105,7 @@ def feature_env_service(mock_posthog):
     service = DirectService(
         api_key='test-key',
         host='https://posthog.example.com',
-        app_mode=AppMode.OPENHANDS,
+        app_mode=AppMode.WASPID,
         is_feature_env=True,
     )
     return service, mock_client

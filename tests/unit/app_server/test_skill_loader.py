@@ -10,7 +10,7 @@ from unittest.mock import AsyncMock, MagicMock, Mock, patch
 import httpx
 import pytest
 
-from openhands.app_server.app_conversation.skill_loader import (
+from waspid.app_server.app_conversation.skill_loader import (
     OrgConfig,
     SandboxConfig,
     SkillInfo,
@@ -24,15 +24,15 @@ from openhands.app_server.app_conversation.skill_loader import (
     build_sandbox_config,
     load_skills_from_agent_server,
 )
-from openhands.app_server.integrations.provider import ProviderType
-from openhands.app_server.integrations.service_types import AuthenticationError
-from openhands.app_server.sandbox.sandbox_models import (
+from waspid.app_server.integrations.provider import ProviderType
+from waspid.app_server.integrations.service_types import AuthenticationError
+from waspid.app_server.sandbox.sandbox_models import (
     ExposedUrl,
     SandboxInfo,
     SandboxStatus,
 )
-from openhands.app_server.user.user_context import UserContext
-from openhands.sdk.skills import KeywordTrigger, Skill, TaskTrigger
+from waspid.app_server.user.user_context import UserContext
+from waspid.sdk.skills import KeywordTrigger, Skill, TaskTrigger
 
 # ===== Test Fixtures =====
 
@@ -100,9 +100,9 @@ class TestGetProviderType:
     """Test _get_provider_type function."""
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.app_conversation.skill_loader._is_gitlab_repository')
+    @patch('waspid.app_server.app_conversation.skill_loader._is_gitlab_repository')
     @patch(
-        'openhands.app_server.app_conversation.skill_loader._is_azure_devops_repository'
+        'waspid.app_server.app_conversation.skill_loader._is_azure_devops_repository'
     )
     async def test_returns_gitlab_for_gitlab_repo(
         self, mock_is_azure, mock_is_gitlab, mock_user_context
@@ -120,9 +120,9 @@ class TestGetProviderType:
         mock_is_gitlab.assert_called_once_with('owner/repo', mock_user_context)
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.app_conversation.skill_loader._is_gitlab_repository')
+    @patch('waspid.app_server.app_conversation.skill_loader._is_gitlab_repository')
     @patch(
-        'openhands.app_server.app_conversation.skill_loader._is_azure_devops_repository'
+        'waspid.app_server.app_conversation.skill_loader._is_azure_devops_repository'
     )
     async def test_returns_azure_for_azure_repo(
         self, mock_is_azure, mock_is_gitlab, mock_user_context
@@ -140,9 +140,9 @@ class TestGetProviderType:
         mock_is_azure.assert_called_once_with('org/project/repo', mock_user_context)
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.app_conversation.skill_loader._is_gitlab_repository')
+    @patch('waspid.app_server.app_conversation.skill_loader._is_gitlab_repository')
     @patch(
-        'openhands.app_server.app_conversation.skill_loader._is_azure_devops_repository'
+        'waspid.app_server.app_conversation.skill_loader._is_azure_devops_repository'
     )
     async def test_returns_github_for_github_repo(
         self, mock_is_azure, mock_is_gitlab, mock_user_context
@@ -164,17 +164,17 @@ class TestBuildOrgConfig:
 
     @pytest.mark.asyncio
     @patch(
-        'openhands.app_server.app_conversation.skill_loader._determine_org_repo_path'
+        'waspid.app_server.app_conversation.skill_loader._determine_org_repo_path'
     )
-    @patch('openhands.app_server.app_conversation.skill_loader._get_org_repository_url')
-    @patch('openhands.app_server.app_conversation.skill_loader._get_provider_type')
+    @patch('waspid.app_server.app_conversation.skill_loader._get_org_repository_url')
+    @patch('waspid.app_server.app_conversation.skill_loader._get_provider_type')
     async def test_builds_config_successfully(
         self, mock_get_provider, mock_get_url, mock_determine_path, mock_user_context
     ):
         """Test successfully building org config."""
         # Arrange
-        mock_determine_path.return_value = ('owner/.openhands', 'owner')
-        mock_get_url.return_value = 'https://token@github.com/owner/.openhands.git'
+        mock_determine_path.return_value = ('owner/.waspid', 'owner')
+        mock_get_url.return_value = 'https://token@github.com/owner/.waspid.git'
         mock_get_provider.return_value = 'github'
 
         # Act
@@ -185,7 +185,7 @@ class TestBuildOrgConfig:
         assert isinstance(result, OrgConfig)
         assert result.repository == 'owner/repo'
         assert result.provider == 'github'
-        assert result.org_repo_url == 'https://token@github.com/owner/.openhands.git'
+        assert result.org_repo_url == 'https://token@github.com/owner/.waspid.git'
         assert result.org_name == 'owner'
 
     @pytest.mark.asyncio
@@ -210,15 +210,15 @@ class TestBuildOrgConfig:
 
     @pytest.mark.asyncio
     @patch(
-        'openhands.app_server.app_conversation.skill_loader._determine_org_repo_path'
+        'waspid.app_server.app_conversation.skill_loader._determine_org_repo_path'
     )
-    @patch('openhands.app_server.app_conversation.skill_loader._get_org_repository_url')
+    @patch('waspid.app_server.app_conversation.skill_loader._get_org_repository_url')
     async def test_returns_none_when_url_not_available(
         self, mock_get_url, mock_determine_path, mock_user_context
     ):
         """Test returns None when org repository URL cannot be retrieved."""
         # Arrange
-        mock_determine_path.return_value = ('owner/.openhands', 'owner')
+        mock_determine_path.return_value = ('owner/.waspid', 'owner')
         mock_get_url.return_value = None
 
         # Act
@@ -389,7 +389,7 @@ class TestLoadSkillsFromAgentServer:
             org_config=OrgConfig(
                 repository='owner/repo',
                 provider='github',
-                org_repo_url='https://github.com/owner/.openhands.git',
+                org_repo_url='https://github.com/owner/.waspid.git',
                 org_name='owner',
             ),
             sandbox_config=SandboxConfig(exposed_urls=[]),
@@ -579,9 +579,9 @@ class TestDetermineOrgRepoPath:
     """Test _determine_org_repo_path helper function."""
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.app_conversation.skill_loader._is_gitlab_repository')
+    @patch('waspid.app_server.app_conversation.skill_loader._is_gitlab_repository')
     @patch(
-        'openhands.app_server.app_conversation.skill_loader._is_azure_devops_repository'
+        'waspid.app_server.app_conversation.skill_loader._is_azure_devops_repository'
     )
     async def test_github_repository_path(self, mock_is_azure, mock_is_gitlab):
         """Test org path for GitHub repository."""
@@ -596,13 +596,13 @@ class TestDetermineOrgRepoPath:
         )
 
         # Assert
-        assert org_repo == 'owner/.openhands'
+        assert org_repo == 'owner/.waspid'
         assert org_name == 'owner'
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.app_conversation.skill_loader._is_gitlab_repository')
+    @patch('waspid.app_server.app_conversation.skill_loader._is_gitlab_repository')
     @patch(
-        'openhands.app_server.app_conversation.skill_loader._is_azure_devops_repository'
+        'waspid.app_server.app_conversation.skill_loader._is_azure_devops_repository'
     )
     async def test_gitlab_repository_path(self, mock_is_azure, mock_is_gitlab):
         """Test org path for GitLab repository."""
@@ -617,13 +617,13 @@ class TestDetermineOrgRepoPath:
         )
 
         # Assert
-        assert org_repo == 'owner/openhands-config'
+        assert org_repo == 'owner/waspid-config'
         assert org_name == 'owner'
 
     @pytest.mark.asyncio
-    @patch('openhands.app_server.app_conversation.skill_loader._is_gitlab_repository')
+    @patch('waspid.app_server.app_conversation.skill_loader._is_gitlab_repository')
     @patch(
-        'openhands.app_server.app_conversation.skill_loader._is_azure_devops_repository'
+        'waspid.app_server.app_conversation.skill_loader._is_azure_devops_repository'
     )
     async def test_azure_devops_repository_path(self, mock_is_azure, mock_is_gitlab):
         """Test org path for Azure DevOps repository."""
@@ -638,7 +638,7 @@ class TestDetermineOrgRepoPath:
         )
 
         # Assert
-        assert org_repo == 'org/openhands-config/openhands-config'
+        assert org_repo == 'org/waspid-config/waspid-config'
         assert org_name == 'org'
 
 
@@ -650,16 +650,16 @@ class TestGetOrgRepositoryUrl:
         """Test successfully retrieving authenticated URL."""
         # Arrange
         mock_user_context = AsyncMock()
-        expected_url = 'https://token@github.com/owner/.openhands.git'
+        expected_url = 'https://token@github.com/owner/.waspid.git'
         mock_user_context.get_authenticated_git_url.return_value = expected_url
 
         # Act
-        result = await _get_org_repository_url('owner/.openhands', mock_user_context)
+        result = await _get_org_repository_url('owner/.waspid', mock_user_context)
 
         # Assert
         assert result == expected_url
         mock_user_context.get_authenticated_git_url.assert_called_once_with(
-            'owner/.openhands', is_optional=True
+            'owner/.waspid', is_optional=True
         )
 
     @pytest.mark.asyncio
@@ -672,7 +672,7 @@ class TestGetOrgRepositoryUrl:
         )
 
         # Act
-        result = await _get_org_repository_url('owner/.openhands', mock_user_context)
+        result = await _get_org_repository_url('owner/.waspid', mock_user_context)
 
         # Assert
         assert result is None
@@ -687,7 +687,7 @@ class TestGetOrgRepositoryUrl:
         )
 
         # Act
-        result = await _get_org_repository_url('owner/.openhands', mock_user_context)
+        result = await _get_org_repository_url('owner/.waspid', mock_user_context)
 
         # Assert
         assert result is None

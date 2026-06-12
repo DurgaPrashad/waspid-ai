@@ -7,11 +7,11 @@ requires = [
 [tool.poetry]
 name = "enterprise_server"
 version = "0.0.1"
-description = "Deploy OpenHands"
-authors = [ "OpenHands" ]
+description = "Deploy Waspid"
+authors = [ "Waspid" ]
 license = "POLYFORM"
 readme = "README.md"
-repository = "https://github.com/OpenHands/OpenHands"
+repository = "https://github.com/Waspid/Waspid"
 packages = [
   { include = "server" },
   { include = "storage" },
@@ -21,7 +21,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.12,<3.14"
-openhands-ai = { path = "../", develop = true }
+waspid-ai = { path = "../", develop = true }
 gspread = "^6.1.4"
 alembic = "^1.14.1"
 cloud-sql-python-connector = "^1.16.0"

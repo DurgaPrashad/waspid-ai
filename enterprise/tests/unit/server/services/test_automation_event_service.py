@@ -15,7 +15,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from openhands.app_server.integrations.service_types import ProviderType
+from waspid.app_server.integrations.service_types import ProviderType
 
 REDIS_PATCH = 'server.services.automation_event_service.get_redis_client_async'
 
@@ -368,7 +368,7 @@ class TestForwardEvent:
         self, mock_token_manager, github_user_payload
     ):
         """
-        GIVEN: A GitHub event from a personal repo with linked OpenHands account
+        GIVEN: A GitHub event from a personal repo with linked Waspid account
         WHEN: forward_event is called
         THEN: Event is forwarded using the user's personal org (keycloak ID)
         """
@@ -406,7 +406,7 @@ class TestForwardEvent:
             assert call_args[0][1] == uuid.UUID(keycloak_id)
             payload = call_args[0][2]
             assert payload['organization']['git_org'] == 'testuser'
-            assert payload['organization']['openhands_org_id'] == keycloak_id
+            assert payload['organization']['waspid_org_id'] == keycloak_id
 
     @pytest.mark.asyncio
     async def test_forward_event_no_owner_in_payload(self, mock_token_manager):
@@ -538,7 +538,7 @@ class TestBuildEventPayload:
         assert result == {
             'organization': {
                 'git_org': 'test-org',
-                'openhands_org_id': '12345678-1234-5678-1234-567812345678',
+                'waspid_org_id': '12345678-1234-5678-1234-567812345678',
             },
             'payload': test_payload,
         }

@@ -18,7 +18,7 @@ from server.routes.auth import (
     set_response_cookie,
 )
 
-from openhands.app_server.integrations.service_types import ProviderType
+from waspid.app_server.integrations.service_types import ProviderType
 
 
 def create_mock_user_authorizer(success: bool = True, error_detail: str | None = None):
@@ -57,8 +57,8 @@ def mock_background_tasks():
 
 def test_set_response_cookie(mock_response, mock_request):
     """Test setting the auth cookie on a response."""
-    from openhands.app_server.services.jwt_service import JwtService
-    from openhands.app_server.utils.encryption_key import EncryptionKey
+    from waspid.app_server.services.jwt_service import JwtService
+    from waspid.app_server.utils.encryption_key import EncryptionKey
 
     jwt_svc = JwtService(
         keys=[EncryptionKey(kid='test', key=SecretStr('test_secret'), active=True)]
@@ -909,7 +909,7 @@ async def test_logout_without_refresh_token():
 
     with patch('server.routes.auth.token_manager') as mock_token_manager:
         with patch(
-            'openhands.app_server.user_auth.default_user_auth.DefaultUserAuth.get_instance'
+            'waspid.app_server.user_auth.default_user_auth.DefaultUserAuth.get_instance'
         ) as mock_get_instance:
             mock_get_instance.side_effect = AuthError()
             result = await logout(mock_request)

@@ -47,7 +47,9 @@ export function IntegrationCard({ entry, status }: IntegrationCardProps) {
             <span className="truncate text-sm font-semibold text-content">
               {entry.name}
             </span>
-            <span className="truncate text-xs text-basic">{entry.description}</span>
+            <span className="truncate text-xs text-basic">
+              {entry.description}
+            </span>
           </div>
         </div>
         <StatusPill tone={tone}>{label}</StatusPill>

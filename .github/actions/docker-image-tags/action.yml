@@ -1,9 +1,9 @@
 name: Compute Docker image tags
-description: Produce the canonical OpenHands Docker tag set (ref name, short SHA, full SHA — each in bare and `sha-` prefixed form) for a given image, with optional suffix and extra raw tags.
+description: Produce the canonical Waspid Docker tag set (ref name, short SHA, full SHA — each in bare and `sha-` prefixed form) for a given image, with optional suffix and extra raw tags.
 
 inputs:
   image:
-    description: Fully qualified image name (e.g. ghcr.io/owner/openhands).
+    description: Fully qualified image name (e.g. ghcr.io/owner/waspid).
     required: true
   ref-name:
     description: Git ref name to emit as a tag (e.g. main, pr-123, saas-rel-1.2.3).

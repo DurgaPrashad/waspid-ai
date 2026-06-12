@@ -5,11 +5,11 @@ build-backend = "poetry.core.masonry.api"
 requires = [ "poetry-core" ]
 
 [project]
-name = "openhands-ai"
+name = "waspid-ai"
 description = "Waspid — enterprise AI workforce operating system. Build, deploy, and orchestrate AI agents across voice, browser automation, workflows, APIs, support, sales, and operations."
 readme = "README.md"
 license = "MIT"
-authors = [ { name = "OpenHands", email = "contact@all-hands.dev" } ]
+authors = [ { name = "Waspid", email = "support@waspid.ai" } ]
 requires-python = ">=3.12,<3.14"
 classifiers = [
   "Programming Language :: Python :: 3 :: Only",
@@ -107,8 +107,11 @@ dependencies = [
   "zope-interface==7.2",
 ]
 
-urls.Homepage = "https://github.com/OpenHands/OpenHands"
-urls.Repository = "https://github.com/OpenHands/OpenHands"
+urls.Homepage = "https://github.com/DurgaPrashad/waspid-ai"
+urls.Repository = "https://github.com/DurgaPrashad/waspid-ai"
+
+[project.scripts]
+waspid = "waspid.waspid_cli:main"
 
 [dependency-groups]
 dev = [
@@ -139,21 +142,24 @@ runtime = [
 ]
 
 [tool.poetry]
-name = "openhands-ai"
+name = "waspid-ai"
 version = "1.7.0"
 description = "Waspid — enterprise AI workforce operating system. Build, deploy, and orchestrate AI agents across voice, browser automation, workflows, APIs, support, sales, and operations."
-authors = [ "OpenHands" ]
+authors = [ "Waspid" ]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/OpenHands/OpenHands"
+repository = "https://github.com/DurgaPrashad/waspid-ai"
 packages = [
-  { include = "openhands/**/*" },
-  { include = "pyproject.toml", to = "openhands" },
-  { include = "poetry.lock", to = "openhands" },
+  { include = "waspid/**/*" },
+  { include = "pyproject.toml", to = "waspid" },
+  { include = "poetry.lock", to = "waspid" },
 ]
 include = [
   "skills/**/*",
 ]
+
+[tool.poetry.scripts]
+waspid = "waspid.waspid_cli:main"
 
 [tool.poetry.dependencies]
 python = "^3.12,<3.14"

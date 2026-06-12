@@ -8,7 +8,7 @@ import { Messages as V1Messages } from "#/components/v1/chat";
 import { shouldRenderEvent } from "#/components/v1/chat/event-content-helpers/should-render-event";
 import { LoadingSpinner } from "#/components/shared/loading-spinner";
 import { handleEventForUI } from "#/utils/handle-event-for-ui";
-import { OpenHandsEvent } from "#/types/v1/core";
+import { WaspidEvent } from "#/types/v1/core";
 import { WaspidLogo } from "#/components/shared/branding/waspid-logo";
 import { useInfiniteScroll } from "#/hooks/use-infinite-scroll";
 
@@ -45,7 +45,7 @@ export default function SharedConversation() {
     () =>
       v1Events
         .reduce<
-          OpenHandsEvent[]
+          WaspidEvent[]
         >((uiEvents, event) => handleEventForUI(event, uiEvents), [])
         .filter(shouldRenderEvent),
     [v1Events],
@@ -82,7 +82,7 @@ export default function SharedConversation() {
           <Link
             to="/"
             className="flex-shrink-0"
-            aria-label={t(I18nKey.BRANDING$OPENHANDS_LOGO)}
+            aria-label={t(I18nKey.BRANDING$WASPID_LOGO)}
           >
             <WaspidLogo width={46} height={30} />
           </Link>

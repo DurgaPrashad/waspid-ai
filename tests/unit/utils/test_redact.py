@@ -1,9 +1,9 @@
-"""Tests for openhands.sdk.utils.redact redaction utilities.
+"""Tests for waspid.sdk.utils.redact redaction utilities.
 
 These tests verify that MCP config secrets are properly redacted before logging.
 """
 
-from openhands.sdk.utils.redact import (
+from waspid.sdk.utils.redact import (
     redact_api_key_literals,
     redact_text_secrets,
     redact_url_params,
@@ -57,8 +57,8 @@ class TestRedactApiKeyLiterals:
         redacted = redact_api_key_literals(text)
         assert 'sk-proj-abc123xyz456def789ghi012' not in redacted
 
-    def test_redact_openhands_session_token(self):
-        """Test that OpenHands session tokens are redacted."""
+    def test_redact_waspid_session_token(self):
+        """Test that Waspid session tokens are redacted."""
         text = 'Session: sk-oh-abc123sessiontoken456'
         redacted = redact_api_key_literals(text)
         assert 'sk-oh-abc123sessiontoken456' not in redacted

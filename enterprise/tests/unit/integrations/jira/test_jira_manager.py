@@ -8,7 +8,7 @@ import pytest
 from integrations.jira.jira_manager import JiraManager
 from integrations.jira.jira_payload import JiraEventType, JiraWebhookPayload
 
-from openhands.app_server.types import (
+from waspid.app_server.types import (
     LLMAuthenticationError,
     MissingSettingsError,
     SessionExpiredError,
@@ -119,7 +119,7 @@ class TestGetActiveWorkspace:
             account_id='svc123',
             workspace_name='test.atlassian.net',
             base_api_url='https://test.atlassian.net',
-            comment_body='@openhands test',
+            comment_body='@waspid test',
         )
         jira_manager.integration_store.get_workspace_by_name = AsyncMock(
             return_value=sample_jira_workspace

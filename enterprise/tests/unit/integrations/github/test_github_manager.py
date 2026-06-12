@@ -2,7 +2,7 @@
 Tests for the GithubManager class.
 
 Covers:
-- User not found scenario when a GitHub user hasn't created an OpenHands account
+- User not found scenario when a GitHub user hasn't created a Waspid account
 - Sign-up message posting to GitHub issues/PRs
 - All supported trigger types: labeled issues, issue comments, PR comments, inline PR comments
 """
@@ -16,7 +16,7 @@ from integrations.utils import HOST_URL, get_user_not_found_message
 
 
 class TestGithubManagerUserNotFound:
-    """Test cases for when a valid GitHub user hasn't created an OpenHands account."""
+    """Test cases for when a valid GitHub user hasn't created a Waspid account."""
 
     @pytest.fixture
     def mock_token_manager(self):
@@ -34,7 +34,7 @@ class TestGithubManagerUserNotFound:
 
     @pytest.fixture
     def github_issue_comment_message(self):
-        """Create a sample GitHub issue comment message with an @openhands mention."""
+        """Create a sample GitHub issue comment message with an @waspid mention."""
         return Message(
             source=SourceType.GITHUB,
             message={
@@ -53,7 +53,7 @@ class TestGithubManagerUserNotFound:
                         'number': 42,
                     },
                     'comment': {
-                        'body': '@openhands please help with this issue',
+                        'body': '@waspid please help with this issue',
                     },
                 },
             },
@@ -67,7 +67,7 @@ class TestGithubManagerUserNotFound:
 
     @pytest.fixture
     def github_labeled_issue_message(self):
-        """Create a sample GitHub labeled issue message (when openhands label is added)."""
+        """Create a sample GitHub labeled issue message (when waspid label is added)."""
         return Message(
             source=SourceType.GITHUB,
             message={
@@ -86,7 +86,7 @@ class TestGithubManagerUserNotFound:
                         'number': 55,
                     },
                     'label': {
-                        'name': 'openhands',
+                        'name': 'waspid',
                     },
                 },
             },
@@ -116,7 +116,7 @@ class TestGithubManagerUserNotFound:
                         },
                     },
                     'comment': {
-                        'body': '@openhands please review this PR',
+                        'body': '@waspid please review this PR',
                     },
                 },
             },
@@ -148,7 +148,7 @@ class TestGithubManagerUserNotFound:
                     'comment': {
                         'id': 12345,
                         'node_id': 'PRRC_abc123',
-                        'body': '@openhands fix this code',
+                        'body': '@waspid fix this code',
                         'path': 'src/main.py',
                         'line': 42,
                     },
@@ -174,7 +174,7 @@ class TestGithubManagerUserNotFound:
         mock_data_collector,
         github_issue_message,
     ):
-        """Test that a sign-up message is sent when a valid user hasn't created an OpenHands account on an issue."""
+        """Test that a sign-up message is sent when a valid user hasn't created a Waspid account on an issue."""
         # Set up mocks
         mock_github_instance = MagicMock()
         mock_github_class.return_value.__enter__ = MagicMock(
@@ -206,7 +206,7 @@ class TestGithubManagerUserNotFound:
         mock_issue.create_comment.assert_called_once()
         comment_text = mock_issue.create_comment.call_args[0][0]
         assert '@testuser' in comment_text
-        assert "haven't created an OpenHands account" in comment_text
+        assert "haven't created a Waspid account" in comment_text
         assert 'sign up' in comment_text.lower()
         assert HOST_URL in comment_text
 
@@ -222,7 +222,7 @@ class TestGithubManagerUserNotFound:
         mock_data_collector,
         github_pr_message,
     ):
-        """Test that a sign-up message is sent when a valid user hasn't created an OpenHands account on a PR."""
+        """Test that a sign-up message is sent when a valid user hasn't created a Waspid account on a PR."""
         # Set up mocks
         mock_github_instance = MagicMock()
         mock_github_class.return_value.__enter__ = MagicMock(
@@ -254,7 +254,7 @@ class TestGithubManagerUserNotFound:
         mock_issue.create_comment.assert_called_once()
         comment_text = mock_issue.create_comment.call_args[0][0]
         assert '@pruser' in comment_text
-        assert "haven't created an OpenHands account" in comment_text
+        assert "haven't created a Waspid account" in comment_text
 
     @pytest.mark.asyncio
     @patch('integrations.github.github_manager.Auth')
@@ -313,7 +313,7 @@ class TestGithubManagerUserNotFound:
         mock_issue.create_comment.assert_called_once()
         comment_text = mock_issue.create_comment.call_args[0][0]
         assert '@testuser' in comment_text
-        assert "haven't created an OpenHands account" in comment_text
+        assert "haven't created a Waspid account" in comment_text
         assert 'sign up' in comment_text.lower()
 
     @patch('integrations.github.github_manager.Auth')
@@ -407,7 +407,7 @@ class TestGithubManagerUserNotFound:
         mock_issue.create_comment.assert_called_once()
         comment_text = mock_issue.create_comment.call_args[0][0]
         assert '@labeluser' in comment_text
-        assert "haven't created an OpenHands account" in comment_text
+        assert "haven't created a Waspid account" in comment_text
         assert 'sign up' in comment_text.lower()
 
     @patch('integrations.github.github_manager.Auth')
@@ -454,7 +454,7 @@ class TestGithubManagerUserNotFound:
         mock_issue.create_comment.assert_called_once()
         comment_text = mock_issue.create_comment.call_args[0][0]
         assert '@prcommentuser' in comment_text
-        assert "haven't created an OpenHands account" in comment_text
+        assert "haven't created a Waspid account" in comment_text
         assert 'sign up' in comment_text.lower()
 
 
@@ -581,10 +581,10 @@ class TestGetIssueNumberFromPayload:
 class TestGetUserNotFoundMessageIntegration:
     """Integration tests to verify the user not found message content matches expectations."""
 
-    def test_message_mentions_openhands_cloud(self):
-        """Test that the message directs users to OpenHands Cloud."""
+    def test_message_mentions_waspid_cloud(self):
+        """Test that the message directs users to Waspid Cloud."""
         message = get_user_not_found_message('testuser')
-        assert 'OpenHands Cloud' in message
+        assert 'Waspid Cloud' in message
 
     def test_message_contains_actionable_instruction(self):
         """Test that the message tells users to sign up."""
@@ -596,4 +596,4 @@ class TestGetUserNotFoundMessageIntegration:
         """Test that the message is friendly and explains the situation."""
         message = get_user_not_found_message('testuser')
         assert 'it looks like' in message.lower()
-        assert "haven't created an openhands account" in message.lower()
+        assert "haven't created an waspid account" in message.lower()

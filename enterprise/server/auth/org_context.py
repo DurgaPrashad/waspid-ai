@@ -29,7 +29,7 @@ from fastapi import Depends, Header, HTTPException, Request, status
 from server.auth.saas_user_auth import SaasUserAuth
 from server.logger import logger
 
-from openhands.app_server.user_auth import get_user_auth
+from waspid.app_server.user_auth import get_user_auth
 
 X_ORG_ID_HEADER = 'X-Org-Id'
 

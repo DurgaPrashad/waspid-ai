@@ -12,23 +12,23 @@ import pytest
 from fastapi import HTTPException, status
 from fastapi.responses import JSONResponse
 
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversation,
     AppConversationInfo,
     AppConversationPage,
     SwitchProfileRequest,
 )
-from openhands.app_server.app_conversation.app_conversation_router import (
+from waspid.app_server.app_conversation.app_conversation_router import (
     AgentServerContext,
     batch_get_app_conversations,
     count_app_conversations,
     search_app_conversations,
     switch_conversation_profile,
 )
-from openhands.app_server.sandbox.sandbox_models import SandboxStatus
-from openhands.app_server.settings.llm_profiles import LLMProfiles
-from openhands.app_server.settings.settings_models import Settings
-from openhands.sdk.llm import LLM
+from waspid.app_server.sandbox.sandbox_models import SandboxStatus
+from waspid.app_server.settings.llm_profiles import LLMProfiles
+from waspid.app_server.settings.settings_models import Settings
+from waspid.sdk.llm import LLM
 
 
 def _make_mock_app_conversation(
@@ -472,7 +472,7 @@ class TestSwitchConversationProfile:
         settings = _make_settings_with_profile()
 
         with patch(
-            'openhands.app_server.app_conversation.app_conversation_router.'
+            'waspid.app_server.app_conversation.app_conversation_router.'
             '_get_agent_server_context',
             new=AsyncMock(return_value=None),
         ):
@@ -500,7 +500,7 @@ class TestSwitchConversationProfile:
         )
 
         with patch(
-            'openhands.app_server.app_conversation.app_conversation_router.'
+            'waspid.app_server.app_conversation.app_conversation_router.'
             '_get_agent_server_context',
             new=AsyncMock(return_value=helper_response),
         ):
@@ -534,7 +534,7 @@ class TestSwitchConversationProfile:
         client = _make_httpx_client(post_return=bad_response)
 
         with patch(
-            'openhands.app_server.app_conversation.app_conversation_router.'
+            'waspid.app_server.app_conversation.app_conversation_router.'
             '_get_agent_server_context',
             new=AsyncMock(return_value=ctx),
         ):
@@ -563,7 +563,7 @@ class TestSwitchConversationProfile:
         )
 
         with patch(
-            'openhands.app_server.app_conversation.app_conversation_router.'
+            'waspid.app_server.app_conversation.app_conversation_router.'
             '_get_agent_server_context',
             new=AsyncMock(return_value=ctx),
         ):
@@ -607,7 +607,7 @@ class TestSwitchConversationProfile:
         info_service.save_app_conversation_info = AsyncMock()
 
         with patch(
-            'openhands.app_server.app_conversation.app_conversation_router.'
+            'waspid.app_server.app_conversation.app_conversation_router.'
             '_get_agent_server_context',
             new=AsyncMock(return_value=ctx),
         ):
@@ -658,7 +658,7 @@ class TestSwitchConversationProfile:
         info_service.save_app_conversation_info = AsyncMock()
 
         with patch(
-            'openhands.app_server.app_conversation.app_conversation_router.'
+            'waspid.app_server.app_conversation.app_conversation_router.'
             '_get_agent_server_context',
             new=AsyncMock(return_value=ctx),
         ):
@@ -693,7 +693,7 @@ class TestSwitchConversationProfile:
         info_service.save_app_conversation_info = AsyncMock()
 
         with patch(
-            'openhands.app_server.app_conversation.app_conversation_router.'
+            'waspid.app_server.app_conversation.app_conversation_router.'
             '_get_agent_server_context',
             new=AsyncMock(return_value=ctx),
         ):

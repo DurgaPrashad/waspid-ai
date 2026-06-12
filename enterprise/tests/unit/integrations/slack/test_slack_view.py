@@ -16,8 +16,8 @@ from jinja2 import DictLoader, Environment
 from storage.slack_conversation import SlackConversation
 from storage.slack_user import SlackUser
 
-from openhands.app_server.sandbox.sandbox_models import SandboxStatus
-from openhands.app_server.user_auth.user_auth import UserAuth
+from waspid.app_server.sandbox.sandbox_models import SandboxStatus
+from waspid.app_server.user_auth.user_auth import UserAuth
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -57,9 +57,9 @@ def slack_new_conversation_view(mock_slack_user, mock_user_auth):
     """Create a SlackNewConversationView instance."""
     return SlackNewConversationView(
         bot_access_token='xoxb-test-token',
-        user_msg='Hello OpenHands!',
+        user_msg='Hello Waspid!',
         slack_user_id='U1234567890',
-        slack_to_openhands_user=mock_slack_user,
+        slack_to_waspid_user=mock_slack_user,
         saas_user_auth=mock_user_auth,
         channel_id='C1234567890',
         message_ts='1234567890.123456',
@@ -87,7 +87,7 @@ def slack_update_conversation_view_v1(mock_slack_user, mock_user_auth):
         bot_access_token='xoxb-test-token',
         user_msg='Follow up message',
         slack_user_id='U1234567890',
-        slack_to_openhands_user=mock_slack_user,
+        slack_to_waspid_user=mock_slack_user,
         saas_user_auth=mock_user_auth,
         channel_id='C1234567890',
         message_ts='1234567890.123457',
@@ -169,11 +169,11 @@ class TestMessageRouting:
 class TestPausedSandboxResumption:
     """Test that paused sandboxes are resumed when sending messages to V1 conversations."""
 
-    @patch('openhands.app_server.config.get_sandbox_service')
-    @patch('openhands.app_server.config.get_app_conversation_info_service')
-    @patch('openhands.app_server.config.get_httpx_client')
-    @patch('openhands.app_server.event_callback.util.ensure_running_sandbox')
-    @patch('openhands.app_server.event_callback.util.get_agent_server_url_from_sandbox')
+    @patch('waspid.app_server.config.get_sandbox_service')
+    @patch('waspid.app_server.config.get_app_conversation_info_service')
+    @patch('waspid.app_server.config.get_httpx_client')
+    @patch('waspid.app_server.event_callback.util.ensure_running_sandbox')
+    @patch('waspid.app_server.event_callback.util.get_agent_server_url_from_sandbox')
     @patch.object(
         SlackUpdateExistingConversationView, '_get_instructions', new_callable=AsyncMock
     )

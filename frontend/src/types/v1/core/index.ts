@@ -6,5 +6,5 @@ export * from "./base";
 // Event types (main events that extend BaseEvent)
 export * from "./events";
 
-// Union type for all OpenHands events
-export * from "./openhands-event";
+// Union type for all Waspid events
+export * from "./waspid-event";

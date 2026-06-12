@@ -2,11 +2,7 @@ import { useMemo } from "react";
 import { Activity } from "lucide-react";
 import { usePaginatedConversations } from "#/hooks/query/use-paginated-conversations";
 import { useInfiniteScroll } from "#/hooks/use-infinite-scroll";
-import {
-  PageShell,
-  PageHeader,
-  Section,
-} from "#/components/shared/layout";
+import { PageShell, PageHeader, Section } from "#/components/shared/layout";
 import { RunRow } from "./run-row";
 import { toMonitoringRun } from "./types";
 
@@ -84,7 +80,10 @@ export function MonitoringScreen() {
               data-testid="monitoring-empty"
               className="rounded-xl border border-dashed border-tertiary/40 bg-base-secondary/20 px-6 py-12 text-center"
             >
-              <Activity className="mx-auto mb-3 h-8 w-8 text-basic" aria-hidden />
+              <Activity
+                className="mx-auto mb-3 h-8 w-8 text-basic"
+                aria-hidden
+              />
               <p className="text-sm text-content">No runs to monitor yet.</p>
               <p className="mt-1 text-xs text-basic">
                 Once an agent run starts, it will appear here with live status,

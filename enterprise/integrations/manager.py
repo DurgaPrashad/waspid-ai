@@ -17,7 +17,7 @@ class Manager(ABC, Generic[ViewT]):
 
     @abstractmethod
     def send_message(self, message: str, *args: Any, **kwargs: Any):
-        """Send message to integration from OpenHands server.
+        """Send message to integration from Waspid server.
 
         Args:
             message: The message content to send (plain text string).
@@ -26,7 +26,7 @@ class Manager(ABC, Generic[ViewT]):
 
     @abstractmethod
     async def start_job(self, view: ViewT) -> None:
-        """Kick off a job with openhands agent.
+        """Kick off a job with waspid agent.
 
         Args:
             view: Integration-specific view object containing job context.

@@ -25,9 +25,9 @@ def _is_all_hands_managed_domain(host: str) -> bool:
     """Check if the host is an All-Hands managed domain."""
     return (
         host == 'app.all-hands.dev'
-        or host == 'app.openhands.ai'
+        or host == 'app.waspid.ai'
         or host.endswith('.all-hands.dev')
-        or host.endswith('.openhands.ai')
+        or host.endswith('.waspid.ai')
     )
 
 
@@ -83,7 +83,7 @@ SUBSCRIPTION_PRICE_DATA = {
         'unit_amount': 2000,
         'currency': 'usd',
         'product_data': {
-            'name': 'OpenHands Monthly',
+            'name': 'Waspid Monthly',
             'tax_code': 'txcd_10000000',
         },
         'tax_behavior': 'exclusive',

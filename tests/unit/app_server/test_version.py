@@ -5,7 +5,7 @@ import types
 from pathlib import Path
 from unittest.mock import patch
 
-from openhands.app_server.version import get_version
+from waspid.app_server.version import get_version
 
 VERSION_PATTERN = re.compile(r'^\d+\.\d+\.\d+$')
 
@@ -33,27 +33,27 @@ class TestGetVersionFromPyproject:
 
     def test_reads_first_candidate_path(self, tmp_path):
         _write_pyproject(tmp_path, '1.2.3')
-        fake_file = tmp_path / 'openhands' / 'app_server' / 'version.py'
+        fake_file = tmp_path / 'waspid' / 'app_server' / 'version.py'
         fake_file.parent.mkdir(parents=True)
         fake_file.touch()
 
         with patch(
-            'openhands.app_server.version.os.path.abspath', return_value=str(fake_file)
+            'waspid.app_server.version.os.path.abspath', return_value=str(fake_file)
         ):
             assert get_version() == '1.2.3'
 
     def test_reads_second_candidate_path(self, tmp_path):
-        # Only place pyproject.toml under the openhands/ subdirectory
-        openhands_dir = tmp_path / 'openhands'
-        openhands_dir.mkdir()
-        _write_pyproject(openhands_dir, '4.5.6')
+        # Only place pyproject.toml under the waspid/ subdirectory
+        waspid_dir = tmp_path / 'waspid'
+        waspid_dir.mkdir()
+        _write_pyproject(waspid_dir, '4.5.6')
 
-        fake_file = tmp_path / 'openhands' / 'app_server' / 'version.py'
+        fake_file = tmp_path / 'waspid' / 'app_server' / 'version.py'
         fake_file.parent.mkdir(parents=True, exist_ok=True)
         fake_file.touch()
 
         with patch(
-            'openhands.app_server.version.os.path.abspath', return_value=str(fake_file)
+            'waspid.app_server.version.os.path.abspath', return_value=str(fake_file)
         ):
             assert get_version() == '4.5.6'
 
@@ -61,12 +61,12 @@ class TestGetVersionFromPyproject:
         pyproject = tmp_path / 'pyproject.toml'
         pyproject.write_text("version = '9.8.7'\n")
 
-        fake_file = tmp_path / 'openhands' / 'app_server' / 'version.py'
+        fake_file = tmp_path / 'waspid' / 'app_server' / 'version.py'
         fake_file.parent.mkdir(parents=True)
         fake_file.touch()
 
         with patch(
-            'openhands.app_server.version.os.path.abspath', return_value=str(fake_file)
+            'waspid.app_server.version.os.path.abspath', return_value=str(fake_file)
         ):
             assert get_version() == '9.8.7'
 
@@ -77,8 +77,8 @@ class TestGetVersionFallbacks:
     def _patch_no_pyproject(self):
         """Patch so that no pyproject.toml candidate files exist."""
         return patch(
-            'openhands.app_server.version.os.path.abspath',
-            return_value='/nonexistent/openhands/app_server/version.py',
+            'waspid.app_server.version.os.path.abspath',
+            return_value='/nonexistent/waspid/app_server/version.py',
         )
 
     def test_falls_back_to_importlib_metadata(self):
@@ -120,7 +120,7 @@ class TestModuleLevelVersion:
     """Test that __version__ at module level is well-formed."""
 
     def test_module_version_matches_pattern(self):
-        from openhands.app_server.version import __version__
+        from waspid.app_server.version import __version__
 
         assert VERSION_PATTERN.match(__version__), (
             f"Expected __version__ matching X.Y.Z (positive ints), got '{__version__}'"

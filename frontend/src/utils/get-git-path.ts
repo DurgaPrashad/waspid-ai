@@ -8,7 +8,7 @@
  * /workspace/project[/{repoName}]
  *
  * @param conversationId The conversation ID
- * @param selectedRepository The selected repository (e.g., "OpenHands/OpenHands", "owner/repo", or "group/subgroup/repo")
+ * @param selectedRepository The selected repository (e.g., "Waspid/Waspid", "owner/repo", or "group/subgroup/repo")
  * @param useSandboxGrouping Whether sandbox grouping is enabled (strategy != NO_GROUPING)
  * @returns The git path to use
  */

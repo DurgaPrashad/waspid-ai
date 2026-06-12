@@ -1,7 +1,7 @@
 from fastapi import HTTPException, Request, status
 from storage.redis import get_redis_client_async
 
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 # Rate limiting constants
 RATE_LIMIT_USER_SECONDS = 120  # 2 minutes per user_id

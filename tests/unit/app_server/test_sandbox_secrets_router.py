@@ -16,27 +16,27 @@ from fastapi import FastAPI, HTTPException
 from fastapi.testclient import TestClient
 from pydantic import SecretStr
 
-from openhands.app_server.integrations.provider import ProviderHandler, ProviderToken
-from openhands.app_server.integrations.service_types import ProviderType
-from openhands.app_server.sandbox.sandbox_models import (
+from waspid.app_server.integrations.provider import ProviderHandler, ProviderToken
+from waspid.app_server.integrations.service_types import ProviderType
+from waspid.app_server.sandbox.sandbox_models import (
     SandboxInfo,
     SandboxStatus,
     SecretNamesResponse,
 )
-from openhands.app_server.sandbox.sandbox_router import (
+from waspid.app_server.sandbox.sandbox_router import (
     get_secret_value,
     list_secret_names,
 )
-from openhands.app_server.sandbox.session_auth import (
+from waspid.app_server.sandbox.session_auth import (
     validate_session_key,
     validate_session_key_ownership,
 )
-from openhands.app_server.user.auth_user_context import AuthUserContext
-from openhands.app_server.user.user_models import UserInfo
-from openhands.app_server.user.user_router import get_current_user
-from openhands.sdk.llm import LLM
-from openhands.sdk.secret import StaticSecret
-from openhands.sdk.settings import OpenHandsAgentSettings
+from waspid.app_server.user.auth_user_context import AuthUserContext
+from waspid.app_server.user.user_models import UserInfo
+from waspid.app_server.user.user_router import get_current_user
+from waspid.sdk.llm import LLM
+from waspid.sdk.secret import StaticSecret
+from waspid.sdk.settings import WaspidAgentSettings
 
 SANDBOX_ID = 'sb-test-123'
 USER_ID = 'test-user-id'
@@ -62,7 +62,7 @@ def _patch_sandbox_service(return_sandbox: SandboxInfo | None):
         return_value=return_sandbox
     )
     ctx = patch(
-        'openhands.app_server.sandbox.session_auth.get_sandbox_service',
+        'waspid.app_server.sandbox.session_auth.get_sandbox_service',
     )
     return ctx, mock_sandbox_service
 
@@ -129,13 +129,13 @@ class TestValidateSessionKey:
         with (
             ctx as mock_get,
             patch(
-                'openhands.app_server.sandbox.session_auth.get_global_config'
+                'waspid.app_server.sandbox.session_auth.get_global_config'
             ) as mock_cfg,
         ):
             mock_get.return_value.__aenter__ = AsyncMock(return_value=mock_svc)
             mock_get.return_value.__aexit__ = AsyncMock(return_value=False)
 
-            from openhands.app_server.types import AppMode
+            from waspid.app_server.types import AppMode
 
             mock_cfg.return_value.app_mode = AppMode.SAAS
 
@@ -257,7 +257,7 @@ class TestGetCurrentUserExposeSecrets:
         """With valid session key, expose_secrets=true returns unmasked llm_api_key."""
         user_info = UserInfo(
             id=USER_ID,
-            agent_settings=OpenHandsAgentSettings(
+            agent_settings=WaspidAgentSettings(
                 llm=LLM(
                     model='anthropic/claude-sonnet-4-20250514',
                     api_key=SecretStr('sk-test-key-123'),
@@ -270,7 +270,7 @@ class TestGetCurrentUserExposeSecrets:
         mock_context.get_user_id = AsyncMock(return_value=USER_ID)
 
         with patch(
-            'openhands.app_server.user.user_router.validate_session_key_ownership'
+            'waspid.app_server.user.user_router.validate_session_key_ownership'
         ) as mock_validate:
             mock_validate.return_value = None
             result = await get_current_user(
@@ -337,7 +337,7 @@ class TestGetCurrentUserExposeSecrets:
         """Without expose_secrets, llm_api_key is masked (no session key needed)."""
         user_info = UserInfo(
             id=USER_ID,
-            agent_settings=OpenHandsAgentSettings(
+            agent_settings=WaspidAgentSettings(
                 llm=LLM(model='gpt-4o', api_key=SecretStr('sk-test-key-123')),
             ),
         )
@@ -379,7 +379,7 @@ class TestListSecretNames:
         sandbox_info = _make_sandbox_info()
 
         with patch(
-            'openhands.app_server.sandbox.sandbox_router._get_user_context'
+            'waspid.app_server.sandbox.sandbox_router._get_user_context'
         ) as mock_ctx:
             ctx = AsyncMock()
             ctx.get_secrets = AsyncMock(return_value=secrets)
@@ -403,7 +403,7 @@ class TestListSecretNames:
         sandbox_info = _make_sandbox_info()
 
         with patch(
-            'openhands.app_server.sandbox.sandbox_router._get_user_context'
+            'waspid.app_server.sandbox.sandbox_router._get_user_context'
         ) as mock_ctx:
             ctx = AsyncMock()
             ctx.get_secrets = AsyncMock(return_value={})
@@ -435,7 +435,7 @@ class TestGetSecretValue:
         sandbox_info = _make_sandbox_info()
 
         with patch(
-            'openhands.app_server.sandbox.sandbox_router._get_user_context'
+            'waspid.app_server.sandbox.sandbox_router._get_user_context'
         ) as mock_ctx:
             ctx = AsyncMock()
             ctx.get_secrets = AsyncMock(return_value=secrets)
@@ -455,7 +455,7 @@ class TestGetSecretValue:
         sandbox_info = _make_sandbox_info()
 
         with patch(
-            'openhands.app_server.sandbox.sandbox_router._get_user_context'
+            'waspid.app_server.sandbox.sandbox_router._get_user_context'
         ) as mock_ctx:
             ctx = AsyncMock()
             ctx.get_secrets = AsyncMock(return_value={})
@@ -478,7 +478,7 @@ class TestGetSecretValue:
         sandbox_info = _make_sandbox_info()
 
         with patch(
-            'openhands.app_server.sandbox.sandbox_router._get_user_context'
+            'waspid.app_server.sandbox.sandbox_router._get_user_context'
         ) as mock_ctx:
             ctx = AsyncMock()
             ctx.get_secrets = AsyncMock(return_value=secrets)
@@ -515,11 +515,11 @@ def _build_integration_test_app(
     env var) are overridden to no-ops so we can exercise the endpoint-level auth logic
     in isolation.
     """
-    from openhands.app_server.sandbox.sandbox_router import (
+    from waspid.app_server.sandbox.sandbox_router import (
         router as sandbox_router,
     )
-    from openhands.app_server.user.user_router import router as user_router
-    from openhands.app_server.utils.dependencies import check_session_api_key
+    from waspid.app_server.user.user_router import router as user_router
+    from waspid.app_server.utils.dependencies import check_session_api_key
 
     app = FastAPI()
 
@@ -528,7 +528,7 @@ def _build_integration_test_app(
     app.dependency_overrides[check_session_api_key] = lambda: None
 
     if mock_user_context is not None:
-        from openhands.app_server.user.user_router import user_dependency
+        from waspid.app_server.user.user_router import user_dependency
 
         app.dependency_overrides[user_dependency.dependency] = lambda: mock_user_context
 
@@ -553,7 +553,7 @@ class TestExposeSecretsIntegration:
         mock_user_ctx.get_user_info = AsyncMock(
             return_value=UserInfo(
                 id=USER_ID,
-                agent_settings=OpenHandsAgentSettings(
+                agent_settings=WaspidAgentSettings(
                     llm=LLM(model='gpt-4o', api_key=SecretStr('sk-secret-123')),
                 ),
             )
@@ -574,7 +574,7 @@ class TestExposeSecretsIntegration:
         mock_user_ctx.get_user_info = AsyncMock(
             return_value=UserInfo(
                 id=USER_ID,
-                agent_settings=OpenHandsAgentSettings(
+                agent_settings=WaspidAgentSettings(
                     llm=LLM(model='gpt-4o', api_key=SecretStr('sk-secret-123')),
                 ),
             )
@@ -588,7 +588,7 @@ class TestExposeSecretsIntegration:
         client = TestClient(app, raise_server_exceptions=False)
 
         with patch(
-            'openhands.app_server.sandbox.session_auth.get_sandbox_service',
+            'waspid.app_server.sandbox.session_auth.get_sandbox_service',
             _create_sandbox_service_context_manager(mock_sandbox_svc),
         ):
             response = client.get(
@@ -606,7 +606,7 @@ class TestExposeSecretsIntegration:
         mock_user_ctx.get_user_info = AsyncMock(
             return_value=UserInfo(
                 id='user-A',
-                agent_settings=OpenHandsAgentSettings(
+                agent_settings=WaspidAgentSettings(
                     llm=LLM(model='gpt-4o', api_key=SecretStr('sk-secret-123')),
                 ),
             )
@@ -624,7 +624,7 @@ class TestExposeSecretsIntegration:
         client = TestClient(app, raise_server_exceptions=False)
 
         with patch(
-            'openhands.app_server.sandbox.session_auth.get_sandbox_service',
+            'waspid.app_server.sandbox.session_auth.get_sandbox_service',
             _create_sandbox_service_context_manager(mock_sandbox_svc),
         ):
             response = client.get(
@@ -642,7 +642,7 @@ class TestExposeSecretsIntegration:
         mock_user_ctx.get_user_info = AsyncMock(
             return_value=UserInfo(
                 id=USER_ID,
-                agent_settings=OpenHandsAgentSettings(
+                agent_settings=WaspidAgentSettings(
                     llm=LLM(
                         model='anthropic/claude-sonnet-4-20250514',
                         api_key=SecretStr('sk-real-secret'),
@@ -663,7 +663,7 @@ class TestExposeSecretsIntegration:
         client = TestClient(app, raise_server_exceptions=False)
 
         with patch(
-            'openhands.app_server.sandbox.session_auth.get_sandbox_service',
+            'waspid.app_server.sandbox.session_auth.get_sandbox_service',
             _create_sandbox_service_context_manager(mock_sandbox_svc),
         ):
             response = client.get(
@@ -684,7 +684,7 @@ class TestExposeSecretsIntegration:
         mock_user_ctx.get_user_info = AsyncMock(
             return_value=UserInfo(
                 id=USER_ID,
-                agent_settings=OpenHandsAgentSettings(
+                agent_settings=WaspidAgentSettings(
                     llm=LLM(
                         model='gpt-4o',
                         api_key=SecretStr('sk-should-be-masked'),
@@ -730,7 +730,7 @@ class TestSandboxSecretsIntegration:
         mock_sandbox_svc.get_sandbox_by_session_api_key = AsyncMock(return_value=None)
 
         with patch(
-            'openhands.app_server.sandbox.session_auth.get_sandbox_service',
+            'waspid.app_server.sandbox.session_auth.get_sandbox_service',
             _create_sandbox_service_context_manager(mock_sandbox_svc),
         ):
             response = client.get(
@@ -754,7 +754,7 @@ class TestSandboxSecretsIntegration:
         )
 
         with patch(
-            'openhands.app_server.sandbox.session_auth.get_sandbox_service',
+            'waspid.app_server.sandbox.session_auth.get_sandbox_service',
             _create_sandbox_service_context_manager(mock_sandbox_svc),
         ):
             response = client.get(
@@ -778,7 +778,7 @@ class TestSandboxSecretsIntegration:
         )
 
         with patch(
-            'openhands.app_server.sandbox.session_auth.get_sandbox_service',
+            'waspid.app_server.sandbox.session_auth.get_sandbox_service',
             _create_sandbox_service_context_manager(mock_sandbox_svc),
         ):
             response = client.get(
@@ -855,7 +855,7 @@ class TestProviderTokensInEndpoints:
         sandbox_info = _make_sandbox_info()
 
         with patch(
-            'openhands.app_server.sandbox.sandbox_router._get_user_context'
+            'waspid.app_server.sandbox.sandbox_router._get_user_context'
         ) as mock_ctx:
             ctx = AsyncMock()
             ctx.get_secrets = AsyncMock(return_value=custom_secrets)
@@ -875,7 +875,7 @@ class TestProviderTokensInEndpoints:
         sandbox_info = _make_sandbox_info()
 
         with patch(
-            'openhands.app_server.sandbox.sandbox_router._get_user_context'
+            'waspid.app_server.sandbox.sandbox_router._get_user_context'
         ) as mock_ctx:
             ctx = AsyncMock()
             ctx.get_secrets = AsyncMock(return_value={})
@@ -897,7 +897,7 @@ class TestProviderTokensInEndpoints:
         sandbox_info = _make_sandbox_info()
 
         with patch(
-            'openhands.app_server.sandbox.sandbox_router._get_user_context'
+            'waspid.app_server.sandbox.sandbox_router._get_user_context'
         ) as mock_ctx:
             ctx = AsyncMock()
             ctx.get_secrets = AsyncMock(

@@ -21,8 +21,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import Mapped, mapped_column
 from storage.base import Base
 
-from openhands.app_server.config import depends_db_session
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.config import depends_db_session
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 class StoredVerifiedModel(Base):
@@ -30,7 +30,7 @@ class StoredVerifiedModel(Base):
 
     The composite unique constraint on (model_name, provider) allows the same
     model name to exist under different providers (e.g. 'claude-sonnet' under
-    both 'openhands' and 'anthropic').
+    both 'waspid' and 'anthropic').
     """
 
     __tablename__ = 'verified_models'
@@ -82,7 +82,7 @@ class VerifiedModelService:
         """Search for verified models with optional filtering and pagination.
 
         Args:
-            provider: Optional provider name to filter by (e.g., 'openhands', 'anthropic')
+            provider: Optional provider name to filter by (e.g., 'waspid', 'anthropic')
             enabled_only: If True, only return enabled models (default: True)
             page_id: Page id for pagination
             limit: Maximum number of records to return

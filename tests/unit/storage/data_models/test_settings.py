@@ -6,23 +6,23 @@ import pytest
 from fastmcp.mcp_config import MCPConfig
 from pydantic import SecretStr
 
-import openhands.app_server.settings.settings_models as settings_module
-from openhands.app_server.settings.llm_profiles import ProfileNotFoundError
-from openhands.app_server.settings.settings_models import Settings
-from openhands.app_server.settings.settings_router import LITE_LLM_API_URL
-from openhands.sdk.llm import LLM
-from openhands.sdk.settings import (
+import waspid.app_server.settings.settings_models as settings_module
+from waspid.app_server.settings.llm_profiles import ProfileNotFoundError
+from waspid.app_server.settings.settings_models import Settings
+from waspid.app_server.settings.settings_router import LITE_LLM_API_URL
+from waspid.sdk.llm import LLM
+from waspid.sdk.settings import (
     AGENT_SETTINGS_SCHEMA_VERSION,
     ConversationSettings,
-    OpenHandsAgentSettings,
+    WaspidAgentSettings,
 )
-from openhands.sdk.settings.model import CondenserSettings, VerificationSettings
+from waspid.sdk.settings.model import CondenserSettings, VerificationSettings
 
 
 def test_settings_handles_sensitive_data():
     settings = Settings(
         language='en',
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             agent='test-agent',
             llm=LLM(
                 model='test-model',
@@ -44,7 +44,7 @@ def test_settings_handles_sensitive_data():
 
 
 def test_settings_loads_persisted_settings_via_sdk_loaders():
-    loaded_agent_settings = OpenHandsAgentSettings(agent='migrated-agent')
+    loaded_agent_settings = WaspidAgentSettings(agent='migrated-agent')
     loaded_conversation_settings = ConversationSettings(max_iterations=77)
 
     with (
@@ -73,7 +73,7 @@ def test_settings_loads_persisted_settings_via_sdk_loaders():
 def test_settings_update_deep_merges_agent_settings():
     """Updating agent_settings with a partial dict must not overwrite sibling sub-fields."""
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(model='existing-model', api_key=SecretStr('existing-key')),
             condenser=CondenserSettings(enabled=True, max_size=200),
         ),
@@ -89,7 +89,7 @@ def test_settings_update_deep_merges_agent_settings():
 
 def test_settings_preserve_agent_settings():
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(
                 model='test-model',
                 api_key=SecretStr('test-key'),
@@ -117,7 +117,7 @@ def test_settings_preserve_agent_settings():
 
 def test_settings_to_agent_settings_uses_agent_vals():
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(
                 model='sdk-model',
                 base_url='https://sdk.example.com',
@@ -143,7 +143,7 @@ def test_settings_to_agent_settings_uses_agent_vals():
 
 def test_settings_agent_settings_keeps_sdk_mcp_shape_canonical():
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(model='sdk-model'),
             mcp_config=MCPConfig(
                 mcpServers={
@@ -169,7 +169,7 @@ def test_settings_agent_settings_keeps_sdk_mcp_shape_canonical():
 
 def test_settings_update_mcp_config():
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(llm=LLM(model='sdk-model'))
+        agent_settings=WaspidAgentSettings(llm=LLM(model='sdk-model'))
     )
 
     settings.update(
@@ -196,7 +196,7 @@ def test_settings_update_mcp_config():
 
 def test_settings_update_replaces_existing_mcp_servers():
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(model='sdk-model'),
             mcp_config=MCPConfig(
                 mcpServers={
@@ -232,7 +232,7 @@ def test_settings_update_replaces_existing_mcp_servers():
 
 def test_settings_update_can_clear_mcp_config():
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(model='sdk-model'),
             mcp_config=MCPConfig(
                 mcpServers={
@@ -319,7 +319,7 @@ def test_switch_to_profile_preserves_other_agent_settings():
     ``switch_to_profile`` would silently drop those sibling configs.
     """
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(model='openai/gpt-4o'),
             condenser=CondenserSettings(enabled=True, max_size=321),
             verification=VerificationSettings(
@@ -409,7 +409,7 @@ def test_update_ignores_llm_profiles_payload():
 def test_update_clears_active_when_llm_diverges():
     """Editing agent_settings.llm via ``update`` must drop a now-stale active profile."""
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(model='openai/gpt-4o', api_key=SecretStr('sk-a'))
         )
     )
@@ -429,7 +429,7 @@ def test_update_clears_active_when_llm_diverges():
 def test_update_keeps_active_when_llm_unchanged():
     """A no-op LLM update must not spuriously clear ``active``."""
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(model='openai/gpt-4o', api_key=SecretStr('sk-a'))
         )
     )
@@ -486,10 +486,10 @@ def test_settings_no_pydantic_frozen_field_warning():
         )
 
 
-def test_litellm_proxy_to_openhands_conversion_with_openhands_proxy():
-    """Test that litellm_proxy/ is converted to openhands/ when using OpenHands proxy."""
+def test_litellm_proxy_to_waspid_conversion_with_waspid_proxy():
+    """Test that litellm_proxy/ is converted to waspid/ when using Waspid proxy."""
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(
                 model='litellm_proxy/claude-opus-4-5-20251101',
                 base_url=LITE_LLM_API_URL,
@@ -500,15 +500,15 @@ def test_litellm_proxy_to_openhands_conversion_with_openhands_proxy():
     # Internal representation should be litellm_proxy/
     assert settings.agent_settings.llm.model == 'litellm_proxy/claude-opus-4-5-20251101'
 
-    # Display representation should convert to openhands/
+    # Display representation should convert to waspid/
     api_data = settings.get_agent_settings_display()
-    assert api_data['llm']['model'] == 'openhands/claude-opus-4-5-20251101'
+    assert api_data['llm']['model'] == 'waspid/claude-opus-4-5-20251101'
 
 
 def test_litellm_proxy_custom_endpoint_keeps_prefix():
     """Test that custom litellm_proxy endpoints keep their litellm_proxy/ prefix."""
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(
                 model='litellm_proxy/gpt-5.3-codex',
                 base_url='http://custom-proxy.example.com:4000',
@@ -519,22 +519,22 @@ def test_litellm_proxy_custom_endpoint_keeps_prefix():
     # Internal representation
     assert settings.agent_settings.llm.model == 'litellm_proxy/gpt-5.3-codex'
 
-    # Display should NOT convert to openhands/ because it's a custom endpoint
+    # Display should NOT convert to waspid/ because it's a custom endpoint
     api_data = settings.get_agent_settings_display()
     assert api_data['llm']['model'] == 'litellm_proxy/gpt-5.3-codex'
 
 
-def test_openhands_model_converts_to_litellm_proxy_internally():
-    """Test that openhands/ models are stored as litellm_proxy/ internally."""
+def test_waspid_model_converts_to_litellm_proxy_internally():
+    """Test that waspid/ models are stored as litellm_proxy/ internally."""
     settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
-            llm=LLM(model='openhands/claude-opus-4-5-20251101')
+        agent_settings=WaspidAgentSettings(
+            llm=LLM(model='waspid/claude-opus-4-5-20251101')
         )
     )
 
     # Internal representation should be litellm_proxy/
     assert settings.agent_settings.llm.model == 'litellm_proxy/claude-opus-4-5-20251101'
 
-    # Display representation should convert back to openhands/
+    # Display representation should convert back to waspid/
     api_data = settings.get_agent_settings_display()
-    assert api_data['llm']['model'] == 'openhands/claude-opus-4-5-20251101'
+    assert api_data['llm']['model'] == 'waspid/claude-opus-4-5-20251101'

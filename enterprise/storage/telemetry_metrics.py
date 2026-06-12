@@ -1,7 +1,7 @@
 """SQLAlchemy model for telemetry metrics data.
 
 This model stores individual metric collection records with upload tracking
-and retry logic for the OpenHands Enterprise Telemetry Service.
+and retry logic for the Waspid Enterprise Telemetry Service.
 """
 
 import uuid

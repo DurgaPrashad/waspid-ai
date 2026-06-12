@@ -17,7 +17,7 @@ from integrations.types import ResolverViewInterface
 from integrations.utils import (
     CONVERSATION_URL,
     HOST_URL,
-    OPENHANDS_RESOLVER_TEMPLATES_DIR,
+    WASPID_RESOLVER_TEMPLATES_DIR,
     get_session_expired_message,
 )
 from integrations.v1_utils import get_saas_user_auth
@@ -25,15 +25,15 @@ from jinja2 import Environment, FileSystemLoader
 from pydantic import SecretStr
 from server.auth.token_manager import TokenManager
 
-from openhands.app_server.integrations.gitlab.gitlab_service import GitLabServiceImpl
-from openhands.app_server.integrations.provider import ProviderToken, ProviderType
-from openhands.app_server.secrets.secrets_models import Secrets
-from openhands.app_server.types import (
+from waspid.app_server.integrations.gitlab.gitlab_service import GitLabServiceImpl
+from waspid.app_server.integrations.provider import ProviderToken, ProviderType
+from waspid.app_server.secrets.secrets_models import Secrets
+from waspid.app_server.types import (
     LLMAuthenticationError,
     MissingSettingsError,
     SessionExpiredError,
 )
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 class GitlabManager(Manager[GitlabViewType]):
@@ -41,7 +41,7 @@ class GitlabManager(Manager[GitlabViewType]):
         self.token_manager = token_manager
 
         self.jinja_env = Environment(
-            loader=FileSystemLoader(OPENHANDS_RESOLVER_TEMPLATES_DIR + 'gitlab')
+            loader=FileSystemLoader(WASPID_RESOLVER_TEMPLATES_DIR + 'gitlab')
         )
 
     def _confirm_incoming_source_type(self, message: Message):
@@ -238,14 +238,14 @@ class GitlabManager(Manager[GitlabViewType]):
                     f'[GitLab] Missing settings error for user {user_info.username}: {str(e)}'
                 )
 
-                msg_info = f'@{user_info.username} please re-login into [OpenHands Cloud]({HOST_URL}) before starting a job.'
+                msg_info = f'@{user_info.username} please re-login into [Waspid Cloud]({HOST_URL}) before starting a job.'
 
             except LLMAuthenticationError as e:
                 logger.warning(
                     f'[GitLab] LLM authentication error for user {user_info.username}: {str(e)}'
                 )
 
-                msg_info = f'@{user_info.username} please set a valid LLM API key in [OpenHands Cloud]({HOST_URL}) before starting a job.'
+                msg_info = f'@{user_info.username} please set a valid LLM API key in [Waspid Cloud]({HOST_URL}) before starting a job.'
 
             except SessionExpiredError as e:
                 logger.warning(

@@ -1,4 +1,4 @@
-import { OpenHandsEvent, ActionEvent } from "#/types/v1/core";
+import { WaspidEvent, ActionEvent } from "#/types/v1/core";
 import { GenericEventMessage } from "../../../features/chat/generic-event-message";
 import { getEventContent } from "../event-content-helpers/get-event-content";
 import {
@@ -15,7 +15,7 @@ import { ObservationResultStatus } from "../../../features/chat/event-content-he
 import { SkillReadyContentList } from "./skill-ready-content-list";
 
 interface GenericEventMessageWrapperProps {
-  event: OpenHandsEvent | SkillReadyEvent;
+  event: WaspidEvent | SkillReadyEvent;
   isLastMessage: boolean;
   correspondingAction?: ActionEvent;
 }

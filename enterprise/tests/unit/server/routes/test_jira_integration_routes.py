@@ -411,7 +411,7 @@ class TestVerifyJiraSignature:
         return {
             'webhookEvent': 'comment_created',
             'comment': {
-                'body': 'Test comment @openhands',
+                'body': 'Test comment @waspid',
                 'author': {
                     'emailAddress': 'user@test.com',
                     'displayName': 'Test User',

@@ -154,7 +154,7 @@ class TestSendWelcomeEmail:
         mock_send.assert_called_once()
         call_args = mock_send.call_args[0][0]
         assert call_args['to'] == ['test@example.com']
-        assert call_args['subject'] == 'Welcome to OpenHands Cloud'
+        assert call_args['subject'] == 'Welcome to Waspid Cloud'
         assert 'Hi John Doe,' in call_args['html']
 
     @patch('enterprise.sync.resend_keycloak.resend.Emails.send')

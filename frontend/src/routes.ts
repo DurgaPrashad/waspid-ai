@@ -12,6 +12,7 @@ export default [
   layout("routes/root-layout.tsx", [
     index("routes/home.tsx"),
     route("agents", "routes/agents.tsx"),
+    route("workforce", "routes/workforce.tsx"),
     route("workflows", "routes/workflows.tsx"),
     route("integrations", "routes/integrations.tsx"),
     route("monitoring", "routes/monitoring.tsx"),

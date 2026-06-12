@@ -19,7 +19,7 @@ export function TermsAndPrivacyNotice({
     >
       {t(I18nKey.AUTH$BY_SIGNING_UP_YOU_AGREE_TO_OUR)}{" "}
       <a
-        href="https://www.all-hands.dev/tos"
+        href="https://github.com/DurgaPrashad/waspid-ai/blob/main/LICENSE"
         target="_blank"
         className="underline hover:text-primary"
         rel="noopener noreferrer"
@@ -28,7 +28,7 @@ export function TermsAndPrivacyNotice({
       </a>{" "}
       {t(I18nKey.COMMON$AND)}{" "}
       <a
-        href="https://www.all-hands.dev/privacy"
+        href="https://github.com/DurgaPrashad/waspid-ai"
         target="_blank"
         className="underline hover:text-primary"
         rel="noopener noreferrer"

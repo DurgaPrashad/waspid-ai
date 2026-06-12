@@ -14,7 +14,7 @@ from integrations.github.github_view import (
 from integrations.types import UserData
 from jinja2 import Environment, FileSystemLoader
 
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversationStartTaskStatus,
 )
 
@@ -26,7 +26,7 @@ def jinja_env() -> Environment:
         loader=FileSystemLoader(
             str(
                 repo_root
-                / 'openhands/app_server/integrations/templates/resolver/github'
+                / 'waspid/app_server/integrations/templates/resolver/github'
             )
         )
     )

@@ -38,7 +38,7 @@ class TestExtractBaseEmail:
     def test_extract_base_email_multiple_plus_signs(self):
         """Test extracting base email when multiple + signs exist."""
         # Arrange
-        email = 'joe+openhands+test@example.com'
+        email = 'joe+waspid+test@example.com'
 
         # Act
         result = extract_base_email(email)
@@ -220,7 +220,7 @@ class TestGetBaseEmailRegexPattern:
         assert isinstance(pattern, re.Pattern)
         assert pattern.match('joe@example.com') is not None
         assert pattern.match('joe+test@example.com') is not None
-        assert pattern.match('joe+openhands@example.com') is not None
+        assert pattern.match('joe+waspid@example.com') is not None
 
     def test_get_base_email_regex_pattern_matches_plus_variant(self):
         """Test that regex pattern matches + variant."""

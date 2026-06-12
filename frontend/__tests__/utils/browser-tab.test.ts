@@ -9,8 +9,8 @@ import { browserTab } from "#/utils/browser-tab";
 
 describe("browserTab notifications", () => {
   const MESSAGE = "Agent ready";
-  const INITIAL = "Conversation 123 | OpenHands";
-  const RENAMED = "My renamed title | OpenHands";
+  const INITIAL = "Conversation 123 | Waspid";
+  const RENAMED = "My renamed title | Waspid";
 
   beforeEach(() => {
     vi.useFakeTimers();

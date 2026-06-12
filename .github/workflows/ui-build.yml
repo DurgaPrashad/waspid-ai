@@ -1,14 +1,14 @@
 name: Run UI Component Build
 
 # * Always run on "main"
-# * Run on PRs that have changes in the "openhands-ui" folder or this workflow
+# * Run on PRs that have changes in the "waspid-ui" folder or this workflow
 on:
   push:
     branches:
       - main
   pull_request:
     paths:
-      - 'openhands-ui/**'
+      - 'waspid-ui/**'
       -  '.github/workflows/ui-build.yml'
 
 # If triggered by a PR, it will be in the same group. However, each commit on main will be in its own unique group
@@ -18,17 +18,17 @@ concurrency:
 
 jobs:
   ui-build:
-    name: Build openhands-ui
+    name: Build waspid-ui
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v6
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version-file: "openhands-ui/.bun-version"
+          bun-version-file: "waspid-ui/.bun-version"
       - name: Install dependencies
-        working-directory: ./openhands-ui
+        working-directory: ./waspid-ui
         run: bun install --frozen-lockfile
       - name: Build package
-        working-directory:  ./openhands-ui
+        working-directory:  ./waspid-ui
         run: bun run build

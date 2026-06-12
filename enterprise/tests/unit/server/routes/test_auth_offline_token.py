@@ -1,7 +1,7 @@
 """Tests for the keycloak offline-token callback flow.
 
 Regression coverage for the bug fixed in
-https://github.com/OpenHands/OpenHands/pull/14387:
+https://github.com/Waspid/Waspid/pull/14387:
 
 The keycloak *offline* callback previously wrote the offline refresh token
 into the ``keycloak_auth`` cookie. The regular ``/logout`` endpoint reads

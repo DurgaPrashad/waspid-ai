@@ -8,10 +8,10 @@ from storage.base import Base
 
 class OpenhandsPR(Base):
     """
-    Represents a pull request created by OpenHands.
+    Represents a pull request created by Waspid.
     """
 
-    __tablename__ = 'openhands_prs'
+    __tablename__ = 'waspid_prs'
 
     id: Mapped[int] = mapped_column(Identity(), primary_key=True)
     repo_id: Mapped[str] = mapped_column(String, nullable=False, index=True)
@@ -34,10 +34,10 @@ class OpenhandsPR(Base):
     merged: Mapped[bool | None] = mapped_column(nullable=True)
 
     # Fields that will definitely require post processing to enrich
-    openhands_helped_author: Mapped[bool | None] = mapped_column(nullable=True)
-    num_openhands_commits: Mapped[int | None] = mapped_column(nullable=True)
-    num_openhands_review_comments: Mapped[int | None] = mapped_column(nullable=True)
-    num_openhands_general_comments: Mapped[int | None] = mapped_column(nullable=True)
+    waspid_helped_author: Mapped[bool | None] = mapped_column(nullable=True)
+    num_waspid_commits: Mapped[int | None] = mapped_column(nullable=True)
+    num_waspid_review_comments: Mapped[int | None] = mapped_column(nullable=True)
+    num_waspid_general_comments: Mapped[int | None] = mapped_column(nullable=True)
 
     # Attributes to track progress on enrichment
     processed: Mapped[bool] = mapped_column(

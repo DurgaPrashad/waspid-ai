@@ -1,6 +1,6 @@
 # Plugin Launch Flow
 
-This document traces the complete data flow for launching plugins in OpenHands, from the source marketplace through to agent execution. Each section shows the exact endpoints, payloads, and transformations.
+This document traces the complete data flow for launching plugins in Waspid, from the source marketplace through to agent execution. Each section shows the exact endpoints, payloads, and transformations.
 
 ## Architecture Overview
 
@@ -22,7 +22,7 @@ Marketplace ──▶ Plugin Directory ──▶ Frontend /launch ──▶ App 
 
 ## Step 1: Marketplace (GitHub)
 
-**Source**: A GitHub repository (e.g., `github.com/OpenHands/plugin-marketplace`)
+**Source**: A GitHub repository (e.g., `github.com/Waspid/plugin-marketplace`)
 
 The marketplace is a GitHub repository containing a `marketplace.json` that indexes all available plugins.
 
@@ -30,19 +30,19 @@ The marketplace is a GitHub repository containing a `marketplace.json` that inde
 
 ```json
 {
-  "name": "OpenHands Plugin Marketplace",
+  "name": "Waspid Plugin Marketplace",
   "owner": {
-    "name": "OpenHands",
+    "name": "Waspid",
     "email": "team@all-hands.dev"
   },
   "metadata": {
-    "description": "Official OpenHands plugin marketplace",
+    "description": "Official Waspid plugin marketplace",
     "pluginRoot": "plugins"
   },
   "plugins": [
     {
       "name": "city-weather",
-      "source": "github:jpshackelford/openhands-sample-plugins",
+      "source": "github:jpshackelford/waspid-sample-plugins",
       "ref": "main",
       "repo_path": "plugins/city-weather",
       "description": "Get current weather for any city",
@@ -105,7 +105,7 @@ Fetches and transforms the marketplace catalog.
       "description": "Get current weather for any city",
       "source": {
         "source": "github",
-        "repo": "jpshackelford/openhands-sample-plugins",
+        "repo": "jpshackelford/waspid-sample-plugins",
         "ref": "main",
         "repo_path": "plugins/city-weather"
       },
@@ -159,7 +159,7 @@ From Plugin Directory Server APIs:
     "name": "city-weather",
     "source": {
       "source": "github",
-      "repo": "jpshackelford/openhands-sample-plugins",
+      "repo": "jpshackelford/waspid-sample-plugins",
       "ref": "main",
       "repo_path": "plugins/city-weather"
     }
@@ -195,13 +195,13 @@ From Plugin Directory Server APIs:
 
 **Launch URL**:
 ```
-https://app.openhands.ai/launch?plugins=BASE64&message=%2Fcity-weather%3Anow
+https://app.waspid.ai/launch?plugins=BASE64&message=%2Fcity-weather%3Anow
 ```
 
 Where `plugins` (base64-decoded) contains:
 ```json
 [{
-  "source": "github:jpshackelford/openhands-sample-plugins",
+  "source": "github:jpshackelford/waspid-sample-plugins",
   "ref": "main",
   "repo_path": "plugins/city-weather",
   "parameters": {
@@ -219,11 +219,11 @@ And `message` (URL-decoded) is:
 
 ---
 
-## Step 4: OpenHands Frontend (`/launch` Route)
+## Step 4: Waspid Frontend (`/launch` Route)
 
 **Route**: `/launch?plugins=BASE64&message=/city-weather:now`
 
-[PR #12699](https://github.com/OpenHands/OpenHands/pull/12699)
+[PR #12699](https://github.com/Waspid/Waspid/pull/12699)
 
 ### Input (from URL query params)
 
@@ -234,7 +234,7 @@ And `message` (URL-decoded) is:
 ```json
 {
   "plugins": [{
-    "source": "github:jpshackelford/openhands-sample-plugins",
+    "source": "github:jpshackelford/waspid-sample-plugins",
     "ref": "main",
     "repo_path": "plugins/city-weather",
     "parameters": { "city": "San Francisco" }
@@ -276,7 +276,7 @@ Authorization: Bearer <user_token>
 
 {
   "plugins": [{
-    "source": "github:jpshackelford/openhands-sample-plugins",
+    "source": "github:jpshackelford/waspid-sample-plugins",
     "ref": "main",
     "repo_path": "plugins/city-weather",
     "parameters": {
@@ -300,18 +300,18 @@ Authorization: Bearer <user_token>
 
 ---
 
-## Step 5: OpenHands App Server
+## Step 5: Waspid App Server
 
 **Endpoint**: `POST /api/v1/app-conversations`
 
-[PR #12338](https://github.com/OpenHands/OpenHands/pull/12338)
+[PR #12338](https://github.com/Waspid/Waspid/pull/12338)
 
 ### Input (API Request)
 
 ```json
 {
   "plugins": [{
-    "source": "github:jpshackelford/openhands-sample-plugins",
+    "source": "github:jpshackelford/waspid-sample-plugins",
     "ref": "main",
     "repo_path": "plugins/city-weather",
     "parameters": { "city": "Tokyo" }
@@ -353,7 +353,7 @@ class AppConversationStartRequest(BaseModel):
    ```python
    sdk_plugins = [
        PluginSource(
-           source=p.source,      # "github:jpshackelford/openhands-sample-plugins"
+           source=p.source,      # "github:jpshackelford/waspid-sample-plugins"
            ref=p.ref,            # "main"
            repo_path=p.repo_path # "plugins/city-weather"
        )
@@ -370,7 +370,7 @@ class AppConversationStartRequest(BaseModel):
 StartConversationRequest(
     plugins=[
         PluginSource(
-            source="github:jpshackelford/openhands-sample-plugins",
+            source="github:jpshackelford/waspid-sample-plugins",
             ref="main",
             repo_path="plugins/city-weather"
             # NO parameters field - SDK PluginSource doesn't have it
@@ -397,7 +397,7 @@ StartConversationRequest(
 
 **Entry point**: `ConversationService.start_conversation()`
 
-[SDK PR #1651](https://github.com/OpenHands/software-agent-sdk/pull/1651)
+[SDK PR #1651](https://github.com/Waspid/software-agent-sdk/pull/1651)
 
 ### Input (`StartConversationRequest`)
 
@@ -405,7 +405,7 @@ StartConversationRequest(
 StartConversationRequest(
     plugins=[
         PluginSource(
-            source="github:jpshackelford/openhands-sample-plugins",
+            source="github:jpshackelford/waspid-sample-plugins",
             ref="main",
             repo_path="plugins/city-weather"
         )
@@ -445,14 +445,14 @@ LocalConversation(
 
 **Trigger**: First `conversation.run()` or `conversation.send_message()`
 
-[SDK PR #1647](https://github.com/OpenHands/software-agent-sdk/pull/1647)
+[SDK PR #1647](https://github.com/Waspid/software-agent-sdk/pull/1647)
 
 ### Input (`PluginSource` list)
 
 ```python
 [
     PluginSource(
-        source="github:jpshackelford/openhands-sample-plugins",
+        source="github:jpshackelford/waspid-sample-plugins",
         ref="main",
         repo_path="plugins/city-weather"
     )
@@ -524,7 +524,7 @@ When the agent processes the message:
 | 1 | Marketplace | - | `marketplace.json` + `plugin.json` files |
 | 2 | Plugin Directory Server | Marketplace files | REST API responses with `entry_command`, `parameters` |
 | 3 | Plugin Directory Client | Plugin + Config | Launch URL: `plugins` (with defaults) + `message` (slash command only) |
-| 4 | OpenHands Frontend | URL query params | API call: `plugins` (with user values) + `message` (unchanged slash command) |
+| 4 | Waspid Frontend | URL query params | API call: `plugins` (with user values) + `message` (unchanged slash command) |
 | 5 | App Server | API request | `StartConversationRequest`: `PluginSource` (no params) + message (params in text) |
 | 6 | Agent Server | `StartConversationRequest` | `LocalConversation` with deferred plugins |
 | 7 | SDK | `PluginSource` list | Loaded `Plugin` objects with skills/hooks/MCP |
@@ -534,7 +534,7 @@ When the agent processes the message:
 
 ```
 ┌─────────────────────┐     ┌─────────────────────┐     ┌─────────────────────┐
-│  Plugin Directory   │     │  OpenHands Frontend │     │    App Server       │
+│  Plugin Directory   │     │  Waspid Frontend │     │    App Server       │
 │                     │     │                     │     │                     │
 │  plugins[].params   │────▶│  plugins[].params   │────▶│  Appends params to  │
 │  = defaults         │     │  = user values      │     │  message as text    │
@@ -590,9 +590,9 @@ The SDK's `PluginSource` class intentionally does NOT have a `parameters` field.
 
 ## Related PRs
 
-- [OpenHands PR #12338](https://github.com/OpenHands/OpenHands/pull/12338) - App server plugin support
-- [OpenHands PR #12699](https://github.com/OpenHands/OpenHands/pull/12699) - Frontend `/launch` route
-- [SDK PR #1651](https://github.com/OpenHands/software-agent-sdk/pull/1651) - Agent server plugin loading
-- [SDK PR #1647](https://github.com/OpenHands/software-agent-sdk/pull/1647) - Plugin.fetch() for remote plugin fetching
-- [SDK PR #2230](https://github.com/OpenHands/software-agent-sdk/pull/2230) - entry_command field definition
-- [Plugin Directory PR #84](https://github.com/OpenHands/plugin-directory/pull/84) - entry_command support in plugin directory
+- [Waspid PR #12338](https://github.com/Waspid/Waspid/pull/12338) - App server plugin support
+- [Waspid PR #12699](https://github.com/Waspid/Waspid/pull/12699) - Frontend `/launch` route
+- [SDK PR #1651](https://github.com/Waspid/software-agent-sdk/pull/1651) - Agent server plugin loading
+- [SDK PR #1647](https://github.com/Waspid/software-agent-sdk/pull/1647) - Plugin.fetch() for remote plugin fetching
+- [SDK PR #2230](https://github.com/Waspid/software-agent-sdk/pull/2230) - entry_command field definition
+- [Plugin Directory PR #84](https://github.com/Waspid/plugin-directory/pull/84) - entry_command support in plugin directory

@@ -1,13 +1,10 @@
 import { useMemo } from "react";
 import { useConfig } from "#/hooks/query/use-config";
 import { useUserProviders } from "#/hooks/use-user-providers";
-import {
-  PageShell,
-  PageHeader,
-  Section,
-} from "#/components/shared/layout";
+import { PageShell, PageHeader, Section } from "#/components/shared/layout";
 import { INTEGRATIONS_CATALOG, CATEGORY_LABELS } from "./integrations-catalog";
 import { IntegrationCard } from "./integration-card";
+import { HubSection } from "./hub-section";
 import type { IntegrationCatalogEntry, IntegrationStatus } from "./types";
 
 /**
@@ -34,8 +31,8 @@ export function IntegrationsScreen() {
   const { providers } = useUserProviders();
 
   const resolveStatus = useMemo(() => {
-    const connected = new Set(providers ?? []);
-    const oauthConfigured = new Set(config?.providers_configured ?? []);
+    const connected = new Set<string>(providers ?? []);
+    const oauthConfigured = new Set<string>(config?.providers_configured ?? []);
     const flags = config?.feature_flags;
     const isSaas = config?.app_mode === "saas";
 
@@ -119,6 +116,13 @@ export function IntegrationsScreen() {
             </div>
           </Section>
         ))}
+
+        <Section
+          title="Integration Hub"
+          description="Connected accounts, the tool registry, and tool-call activity. Workflow actions and agents use these connections to act on external systems."
+        >
+          <HubSection />
+        </Section>
       </PageShell>
     </div>
   );

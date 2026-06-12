@@ -15,9 +15,9 @@ from server.sharing.shared_conversation_info_service import (
 )
 from server.sharing.shared_conversation_models import SharedConversation
 
-from openhands.agent_server.models import EventPage, EventSortOrder
-from openhands.app_server.event.event_service import EventService
-from openhands.sdk.llm import MetricsSnapshot, TokenUsage
+from waspid.agent_server.models import EventPage, EventSortOrder
+from waspid.app_server.event.event_service import EventService
+from waspid.sdk.llm import MetricsSnapshot, TokenUsage
 
 
 @pytest.fixture
@@ -461,7 +461,7 @@ class TestGoogleCloudSharedEventServiceInjector:
                 return_value=mock_storage_client,
             ),
             patch(
-                'openhands.app_server.config.get_db_session',
+                'waspid.app_server.config.get_db_session',
                 return_value=mock_db_context,
             ),
         ):
@@ -500,7 +500,7 @@ class TestGoogleCloudSharedEventServiceInjector:
                 return_value=mock_storage_client,
             ),
             patch(
-                'openhands.app_server.config.get_db_session',
+                'waspid.app_server.config.get_db_session',
                 return_value=mock_db_context,
             ),
         ):
@@ -537,7 +537,7 @@ class TestGoogleCloudSharedEventServiceInjector:
                 return_value=mock_storage_client,
             ),
             patch(
-                'openhands.app_server.config.get_db_session',
+                'waspid.app_server.config.get_db_session',
                 return_value=mock_db_context,
             ),
             patch(
@@ -579,7 +579,7 @@ class TestGoogleCloudSharedEventServiceInjector:
             return_value=mock_storage_client,
         ):
             with patch(
-                'openhands.app_server.config.get_db_session',
+                'waspid.app_server.config.get_db_session',
                 return_value=mock_db_context,
             ):
                 # Call the inject method with request=None

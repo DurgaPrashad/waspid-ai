@@ -1,6 +1,6 @@
 # Authentication Flow (SaaS Deployment)
 
-OpenHands uses Keycloak for identity management in the SaaS deployment. The authentication flow involves multiple services:
+Waspid uses Keycloak for identity management in the SaaS deployment. The authentication flow involves multiple services:
 
 ```mermaid
 sequenceDiagram
@@ -13,7 +13,7 @@ sequenceDiagram
 
     Note over User,DB: OAuth 2.0 / OIDC Authentication Flow
 
-    User->>App: Access OpenHands
+    User->>App: Access Waspid
     App->>User: Redirect to Keycloak
     User->>KC: Login request
     KC->>User: Show login options
@@ -45,9 +45,9 @@ sequenceDiagram
 | Component | Purpose | Location |
 |-----------|---------|----------|
 | **Keycloak** | Identity provider, SSO, token management | External service |
-| **UserAuth** | Abstract auth interface | `openhands/server/user_auth/user_auth.py` |
+| **UserAuth** | Abstract auth interface | `waspid/server/user_auth/user_auth.py` |
 | **SaasUserAuth** | Keycloak implementation | `enterprise/server/auth/saas_user_auth.py` |
-| **JWT Service** | Token signing/verification | `openhands/app_server/services/jwt_service.py` |
+| **JWT Service** | Token signing/verification | `waspid/app_server/services/jwt_service.py` |
 | **Auth Routes** | Login/logout endpoints | `enterprise/server/routes/auth.py` |
 
 ### Token Flow

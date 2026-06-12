@@ -1,13 +1,13 @@
 import React from "react";
-import { OpenHandsAction } from "#/types/core/actions";
-import { OpenHandsObservation } from "#/types/core/observations";
-import { isOpenHandsAction, isOpenHandsObservation } from "#/types/core/guards";
+import { WaspidAction } from "#/types/core/actions";
+import { WaspidObservation } from "#/types/core/observations";
+import { isWaspidAction, isWaspidObservation } from "#/types/core/guards";
 import { EventMessage } from "./event-message";
 import { ChatMessage } from "./chat-message";
 import { useOptimisticUserMessageStore } from "#/stores/optimistic-user-message-store";
 
 interface MessagesProps {
-  messages: (OpenHandsAction | OpenHandsObservation)[];
+  messages: (WaspidAction | WaspidObservation)[];
   isAwaitingUserConfirmation: boolean;
 }
 
@@ -17,10 +17,10 @@ export const Messages: React.FC<MessagesProps> = React.memo(
     const optimisticUserMessage = getOptimisticUserMessage();
 
     const actionHasObservationPair = React.useCallback(
-      (event: OpenHandsAction | OpenHandsObservation): boolean => {
-        if (isOpenHandsAction(event)) {
+      (event: WaspidAction | WaspidObservation): boolean => {
+        if (isWaspidAction(event)) {
           return !!messages.some(
-            (msg) => isOpenHandsObservation(msg) && msg.cause === event.id,
+            (msg) => isWaspidObservation(msg) && msg.cause === event.id,
           );
         }
 

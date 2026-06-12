@@ -11,23 +11,23 @@ import httpx
 from integrations.utils import get_summary_instruction, markdown_to_jira_markup
 from pydantic import Field
 
-from openhands.agent_server.models import AskAgentRequest, AskAgentResponse
-from openhands.app_server.event_callback.event_callback_models import (
+from waspid.agent_server.models import AskAgentRequest, AskAgentResponse
+from waspid.app_server.event_callback.event_callback_models import (
     EventCallback,
     EventCallbackProcessor,
 )
-from openhands.app_server.event_callback.event_callback_result_models import (
+from waspid.app_server.event_callback.event_callback_result_models import (
     EventCallbackResult,
     EventCallbackResultStatus,
 )
-from openhands.app_server.event_callback.util import (
+from waspid.app_server.event_callback.util import (
     ensure_conversation_found,
     ensure_running_sandbox,
     get_agent_server_url_from_sandbox,
 )
-from openhands.app_server.utils.http_session import httpx_verify_option
-from openhands.sdk import Event
-from openhands.sdk.event import ConversationStateUpdateEvent
+from waspid.app_server.utils.http_session import httpx_verify_option
+from waspid.sdk import Event
+from waspid.sdk.event import ConversationStateUpdateEvent
 
 _logger = logging.getLogger(__name__)
 
@@ -99,13 +99,13 @@ class JiraDcV1CallbackProcessor(EventCallbackProcessor):
     async def _request_summary(self, conversation_id: UUID) -> str:
         """Ask the agent to produce a summary of its work and return the agent response."""
         # Import services within the method to avoid circular imports
-        from openhands.app_server.config import (
+        from waspid.app_server.config import (
             get_app_conversation_info_service,
             get_httpx_client,
             get_sandbox_service,
         )
-        from openhands.app_server.services.injector import InjectorState
-        from openhands.app_server.user.specifiy_user_context import (
+        from waspid.app_server.services.injector import InjectorState
+        from waspid.app_server.user.specifiy_user_context import (
             ADMIN,
             USER_CONTEXT_ATTR,
         )
@@ -227,7 +227,7 @@ class JiraDcV1CallbackProcessor(EventCallbackProcessor):
         # Add a comment to the Jira DC issue with the summary
         comment_url = f'{self.base_api_url}/rest/api/2/issue/{self.issue_key}/comment'
 
-        message = f'OpenHands resolved this issue:\n\n{summary}'
+        message = f'Waspid resolved this issue:\n\n{summary}'
         # Convert standard Markdown to Jira Wiki Markup for proper rendering
         comment_body = {'body': markdown_to_jira_markup(message)}
 

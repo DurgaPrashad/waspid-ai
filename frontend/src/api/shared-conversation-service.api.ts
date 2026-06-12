@@ -1,4 +1,4 @@
-import { OpenHandsEvent } from "#/types/v1/core";
+import { WaspidEvent } from "#/types/v1/core";
 import { openHands } from "./open-hands-axios";
 
 export interface SharedConversation {
@@ -19,7 +19,7 @@ export interface SharedConversation {
 }
 
 export interface EventPage {
-  items: OpenHandsEvent[];
+  items: WaspidEvent[];
   next_page_id: string | null;
 }
 

@@ -15,26 +15,26 @@ from integrations.utils import (
 )
 from jinja2 import Environment
 
-from openhands.agent_server.models import SendMessageRequest
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.agent_server.models import SendMessageRequest
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversationStartRequest,
     AppConversationStartTaskStatus,
     ConversationTrigger,
 )
-from openhands.app_server.config import get_app_conversation_service
-from openhands.app_server.integrations.bitbucket_data_center.bitbucket_dc_service import (
+from waspid.app_server.config import get_app_conversation_service
+from waspid.app_server.integrations.bitbucket_data_center.bitbucket_dc_service import (
     BitbucketDCServiceImpl,
 )
-from openhands.app_server.integrations.provider import (
+from waspid.app_server.integrations.provider import (
     PROVIDER_TOKEN_TYPE,
     ProviderType,
 )
-from openhands.app_server.integrations.service_types import Comment
-from openhands.app_server.services.injector import InjectorState
-from openhands.app_server.user.specifiy_user_context import USER_CONTEXT_ATTR
-from openhands.app_server.user_auth.user_auth import UserAuth
-from openhands.app_server.utils.logger import openhands_logger as logger
-from openhands.sdk import TextContent
+from waspid.app_server.integrations.service_types import Comment
+from waspid.app_server.services.injector import InjectorState
+from waspid.app_server.user.specifiy_user_context import USER_CONTEXT_ATTR
+from waspid.app_server.user_auth.user_auth import UserAuth
+from waspid.app_server.utils.logger import waspid_logger as logger
+from waspid.sdk import TextContent
 
 OH_LABEL, INLINE_OH_LABEL = get_oh_labels(HOST)
 
@@ -258,7 +258,7 @@ class BitbucketDCFactory:
     Bitbucket DC fires ``pr:comment:added`` (and ``pr:comment:edited``)
     when a PR receives a comment. The resolver activates when the comment
     body contains a case-insensitive mention of the configured
-    ``@openhands`` handle. Inline comments include an ``anchor`` block
+    ``@waspid`` handle. Inline comments include an ``anchor`` block
     with the file path and line number.
     """
 
@@ -284,7 +284,7 @@ class BitbucketDCFactory:
     ) -> BitbucketDCViewType:
         """Build a view from a Bitbucket DC webhook payload.
 
-        ``keycloak_user_id`` is the OpenHands user that **installed** the
+        ``keycloak_user_id`` is the Waspid user that **installed** the
         webhook (looked up by ``(project_key, repo_slug)`` from the
         ``bitbucket_dc_webhook`` table by the manager). The resolver acts
         on Bitbucket DC as the installer.

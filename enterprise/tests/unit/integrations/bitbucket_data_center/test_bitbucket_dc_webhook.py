@@ -32,7 +32,7 @@ def _pr_comment_body() -> bytes:
                     }
                 },
             },
-            'comment': {'id': 99, 'text': 'Hey @openhands'},
+            'comment': {'id': 99, 'text': 'Hey @waspid'},
         }
     ).encode()
 

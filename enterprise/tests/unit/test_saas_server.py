@@ -16,7 +16,7 @@ def test_oauth_callback_route_precedes_spa_mount(tmp_path):
     env['PYTHONPATH'] = (
         f"{repo_root / 'enterprise'}:{repo_root}:{env.get('PYTHONPATH', '')}"
     )
-    env['OPENHANDS_SUPPRESS_BANNER'] = '1'
+    env['WASPID_SUPPRESS_BANNER'] = '1'
     env['POSTHOG_CLIENT_KEY'] = 'test-posthog-key'
     env['SERVE_FRONTEND'] = 'true'
 

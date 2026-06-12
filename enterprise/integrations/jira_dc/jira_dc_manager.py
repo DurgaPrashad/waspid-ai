@@ -17,7 +17,7 @@ from integrations.manager import Manager
 from integrations.models import JobContext, Message
 from integrations.utils import (
     HOST_URL,
-    OPENHANDS_RESOLVER_TEMPLATES_DIR,
+    WASPID_RESOLVER_TEMPLATES_DIR,
     filter_potential_repos_by_user_msg,
     get_session_expired_message,
     markdown_to_jira_markup,
@@ -29,17 +29,17 @@ from storage.jira_dc_integration_store import JiraDcIntegrationStore
 from storage.jira_dc_user import JiraDcUser
 from storage.jira_dc_workspace import JiraDcWorkspace
 
-from openhands.app_server.integrations.provider import ProviderHandler
-from openhands.app_server.integrations.service_types import Repository
-from openhands.app_server.shared import server_config
-from openhands.app_server.types import (
+from waspid.app_server.integrations.provider import ProviderHandler
+from waspid.app_server.integrations.service_types import Repository
+from waspid.app_server.shared import server_config
+from waspid.app_server.types import (
     LLMAuthenticationError,
     MissingSettingsError,
     SessionExpiredError,
 )
-from openhands.app_server.user_auth.user_auth import UserAuth
-from openhands.app_server.utils.http_session import httpx_verify_option
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.user_auth.user_auth import UserAuth
+from waspid.app_server.utils.http_session import httpx_verify_option
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 class JiraDcManager(Manager[JiraDcViewInterface]):
@@ -47,13 +47,13 @@ class JiraDcManager(Manager[JiraDcViewInterface]):
         self.token_manager = token_manager
         self.integration_store = JiraDcIntegrationStore.get_instance()
         self.jinja_env = Environment(
-            loader=FileSystemLoader(OPENHANDS_RESOLVER_TEMPLATES_DIR + 'jira_dc')
+            loader=FileSystemLoader(WASPID_RESOLVER_TEMPLATES_DIR + 'jira_dc')
         )
 
     async def authenticate_user(
         self, user_email: str, jira_dc_user_id: str, workspace_id: int
     ) -> tuple[JiraDcUser | None, UserAuth | None]:
-        """Authenticate Jira DC user and get their OpenHands user auth."""
+        """Authenticate Jira DC user and get their Waspid user auth."""
 
         if not jira_dc_user_id or jira_dc_user_id == 'none':
             # Get Keycloak user ID from email
@@ -158,7 +158,7 @@ class JiraDcManager(Manager[JiraDcViewInterface]):
             comment_data = payload.get('comment', {})
             comment = comment_data.get('body', '')
 
-            if '@openhands' not in comment:
+            if '@waspid' not in comment:
                 return None
 
             issue_data = payload.get('issue', {})
@@ -179,7 +179,7 @@ class JiraDcManager(Manager[JiraDcViewInterface]):
                 if item.get('field') == 'labels' and 'toString' in item
             ]
 
-            if 'openhands' not in labels:
+            if 'waspid' not in labels:
                 return None
 
             issue_data = payload.get('issue', {})
@@ -384,11 +384,11 @@ class JiraDcManager(Manager[JiraDcViewInterface]):
 
         except MissingSettingsError as e:
             logger.warning(f'[Jira DC] Missing settings error: {str(e)}')
-            msg_info = f'Please re-login into [OpenHands Cloud]({HOST_URL}) before starting a job.'
+            msg_info = f'Please re-login into [Waspid Cloud]({HOST_URL}) before starting a job.'
 
         except LLMAuthenticationError as e:
             logger.warning(f'[Jira DC] LLM authentication error: {str(e)}')
-            msg_info = f'Please set a valid LLM API key in [OpenHands Cloud]({HOST_URL}) before starting a job.'
+            msg_info = f'Please set a valid LLM API key in [Waspid Cloud]({HOST_URL}) before starting a job.'
 
         except SessionExpiredError as e:
             logger.warning(f'[Jira DC] Session expired: {str(e)}')

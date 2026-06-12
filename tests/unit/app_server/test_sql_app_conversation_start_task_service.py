@@ -11,16 +11,16 @@ import pytest
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import StaticPool
 
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversationStartRequest,
     AppConversationStartTask,
     AppConversationStartTaskSortOrder,
     AppConversationStartTaskStatus,
 )
-from openhands.app_server.app_conversation.sql_app_conversation_start_task_service import (
+from waspid.app_server.app_conversation.sql_app_conversation_start_task_service import (
     SQLAppConversationStartTaskService,
 )
-from openhands.app_server.utils.sql_utils import Base
+from waspid.app_server.utils.sql_utils import Base
 
 
 @pytest.fixture
@@ -648,7 +648,7 @@ class TestSQLAppConversationStartTaskService:
         """Test search with created_at__gte filter."""
         from datetime import timedelta
 
-        from openhands.agent_server.models import utc_now
+        from waspid.agent_server.models import utc_now
 
         # Create tasks with different creation times
         base_time = utc_now()
@@ -726,7 +726,7 @@ class TestSQLAppConversationStartTaskService:
         """Test search with both conversation_id and created_at__gte filters."""
         from datetime import timedelta
 
-        from openhands.agent_server.models import utc_now
+        from waspid.agent_server.models import utc_now
 
         conversation_id1 = uuid4()
         conversation_id2 = uuid4()

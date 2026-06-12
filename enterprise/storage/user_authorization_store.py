@@ -142,7 +142,7 @@ class UserAuthorizationStore:
         """Create a new user authorization rule.
 
         Args:
-            email_pattern: SQL LIKE pattern for email matching (e.g., '%@openhands.dev')
+            email_pattern: SQL LIKE pattern for email matching (e.g., '%@waspid.dev')
             provider_type: Provider type to match (e.g., 'github'), or None for all
             auth_type: WHITELIST or BLACKLIST
             session: Optional database session

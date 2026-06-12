@@ -5,12 +5,12 @@ import { cn } from "#/utils/utils";
 
 interface SystemMessageHeaderProps {
   agentClass: string | null;
-  openhandsVersion: string | null;
+  waspidVersion: string | null;
 }
 
 export function SystemMessageHeader({
   agentClass,
-  openhandsVersion,
+  waspidVersion,
 }: SystemMessageHeaderProps) {
   const { t } = useTranslation();
 
@@ -18,7 +18,7 @@ export function SystemMessageHeader({
     <div
       className={cn(
         "flex flex-col gap-6 w-full",
-        !!agentClass && !!openhandsVersion ? "gap-6" : "gap-0",
+        !!agentClass && !!waspidVersion ? "gap-6" : "gap-0",
       )}
     >
       <BaseModalTitle title={t("SYSTEM_MESSAGE_MODAL$TITLE")} />
@@ -33,13 +33,13 @@ export function SystemMessageHeader({
             </Typography.Text>
           </div>
         )}
-        {openhandsVersion && (
+        {waspidVersion && (
           <div className="text-sm">
             <Typography.Text className="font-semibold text-gray-300">
-              {t("SYSTEM_MESSAGE_MODAL$OPENHANDS_VERSION")}
+              {t("SYSTEM_MESSAGE_MODAL$WASPID_VERSION")}
             </Typography.Text>{" "}
             <Typography.Text className="text-gray-100">
-              {openhandsVersion}
+              {waspidVersion}
             </Typography.Text>
           </div>
         )}

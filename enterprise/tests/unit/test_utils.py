@@ -7,20 +7,20 @@ from integrations.utils import (
 
 def test_has_exact_mention():
     # Test basic exact match
-    assert has_exact_mention('Hello @openhands!', '@openhands') is True
-    assert has_exact_mention('@openhands at start', '@openhands') is True
-    assert has_exact_mention('End with @openhands', '@openhands') is True
-    assert has_exact_mention('@openhands', '@openhands') is True
+    assert has_exact_mention('Hello @waspid!', '@waspid') is True
+    assert has_exact_mention('@waspid at start', '@waspid') is True
+    assert has_exact_mention('End with @waspid', '@waspid') is True
+    assert has_exact_mention('@waspid', '@waspid') is True
 
     # Test no match
-    assert has_exact_mention('No mention here', '@openhands') is False
-    assert has_exact_mention('', '@openhands') is False
+    assert has_exact_mention('No mention here', '@waspid') is False
+    assert has_exact_mention('', '@waspid') is False
 
     # Test partial matches (should be False)
-    assert has_exact_mention('Hello @openhands-agent!', '@openhands') is False
-    assert has_exact_mention('Email: user@openhands.com', '@openhands') is False
-    assert has_exact_mention('Text@openhands', '@openhands') is False
-    assert has_exact_mention('@openhandsmore', '@openhands') is False
+    assert has_exact_mention('Hello @waspid-agent!', '@waspid') is False
+    assert has_exact_mention('Email: user@waspid.com', '@waspid') is False
+    assert has_exact_mention('Text@waspid', '@waspid') is False
+    assert has_exact_mention('@waspidmore', '@waspid') is False
 
     # Test with special characters in mention
     assert has_exact_mention('Hi @open.hands!', '@open.hands') is True
@@ -28,20 +28,20 @@ def test_has_exact_mention():
     assert has_exact_mention('With @open_hands_ai', '@open_hands_ai') is True
 
     # Test case insensitivity (function now handles case conversion internally)
-    assert has_exact_mention('Hi @OpenHands', '@OpenHands') is True
-    assert has_exact_mention('Hi @OpenHands', '@openhands') is True
-    assert has_exact_mention('Hi @openhands', '@OpenHands') is True
-    assert has_exact_mention('Hi @OPENHANDS', '@openhands') is True
+    assert has_exact_mention('Hi @Waspid', '@Waspid') is True
+    assert has_exact_mention('Hi @Waspid', '@waspid') is True
+    assert has_exact_mention('Hi @waspid', '@Waspid') is True
+    assert has_exact_mention('Hi @WASPID', '@waspid') is True
 
     # Test multiple mentions
-    assert has_exact_mention('@openhands and @openhands again', '@openhands') is True
-    assert has_exact_mention('@openhands-agent and @openhands', '@openhands') is True
+    assert has_exact_mention('@waspid and @waspid again', '@waspid') is True
+    assert has_exact_mention('@waspid-agent and @waspid', '@waspid') is True
 
     # Test with surrounding punctuation
-    assert has_exact_mention('Hey, @openhands!', '@openhands') is True
-    assert has_exact_mention('(@openhands)', '@openhands') is True
-    assert has_exact_mention('@openhands: hello', '@openhands') is True
-    assert has_exact_mention('@openhands? yes', '@openhands') is True
+    assert has_exact_mention('Hey, @waspid!', '@waspid') is True
+    assert has_exact_mention('(@waspid)', '@waspid') is True
+    assert has_exact_mention('@waspid: hello', '@waspid') is True
+    assert has_exact_mention('@waspid? yes', '@waspid') is True
 
 
 def test_markdown_to_jira_markup():
@@ -74,8 +74,8 @@ def test_infer_repo_from_message():
         # Single GitHub URLs
         ('Clone https://github.com/demo123/demo1.git', ['demo123/demo1']),
         (
-            'Check out https://github.com/OpenHands/OpenHands.git for details',
-            ['OpenHands/OpenHands'],
+            'Check out https://github.com/Waspid/Waspid.git for details',
+            ['Waspid/Waspid'],
         ),
         ('Visit https://github.com/microsoft/vscode', ['microsoft/vscode']),
         # Single GitLab URLs
@@ -92,7 +92,7 @@ def test_infer_repo_from_message():
             ['atlassian/atlassian-connect-express'],
         ),
         # Single direct owner/repo mentions
-        ('Please deploy the OpenHands/OpenHands repo', ['OpenHands/OpenHands']),
+        ('Please deploy the Waspid/Waspid repo', ['Waspid/Waspid']),
         ('I need help with the microsoft/vscode repository', ['microsoft/vscode']),
         ('Check facebook/react for examples', ['facebook/react']),
         ('The torvalds/linux kernel', ['torvalds/linux']),
@@ -151,12 +151,12 @@ def test_infer_repo_from_message():
         ('repos: user_1/repo-1 and user.2/repo_2', ['user_1/repo-1', 'user.2/repo_2']),
         # Backtick-wrapped repo mentions (common in Slack/Discord messages)
         (
-            '@openhands-exp just echo hello world in `OpenHands/OpenHands-CLI` repository',
-            ['OpenHands/OpenHands-CLI'],
+            '@waspid-exp just echo hello world in `Waspid/Waspid-CLI` repository',
+            ['Waspid/Waspid-CLI'],
         ),
         (
-            '@openhands-exp echo hello world with {{OpenHands/OpenHands-CLI}}',
-            ['OpenHands/OpenHands-CLI'],
+            '@waspid-exp echo hello world with {{Waspid/Waspid-CLI}}',
+            ['Waspid/Waspid-CLI'],
         ),
         ('Deploy the `test/project` repo', ['test/project']),
         # Colon-wrapped repo mentions

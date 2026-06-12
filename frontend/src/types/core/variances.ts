@@ -40,7 +40,7 @@ export interface StatusUpdate {
   message: string;
 }
 
-export type OpenHandsVariance =
+export type WaspidVariance =
   | TokenConfig
   | InitConfig
   | LocalUserMessageAction

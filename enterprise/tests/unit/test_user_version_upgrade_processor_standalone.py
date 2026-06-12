@@ -1,11 +1,11 @@
 """
 Standalone tests for the UserVersionUpgradeProcessor.
 
-These tests are designed to work without the full OpenHands dependency chain.
+These tests are designed to work without the full Waspid dependency chain.
 They test the core logic and behavior of the processor using comprehensive mocking.
 
-To run these tests in an environment with OpenHands dependencies:
-1. Ensure OpenHands is available in the Python path
+To run these tests in an environment with Waspid dependencies:
+1. Ensure Waspid is available in the Python path
 2. Run: python -m pytest tests/unit/test_user_version_upgrade_processor_standalone.py -v
 """
 
@@ -15,7 +15,7 @@ import pytest
 
 
 class TestUserVersionUpgradeProcessorStandalone:
-    """Standalone tests for UserVersionUpgradeProcessor without OpenHands dependencies."""
+    """Standalone tests for UserVersionUpgradeProcessor without Waspid dependencies."""
 
     def test_processor_creation_and_serialization(self):
         """Test processor creation and JSON serialization without dependencies."""
@@ -332,10 +332,10 @@ class TestUserVersionUpgradeProcessorStandalone:
 # Additional integration test scenarios that would work with full dependencies
 class TestUserVersionUpgradeProcessorIntegration:
     """
-    Integration test scenarios for when OpenHands dependencies are available.
+    Integration test scenarios for when Waspid dependencies are available.
 
     These tests would require:
-    1. OpenHands to be installed and available
+    1. Waspid to be installed and available
     2. Database setup with proper migrations
     3. SaasSettingsStore and related services to be mockable
     """

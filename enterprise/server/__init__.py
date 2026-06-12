@@ -1,1 +1,1 @@
-# App package for OpenHands
+# App package for Waspid

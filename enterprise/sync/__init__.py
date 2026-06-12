@@ -1,1 +1,1 @@
-# Sync package for OpenHands
+# Sync package for Waspid

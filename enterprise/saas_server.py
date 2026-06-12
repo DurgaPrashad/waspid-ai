@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Ensure SAAS configuration is used
-if not os.getenv('OPENHANDS_CONFIG_CLS'):
-    os.environ['OPENHANDS_CONFIG_CLS'] = 'server.config.SaaSServerConfig'
+if not os.getenv('WASPID_CONFIG_CLS'):
+    os.environ['WASPID_CONFIG_CLS'] = 'server.config.SaaSServerConfig'
 
 # SaaS registers enterprise routes below, then mounts the frontend last. Avoid
 # the base app's import-time SPA mount from shadowing those routes.
@@ -60,11 +60,11 @@ from server.verified_models.verified_model_router import (  # noqa: E402
     api_router as verified_models_router,
 )
 
-from openhands.app_server.app import app as base_app  # noqa: E402
-from openhands.app_server.middleware import (  # noqa: E402
+from waspid.app_server.app import app as base_app  # noqa: E402
+from waspid.app_server.middleware import (  # noqa: E402
     CacheControlMiddleware,
 )
-from openhands.app_server.static import SPAStaticFiles  # noqa: E402
+from waspid.app_server.static import SPAStaticFiles  # noqa: E402
 
 directory = os.getenv('FRONTEND_DIRECTORY', './frontend/build')
 

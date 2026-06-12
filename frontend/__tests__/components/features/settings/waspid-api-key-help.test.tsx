@@ -9,7 +9,7 @@ describe("WaspidApiKeyHelp", () => {
     expect(screen.getByTestId("waspid-api-key-help")).toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: "SETTINGS$NAV_API_KEYS" }),
-    ).toHaveAttribute("href", "https://app.all-hands.dev/settings/api-keys");
+    ).toHaveAttribute("href", "/settings/api-keys");
   });
 
   it("renders the billing info paragraph with the pricing-details link", () => {
@@ -20,7 +20,7 @@ describe("WaspidApiKeyHelp", () => {
       screen.getByRole("link", { name: "SETTINGS$SEE_PRICING_DETAILS" }),
     ).toHaveAttribute(
       "href",
-      "https://docs.openhands.dev/usage/llms/openhands-llms",
+      "https://github.com/DurgaPrashad/waspid-ai/blob/main/docs/INSTALL.md",
     );
   });
 });

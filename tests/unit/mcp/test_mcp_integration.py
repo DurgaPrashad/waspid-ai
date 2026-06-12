@@ -5,18 +5,18 @@ from unittest.mock import AsyncMock, patch
 import pytest
 from fastmcp.mcp_config import MCPConfig, RemoteMCPServer
 
-from openhands.app_server.settings.file_settings_store import FileSettingsStore
-from openhands.app_server.settings.settings_models import Settings
-from openhands.app_server.user_auth.default_user_auth import DefaultUserAuth
-from openhands.sdk.llm import LLM
-from openhands.sdk.settings import OpenHandsAgentSettings
+from waspid.app_server.settings.file_settings_store import FileSettingsStore
+from waspid.app_server.settings.settings_models import Settings
+from waspid.app_server.user_auth.default_user_auth import DefaultUserAuth
+from waspid.sdk.llm import LLM
+from waspid.sdk.settings import WaspidAgentSettings
 
 
 @pytest.mark.asyncio
 async def test_user_auth_returns_stored_settings():
     """Test that user auth returns stored settings."""
     stored_settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(model='anthropic/claude-sonnet-4-5-20250929'),
             mcp_config=MCPConfig(
                 mcpServers={
@@ -50,7 +50,7 @@ async def test_user_auth_returns_stored_settings():
 async def test_user_auth_caching_behavior():
     """Test that user auth caches settings correctly."""
     stored_settings = Settings(
-        agent_settings=OpenHandsAgentSettings(
+        agent_settings=WaspidAgentSettings(
             llm=LLM(model='anthropic/claude-sonnet-4-5-20250929'),
             mcp_config=MCPConfig(
                 mcpServers={

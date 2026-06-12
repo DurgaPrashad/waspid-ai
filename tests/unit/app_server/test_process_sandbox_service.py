@@ -9,12 +9,12 @@ import httpx
 import psutil
 import pytest
 
-from openhands.app_server.sandbox.process_sandbox_service import (
+from waspid.app_server.sandbox.process_sandbox_service import (
     ProcessInfo,
     ProcessSandboxService,
     ProcessSandboxServiceInjector,
 )
-from openhands.app_server.sandbox.sandbox_models import SandboxStatus
+from waspid.app_server.sandbox.sandbox_models import SandboxStatus
 
 
 class MockSandboxSpec:
@@ -61,7 +61,7 @@ def process_sandbox_service(mock_httpx_client, temp_dir):
         base_working_dir=temp_dir,
         base_port=9000,
         python_executable='python',
-        agent_server_module='openhands.agent_server',
+        agent_server_module='waspid.agent_server',
         health_check_path='/alive',
         httpx_client=mock_httpx_client,
     )
@@ -358,10 +358,10 @@ class TestProcessSandboxServiceInjector:
         """Test default configuration values."""
         injector = ProcessSandboxServiceInjector()
 
-        assert injector.base_working_dir == '/tmp/openhands-sandboxes'
+        assert injector.base_working_dir == '/tmp/waspid-sandboxes'
         assert injector.base_port == 8000
         assert injector.health_check_path == '/alive'
-        assert injector.agent_server_module == 'openhands.agent_server'
+        assert injector.agent_server_module == 'waspid.agent_server'
 
     def test_custom_values(self):
         """Test custom configuration values."""

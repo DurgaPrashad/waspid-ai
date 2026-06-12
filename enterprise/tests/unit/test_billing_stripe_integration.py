@@ -112,7 +112,7 @@ async def test_create_checkout_session_uses_customer_id():
                         'unit_amount': request_data.amount * 100,
                         'currency': 'usd',
                         'product_data': {
-                            'name': 'OpenHands Credits',
+                            'name': 'Waspid Credits',
                             'tax_code': 'txcd_10000000',
                         },
                         'tax_behavior': 'exclusive',

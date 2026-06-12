@@ -16,7 +16,7 @@ from server.services.user_app_settings_service import (
     UserAppSettingsServiceInjector,
 )
 
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 user_app_settings_router = APIRouter(prefix='/api/users')
 

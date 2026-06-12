@@ -1,14 +1,14 @@
 from uuid import UUID
 
-from openhands.app_server.integrations.provider import (
+from waspid.app_server.integrations.provider import (
     PROVIDER_TOKEN_TYPE,
     ProviderHandler,
 )
-from openhands.app_server.integrations.service_types import ProviderType, UserGitInfo
-from openhands.app_server.user.user_context import UserContext
-from openhands.app_server.user.user_models import UserInfo
-from openhands.app_server.user_auth.user_auth import UserAuth
-from openhands.sdk.secret import SecretSource, StaticSecret
+from waspid.app_server.integrations.service_types import ProviderType, UserGitInfo
+from waspid.app_server.user.user_context import UserContext
+from waspid.app_server.user.user_models import UserInfo
+from waspid.app_server.user_auth.user_auth import UserAuth
+from waspid.sdk.secret import SecretSource, StaticSecret
 
 
 class ResolverUserContext(UserContext):

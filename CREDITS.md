@@ -1,22 +1,39 @@
 # Credits
 
-## Contributors
+This file is the single home for Waspid's upstream attribution. Waspid is an
+independent product; the open-source software credited here powers parts of
+its agent runtime and is gratefully acknowledged.
 
-We would like to thank all the [contributors](https://github.com/OpenHands/OpenHands/graphs/contributors) who have
-helped make OpenHands possible. We greatly appreciate your dedication and hard work.
+## Upstream agent runtime: Waspid
+
+Waspid's agent runtime is built on the MIT-licensed
+[Waspid](https://github.com/Waspid/Waspid) open-source agent SDK —
+specifically the pinned packages `waspid-sdk`, `waspid-agent-server`,
+`waspid-tools`, and `waspid-aci`. The internal Python package directory
+`waspid/` retains its upstream name to preserve SDK compatibility.
+
+We thank all the [Waspid contributors](https://github.com/Waspid/Waspid/graphs/contributors)
+whose work powers Waspid's agent runtime.
+
+If you use the underlying agent runtime in academic work, please cite the
+upstream paper:
+
+> Wang, X., et al. (2024). *Waspid: An Open Platform for AI Software
+> Developers as Generalist Agents.* arXiv:2407.16741.
+> https://arxiv.org/abs/2407.16741 — DOI: 10.48550/arXiv.2407.16741
 
 ## Open Source Projects
 
-OpenHands includes and adapts the following open source projects. We are grateful for their contributions to the
+The upstream runtime includes and adapts the following open source projects. We are grateful for their contributions to the
 open source community:
 
 #### [SWE Agent](https://github.com/princeton-nlp/swe-agent)
    - License: MIT License
-   - Description: Adapted for use in OpenHands's agent hub
+   - Description: Adapted for use in the upstream agent hub
 
 #### [Aider](https://github.com/paul-gauthier/aider)
    - License: Apache License 2.0
-   - Description: AI pair programming tool. OpenHands has adapted and integrated its linter module for code-related tasks.
+   - Description: AI pair programming tool. The upstream runtime has adapted and integrated its linter module for code-related tasks.
 
 #### [BrowserGym](https://github.com/ServiceNow/BrowserGym)
    - License: Apache License 2.0
@@ -24,7 +41,7 @@ open source community:
 
 ### Reference Implementations for Evaluation Benchmarks
 
-OpenHands integrates code of the reference implementations for the following agent evaluation benchmarks:
+The upstream runtime integrates code of the reference implementations for the following agent evaluation benchmarks:
 
 #### [HumanEval](https://github.com/openai/human-eval)
    - License: MIT License

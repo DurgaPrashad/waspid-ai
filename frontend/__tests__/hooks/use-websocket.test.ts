@@ -1,5 +1,5 @@
 /**
- * TODO: Fix flaky WebSocket tests (https://github.com/OpenHands/OpenHands/issues/11944)
+ * TODO: Fix flaky WebSocket tests (https://github.com/Waspid/Waspid/issues/11944)
  *
  * Several tests in this file are skipped because they fail intermittently in CI
  * but pass locally. The SUSPECTED root cause is that `wsLink.broadcast()` sends messages

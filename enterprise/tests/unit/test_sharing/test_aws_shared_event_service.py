@@ -15,9 +15,9 @@ from server.sharing.shared_conversation_info_service import (
 )
 from server.sharing.shared_conversation_models import SharedConversation
 
-from openhands.agent_server.models import EventPage, EventSortOrder
-from openhands.app_server.event.event_service import EventService
-from openhands.sdk.llm import MetricsSnapshot, TokenUsage
+from waspid.agent_server.models import EventPage, EventSortOrder
+from waspid.app_server.event.event_service import EventService
+from waspid.sdk.llm import MetricsSnapshot, TokenUsage
 
 
 @pytest.fixture
@@ -397,7 +397,7 @@ class TestAwsSharedEventServiceInjector:
                 return_value=mock_s3_client,
             ),
             patch(
-                'openhands.app_server.config.get_db_session',
+                'waspid.app_server.config.get_db_session',
                 return_value=mock_db_context,
             ),
         ):
@@ -432,7 +432,7 @@ class TestAwsSharedEventServiceInjector:
                 return_value=mock_s3_client,
             ),
             patch(
-                'openhands.app_server.config.get_db_session',
+                'waspid.app_server.config.get_db_session',
                 return_value=mock_db_context,
             ),
         ):
@@ -464,7 +464,7 @@ class TestAwsSharedEventServiceInjector:
                 return_value=mock_s3_client,
             ),
             patch(
-                'openhands.app_server.config.get_db_session',
+                'waspid.app_server.config.get_db_session',
                 return_value=mock_db_context,
             ),
             patch(
@@ -505,7 +505,7 @@ class TestAwsSharedEventServiceInjector:
                 return_value=mock_s3_client,
             ),
             patch(
-                'openhands.app_server.config.get_db_session',
+                'waspid.app_server.config.get_db_session',
                 return_value=mock_db_context,
             ),
         ):
@@ -537,7 +537,7 @@ class TestAwsSharedEventServiceInjector:
                 return_value=mock_s3_client,
             ) as mock_boto3_client,
             patch(
-                'openhands.app_server.config.get_db_session',
+                'waspid.app_server.config.get_db_session',
                 return_value=mock_db_context,
             ),
             patch.dict(os.environ, {'AWS_S3_ENDPOINT': 'https://s3.example.com'}),

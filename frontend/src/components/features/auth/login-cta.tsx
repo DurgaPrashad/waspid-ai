@@ -13,7 +13,8 @@ type LoginCTAProps = {
   source?: "login_page" | "device_verify";
 };
 
-const ENTERPRISE_URL = "https://openhands.dev/enterprise";
+const ENTERPRISE_URL =
+  "https://github.com/DurgaPrashad/waspid-ai/blob/main/enterprise/README.md";
 const INFORMATION_REQUEST_PATH = "/information-request";
 
 export function LoginCTA({

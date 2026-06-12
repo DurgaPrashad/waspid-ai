@@ -6,11 +6,8 @@ import { RecentConversations } from "#/components/features/home/recent-conversat
 import { TaskSuggestions } from "#/components/features/home/tasks/task-suggestions";
 import { HomepageCTA } from "#/components/features/home/homepage-cta";
 import { PlatformReadinessGrid } from "#/components/features/dashboard/platform-readiness-grid";
-import {
-  PageShell,
-  PageHeader,
-  Section,
-} from "#/components/shared/layout";
+import { CommandCenter } from "#/components/features/dashboard/command-center";
+import { PageShell, PageHeader, Section } from "#/components/shared/layout";
 import { useAppMode } from "#/hooks/use-app-mode";
 import { isCTADismissed } from "#/utils/local-storage";
 import type { GitRepository } from "#/types/git";
@@ -53,12 +50,14 @@ export default function HomeScreen() {
           width="wide"
           header={
             <PageHeader
-              eyebrow="Waspid"
-              title="Operations Center"
-              subtitle="Deploy and orchestrate your AI workforce across voice, browser automation, workflows, APIs, and enterprise operations."
+              eyebrow="Enterprise AI Workforce Operating System"
+              title="Workforce Command Center"
+              subtitle="Build, deploy, and orchestrate AI workers for enterprise operations — agents, workflows, integrations, and monitoring in one control plane."
             />
           }
         >
+          <CommandCenter />
+
           <Section
             title="Platform readiness"
             description="Live system state derived from your connected services and configuration."
@@ -67,14 +66,16 @@ export default function HomeScreen() {
           </Section>
 
           <Section
-            title="Dispatch work"
-            description="Connect a repository or start a new operation for your AI workforce to execute."
+            title="Direct agent dispatch"
+            description="Run a single agent on a repository task — the unit operation underneath every workforce."
           >
             <div
               data-testid="home-screen-new-conversation-section"
               className="grid grid-cols-1 gap-4 md:grid-cols-2"
             >
-              <RepoConnector onRepoSelection={(repo) => setSelectedRepo(repo)} />
+              <RepoConnector
+                onRepoSelection={(repo) => setSelectedRepo(repo)}
+              />
               <NewConversation />
             </div>
           </Section>

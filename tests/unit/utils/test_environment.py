@@ -1,7 +1,7 @@
 import pytest
 
-from openhands.app_server.utils import environment
-from openhands.app_server.utils.environment import StorageProvider, get_storage_provider
+from waspid.app_server.utils import environment
+from waspid.app_server.utils.environment import StorageProvider, get_storage_provider
 
 
 @pytest.fixture(autouse=True)

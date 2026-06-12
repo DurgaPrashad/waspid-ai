@@ -19,7 +19,7 @@ class UserAuthorization(Base):
     """Stores user authorization rules based on email patterns and provider types.
 
     Supports:
-    - Email pattern matching using SQL LIKE (e.g., '%@openhands.dev')
+    - Email pattern matching using SQL LIKE (e.g., '%@waspid.dev')
     - Provider type filtering (e.g., 'github', 'gitlab')
     - Whitelist/Blacklist rules
 

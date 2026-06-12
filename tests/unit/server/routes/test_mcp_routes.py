@@ -3,9 +3,9 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from openhands.app_server.integrations.service_types import GitService
-from openhands.app_server.mcp.mcp_router import get_conversation_link, init_tavily_proxy
-from openhands.app_server.types import AppMode
+from waspid.app_server.integrations.service_types import GitService
+from waspid.app_server.mcp.mcp_router import get_conversation_link, init_tavily_proxy
+from waspid.app_server.types import AppMode
 
 
 def test_mcp_server_no_stateless_http_deprecation_warning():
@@ -22,7 +22,7 @@ def test_mcp_server_no_stateless_http_deprecation_warning():
         warnings.simplefilter('always')
 
         # Import the mcp_server which triggers FastMCP creation
-        from openhands.app_server.mcp.mcp_router import mcp_server
+        from waspid.app_server.mcp.mcp_router import mcp_server
 
         # Check that no deprecation warning about stateless_http was raised
         stateless_http_warnings = [
@@ -47,8 +47,8 @@ async def test_get_conversation_link_non_saas_mode():
     mock_service = AsyncMock(spec=GitService)
 
     # Test with non-SAAS mode
-    with patch('openhands.app_server.mcp.mcp_router.get_global_config') as mock_config:
-        mock_config.return_value.app_mode = AppMode.OPENHANDS
+    with patch('waspid.app_server.mcp.mcp_router.get_global_config') as mock_config:
+        mock_config.return_value.app_mode = AppMode.WASPID
 
         # Call the function
         result = await get_conversation_link(
@@ -72,9 +72,9 @@ async def test_get_conversation_link_saas_mode():
 
     # Test with SAAS mode
     with (
-        patch('openhands.app_server.mcp.mcp_router.get_global_config') as mock_config,
+        patch('waspid.app_server.mcp.mcp_router.get_global_config') as mock_config,
         patch(
-            'openhands.app_server.mcp.mcp_router.CONVERSATION_URL',
+            'waspid.app_server.mcp.mcp_router.CONVERSATION_URL',
             'https://test.example.com/conversations/{}',
         ),
     ):
@@ -104,9 +104,9 @@ async def test_get_conversation_link_empty_body():
 
     # Test with SAAS mode and empty body
     with (
-        patch('openhands.app_server.mcp.mcp_router.get_global_config') as mock_config,
+        patch('waspid.app_server.mcp.mcp_router.get_global_config') as mock_config,
         patch(
-            'openhands.app_server.mcp.mcp_router.CONVERSATION_URL',
+            'waspid.app_server.mcp.mcp_router.CONVERSATION_URL',
             'https://test.example.com/conversations/{}',
         ),
     ):
@@ -130,7 +130,7 @@ async def test_get_conversation_link_none_conversation_id():
     """Test get_conversation_link returns body unchanged when conversation_id is None."""
     mock_service = AsyncMock(spec=GitService)
 
-    with patch('openhands.app_server.mcp.mcp_router.get_global_config') as mock_config:
+    with patch('waspid.app_server.mcp.mcp_router.get_global_config') as mock_config:
         mock_config.return_value.app_mode = AppMode.SAAS
 
         body = 'This is the PR body.'
@@ -158,12 +158,12 @@ class TestInitTavilyProxy:
         """Test init_tavily_proxy does nothing when no API key is configured."""
         with (
             patch(
-                'openhands.app_server.mcp.mcp_router.get_global_config'
+                'waspid.app_server.mcp.mcp_router.get_global_config'
             ) as mock_config,
-            patch('openhands.app_server.mcp.mcp_router.logger') as mock_logger,
-            patch('openhands.app_server.mcp.mcp_router.Client') as mock_client,
-            patch('openhands.app_server.mcp.mcp_router.create_proxy') as mock_proxy,
-            patch('openhands.app_server.mcp.mcp_router.mcp_server') as mock_mcp_server,
+            patch('waspid.app_server.mcp.mcp_router.logger') as mock_logger,
+            patch('waspid.app_server.mcp.mcp_router.Client') as mock_client,
+            patch('waspid.app_server.mcp.mcp_router.create_proxy') as mock_proxy,
+            patch('waspid.app_server.mcp.mcp_router.mcp_server') as mock_mcp_server,
         ):
             # Configure no API key
             mock_config.return_value.tavily_api_key = None
@@ -185,12 +185,12 @@ class TestInitTavilyProxy:
         """Test init_tavily_proxy does nothing when API key is empty string."""
         with (
             patch(
-                'openhands.app_server.mcp.mcp_router.get_global_config'
+                'waspid.app_server.mcp.mcp_router.get_global_config'
             ) as mock_config,
-            patch('openhands.app_server.mcp.mcp_router.logger') as mock_logger,
-            patch('openhands.app_server.mcp.mcp_router.Client') as mock_client,
-            patch('openhands.app_server.mcp.mcp_router.create_proxy') as mock_proxy,
-            patch('openhands.app_server.mcp.mcp_router.mcp_server') as mock_mcp_server,
+            patch('waspid.app_server.mcp.mcp_router.logger') as mock_logger,
+            patch('waspid.app_server.mcp.mcp_router.Client') as mock_client,
+            patch('waspid.app_server.mcp.mcp_router.create_proxy') as mock_proxy,
+            patch('waspid.app_server.mcp.mcp_router.mcp_server') as mock_mcp_server,
         ):
             # Configure empty API key
             mock_config.return_value.tavily_api_key = ''
@@ -212,17 +212,17 @@ class TestInitTavilyProxy:
         """Test init_tavily_proxy creates and mounts proxy when API key is configured."""
         with (
             patch(
-                'openhands.app_server.mcp.mcp_router.get_global_config'
+                'waspid.app_server.mcp.mcp_router.get_global_config'
             ) as mock_config,
-            patch('openhands.app_server.mcp.mcp_router.logger') as mock_logger,
-            patch('openhands.app_server.mcp.mcp_router.Client') as mock_client,
+            patch('waspid.app_server.mcp.mcp_router.logger') as mock_logger,
+            patch('waspid.app_server.mcp.mcp_router.Client') as mock_client,
             patch(
-                'openhands.app_server.mcp.mcp_router.StreamableHttpTransport'
+                'waspid.app_server.mcp.mcp_router.StreamableHttpTransport'
             ) as mock_transport,
             patch(
-                'openhands.app_server.mcp.mcp_router.create_proxy'
+                'waspid.app_server.mcp.mcp_router.create_proxy'
             ) as mock_create_proxy,
-            patch('openhands.app_server.mcp.mcp_router.mcp_server') as mock_mcp_server,
+            patch('waspid.app_server.mcp.mcp_router.mcp_server') as mock_mcp_server,
         ):
             # Configure API key
             mock_config.return_value.tavily_api_key = 'test-tavily-key'
@@ -263,12 +263,12 @@ class TestInitTavilyProxy:
         """Test init_tavily_proxy handles exceptions gracefully."""
         with (
             patch(
-                'openhands.app_server.mcp.mcp_router.get_global_config'
+                'waspid.app_server.mcp.mcp_router.get_global_config'
             ) as mock_config,
-            patch('openhands.app_server.mcp.mcp_router.logger') as mock_logger,
-            patch('openhands.app_server.mcp.mcp_router.Client') as mock_client,
-            patch('openhands.app_server.mcp.mcp_router.StreamableHttpTransport'),
-            patch('openhands.app_server.mcp.mcp_router.mcp_server') as mock_mcp_server,
+            patch('waspid.app_server.mcp.mcp_router.logger') as mock_logger,
+            patch('waspid.app_server.mcp.mcp_router.Client') as mock_client,
+            patch('waspid.app_server.mcp.mcp_router.StreamableHttpTransport'),
+            patch('waspid.app_server.mcp.mcp_router.mcp_server') as mock_mcp_server,
         ):
             # Configure API key
             mock_config.return_value.tavily_api_key = 'test-tavily-key'

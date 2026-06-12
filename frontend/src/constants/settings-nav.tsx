@@ -26,7 +26,7 @@ export interface SettingsNavItem {
   // When true, this item is greyed out (and its route redirects to
   // ``/settings/agent``) while the personal-scope active agent is ACP.
   // The ACP sub-agent manages its own LLM / condenser / MCP, so these
-  // OpenHands-side surfaces have no useful content. Drives both the
+  // Waspid-side surfaces have no useful content. Drives both the
   // navigation disable in ``use-settings-nav-items.ts`` and the
   // server-side redirect in ``routes/settings.tsx`` from one source.
   disabledByAcp?: boolean;

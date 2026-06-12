@@ -14,7 +14,7 @@ from server.auth.user.user_authorizer import (
 from storage.user_authorization import UserAuthorizationType
 from storage.user_authorization_store import UserAuthorizationStore
 
-from openhands.app_server.services.injector import InjectorState
+from waspid.app_server.services.injector import InjectorState
 
 logger = logging.getLogger(__name__)
 token_manager = TokenManager()

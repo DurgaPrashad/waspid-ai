@@ -52,7 +52,8 @@ export const INTEGRATIONS_CATALOG: IntegrationCatalogEntry[] = [
   {
     id: "bitbucket_data_center",
     name: "Bitbucket Data Center",
-    description: "Self-hosted Bitbucket integration for enterprise deployments.",
+    description:
+      "Self-hosted Bitbucket integration for enterprise deployments.",
     category: "source_control",
     icon: Server,
     managePath: "/settings/integrations",

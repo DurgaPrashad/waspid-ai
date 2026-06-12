@@ -24,7 +24,7 @@ def decrypt_value(value: str | SecretStr) -> str:
 
 
 def get_jwt_service():
-    from openhands.app_server.config import get_global_config
+    from waspid.app_server.config import get_global_config
 
     global _jwt_service
     if _jwt_service is None:

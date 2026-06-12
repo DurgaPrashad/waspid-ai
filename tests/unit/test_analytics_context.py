@@ -4,11 +4,11 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from openhands.analytics.analytics_context import (
+from waspid.analytics.analytics_context import (
     AnalyticsContext,
     resolve_analytics_context,
 )
-from openhands.analytics.user_provider import (
+from waspid.analytics.user_provider import (
     AnalyticsUserProvider,
     DefaultAnalyticsUserProvider,
 )
@@ -34,7 +34,7 @@ class MockAnalyticsUserProvider(AnalyticsUserProvider):
 def _patch_user_provider(provider: AnalyticsUserProvider):
     """Create a patch context that makes _get_user_provider return the given provider."""
     return patch(
-        'openhands.analytics.analytics_context._get_user_provider',
+        'waspid.analytics.analytics_context._get_user_provider',
         return_value=provider,
     )
 
@@ -173,7 +173,7 @@ class TestResolveContext:
         provider = MockAnalyticsUserProvider(raise_exception=RuntimeError('DB error'))
         with (
             _patch_user_provider(provider),
-            patch('openhands.analytics.analytics_context.logger') as mock_logger,
+            patch('waspid.analytics.analytics_context.logger') as mock_logger,
         ):
             await resolve_analytics_context('user-42')
 

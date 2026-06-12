@@ -1,5 +1,5 @@
 import React from "react";
-import { OpenHandsEvent, MessageEvent, ActionEvent } from "#/types/v1/core";
+import { WaspidEvent, MessageEvent, ActionEvent } from "#/types/v1/core";
 import { FinishAction, ThinkAction } from "#/types/v1/core/base/action";
 import {
   isActionEvent,
@@ -28,8 +28,8 @@ import { createSkillReadyEvent } from "./event-content-helpers/create-skill-read
 import { shouldShowPlanPreview } from "./hooks/use-plan-preview-events";
 
 interface EventMessageProps {
-  event: OpenHandsEvent & { isFromPlanningAgent?: boolean };
-  messages: OpenHandsEvent[];
+  event: WaspidEvent & { isFromPlanningAgent?: boolean };
+  messages: WaspidEvent[];
   isLastMessage: boolean;
   isInLast10Actions: boolean;
   /** Set of event IDs that should render PlanPreview (one per user message phase) */

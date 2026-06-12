@@ -5,12 +5,12 @@ from typing import Any
 
 from pydantic import SecretStr
 
-from openhands.app_server.integrations.provider import (
+from waspid.app_server.integrations.provider import (
     CustomSecret,
     ProviderToken,
     ProviderType,
 )
-from openhands.app_server.secrets.secrets_models import Secrets
+from waspid.app_server.secrets.secrets_models import Secrets
 
 
 class TestSecrets:

@@ -12,43 +12,43 @@ from uuid import uuid4
 import pytest
 from pydantic import SecretStr
 
-from openhands.agent_server.models import (
+from waspid.agent_server.models import (
     SendMessageRequest,
     StartConversationRequest,
     TextContent,
 )
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.app_server.app_conversation.app_conversation_models import (
     AgentType,
     AppConversationInfo,
     AppConversationStartRequest,
     ConversationTrigger,
 )
-from openhands.app_server.app_conversation.live_status_app_conversation_service import (
+from waspid.app_server.app_conversation.live_status_app_conversation_service import (
     LiveStatusAppConversationService,
 )
-from openhands.app_server.integrations.provider import ProviderToken, ProviderType
-from openhands.app_server.integrations.service_types import SuggestedTask, TaskType
-from openhands.app_server.sandbox.sandbox_models import (
+from waspid.app_server.integrations.provider import ProviderToken, ProviderType
+from waspid.app_server.integrations.service_types import SuggestedTask, TaskType
+from waspid.app_server.sandbox.sandbox_models import (
     AGENT_SERVER,
     ExposedUrl,
     SandboxInfo,
     SandboxPage,
     SandboxStatus,
 )
-from openhands.app_server.sandbox.sandbox_spec_models import SandboxSpecInfo
-from openhands.app_server.settings.settings_models import (
+from waspid.app_server.sandbox.sandbox_spec_models import SandboxSpecInfo
+from waspid.app_server.settings.settings_models import (
     SandboxGroupingStrategy,
     Settings,
 )
-from openhands.app_server.user.user_context import UserContext
-from openhands.sdk import Agent, Event
-from openhands.sdk.llm import LLM
-from openhands.sdk.secret import LookupSecret, StaticSecret
-from openhands.sdk.settings import ConversationSettings, OpenHandsAgentSettings
-from openhands.sdk.workspace.remote.async_remote_workspace import AsyncRemoteWorkspace
+from waspid.app_server.user.user_context import UserContext
+from waspid.sdk import Agent, Event
+from waspid.sdk.llm import LLM
+from waspid.sdk.secret import LookupSecret, StaticSecret
+from waspid.sdk.settings import ConversationSettings, WaspidAgentSettings
+from waspid.sdk.workspace.remote.async_remote_workspace import AsyncRemoteWorkspace
 
 
-def _build_test_user_agent_settings(user: SimpleNamespace) -> OpenHandsAgentSettings:
+def _build_test_user_agent_settings(user: SimpleNamespace) -> WaspidAgentSettings:
     llm_vals: dict = {}
     model = getattr(user, 'llm_model', '') or ''
     llm_vals['model'] = model
@@ -72,7 +72,7 @@ def _build_test_user_agent_settings(user: SimpleNamespace) -> OpenHandsAgentSett
 
 class _TestUserInfo(SimpleNamespace):
     @property
-    def agent_settings(self) -> OpenHandsAgentSettings:
+    def agent_settings(self) -> WaspidAgentSettings:
         override = getattr(self, '_agent_settings_override', None)
         if override is not None:
             return override
@@ -93,11 +93,11 @@ class _TestUserInfo(SimpleNamespace):
             kwargs['max_iterations'] = max_iter
         return ConversationSettings(**kwargs)
 
-    def to_agent_settings(self) -> OpenHandsAgentSettings:
+    def to_agent_settings(self) -> WaspidAgentSettings:
         return self.agent_settings
 
 
-# Env var used by openhands SDK LLM to skip context-window validation (e.g. for gpt-4 in tests)
+# Env var used by waspid SDK LLM to skip context-window validation (e.g. for gpt-4 in tests)
 _ALLOW_SHORT_CONTEXT_WINDOWS = 'ALLOW_SHORT_CONTEXT_WINDOWS'
 
 
@@ -151,7 +151,7 @@ class TestLiveStatusAppConversationService:
             max_num_conversations_per_sandbox=20,
             httpx_client=self.mock_httpx_client,
             web_url='https://test.example.com',
-            openhands_provider_base_url='https://provider.example.com',
+            waspid_provider_base_url='https://provider.example.com',
             access_token_hard_timeout=None,
             app_mode='test',
         )
@@ -544,7 +544,7 @@ class TestLiveStatusAppConversationService:
             == 'https://test.example.com/mcp/mcp'
         )
         assert mcp_config['mcpServers']['default']['headers'][
-            'X-OpenHands-ServerConversation-ID'
+            'X-Waspid-ServerConversation-ID'
         ] == str(self.conversation_id)
         assert (
             mcp_config['mcpServers']['default']['headers']['X-Session-API-Key']
@@ -567,12 +567,12 @@ class TestLiveStatusAppConversationService:
         assert llm.base_url == 'https://sdk-llm.example.com'
 
     @pytest.mark.asyncio
-    async def test_configure_llm_and_mcp_openhands_model_uses_user_base_url(
+    async def test_configure_llm_and_mcp_waspid_model_uses_user_base_url(
         self,
     ):
-        """openhands/* model uses user's base_url when set."""
+        """waspid/* model uses user's base_url when set."""
         # Arrange
-        self.mock_user.llm_model = 'openhands/special'
+        self.mock_user.llm_model = 'waspid/special'
         self.mock_user.llm_base_url = 'https://user-llm.example.com'
         self.mock_user_context.get_mcp_api_key.return_value = None
 
@@ -581,16 +581,16 @@ class TestLiveStatusAppConversationService:
             self.mock_user, self.mock_user.llm_model, self.conversation_id
         )
 
-        # Assert — user base_url takes precedence for openhands/ models
+        # Assert — user base_url takes precedence for waspid/ models
         assert llm.base_url == 'https://user-llm.example.com'
 
     @pytest.mark.asyncio
-    async def test_configure_llm_and_mcp_openhands_model_falls_back_to_provider_url(
+    async def test_configure_llm_and_mcp_waspid_model_falls_back_to_provider_url(
         self,
     ):
-        """openhands/* model falls back to provider base URL when user has no base_url."""
+        """waspid/* model falls back to provider base URL when user has no base_url."""
         # Arrange
-        self.mock_user.llm_model = 'openhands/default'
+        self.mock_user.llm_model = 'waspid/default'
         self.mock_user.llm_base_url = None
         self.mock_user_context.get_mcp_api_key.return_value = None
 
@@ -599,16 +599,16 @@ class TestLiveStatusAppConversationService:
             self.mock_user, self.mock_user.llm_model, self.conversation_id
         )
 
-        # Assert — falls back to service-level openhands_provider_base_url
+        # Assert — falls back to service-level waspid_provider_base_url
         assert llm.base_url == 'https://provider.example.com'
 
     @pytest.mark.asyncio
-    async def test_configure_llm_and_mcp_openhands_model_no_base_urls(self):
-        """openhands/* model still uses the SDK proxy when no other URLs exist."""
+    async def test_configure_llm_and_mcp_waspid_model_no_base_urls(self):
+        """waspid/* model still uses the SDK proxy when no other URLs exist."""
         # Arrange
-        self.mock_user.llm_model = 'openhands/default'
+        self.mock_user.llm_model = 'waspid/default'
         self.mock_user.llm_base_url = None
-        self.service.openhands_provider_base_url = None
+        self.service.waspid_provider_base_url = None
         self.mock_user_context.get_mcp_api_key.return_value = None
 
         # Act
@@ -654,12 +654,12 @@ class TestLiveStatusAppConversationService:
         assert llm.base_url == 'https://user-llm.example.com'
 
     @pytest.mark.asyncio
-    async def test_configure_llm_and_mcp_non_openhands_model_ignores_provider(self):
-        """Non-openhands model ignores provider base URL and uses user base URL."""
+    async def test_configure_llm_and_mcp_non_waspid_model_ignores_provider(self):
+        """Non-waspid model ignores provider base URL and uses user base URL."""
         # Arrange
         self.mock_user.llm_model = 'gpt-4'
         self.mock_user.llm_base_url = 'https://user-llm.example.com'
-        self.service.openhands_provider_base_url = 'https://provider.example.com'
+        self.service.waspid_provider_base_url = 'https://provider.example.com'
         self.mock_user_context.get_mcp_api_key.return_value = None
 
         # Act
@@ -687,7 +687,7 @@ class TestLiveStatusAppConversationService:
         assert 'default' in mcp_config['mcpServers']
 
         headers = mcp_config['mcpServers']['default']['headers']
-        assert headers['X-OpenHands-ServerConversation-ID'] == str(self.conversation_id)
+        assert headers['X-Waspid-ServerConversation-ID'] == str(self.conversation_id)
         assert 'X-Session-API-Key' not in headers
 
     @pytest.mark.asyncio
@@ -741,7 +741,7 @@ class TestLiveStatusAppConversationService:
         assert path == '/workspace/project/agents-tmp-config/PLAN.md'
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -777,7 +777,7 @@ class TestLiveStatusAppConversationService:
         self.service._load_skills_and_update_agent.assert_called_once()
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -806,7 +806,7 @@ class TestLiveStatusAppConversationService:
         assert result.conversation_id == conversation_id
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -826,7 +826,7 @@ class TestLiveStatusAppConversationService:
         conversation_id = uuid4()
 
         with patch(
-            'openhands.app_server.app_conversation.live_status_app_conversation_service._logger'
+            'waspid.app_server.app_conversation.live_status_app_conversation_service._logger'
         ) as mock_logger:
             result = await self.service._build_start_conversation_request_for_user(
                 sandbox=self.mock_sandbox,
@@ -844,9 +844,9 @@ class TestLiveStatusAppConversationService:
 
     def test_apply_server_overrides_sets_condenser_usage_id(self):
         """Condenser LLM must get usage_id='condenser' even when it inherits 'agent'."""
-        from openhands.sdk.context.condenser import LLMSummarizingCondenser
+        from waspid.sdk.context.condenser import LLMSummarizingCondenser
 
-        llm = LLM(model='openhands/gpt-4', api_key='k', usage_id='agent')
+        llm = LLM(model='waspid/gpt-4', api_key='k', usage_id='agent')
         condenser = LLMSummarizingCondenser(llm=llm)
         agent = Agent(llm=llm, tools=[], condenser=condenser)
 
@@ -857,9 +857,9 @@ class TestLiveStatusAppConversationService:
         assert updated.llm.usage_id == 'agent'
         assert updated.condenser.llm.usage_id == 'condenser'
 
-    def test_apply_server_overrides_condenser_non_openhands_model(self):
-        """Condenser usage_id is set even for non-openhands models (no metadata)."""
-        from openhands.sdk.context.condenser import LLMSummarizingCondenser
+    def test_apply_server_overrides_condenser_non_waspid_model(self):
+        """Condenser usage_id is set even for non-waspid models (no metadata)."""
+        from waspid.sdk.context.condenser import LLMSummarizingCondenser
 
         llm = LLM(model='gpt-4', api_key='k', usage_id='agent')
         condenser = LLMSummarizingCondenser(llm=llm)
@@ -869,11 +869,11 @@ class TestLiveStatusAppConversationService:
             agent, AgentType.DEFAULT, {}, uuid4(), 'user-1'
         )
 
-        # Non-openhands model: main LLM unchanged, but condenser still gets usage_id
+        # Non-waspid model: main LLM unchanged, but condenser still gets usage_id
         assert updated.condenser.llm.usage_id == 'condenser'
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -931,13 +931,13 @@ class TestLiveStatusAppConversationService:
         )
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_registered_agent_definitions'
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_registered_agent_definitions'
     )
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.register_builtins_agents'
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.register_builtins_agents'
     )
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -945,8 +945,8 @@ class TestLiveStatusAppConversationService:
         self, mock_tools, mock_register_builtins, mock_get_agent_definitions
     ):
         """Built-in sub-agents are registered when the user setting is on."""
-        from openhands.sdk.settings import OpenHandsAgentSettings
-        from openhands.sdk.subagent.schema import AgentDefinition
+        from waspid.sdk.settings import WaspidAgentSettings
+        from waspid.sdk.subagent.schema import AgentDefinition
 
         agent_definition = AgentDefinition(
             name='general-purpose',
@@ -955,7 +955,7 @@ class TestLiveStatusAppConversationService:
         )
         mock_get_agent_definitions.return_value = [agent_definition]
 
-        agent_settings = OpenHandsAgentSettings(
+        agent_settings = WaspidAgentSettings(
             llm={'model': 'gpt-4', 'api_key': 'test-key'},
             enable_sub_agents=True,
         )
@@ -982,13 +982,13 @@ class TestLiveStatusAppConversationService:
         assert result.agent_definitions == [agent_definition]
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_registered_agent_definitions'
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_registered_agent_definitions'
     )
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.register_builtins_agents'
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.register_builtins_agents'
     )
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -996,9 +996,9 @@ class TestLiveStatusAppConversationService:
         self, mock_tools, mock_register_builtins, mock_get_agent_definitions
     ):
         """Built-in sub-agents are registered but not forwarded when disabled."""
-        from openhands.sdk.settings import OpenHandsAgentSettings
+        from waspid.sdk.settings import WaspidAgentSettings
 
-        agent_settings = OpenHandsAgentSettings(
+        agent_settings = WaspidAgentSettings(
             llm={'model': 'gpt-4', 'api_key': 'test-key'},
             enable_sub_agents=False,
         )
@@ -1025,7 +1025,7 @@ class TestLiveStatusAppConversationService:
         assert result.agent_definitions == []
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -1083,7 +1083,7 @@ class TestLiveStatusAppConversationService:
         assert secrets['ANOTHER_SECRET'].value.get_secret_value() == 'another_value'
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -1132,7 +1132,7 @@ class TestLiveStatusAppConversationService:
         assert secrets['SHARED_SECRET'].value.get_secret_value() == 'overridden_value'
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -1254,7 +1254,7 @@ class TestLiveStatusAppConversationService:
 
         # Act
         with patch(
-            'openhands.app_server.app_conversation.live_status_app_conversation_service._logger'
+            'waspid.app_server.app_conversation.live_status_app_conversation_service._logger'
         ) as mock_logger:
             result = await self.service._find_running_sandbox_for_user()
 
@@ -1543,10 +1543,10 @@ class TestLiveStatusAppConversationService:
         assert self.mock_event_service.search_events.call_count == total_pages
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.AsyncRemoteWorkspace'
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.AsyncRemoteWorkspace'
     )
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.ConversationInfo'
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.ConversationInfo'
     )
     async def test_start_app_conversation_default_title_uses_first_five_characters(
         self, mock_conversation_info_class, mock_remote_workspace_class
@@ -1962,19 +1962,19 @@ class TestLiveStatusAppConversationService:
 
     def test_get_project_dir_with_repo(self):
         """get_project_dir appends repo name to working_dir."""
-        from openhands.app_server.app_conversation.app_conversation_service_base import (
+        from waspid.app_server.app_conversation.app_conversation_service_base import (
             get_project_dir,
         )
 
         assert (
-            get_project_dir('/workspace/project', 'OpenHands/software-agent-sdk')
+            get_project_dir('/workspace/project', 'Waspid/software-agent-sdk')
             == '/workspace/project/software-agent-sdk'
         )
         assert get_project_dir('/w', 'org/repo-name') == '/w/repo-name'
 
     def test_get_project_dir_without_repo(self):
         """get_project_dir returns working_dir unchanged when no repo selected."""
-        from openhands.app_server.app_conversation.app_conversation_service_base import (
+        from waspid.app_server.app_conversation.app_conversation_service_base import (
             get_project_dir,
         )
 
@@ -1982,7 +1982,7 @@ class TestLiveStatusAppConversationService:
         assert get_project_dir('/workspace/project', '') == '/workspace/project'
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -1992,7 +1992,7 @@ class TestLiveStatusAppConversationService:
         This is the root cause of the V1 hook-stop bug: if workspace.working_dir
         points to the sandbox mount root (/workspace/project) instead of the
         cloned repo (/workspace/project/<repo>), the agent's CWD is wrong and
-        .openhands/hooks/on_stop.sh is not found.
+        .waspid/hooks/on_stop.sh is not found.
         """
         self.mock_user_context.get_user_info.return_value = self.mock_user
 
@@ -2008,7 +2008,7 @@ class TestLiveStatusAppConversationService:
             system_message_suffix=None,
             git_provider=None,
             working_dir='/workspace/project',
-            selected_repository='OpenHands/software-agent-sdk',
+            selected_repository='Waspid/software-agent-sdk',
         )
 
         assert (
@@ -2016,7 +2016,7 @@ class TestLiveStatusAppConversationService:
         ), 'workspace.working_dir must point to the repo root, not the sandbox mount'
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -2048,7 +2048,7 @@ class TestLiveStatusAppConversationService:
         This verifies that the sandbox_id filter is correctly propagated through
         the service layer to the underlying info service.
         """
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             AppConversationInfoPage,
         )
 
@@ -2137,7 +2137,7 @@ class TestLiveStatusAppConversationService:
     @pytest.mark.asyncio
     async def test_search_app_conversations_sandbox_id_filter_returns_empty(self):
         """Test that search with non-matching sandbox_id returns empty results."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             AppConversationInfoPage,
         )
 
@@ -2192,7 +2192,7 @@ class TestPluginHandling:
             max_num_conversations_per_sandbox=20,
             httpx_client=self.mock_httpx_client,
             web_url='https://test.example.com',
-            openhands_provider_base_url='https://provider.example.com',
+            waspid_provider_base_url='https://provider.example.com',
             access_token_hard_timeout=None,
             app_mode='test',
         )
@@ -2216,7 +2216,7 @@ class TestPluginHandling:
 
     def test_construct_initial_message_with_plugin_params_no_plugins(self):
         """Test _construct_initial_message_with_plugin_params with no plugins returns original message."""
-        from openhands.agent_server.models import SendMessageRequest, TextContent
+        from waspid.agent_server.models import SendMessageRequest, TextContent
 
         # Test with None initial message and None plugins
         result = self.service._construct_initial_message_with_plugin_params(None, None)
@@ -2235,8 +2235,8 @@ class TestPluginHandling:
 
     def test_construct_initial_message_with_plugin_params_no_params(self):
         """Test _construct_initial_message_with_plugin_params with plugins but no parameters."""
-        from openhands.agent_server.models import SendMessageRequest, TextContent
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.agent_server.models import SendMessageRequest, TextContent
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2258,8 +2258,8 @@ class TestPluginHandling:
 
     def test_construct_initial_message_with_plugin_params_creates_new_message(self):
         """Test _construct_initial_message_with_plugin_params creates message when no initial message."""
-        from openhands.agent_server.models import TextContent
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.agent_server.models import TextContent
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2284,8 +2284,8 @@ class TestPluginHandling:
 
     def test_construct_initial_message_with_plugin_params_appends_to_message(self):
         """Test _construct_initial_message_with_plugin_params appends to existing message."""
-        from openhands.agent_server.models import SendMessageRequest, TextContent
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.agent_server.models import SendMessageRequest, TextContent
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2316,8 +2316,8 @@ class TestPluginHandling:
 
     def test_construct_initial_message_with_plugin_params_preserves_role(self):
         """Test _construct_initial_message_with_plugin_params preserves message role."""
-        from openhands.agent_server.models import SendMessageRequest, TextContent
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.agent_server.models import SendMessageRequest, TextContent
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2336,8 +2336,8 @@ class TestPluginHandling:
 
     def test_construct_initial_message_with_plugin_params_empty_content(self):
         """Test _construct_initial_message_with_plugin_params handles empty content list."""
-        from openhands.agent_server.models import SendMessageRequest, TextContent
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.agent_server.models import SendMessageRequest, TextContent
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2355,8 +2355,8 @@ class TestPluginHandling:
 
     def test_construct_initial_message_with_multiple_plugins(self):
         """Test _construct_initial_message_with_plugin_params handles multiple plugins."""
-        from openhands.agent_server.models import TextContent
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.agent_server.models import TextContent
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2388,12 +2388,12 @@ class TestPluginHandling:
 
     @pytest.mark.asyncio
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     async def test_build_request_with_plugins(self, _mock_tools):
         """Plugins are converted to PluginSource and included in the request."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2435,7 +2435,7 @@ class TestPluginHandling:
         assert '- api_key: test123' in result.initial_message.content[0].text
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
@@ -2461,13 +2461,13 @@ class TestPluginHandling:
         assert result.plugins is None
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
     async def test_build_request_plugin_with_repo_path(self, _mock_tools):
         """repo_path is propagated through to PluginSource."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2503,13 +2503,13 @@ class TestPluginHandling:
         assert result.plugins[0].repo_path == 'plugins/city-weather'
 
     @patch(
-        'openhands.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
+        'waspid.app_server.app_conversation.live_status_app_conversation_service.get_default_tools',
         return_value=[],
     )
     @pytest.mark.asyncio
     async def test_build_request_multiple_plugins(self, _mock_tools):
         """Multiple plugins are all converted correctly."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2553,7 +2553,7 @@ class TestPluginSpecModel:
 
     def test_plugin_spec_with_all_fields(self):
         """Test PluginSpec with all fields provided."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2571,7 +2571,7 @@ class TestPluginSpecModel:
 
     def test_plugin_spec_with_only_source(self):
         """Test PluginSpec with only source provided."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2584,7 +2584,7 @@ class TestPluginSpecModel:
 
     def test_plugin_spec_serialization(self):
         """Test PluginSpec serialization to JSON."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2605,7 +2605,7 @@ class TestPluginSpecModel:
 
     def test_plugin_spec_deserialization(self):
         """Test PluginSpec deserialization from dict."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2625,7 +2625,7 @@ class TestPluginSpecModel:
 
     def test_plugin_spec_display_name_github_format(self):
         """Test display_name extracts repo name from github:owner/repo format."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2634,7 +2634,7 @@ class TestPluginSpecModel:
 
     def test_plugin_spec_display_name_git_url(self):
         """Test display_name extracts repo name from git URL."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2643,7 +2643,7 @@ class TestPluginSpecModel:
 
     def test_plugin_spec_display_name_local_path(self):
         """Test display_name extracts directory name from local path."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2652,7 +2652,7 @@ class TestPluginSpecModel:
 
     def test_plugin_spec_display_name_no_slash(self):
         """Test display_name returns source as-is when no slash present."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2661,7 +2661,7 @@ class TestPluginSpecModel:
 
     def test_plugin_spec_format_params_as_text(self):
         """Test format_params_as_text formats parameters as text."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2675,7 +2675,7 @@ class TestPluginSpecModel:
 
     def test_plugin_spec_format_params_as_text_with_indent(self):
         """Test format_params_as_text with custom indent."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2689,7 +2689,7 @@ class TestPluginSpecModel:
 
     def test_plugin_spec_format_params_as_text_no_params(self):
         """Test format_params_as_text returns None when no parameters."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2700,7 +2700,7 @@ class TestPluginSpecModel:
         """Test PluginSpec inherits validation from SDK's PluginSource."""
         import pytest
 
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             PluginSpec,
         )
 
@@ -2718,7 +2718,7 @@ class TestAppConversationStartRequestWithPlugins:
 
     def test_start_request_with_plugins(self):
         """Test AppConversationStartRequest with plugins field."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             AppConversationStartRequest,
             PluginSpec,
         )
@@ -2744,7 +2744,7 @@ class TestAppConversationStartRequestWithPlugins:
 
     def test_start_request_without_plugins(self):
         """Test AppConversationStartRequest without plugins field (backwards compatible)."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             AppConversationStartRequest,
         )
 
@@ -2756,7 +2756,7 @@ class TestAppConversationStartRequestWithPlugins:
 
     def test_start_request_serialization_with_plugins(self):
         """Test AppConversationStartRequest serialization includes plugins."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             AppConversationStartRequest,
             PluginSpec,
         )
@@ -2772,7 +2772,7 @@ class TestAppConversationStartRequestWithPlugins:
 
     def test_start_request_deserialization_with_plugins(self):
         """Test AppConversationStartRequest deserialization from JSON with plugins."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             AppConversationStartRequest,
         )
 
@@ -2797,7 +2797,7 @@ class TestAppConversationStartRequestWithPlugins:
 
     def test_start_request_with_multiple_plugins(self):
         """Test AppConversationStartRequest with multiple plugins."""
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             AppConversationStartRequest,
             PluginSpec,
         )
@@ -2854,7 +2854,7 @@ class TestLoadHooksFromWorkspace:
             max_num_conversations_per_sandbox=20,
             httpx_client=self.mock_httpx_client,
             web_url='https://test.example.com',
-            openhands_provider_base_url='https://provider.example.com',
+            waspid_provider_base_url='https://provider.example.com',
             access_token_hard_timeout=None,
             app_mode='test',
         )
@@ -2972,19 +2972,19 @@ class TestLoadHooksFromWorkspace:
 
     def test_get_project_dir_for_hooks_with_selected_repository(self):
         """Test get_project_dir_for_hooks with a selected repository."""
-        from openhands.app_server.app_conversation.hook_loader import (
+        from waspid.app_server.app_conversation.hook_loader import (
             get_project_dir_for_hooks,
         )
 
         result = get_project_dir_for_hooks(
             '/workspace/project',
-            'OpenHands/software-agent-sdk',
+            'Waspid/software-agent-sdk',
         )
         assert result == '/workspace/project/software-agent-sdk'
 
     def test_get_project_dir_for_hooks_without_selected_repository(self):
         """Test get_project_dir_for_hooks without a selected repository."""
-        from openhands.app_server.app_conversation.hook_loader import (
+        from waspid.app_server.app_conversation.hook_loader import (
             get_project_dir_for_hooks,
         )
 
@@ -2993,7 +2993,7 @@ class TestLoadHooksFromWorkspace:
 
     def test_get_project_dir_for_hooks_with_empty_string(self):
         """Test get_project_dir_for_hooks with empty string repository."""
-        from openhands.app_server.app_conversation.hook_loader import (
+        from waspid.app_server.app_conversation.hook_loader import (
             get_project_dir_for_hooks,
         )
 
@@ -3105,14 +3105,14 @@ class TestAgentKindConversationUrl:
     because the frontend polls the wrong route and 404s.
     """
 
-    @pytest.mark.parametrize('agent_kind', ['openhands', 'acp'])
+    @pytest.mark.parametrize('agent_kind', ['waspid', 'acp'])
     def test_build_conversation_url_uses_unified_path(self, agent_kind):
         from uuid import UUID
 
-        from openhands.app_server.app_conversation.app_conversation_models import (
+        from waspid.app_server.app_conversation.app_conversation_models import (
             AppConversationInfo,
         )
-        from openhands.app_server.sandbox.sandbox_models import (
+        from waspid.app_server.sandbox.sandbox_models import (
             AGENT_SERVER,
             ExposedUrl,
             SandboxInfo,
@@ -3152,7 +3152,7 @@ class TestBuildAcpStartConversationRequestSecrets:
 
     Covers issue #14167: secrets from the Secrets panel and git provider
     tokens must be available to ACP subprocesses as environment variables,
-    mirroring how they flow into the regular OpenHands sandbox.
+    mirroring how they flow into the regular Waspid sandbox.
     """
 
     @pytest.fixture
@@ -3174,14 +3174,14 @@ class TestBuildAcpStartConversationRequestSecrets:
             max_num_conversations_per_sandbox=20,
             httpx_client=Mock(),
             web_url=None,
-            openhands_provider_base_url=None,
+            waspid_provider_base_url=None,
             access_token_hard_timeout=None,
             app_mode='test',
         )
 
     def _make_acp_user(self, acp_server='claude-code', acp_env=None, api_key=None):
         try:
-            from openhands.sdk.settings import (
+            from waspid.sdk.settings import (
                 ACPAgentSettings,  # type: ignore[attr-defined]
             )
         except ImportError:

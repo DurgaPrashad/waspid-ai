@@ -1,10 +1,10 @@
-import { OpenHandsObservation } from "#/types/core/observations";
+import { WaspidObservation } from "#/types/core/observations";
 import { isTaskTrackingObservation } from "#/types/core/guards";
 import { TaskTrackingObservationContent } from "../task-tracking-observation-content";
 import { ConfirmationButtons } from "#/components/shared/buttons/confirmation-buttons";
 
 interface TaskTrackingEventMessageProps {
-  event: OpenHandsObservation;
+  event: WaspidObservation;
   shouldShowConfirmationButtons: boolean;
 }
 

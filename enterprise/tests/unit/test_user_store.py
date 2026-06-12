@@ -13,7 +13,7 @@ from storage.org import Org
 from storage.user import User
 from storage.user_store import UserStore
 
-from openhands.app_server.settings.settings_models import Settings
+from waspid.app_server.settings.settings_models import Settings
 
 # --- Fixtures ---
 
@@ -93,7 +93,7 @@ async def test_create_user_with_llm_profiles_does_not_crash_and_preserves_secret
     through the column: the column itself is the encryption boundary, so
     masking on the way in would corrupt round-trips.
     """
-    from openhands.sdk.llm import LLM
+    from waspid.sdk.llm import LLM
 
     user_id = uuid.uuid4()
     org_id = uuid.uuid4()
@@ -791,7 +791,7 @@ def test_get_org_kwargs_for_migration_uses_minimal_org_defaults_for_custom_llm()
 
     # Use the SDK's current schema version - migration logic should always
     # output settings matching the SDK's expected schema, regardless of input version
-    from openhands.sdk.settings import AGENT_SETTINGS_SCHEMA_VERSION
+    from waspid.sdk.settings import AGENT_SETTINGS_SCHEMA_VERSION
 
     user_settings = UserSettings(
         keycloak_user_id='test',

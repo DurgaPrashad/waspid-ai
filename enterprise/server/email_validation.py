@@ -4,19 +4,19 @@ Email domain validation utilities for enterprise endpoints.
 
 from fastapi import Depends, HTTPException, Request, status
 
-from openhands.app_server.user_auth import get_user_auth, get_user_id
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.user_auth import get_user_auth, get_user_id
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 async def get_admin_user_id(
     request: Request, user_id: str | None = Depends(get_user_id)
 ) -> str:
     """
-    Dependency that validates user has @openhands.dev email domain.
+    Dependency that validates user has @waspid.dev email domain.
 
     This dependency can be used in place of get_user_id for endpoints that
     should only be accessible to admin users. Currently, this is implemented
-    by checking for @openhands.dev email domain.
+    by checking for @waspid.dev email domain.
 
     TODO: In the future, this should be replaced with an explicit is_admin flag
     in user/org settings instead of relying on email domain validation.
@@ -29,7 +29,7 @@ async def get_admin_user_id(
         str: User ID if email domain is valid
 
     Raises:
-        HTTPException: 403 if email domain is not @openhands.dev
+        HTTPException: 403 if email domain is not @waspid.dev
         HTTPException: 401 if user is not authenticated
 
     Example:
@@ -55,14 +55,14 @@ async def get_admin_user_id(
             detail='User email not available',
         )
 
-    if not user_email.endswith('@openhands.dev'):
+    if not user_email.endswith('@waspid.dev'):
         logger.warning(
             'Access denied - invalid email domain',
             extra={'user_id': user_id, 'email_domain': user_email.split('@')[-1]},
         )
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail='Access restricted to @openhands.dev users',
+            detail='Access restricted to @waspid.dev users',
         )
 
     return user_id

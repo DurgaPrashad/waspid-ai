@@ -27,10 +27,10 @@ This is the frontend of Waspid — a React application that provides the web int
 
 ```sh
 # Clone the repository
-git clone https://github.com/OpenHands/OpenHands.git
+git clone https://github.com/Waspid/Waspid.git
 
 # Change the directory to the frontend
-cd OpenHands/frontend
+cd Waspid/frontend
 
 # Install the dependencies
 npm install
@@ -163,7 +163,7 @@ npm run test:coverage
 
 1. **Component Testing**
    - Test components in isolation
-   - Use our custom [`renderWithProviders()`](https://github.com/OpenHands/OpenHands/blob/ce26f1c6d3feec3eedf36f823dee732b5a61e517/frontend/test-utils.tsx#L56-L85) that wraps the components we want to test in our providers. It is especially useful for components that use Redux
+   - Use our custom [`renderWithProviders()`](https://github.com/Waspid/Waspid/blob/ce26f1c6d3feec3eedf36f823dee732b5a61e517/frontend/test-utils.tsx#L56-L85) that wraps the components we want to test in our providers. It is especially useful for components that use Redux
    - Use `render()` from React Testing Library to render components
    - Prefer querying elements by role, label, or test ID over CSS selectors
    - Test both rendering and interaction scenarios
@@ -223,12 +223,12 @@ describe("ComponentName", () => {
 For real-world examples of testing, check out these test files:
 
 1. **Chat Interface Component Test**:
-   [`__tests__/components/chat/chat-interface.test.tsx`](https://github.com/OpenHands/OpenHands/blob/main/frontend/__tests__/components/chat/chat-interface.test.tsx)
+   [`__tests__/components/chat/chat-interface.test.tsx`](https://github.com/Waspid/Waspid/blob/main/frontend/__tests__/components/chat/chat-interface.test.tsx)
    - Demonstrates comprehensive testing of a complex chat component
    - Covers various scenarios like message rendering and user interactions
 
 2. **Interactive Chat Box Component Test**:
-   [`__tests__/components/interactive-chat-box.test.tsx`](https://github.com/OpenHands/OpenHands/blob/main/frontend/__tests__/components/interactive-chat-box.test.tsx)
+   [`__tests__/components/interactive-chat-box.test.tsx`](https://github.com/Waspid/Waspid/blob/main/frontend/__tests__/components/interactive-chat-box.test.tsx)
    - Shows testing of a more complex input component with multiple interactions
    - Illustrates testing of user input handling and state management
 

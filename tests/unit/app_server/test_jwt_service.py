@@ -21,8 +21,8 @@ from jwcrypto import jwe as jwcrypto_jwe
 from jwcrypto import jwk
 from pydantic import SecretStr
 
-from openhands.app_server.services.jwt_service import JwtService
-from openhands.app_server.utils.encryption_key import EncryptionKey
+from waspid.app_server.services.jwt_service import JwtService
+from waspid.app_server.utils.encryption_key import EncryptionKey
 
 
 class TestJwtService:
@@ -394,7 +394,7 @@ class TestJwtService:
         assert jwe_decrypted['numbers'] == complex_payload['numbers']
         assert jwe_decrypted['boolean_flags'] == complex_payload['boolean_flags']
 
-    @patch('openhands.app_server.services.jwt_service.utc_now')
+    @patch('waspid.app_server.services.jwt_service.utc_now')
     def test_token_expiration_timing(self, mock_utc_now, jwt_service):
         """Test that token expiration is set correctly."""
         # Mock the current time

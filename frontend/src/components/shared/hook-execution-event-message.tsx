@@ -1,11 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { isHookExecutionEvent } from "#/types/v1/type-guards";
-import { OpenHandsEvent } from "#/types/v1/core";
+import { WaspidEvent } from "#/types/v1/core";
 import { GenericEventMessage } from "#/components/features/chat/generic-event-message";
 
 interface HookExecutionEventMessageProps {
-  event: OpenHandsEvent;
+  event: WaspidEvent;
 }
 
 function getHookIcon(hookType: string, blocked: boolean): string {

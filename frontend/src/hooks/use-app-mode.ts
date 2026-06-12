@@ -9,7 +9,7 @@ import { useConfig } from "#/hooks/query/use-config";
  * - "saas": All-Hands managed SaaS version
  *
  * Deployment Mode (deployment_mode):
- * - "cloud": Enterprise customers running on All-Hands managed infrastructure (*.all-hands.dev, *.openhands.ai)
+ * - "cloud": Enterprise customers running on All-Hands managed infrastructure (*.all-hands.dev, *.waspid.ai)
  * - "self_hosted": Enterprise customers running on their own infrastructure
  *
  * Note: SaaS mode can have either cloud or self_hosted deployment mode.

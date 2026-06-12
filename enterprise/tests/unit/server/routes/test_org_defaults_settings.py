@@ -33,7 +33,7 @@ def test_normalize_agent_settings_masks_api_key_in_json_on_empty_and_real_keys()
     empty_key = OrgUpdate.model_validate(
         {
             'agent_settings_diff': {
-                'llm': {'model': 'openhands/x', 'api_key': '', 'base_url': None},
+                'llm': {'model': 'waspid/x', 'api_key': '', 'base_url': None},
             },
         }
     )
@@ -48,15 +48,15 @@ def test_normalize_agent_settings_masks_api_key_in_json_on_empty_and_real_keys()
 
 def test_normalize_agent_settings_fills_base_url_for_all_providers():
     """Managed and BYOR providers should keep usable base URLs in diffs."""
-    openhands_null = OrgUpdate.model_validate(
+    waspid_null = OrgUpdate.model_validate(
         {
             'agent_settings_diff': {
-                'llm': {'model': 'openhands/claude-3', 'base_url': None},
+                'llm': {'model': 'waspid/claude-3', 'base_url': None},
             },
         }
     )
-    openhands_missing = OrgUpdate.model_validate(
-        {'agent_settings_diff': {'llm': {'model': 'openhands/claude-3'}}}
+    waspid_missing = OrgUpdate.model_validate(
+        {'agent_settings_diff': {'llm': {'model': 'waspid/claude-3'}}}
     )
     anthropic_null = OrgUpdate.model_validate(
         {
@@ -66,17 +66,17 @@ def test_normalize_agent_settings_fills_base_url_for_all_providers():
         }
     )
 
-    openhands_null_diff = openhands_null.agent_settings_diff
-    assert openhands_null_diff is not None
-    assert openhands_null_diff['llm']['model'] == 'openhands/claude-3'
-    assert openhands_null_diff['llm']['base_url'].rstrip('/') == (
+    waspid_null_diff = waspid_null.agent_settings_diff
+    assert waspid_null_diff is not None
+    assert waspid_null_diff['llm']['model'] == 'waspid/claude-3'
+    assert waspid_null_diff['llm']['base_url'].rstrip('/') == (
         LITE_LLM_API_URL.rstrip('/')
     )
 
-    openhands_missing_diff = openhands_missing.agent_settings_diff
-    assert openhands_missing_diff is not None
-    assert openhands_missing_diff['llm']['model'] == 'openhands/claude-3'
-    assert openhands_missing_diff['llm']['base_url'].rstrip('/') == (
+    waspid_missing_diff = waspid_missing.agent_settings_diff
+    assert waspid_missing_diff is not None
+    assert waspid_missing_diff['llm']['model'] == 'waspid/claude-3'
+    assert waspid_missing_diff['llm']['base_url'].rstrip('/') == (
         LITE_LLM_API_URL.rstrip('/')
     )
 
@@ -87,9 +87,9 @@ def test_normalize_agent_settings_fills_base_url_for_all_providers():
     assert 'anthropic.com' in anthropic_base
 
 
-def test_from_org_validates_persisted_openhands_agent_kind():
+def test_from_org_validates_persisted_waspid_agent_kind():
     """GIVEN: An org row whose persisted ``agent_settings`` carry the
-        canonical ``agent_kind: 'openhands'`` discriminator (the exact shape
+        canonical ``agent_kind: 'waspid'`` discriminator (the exact shape
         from the 500-error log)
     WHEN: ``OrgDefaultsSettingsResponse.from_org`` serializes the org
     THEN: The response is built without a Pydantic literal-mismatch error
@@ -100,8 +100,8 @@ def test_from_org_validates_persisted_openhands_agent_kind():
     org.agent_settings = {
         'schema_version': 1,
         'agent': 'CodeActAgent',
-        'agent_kind': 'openhands',
-        'llm': {'model': 'openhands/claude', 'base_url': LITE_LLM_API_URL},
+        'agent_kind': 'waspid',
+        'llm': {'model': 'waspid/claude', 'base_url': LITE_LLM_API_URL},
     }
     org.conversation_settings = {}
     org.llm_api_key = None
@@ -111,8 +111,8 @@ def test_from_org_validates_persisted_openhands_agent_kind():
     response = OrgDefaultsSettingsResponse.from_org(org)
 
     # Assert
-    assert response.agent_settings.agent_kind == 'openhands'
-    assert response.agent_settings.llm.model == 'openhands/claude'
+    assert response.agent_settings.agent_kind == 'waspid'
+    assert response.agent_settings.llm.model == 'waspid/claude'
 
 
 def test_from_org_denormalizes_litellm_proxy_prefix_and_returns_base_url_as_stored():
@@ -133,14 +133,14 @@ def test_from_org_denormalizes_litellm_proxy_prefix_and_returns_base_url_as_stor
 
     response = OrgDefaultsSettingsResponse.from_org(org)
 
-    assert response.agent_settings.llm.model == 'openhands/minimax-m2.5'
+    assert response.agent_settings.llm.model == 'waspid/minimax-m2.5'
     assert response.agent_settings.llm.base_url == LITE_LLM_API_URL
     assert response.agent_settings.llm.api_key is None
 
 
 def test_from_org_returns_provider_default_base_url_as_stored_for_non_managed_models():
     """BYOR provider-default base URLs should round-trip unchanged."""
-    from openhands.app_server.utils.llm import get_provider_api_base as _provider_base
+    from waspid.app_server.utils.llm import get_provider_api_base as _provider_base
 
     anthropic_default = _provider_base('anthropic/claude-3-opus-20240229')
     assert anthropic_default is not None

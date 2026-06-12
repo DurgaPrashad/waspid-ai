@@ -1,7 +1,7 @@
 import React from "react";
 import { useSearchParams } from "react-router";
 
-const INVITATION_TOKEN_KEY = "openhands_invitation_token";
+const INVITATION_TOKEN_KEY = "waspid_invitation_token";
 
 interface UseInvitationReturn {
   /** The invitation token, if present */

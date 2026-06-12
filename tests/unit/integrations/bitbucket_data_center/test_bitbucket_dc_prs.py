@@ -5,7 +5,7 @@ from unittest.mock import AsyncMock, patch
 import pytest
 from pydantic import SecretStr
 
-from openhands.app_server.integrations.bitbucket_data_center.bitbucket_dc_service import (
+from waspid.app_server.integrations.bitbucket_data_center.bitbucket_dc_service import (
     BitbucketDCService,
 )
 

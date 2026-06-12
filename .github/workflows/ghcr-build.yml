@@ -1,4 +1,4 @@
-# Workflow that builds and pushes the OpenHands app and enterprise Docker images to ghcr.io.
+# Workflow that builds and pushes the Waspid app and enterprise Docker images to ghcr.io.
 # Per-image build logic lives in .github/workflows/_build-image.yml.
 name: Docker
 
@@ -27,7 +27,7 @@ jobs:
     if: github.event.pull_request.head.repo.fork != true
     uses: ./.github/workflows/_build-image.yml
     with:
-      image: ghcr.io/openhands/openhands
+      image: ghcr.io/waspid/waspid
       dockerfile: containers/app/Dockerfile
 
   build_enterprise:
@@ -36,9 +36,9 @@ jobs:
     needs: build_app
     uses: ./.github/workflows/_build-image.yml
     with:
-      image: ghcr.io/openhands/enterprise-server
+      image: ghcr.io/waspid/enterprise-server
       dockerfile: enterprise/Dockerfile
-      extra-build-args: OPENHANDS_VERSION=sha-${{ github.event.pull_request.head.sha || github.sha }}
+      extra-build-args: WASPID_VERSION=sha-${{ github.event.pull_request.head.sha || github.sha }}
       provenance: true
       sbom: true
       buildx-driver-opts: network=host

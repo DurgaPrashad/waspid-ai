@@ -85,7 +85,7 @@ class TestSaasUserInfoModel:
         """SaasUserInfo should inherit from UserInfo base class."""
         from server.models.user_models import SaasUserInfo
 
-        from openhands.app_server.user.user_models import UserInfo
+        from waspid.app_server.user.user_models import UserInfo
 
         assert issubclass(SaasUserInfo, UserInfo)
 
@@ -99,7 +99,7 @@ class TestGetOrgInfoFromContext:
         from server.auth.saas_user_auth import SaasUserAuth
         from server.routes.users_v1 import _get_org_info_from_context
 
-        from openhands.app_server.user.auth_user_context import AuthUserContext
+        from waspid.app_server.user.auth_user_context import AuthUserContext
 
         # Create a SaasUserAuth with mocked get_org_info
         mock_user_auth = MagicMock(spec=SaasUserAuth)
@@ -129,7 +129,7 @@ class TestGetOrgInfoFromContext:
         """Should return None when context is not AuthUserContext."""
         from server.routes.users_v1 import _get_org_info_from_context
 
-        from openhands.app_server.user.user_context import UserContext
+        from waspid.app_server.user.user_context import UserContext
 
         # Create a non-AuthUserContext
         mock_context = MagicMock(spec=UserContext)
@@ -143,8 +143,8 @@ class TestGetOrgInfoFromContext:
         """Should return None when user_auth is not SaasUserAuth."""
         from server.routes.users_v1 import _get_org_info_from_context
 
-        from openhands.app_server.user.auth_user_context import AuthUserContext
-        from openhands.app_server.user_auth.user_auth import UserAuth
+        from waspid.app_server.user.auth_user_context import AuthUserContext
+        from waspid.app_server.user_auth.user_auth import UserAuth
 
         # Create AuthUserContext with a non-SaasUserAuth
         mock_user_auth = MagicMock(spec=UserAuth)
@@ -174,7 +174,7 @@ class TestGetCurrentUserSaasEndpoint:
         from fastapi.responses import JSONResponse
         from server.routes.users_v1 import get_current_user_saas
 
-        from openhands.app_server.user.user_models import UserInfo
+        from waspid.app_server.user.user_models import UserInfo
 
         # Mock base user info
         base_user_info = UserInfo(id='user-123')
@@ -214,7 +214,7 @@ class TestGetCurrentUserSaasEndpoint:
         from fastapi.responses import JSONResponse
         from server.routes.users_v1 import get_current_user_saas
 
-        from openhands.app_server.user.user_models import UserInfo
+        from waspid.app_server.user.user_models import UserInfo
 
         # Mock base user info
         base_user_info = UserInfo(id='user-123')
@@ -271,13 +271,13 @@ class TestSdkCompatFields:
 
         from server.routes.users_v1 import get_current_user_saas
 
-        from openhands.app_server.user.user_models import UserInfo
-        from openhands.sdk.llm import LLM
-        from openhands.sdk.settings import OpenHandsAgentSettings
+        from waspid.app_server.user.user_models import UserInfo
+        from waspid.sdk.llm import LLM
+        from waspid.sdk.settings import WaspidAgentSettings
 
         base_user_info = UserInfo(
             id='user-123',
-            agent_settings=OpenHandsAgentSettings(
+            agent_settings=WaspidAgentSettings(
                 llm=LLM(model='test-model', base_url='https://test.com')
             ),
         )
@@ -305,13 +305,13 @@ class TestSdkCompatFields:
 
         from server.routes.users_v1 import get_current_user_saas
 
-        from openhands.app_server.user.user_models import UserInfo
-        from openhands.sdk.llm import LLM
-        from openhands.sdk.settings import OpenHandsAgentSettings
+        from waspid.app_server.user.user_models import UserInfo
+        from waspid.sdk.llm import LLM
+        from waspid.sdk.settings import WaspidAgentSettings
 
         base_user_info = UserInfo(
             id='user-123',
-            agent_settings=OpenHandsAgentSettings(
+            agent_settings=WaspidAgentSettings(
                 llm=LLM(
                     model='test-model',
                     api_key='sk-test-secret',
@@ -349,7 +349,7 @@ class TestSdkCompatFields:
 
         from server.routes.users_v1 import get_current_user_saas
 
-        from openhands.app_server.user.user_models import UserInfo
+        from waspid.app_server.user.user_models import UserInfo
 
         base_user_info = UserInfo(id='user-123')
         mock_user_context.get_user_info = AsyncMock(return_value=base_user_info)
@@ -372,13 +372,13 @@ class TestSdkCompatFields:
 
         from server.routes.users_v1 import get_current_user_saas
 
-        from openhands.app_server.user.user_models import UserInfo
-        from openhands.sdk.llm import LLM
-        from openhands.sdk.settings import OpenHandsAgentSettings
+        from waspid.app_server.user.user_models import UserInfo
+        from waspid.sdk.llm import LLM
+        from waspid.sdk.settings import WaspidAgentSettings
 
         base_user_info = UserInfo(
             id='user-123',
-            agent_settings=OpenHandsAgentSettings(llm=LLM(model='test-model')),
+            agent_settings=WaspidAgentSettings(llm=LLM(model='test-model')),
         )
         mock_user_context.get_user_info = AsyncMock(return_value=base_user_info)
 

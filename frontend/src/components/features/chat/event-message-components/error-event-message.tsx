@@ -1,9 +1,9 @@
-import { OpenHandsObservation } from "#/types/core/observations";
+import { WaspidObservation } from "#/types/core/observations";
 import { isErrorObservation } from "#/types/core/guards";
 import { ErrorMessage } from "../error-message";
 
 interface ErrorEventMessageProps {
-  event: OpenHandsObservation;
+  event: WaspidObservation;
 }
 
 export function ErrorEventMessage({ event }: ErrorEventMessageProps) {

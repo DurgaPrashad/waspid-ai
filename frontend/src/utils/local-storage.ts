@@ -1,9 +1,9 @@
 // Local storage keys
 export const LOCAL_STORAGE_KEYS = {
-  LOGIN_METHOD: "openhands_login_method",
-  ENTERPRISE_FORM_SAAS: "openhands_enterprise_form_saas",
-  ENTERPRISE_FORM_SELF_HOSTED: "openhands_enterprise_form_self_hosted",
-  SELECTED_ORG: "openhands_selected_org",
+  LOGIN_METHOD: "waspid_login_method",
+  ENTERPRISE_FORM_SAAS: "waspid_enterprise_form_saas",
+  ENTERPRISE_FORM_SELF_HOSTED: "waspid_enterprise_form_self_hosted",
+  SELECTED_ORG: "waspid_selected_org",
 };
 
 // Login methods

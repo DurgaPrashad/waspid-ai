@@ -85,9 +85,7 @@ describe("useAppTitle", () => {
     const { result } = renderAppTitleHook();
 
     await waitFor(() =>
-      expect(result.current).toBe(
-        "Another Conversation Title | Waspid Cloud",
-      ),
+      expect(result.current).toBe("Another Conversation Title | Waspid Cloud"),
     );
   });
 

@@ -7,15 +7,15 @@ from fastapi import Request
 from fastapi.testclient import TestClient
 from pydantic import SecretStr
 
-from openhands.app_server.app import app
-from openhands.app_server.file_store.memory import InMemoryFileStore
-from openhands.app_server.integrations.provider import ProviderToken, ProviderType
-from openhands.app_server.integrations.service_types import UserGitInfo
-from openhands.app_server.secrets.secrets_models import Secrets
-from openhands.app_server.secrets.secrets_store import SecretsStore
-from openhands.app_server.settings.file_settings_store import FileSettingsStore
-from openhands.app_server.settings.settings_store import SettingsStore
-from openhands.app_server.user_auth.user_auth import UserAuth
+from waspid.app_server.app import app
+from waspid.app_server.file_store.memory import InMemoryFileStore
+from waspid.app_server.integrations.provider import ProviderToken, ProviderType
+from waspid.app_server.integrations.service_types import UserGitInfo
+from waspid.app_server.secrets.secrets_models import Secrets
+from waspid.app_server.secrets.secrets_store import SecretsStore
+from waspid.app_server.settings.file_settings_store import FileSettingsStore
+from waspid.app_server.settings.settings_store import SettingsStore
+from waspid.app_server.user_auth.user_auth import UserAuth
 
 
 class MockUserAuth(UserAuth):
@@ -69,13 +69,13 @@ class MockUserAuth(UserAuth):
 def test_client():
     with (
         patch.dict(os.environ, {'SESSION_API_KEY': ''}, clear=False),
-        patch('openhands.app_server.utils.dependencies._SESSION_API_KEY', None),
+        patch('waspid.app_server.utils.dependencies._SESSION_API_KEY', None),
         patch(
-            'openhands.app_server.user_auth.user_auth.UserAuth.get_instance',
+            'waspid.app_server.user_auth.user_auth.UserAuth.get_instance',
             return_value=MockUserAuth(),
         ),
         patch(
-            'openhands.app_server.settings.file_settings_store.FileSettingsStore.get_instance',
+            'waspid.app_server.settings.file_settings_store.FileSettingsStore.get_instance',
             AsyncMock(return_value=FileSettingsStore(InMemoryFileStore())),
         ),
     ):
@@ -115,9 +115,9 @@ async def test_skills_search_returns_skills(test_client, tmp_path):
     )
 
     with (
-        patch('openhands.app_server.user.skills_router.GLOBAL_SKILLS_DIR', global_dir),
+        patch('waspid.app_server.user.skills_router.GLOBAL_SKILLS_DIR', global_dir),
         patch(
-            'openhands.app_server.user.skills_router.USER_SKILLS_DIR',
+            'waspid.app_server.user.skills_router.USER_SKILLS_DIR',
             tmp_path / 'nonexistent',
         ),
     ):
@@ -153,11 +153,11 @@ async def test_skills_search_handles_missing_dirs(test_client, tmp_path):
     """Test that the endpoint handles missing directories gracefully."""
     with (
         patch(
-            'openhands.app_server.user.skills_router.GLOBAL_SKILLS_DIR',
+            'waspid.app_server.user.skills_router.GLOBAL_SKILLS_DIR',
             tmp_path / 'no_such_dir',
         ),
         patch(
-            'openhands.app_server.user.skills_router.USER_SKILLS_DIR',
+            'waspid.app_server.user.skills_router.USER_SKILLS_DIR',
             tmp_path / 'also_missing',
         ),
     ):
@@ -180,8 +180,8 @@ async def test_skills_search_sorted_by_source_then_name(test_client, tmp_path):
     _write_skill_file(user_dir, 'b_user', skill_type='repo')
 
     with (
-        patch('openhands.app_server.user.skills_router.GLOBAL_SKILLS_DIR', global_dir),
-        patch('openhands.app_server.user.skills_router.USER_SKILLS_DIR', user_dir),
+        patch('waspid.app_server.user.skills_router.GLOBAL_SKILLS_DIR', global_dir),
+        patch('waspid.app_server.user.skills_router.USER_SKILLS_DIR', user_dir),
     ):
         response = test_client.get('/api/v1/skills/search')
 
@@ -208,9 +208,9 @@ async def test_skills_search_pagination(test_client, tmp_path):
     _write_skill_file(global_dir, 'skill_c', skill_type='repo')
 
     with (
-        patch('openhands.app_server.user.skills_router.GLOBAL_SKILLS_DIR', global_dir),
+        patch('waspid.app_server.user.skills_router.GLOBAL_SKILLS_DIR', global_dir),
         patch(
-            'openhands.app_server.user.skills_router.USER_SKILLS_DIR',
+            'waspid.app_server.user.skills_router.USER_SKILLS_DIR',
             tmp_path / 'nonexistent',
         ),
     ):
@@ -242,7 +242,7 @@ def test_global_skills_dir_points_to_repo_root():
     to the skills/ directory at the repo root. This prevents regressions like the
     one introduced in fb98faf4a where an incorrect path caused no skills to load.
     """
-    from openhands.app_server.user.skills_router import GLOBAL_SKILLS_DIR
+    from waspid.app_server.user.skills_router import GLOBAL_SKILLS_DIR
 
     # The directory should exist
     assert GLOBAL_SKILLS_DIR.exists(), (

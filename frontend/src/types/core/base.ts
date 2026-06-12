@@ -1,4 +1,4 @@
-export type OpenHandsEventType =
+export type WaspidEventType =
   | "message"
   | "system"
   | "agent_state_changed"
@@ -21,25 +21,25 @@ export type OpenHandsEventType =
   | "task_tracking"
   | "user_rejected";
 
-export type OpenHandsSourceType = "agent" | "user" | "environment" | "hook";
+export type WaspidSourceType = "agent" | "user" | "environment" | "hook";
 
-interface OpenHandsBaseEvent {
+interface WaspidBaseEvent {
   id: number;
-  source: OpenHandsSourceType;
+  source: WaspidSourceType;
   message: string;
   timestamp: string; // ISO 8601
 }
 
-export interface OpenHandsActionEvent<
-  T extends OpenHandsEventType,
-> extends OpenHandsBaseEvent {
+export interface WaspidActionEvent<
+  T extends WaspidEventType,
+> extends WaspidBaseEvent {
   action: T;
   args: Record<string, unknown>;
 }
 
-export interface OpenHandsObservationEvent<
-  T extends OpenHandsEventType,
-> extends OpenHandsBaseEvent {
+export interface WaspidObservationEvent<
+  T extends WaspidEventType,
+> extends WaspidBaseEvent {
   cause: number;
   observation: T;
   content: string;

@@ -45,7 +45,7 @@ def _make_message(
 
 @pytest.mark.asyncio
 async def test_factory_creates_pr_comment_view_for_top_level_mention() -> None:
-    msg = _make_message(body='Hey @openhands please fix typo', parent_id=42)
+    msg = _make_message(body='Hey @waspid please fix typo', parent_id=42)
 
     view = await BitbucketFactory.create_bitbucket_view_from_payload(
         msg, keycloak_user_id='kc-installer'
@@ -61,7 +61,7 @@ async def test_factory_creates_pr_comment_view_for_top_level_mention() -> None:
 @pytest.mark.asyncio
 async def test_factory_creates_inline_pr_comment_view_when_inline_present() -> None:
     msg = _make_message(
-        body='@openhands rename this',
+        body='@waspid rename this',
         inline={'path': 'src/x.py', 'to': 12},
     )
 
@@ -80,13 +80,13 @@ def test_is_pr_comment_returns_false_when_mention_absent() -> None:
 
 
 def test_is_pr_comment_returns_false_for_unknown_event_key() -> None:
-    msg = _make_message(body='@openhands fix', event_key='repo:push')
+    msg = _make_message(body='@waspid fix', event_key='repo:push')
     assert BitbucketFactory.is_pr_comment(msg) is False
 
 
 @pytest.mark.asyncio
 async def test_factory_assigns_installer_keycloak_user_id_to_user_info() -> None:
-    msg = _make_message(body='@openhands fix')
+    msg = _make_message(body='@waspid fix')
 
     view = await BitbucketFactory.create_bitbucket_view_from_payload(
         msg, keycloak_user_id='kc-installer'
@@ -97,7 +97,7 @@ async def test_factory_assigns_installer_keycloak_user_id_to_user_info() -> None
 
 @pytest.mark.asyncio
 async def test_factory_records_actor_account_id_when_present() -> None:
-    msg = _make_message(body='@openhands fix')
+    msg = _make_message(body='@waspid fix')
     msg.message['payload']['actor']['account_id'] = '712020:bdadedc7'
     msg.message['payload']['actor']['uuid'] = '{9339e48a-a6ce-4791-99f2}'
 
@@ -110,7 +110,7 @@ async def test_factory_records_actor_account_id_when_present() -> None:
 
 @pytest.mark.asyncio
 async def test_factory_strips_braces_from_uuid_when_account_id_missing() -> None:
-    msg = _make_message(body='@openhands fix')
+    msg = _make_message(body='@waspid fix')
     msg.message['payload']['actor'].pop('account_id', None)
     msg.message['payload']['actor']['uuid'] = '{9339e48a-a6ce-4791-99f2}'
 

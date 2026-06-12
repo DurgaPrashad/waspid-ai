@@ -1,67 +1,53 @@
 /**
- * Waspid workflows domain types.
+ * Waspid workflows domain helpers.
  *
- * A Waspid workflow is a long-running, multi-step orchestration that
- * chains agent operations, tool calls, and human-in-the-loop steps.
- *
- * NOTE: there is no workflows backend yet. These types define the
- * shape the surface will consume once the backend exists. They are
- * referenced by the /workflows shell so the type contract is in
- * place when the API ships. No mock data is materialized against
- * them in this commit.
+ * Workflow runs are executed by the backend workflow runtime
+ * (/api/v1/workforce/runs); API types live in
+ * `#/api/workforce-service/workforce.types`. This module maps runtime
+ * statuses onto the shared StatusPill tones.
  */
 import type { StatusPillTone } from "#/components/shared/layout/status-pill";
+import type {
+  WorkflowRunStatus,
+  WorkflowTaskStatus,
+} from "#/api/workforce-service/workforce.types";
 
-export type WorkflowRunStatus =
-  | "queued"
-  | "running"
-  | "succeeded"
-  | "failed"
-  | "cancelled"
-  | "awaiting_approval";
-
-export interface WorkflowRunSummary {
-  id: string;
-  workflow_id: string;
-  workflow_name: string;
-  status: WorkflowRunStatus;
-  started_at: string;
-  finished_at: string | null;
-  duration_ms: number | null;
-  triggered_by: "schedule" | "webhook" | "manual" | "agent";
-}
-
-export interface WorkflowDefinition {
-  id: string;
-  name: string;
-  description: string | null;
-  enabled: boolean;
-  last_run: WorkflowRunSummary | null;
-  trigger_type: "schedule" | "webhook" | "manual";
-  created_at: string;
-  updated_at: string;
-}
-
-const TONE_BY_STATUS: Record<WorkflowRunStatus, StatusPillTone> = {
-  queued: "info",
-  running: "info",
-  succeeded: "success",
-  failed: "danger",
-  cancelled: "neutral",
-  awaiting_approval: "warning",
+const RUN_TONE: Record<WorkflowRunStatus, StatusPillTone> = {
+  RUNNING: "info",
+  PAUSED: "warning",
+  COMPLETED: "success",
+  FAILED: "danger",
+  CANCELLED: "neutral",
 };
 
-export function toneForWorkflowStatus(
-  status: WorkflowRunStatus,
-): StatusPillTone {
-  return TONE_BY_STATUS[status];
-}
+const TASK_TONE: Record<WorkflowTaskStatus, StatusPillTone> = {
+  QUEUED: "neutral",
+  WAITING_APPROVAL: "warning",
+  RUNNING: "info",
+  COMPLETED: "success",
+  FAILED: "danger",
+  CANCELLED: "neutral",
+};
 
-export const WORKFLOW_STATUS_LABELS: Record<WorkflowRunStatus, string> = {
-  queued: "Queued",
-  running: "Running",
-  succeeded: "Succeeded",
-  failed: "Failed",
-  cancelled: "Cancelled",
-  awaiting_approval: "Awaiting approval",
+export const toneForRunStatus = (status: WorkflowRunStatus): StatusPillTone =>
+  RUN_TONE[status] ?? "neutral";
+
+export const toneForTaskStatus = (status: WorkflowTaskStatus): StatusPillTone =>
+  TASK_TONE[status] ?? "neutral";
+
+export const RUN_STATUS_LABELS: Record<WorkflowRunStatus, string> = {
+  RUNNING: "Running",
+  PAUSED: "Paused",
+  COMPLETED: "Completed",
+  FAILED: "Failed",
+  CANCELLED: "Cancelled",
+};
+
+export const TASK_STATUS_LABELS: Record<WorkflowTaskStatus, string> = {
+  QUEUED: "Queued",
+  WAITING_APPROVAL: "Awaiting approval",
+  RUNNING: "Running",
+  COMPLETED: "Completed",
+  FAILED: "Failed",
+  CANCELLED: "Cancelled",
 };

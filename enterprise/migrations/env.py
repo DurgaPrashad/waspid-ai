@@ -23,7 +23,7 @@ DB_USER = os.getenv('DB_USER', 'postgres')
 DB_PASS = os.getenv('DB_PASS', 'postgres')
 DB_HOST = os.getenv('DB_HOST', 'localhost')
 DB_PORT = os.getenv('DB_PORT', '5432')
-DB_NAME = os.getenv('DB_NAME', 'openhands')
+DB_NAME = os.getenv('DB_NAME', 'waspid')
 
 GCP_DB_INSTANCE = os.getenv('GCP_DB_INSTANCE')
 GCP_PROJECT = os.getenv('GCP_PROJECT')
@@ -121,7 +121,7 @@ def run_migrations_online() -> None:
             version_table_schema=target_metadata.schema,
         )
 
-        # Lock number must be unique — md5 hash of 'openhands_enterprise_migrations'
+        # Lock number must be unique — md5 hash of 'waspid_enterprise_migrations'
         # Lock is released when the connection context manager exits
         connection.execute(text('SELECT pg_advisory_lock(3617572382373537863)'))
 

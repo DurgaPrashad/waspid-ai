@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from dataclasses import dataclass
 
-from openhands.app_server.utils.import_utils import get_impl
+from waspid.app_server.utils.import_utils import get_impl
 
 
 class Shape:

@@ -427,7 +427,7 @@ export const getRepoMdCreatePrompt = (
   const pr = getPR(gitProvider === "gitlab");
   const prShort = getPRShort(gitProvider === "gitlab");
 
-  return `Please explore this repository. Create the file .openhands/microagents/repo.md with:
+  return `Please explore this repository. Create the file .waspid/microagents/repo.md with:
             ${
               query
                 ? `- ${query}`
@@ -520,15 +520,15 @@ export const shouldIncludeRepository = (
 };
 
 /**
- * Get the OpenHands query string based on the provider
+ * Get the Waspid query string based on the provider
  * @param provider The git provider
- * @returns The query string for searching OpenHands repositories
+ * @returns The query string for searching Waspid repositories
  */
-export const getOpenHandsQuery = (provider: Provider | null): string => {
+export const getWaspidQuery = (provider: Provider | null): string => {
   const providerRepositorySuffix: Record<string, string> = {
-    gitlab: "openhands-config",
-    azure_devops: "openhands-config",
-    default: ".openhands",
+    gitlab: "waspid-config",
+    azure_devops: "waspid-config",
+    default: ".waspid",
   } as const;
 
   return provider && provider in providerRepositorySuffix
@@ -537,15 +537,15 @@ export const getOpenHandsQuery = (provider: Provider | null): string => {
 };
 
 /**
- * Check if a repository has the OpenHands suffix based on the provider
+ * Check if a repository has the Waspid suffix based on the provider
  * @param repo The Git repository to check
  * @param provider The git provider
- * @returns True if the repository has the OpenHands suffix
+ * @returns True if the repository has the Waspid suffix
  */
-export const hasOpenHandsSuffix = (
+export const hasWaspidSuffix = (
   repo: GitRepository,
   provider: Provider | null,
-): boolean => repo.full_name.endsWith(`/${getOpenHandsQuery(provider)}`);
+): boolean => repo.full_name.endsWith(`/${getWaspidQuery(provider)}`);
 
 /**
  * Build headers for V1 API requests that require session authentication

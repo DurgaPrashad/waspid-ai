@@ -37,7 +37,10 @@ export function RunRow({ run }: RunRowProps) {
         <StatusPill tone={run.lifecycleTone}>{run.lifecycleLabel}</StatusPill>
       </div>
 
-      <div className="col-span-6 sm:col-span-2 truncate text-xs text-basic flex items-center" title={run.llm_model ?? ""}>
+      <div
+        className="col-span-6 sm:col-span-2 truncate text-xs text-basic flex items-center"
+        title={run.llm_model ?? ""}
+      >
         {run.llm_model || "—"}
       </div>
 

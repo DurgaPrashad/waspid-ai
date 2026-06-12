@@ -4,15 +4,15 @@ import httpx
 import pytest
 from pydantic import SecretStr
 
-from openhands.app_server.integrations.github.github_service import GitHubService
-from openhands.app_server.integrations.service_types import (
+from waspid.app_server.integrations.github.github_service import GitHubService
+from waspid.app_server.integrations.service_types import (
     AuthenticationError,
     OwnerType,
     ProviderType,
     Repository,
     User,
 )
-from openhands.app_server.types import AppMode
+from waspid.app_server.types import AppMode
 
 
 @pytest.mark.asyncio
@@ -262,11 +262,11 @@ async def test_github_search_repositories_with_organizations():
         'items': [
             {
                 'id': 1,
-                'name': 'OpenHands',
-                'full_name': 'All-Hands-AI/OpenHands',
+                'name': 'Waspid',
+                'full_name': 'All-Hands-AI/Waspid',
                 'private': False,
-                'html_url': 'https://github.com/All-Hands-AI/OpenHands',
-                'clone_url': 'https://github.com/All-Hands-AI/OpenHands.git',
+                'html_url': 'https://github.com/All-Hands-AI/Waspid',
+                'clone_url': 'https://github.com/All-Hands-AI/Waspid.git',
                 'pushed_at': '2023-01-01T00:00:00Z',
                 'owner': {'login': 'All-Hands-AI', 'type': 'Organization'},
             }
@@ -285,7 +285,7 @@ async def test_github_search_repositories_with_organizations():
         ) as mock_request,
     ):
         repositories = await service.search_repositories(
-            query='openhands',
+            query='waspid',
             per_page=10,
             sort='stars',
             order='desc',
@@ -302,21 +302,21 @@ async def test_github_search_repositories_with_organizations():
         # First call should be for user repositories
         user_call = calls[0]
         user_params = user_call[0][1]  # Second argument is params
-        assert user_params['q'] == 'in:name openhands user:testuser'
+        assert user_params['q'] == 'in:name waspid user:testuser'
 
         # Second call should be for first organization
         org1_call = calls[1]
         org1_params = org1_call[0][1]
-        assert org1_params['q'] == 'openhands org:All-Hands-AI'
+        assert org1_params['q'] == 'waspid org:All-Hands-AI'
 
         # Third call should be for second organization
         org2_call = calls[2]
         org2_params = org2_call[0][1]
-        assert org2_params['q'] == 'openhands org:example-org'
+        assert org2_params['q'] == 'waspid org:example-org'
 
         # Verify repositories are returned (3 copies since each call returns the same mock response)
         assert len(repositories) == 3
-        assert all(repo.full_name == 'All-Hands-AI/OpenHands' for repo in repositories)
+        assert all(repo.full_name == 'All-Hands-AI/Waspid' for repo in repositories)
 
 
 @pytest.mark.asyncio
@@ -408,7 +408,7 @@ async def test_github_service_graphql_url_enterprise_server():
 @pytest.mark.asyncio
 async def test_resolve_primary_email_selects_primary_verified():
     """_resolve_primary_email returns the email marked primary and verified."""
-    from openhands.app_server.integrations.github.service.base import GitHubMixinBase
+    from waspid.app_server.integrations.github.service.base import GitHubMixinBase
 
     emails = [
         {'email': 'secondary@example.com', 'primary': False, 'verified': True},
@@ -422,7 +422,7 @@ async def test_resolve_primary_email_selects_primary_verified():
 @pytest.mark.asyncio
 async def test_resolve_primary_email_returns_none_when_no_primary():
     """_resolve_primary_email returns None when no email is marked primary."""
-    from openhands.app_server.integrations.github.service.base import GitHubMixinBase
+    from waspid.app_server.integrations.github.service.base import GitHubMixinBase
 
     emails = [
         {'email': 'a@example.com', 'primary': False, 'verified': True},
@@ -435,7 +435,7 @@ async def test_resolve_primary_email_returns_none_when_no_primary():
 @pytest.mark.asyncio
 async def test_resolve_primary_email_returns_none_when_primary_not_verified():
     """_resolve_primary_email returns None when primary email is not verified."""
-    from openhands.app_server.integrations.github.service.base import GitHubMixinBase
+    from waspid.app_server.integrations.github.service.base import GitHubMixinBase
 
     emails = [
         {'email': 'primary@example.com', 'primary': True, 'verified': False},
@@ -448,7 +448,7 @@ async def test_resolve_primary_email_returns_none_when_primary_not_verified():
 @pytest.mark.asyncio
 async def test_resolve_primary_email_returns_none_for_empty_list():
     """_resolve_primary_email returns None for an empty list."""
-    from openhands.app_server.integrations.github.service.base import GitHubMixinBase
+    from waspid.app_server.integrations.github.service.base import GitHubMixinBase
 
     result = GitHubMixinBase._resolve_primary_email([])
     assert result is None

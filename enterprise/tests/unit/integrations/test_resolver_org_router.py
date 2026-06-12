@@ -1,6 +1,6 @@
 """Tests for resolver org routing logic.
 
-Tests the resolve_org_for_repo function which determines which OpenHands
+Tests the resolve_org_for_repo function which determines which Waspid
 organization workspace a resolver conversation should be created in.
 """
 
@@ -45,12 +45,12 @@ async def test_returns_org_id_when_claimed_and_user_is_member(mock_stores):
     mock_member_store.get_org_member.return_value = MagicMock()  # member exists
 
     # Act
-    result = await resolve_org_for_repo('github', 'OpenHands/foo', USER_ID)
+    result = await resolve_org_for_repo('github', 'Waspid/foo', USER_ID)
 
     # Assert
     assert result == CLAIMING_ORG_ID
     mock_claim_store.get_claim_by_provider_and_git_org.assert_called_once_with(
-        'github', 'openhands'
+        'github', 'waspid'
     )
     mock_member_store.get_org_member.assert_called_once_with(
         CLAIMING_ORG_ID, UUID(USER_ID)
@@ -71,7 +71,7 @@ async def test_returns_none_when_claimed_but_user_not_member(mock_stores):
     mock_member_store.get_org_member.return_value = None
 
     # Act
-    result = await resolve_org_for_repo('github', 'OpenHands/foo', USER_ID)
+    result = await resolve_org_for_repo('github', 'Waspid/foo', USER_ID)
 
     # Assert
     assert result is None
@@ -124,12 +124,12 @@ async def test_returns_org_id_without_membership_check_when_no_user_id(mock_stor
     mock_claim_store.get_claim_by_provider_and_git_org.return_value = claim
 
     # Act - no user_id provided
-    result = await resolve_org_for_repo('github', 'OpenHands/foo')
+    result = await resolve_org_for_repo('github', 'Waspid/foo')
 
     # Assert
     assert result == CLAIMING_ORG_ID
     mock_claim_store.get_claim_by_provider_and_git_org.assert_called_once_with(
-        'github', 'openhands'
+        'github', 'waspid'
     )
     # Membership check should NOT be called
     mock_member_store.get_org_member.assert_not_called()

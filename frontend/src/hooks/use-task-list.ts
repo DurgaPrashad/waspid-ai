@@ -2,9 +2,9 @@ import { useMemo } from "react";
 import { useEventStore } from "#/stores/use-event-store";
 import type { OHEvent } from "#/stores/use-event-store";
 import { isTaskTrackingObservation } from "#/types/core/guards";
-import type { OpenHandsParsedEvent } from "#/types/core";
+import type { WaspidParsedEvent } from "#/types/core";
 import { isObservationEvent } from "#/types/v1/type-guards";
-import type { OpenHandsEvent } from "#/types/v1/core";
+import type { WaspidEvent } from "#/types/v1/core";
 import type { TaskTrackerObservation } from "#/types/v1/core/base/observation";
 import type { ObservationEvent } from "#/types/v1/core/events/observation-event";
 
@@ -17,7 +17,7 @@ export interface TaskListItem {
 
 function getTaskListFromEvent(event: OHEvent): TaskListItem[] | null {
   // v0 event format: observation is a string "task_tracking"
-  const v0 = event as OpenHandsParsedEvent;
+  const v0 = event as WaspidParsedEvent;
   if (isTaskTrackingObservation(v0) && v0.extras.command === "plan") {
     return v0.extras.task_list.map((t) => ({
       id: t.id,
@@ -28,7 +28,7 @@ function getTaskListFromEvent(event: OHEvent): TaskListItem[] | null {
   }
 
   // v1 event format: observation is an object with kind "TaskTrackerObservation"
-  const v1 = event as OpenHandsEvent;
+  const v1 = event as WaspidEvent;
   if (
     isObservationEvent(v1) &&
     v1.observation.kind === "TaskTrackerObservation"

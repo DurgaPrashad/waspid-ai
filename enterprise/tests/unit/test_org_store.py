@@ -13,8 +13,8 @@ from storage.org_store import OrgStore
 from storage.role import Role
 from storage.user import User
 
-from openhands.app_server.settings.settings_models import Settings
-from openhands.sdk.settings import ConversationSettings, OpenHandsAgentSettings
+from waspid.app_server.settings.settings_models import Settings
+from waspid.sdk.settings import ConversationSettings, WaspidAgentSettings
 
 
 @pytest.fixture
@@ -100,7 +100,7 @@ async def test_update_org(async_session_maker, mock_litellm_api):
         # Create a test org
         org = Org(
             name='test-org',
-            agent_settings=OpenHandsAgentSettings(agent='CodeActAgent'),
+            agent_settings=WaspidAgentSettings(agent='CodeActAgent'),
         )
         session.add(org)
         await session.commit()
@@ -123,7 +123,7 @@ async def test_update_org(async_session_maker, mock_litellm_api):
             org_id=org_id,
             update_data=OrgUpdate(
                 name='updated-org',
-                agent_settings_diff={'llm': {'model': 'openhands/claude-3'}},
+                agent_settings_diff={'llm': {'model': 'waspid/claude-3'}},
             ),
             user_id=str(uuid.uuid4()),
         )
@@ -139,7 +139,7 @@ def test_get_org_settings_from_org_use_persisted_loaders():
     org.agent_settings = {'legacy': True}
     org.conversation_settings = {'legacy': True}
 
-    loaded_agent_settings = OpenHandsAgentSettings(agent='MigratedAgent')
+    loaded_agent_settings = WaspidAgentSettings(agent='MigratedAgent')
     loaded_conversation_settings = ConversationSettings(max_iterations=77)
 
     with (
@@ -180,7 +180,7 @@ async def test_create_org(async_session_maker, mock_litellm_api):
         org = await OrgStore.create_org(
             kwargs={
                 'name': 'new-org',
-                'agent_settings': OpenHandsAgentSettings(agent='CodeActAgent'),
+                'agent_settings': WaspidAgentSettings(agent='CodeActAgent'),
             }
         )
 
@@ -436,7 +436,7 @@ async def test_persist_org_with_owner_returns_refreshed_org(
         name='Test Org',
         contact_name='Jane Doe',
         contact_email='jane@example.com',
-        agent_settings=OpenHandsAgentSettings(agent='CodeActAgent'),
+        agent_settings=WaspidAgentSettings(agent='CodeActAgent'),
     )
 
     org_member = OrgMember(
@@ -537,7 +537,7 @@ async def test_persist_org_with_owner_with_multiple_fields(
         name='Complex Org',
         contact_name='Alice Smith',
         contact_email='alice@example.com',
-        agent_settings=OpenHandsAgentSettings(agent='CodeActAgent'),
+        agent_settings=WaspidAgentSettings(agent='CodeActAgent'),
         billing_margin=0.15,
     )
 
@@ -1084,7 +1084,7 @@ async def test_update_org_defaults_async_with_llm_api_key():
     mock_org = Org(
         id=org_id,
         name='Test Organization',
-        agent_settings=OpenHandsAgentSettings(llm={'model': 'old-model'}),
+        agent_settings=WaspidAgentSettings(llm={'model': 'old-model'}),
     )
 
     llm_settings = OrgUpdate(
@@ -1143,10 +1143,10 @@ async def test_update_org_defaults_async_propagates_managed_key_reset():
     mock_org = Org(
         id=org_id,
         name='Test Organization',
-        agent_settings=OpenHandsAgentSettings(llm={'model': 'openhands/claude-3'}),
+        agent_settings=WaspidAgentSettings(llm={'model': 'waspid/claude-3'}),
     )
     update_data = OrgUpdate(
-        agent_settings_diff={'llm': {'model': 'openhands/claude-3'}}
+        agent_settings_diff={'llm': {'model': 'waspid/claude-3'}}
     )
 
     mock_session = AsyncMock()
@@ -1195,7 +1195,7 @@ async def test_update_org_defaults_async_non_key_changes_keep_custom_key_flags()
     mock_org = Org(
         id=org_id,
         name='Test Organization',
-        agent_settings=OpenHandsAgentSettings(llm={'model': 'openhands/claude-3'}),
+        agent_settings=WaspidAgentSettings(llm={'model': 'waspid/claude-3'}),
         conversation_settings=ConversationSettings(),
     )
     update_data = OrgUpdate(conversation_settings_diff={'max_iterations': 42})

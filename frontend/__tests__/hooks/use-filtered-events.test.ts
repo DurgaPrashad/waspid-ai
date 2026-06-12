@@ -2,13 +2,13 @@ import { describe, expect, it, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useFilteredEvents } from "#/hooks/use-filtered-events";
 import { useEventStore } from "#/stores/use-event-store";
-import type { OpenHandsAction } from "#/types/core/actions";
+import type { WaspidAction } from "#/types/core/actions";
 import type { ActionEvent, MessageEvent } from "#/types/v1/core";
 import { SecurityRisk } from "#/types/v1/core";
 
 // --- V0 event factories ---
 
-function createV0UserMessage(id: number): OpenHandsAction {
+function createV0UserMessage(id: number): WaspidAction {
   return {
     id,
     source: "user",
@@ -19,7 +19,7 @@ function createV0UserMessage(id: number): OpenHandsAction {
   };
 }
 
-function createV0AgentMessage(id: number): OpenHandsAction {
+function createV0AgentMessage(id: number): WaspidAction {
   return {
     id,
     source: "agent",
@@ -35,15 +35,15 @@ function createV0AgentMessage(id: number): OpenHandsAction {
   };
 }
 
-function createV0SystemEvent(id: number): OpenHandsAction {
+function createV0SystemEvent(id: number): WaspidAction {
   return {
     id,
     source: "environment",
     action: "system",
     args: {
-      content: "source .openhands/setup.sh",
+      content: "source .waspid/setup.sh",
       tools: null,
-      openhands_version: null,
+      waspid_version: null,
       agent_class: null,
     },
     message: "Running setup script",

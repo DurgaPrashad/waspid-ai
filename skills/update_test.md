@@ -1,7 +1,7 @@
 ---
 name: update_test
 version: 1.0.0
-author: openhands
+author: waspid
 agent: CodeActAgent
 triggers:
 - /update_test

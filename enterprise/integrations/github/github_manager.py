@@ -20,7 +20,7 @@ from integrations.types import ResolverViewInterface
 from integrations.utils import (
     CONVERSATION_URL,
     HOST_URL,
-    OPENHANDS_RESOLVER_TEMPLATES_DIR,
+    WASPID_RESOLVER_TEMPLATES_DIR,
     get_session_expired_message,
     get_user_not_found_message,
 )
@@ -31,15 +31,15 @@ from server.auth.auth_error import ExpiredError
 from server.auth.constants import GITHUB_APP_CLIENT_ID, GITHUB_APP_PRIVATE_KEY
 from server.auth.token_manager import TokenManager
 
-from openhands.app_server.integrations.provider import ProviderToken, ProviderType
-from openhands.app_server.integrations.service_types import AuthenticationError
-from openhands.app_server.secrets.secrets_models import Secrets
-from openhands.app_server.types import (
+from waspid.app_server.integrations.provider import ProviderToken, ProviderType
+from waspid.app_server.integrations.service_types import AuthenticationError
+from waspid.app_server.secrets.secrets_models import Secrets
+from waspid.app_server.types import (
     LLMAuthenticationError,
     MissingSettingsError,
     SessionExpiredError,
 )
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 class GithubManager(Manager[GithubViewType]):
@@ -53,7 +53,7 @@ class GithubManager(Manager[GithubViewType]):
         )
 
         self.jinja_env = Environment(
-            loader=FileSystemLoader(OPENHANDS_RESOLVER_TEMPLATES_DIR + 'github')
+            loader=FileSystemLoader(WASPID_RESOLVER_TEMPLATES_DIR + 'github')
         )
 
     def _confirm_incoming_source_type(self, message: Message):
@@ -150,13 +150,13 @@ class GithubManager(Manager[GithubViewType]):
         return None
 
     def _send_user_not_found_message(self, message: Message, username: str):
-        """Send a message to the user informing them they need to create an OpenHands account.
+        """Send a message to the user informing them they need to create an Waspid account.
 
         This method handles all supported trigger types:
-        - Labeled issues (action='labeled' with openhands label)
-        - Issue comments (comment containing @openhands)
-        - PR comments (comment containing @openhands on a PR)
-        - Inline PR review comments (comment containing @openhands)
+        - Labeled issues (action='labeled' with waspid label)
+        - Issue comments (comment containing @waspid)
+        - PR comments (comment containing @waspid on a PR)
+        - Inline PR review comments (comment containing @waspid)
 
         Args:
             message: The incoming GitHub webhook message
@@ -203,7 +203,7 @@ class GithubManager(Manager[GithubViewType]):
         username = payload.get('sender', {}).get('login')
         repo_name = self._get_full_repo_name(repo_obj)
 
-        # Suggestions contain `@openhands` macro; avoid kicking off jobs for system recommendations
+        # Suggestions contain `@waspid` macro; avoid kicking off jobs for system recommendations
         if GithubFactory.is_pr_comment(
             message
         ) and GithubFailingAction.unqiue_suggestions_header in payload.get(
@@ -250,11 +250,11 @@ class GithubManager(Manager[GithubViewType]):
                 user_id, ProviderType.GITHUB
             )
 
-            # Check if the user has an OpenHands account
+            # Check if the user has an Waspid account
             if not keycloak_user_id:
                 logger.warning(
                     f'[GitHub] User {username} (id={user_id}) not found in Keycloak. '
-                    f'User must create an OpenHands account first.'
+                    f'User must create an Waspid account first.'
                 )
                 self._send_user_not_found_message(message, username)
                 return
@@ -315,7 +315,7 @@ class GithubManager(Manager[GithubViewType]):
             return
 
     async def start_job(self, github_view: GithubViewType) -> None:
-        """Kick off a job with openhands agent using V1 app conversation system.
+        """Kick off a job with waspid agent using V1 app conversation system.
 
         1. Get user credential
         2. Initialize new conversation with repo
@@ -386,14 +386,14 @@ class GithubManager(Manager[GithubViewType]):
                     f'[GitHub] Missing settings error for user {user_info.username}: {str(e)}'
                 )
 
-                msg_info = f'@{user_info.username} please re-login into [OpenHands Cloud]({HOST_URL}) before starting a job.'
+                msg_info = f'@{user_info.username} please re-login into [Waspid Cloud]({HOST_URL}) before starting a job.'
 
             except LLMAuthenticationError as e:
                 logger.warning(
                     f'[GitHub] LLM authentication error for user {user_info.username}: {str(e)}'
                 )
 
-                msg_info = f'@{user_info.username} please set a valid LLM API key in [OpenHands Cloud]({HOST_URL}) before starting a job.'
+                msg_info = f'@{user_info.username} please set a valid LLM API key in [Waspid Cloud]({HOST_URL}) before starting a job.'
 
             except (AuthenticationError, ExpiredError, SessionExpiredError) as e:
                 logger.warning(

@@ -128,10 +128,10 @@ export default function InformationRequest() {
         {/* Header */}
         <div className={cn("text-center flex flex-col gap-3")}>
           <Typography.H1 className={cn("text-2xl font-bold")}>
-            {t(I18nKey.ENTERPRISE$GET_OPENHANDS_TITLE)}
+            {t(I18nKey.ENTERPRISE$GET_WASPID_TITLE)}
           </Typography.H1>
           <Typography.Text className={cn("text-[#8C8C8C] max-w-lg")}>
-            {t(I18nKey.ENTERPRISE$GET_OPENHANDS_SUBTITLE)}
+            {t(I18nKey.ENTERPRISE$GET_WASPID_SUBTITLE)}
           </Typography.Text>
         </div>
 

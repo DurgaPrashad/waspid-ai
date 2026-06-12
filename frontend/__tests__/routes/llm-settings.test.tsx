@@ -176,7 +176,7 @@ function buildSettingsWithAdvancedToggle(
   return buildSettings({ ...overrides, agent_settings_schema: schema });
 }
 
-async function selectProvider(providerLabel: "OpenHands" | "OpenAI") {
+async function selectProvider(providerLabel: "Waspid" | "OpenAI") {
   const providerInput = screen.getByTestId("llm-provider-input");
   await userEvent.click(providerInput);
   await userEvent.click(await screen.findByText(providerLabel));
@@ -448,7 +448,7 @@ describe("LlmSettingsScreen", () => {
     expect(screen.queryByTestId("agent-input")).not.toBeInTheDocument();
   });
 
-  it("uses the docs.openhands.dev domain for the API key help link", async () => {
+  it("links the API key help to the Waspid install docs", async () => {
     vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
       buildSettings({
         llm_model: "openai/gpt-4o",
@@ -470,7 +470,7 @@ describe("LlmSettingsScreen", () => {
 
     expect(helpLink.querySelector("a")).toHaveAttribute(
       "href",
-      "https://docs.openhands.dev/usage/local-setup#getting-an-api-key",
+      "https://github.com/DurgaPrashad/waspid-ai/blob/main/docs/INSTALL.md#api-keys",
     );
   });
 
@@ -595,7 +595,7 @@ describe("LlmSettingsScreen", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("hides the API key input for OpenHands provider in SaaS mode", async () => {
+  it("hides the API key input for Waspid provider in SaaS mode", async () => {
     vi.spyOn(SettingsService, "getSettings").mockResolvedValue(buildSettings());
 
     await renderLlmSettingsScreen({ appMode: "saas" });
@@ -605,7 +605,7 @@ describe("LlmSettingsScreen", () => {
     expect(screen.getByTestId("waspid-api-key-help")).toBeInTheDocument();
   });
 
-  it("shows the API key input for non-OpenHands providers in SaaS mode", async () => {
+  it("shows the API key input for non-Waspid providers in SaaS mode", async () => {
     vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
       buildSettings({
         llm_model: "openai/gpt-4o",
@@ -1453,7 +1453,7 @@ describe("LlmSettingsScreen", () => {
       search_api_key_set: false,
       agent_settings: {
         llm: {
-          model: "openhands/claude-opus-4-5-20251101",
+          model: "waspid/claude-opus-4-5-20251101",
         },
       },
     });
@@ -1469,7 +1469,7 @@ describe("LlmSettingsScreen", () => {
           search_api_key_set: true,
           agent_settings: {
             llm: {
-              model: "openhands/claude-opus-4-5-20251101",
+              model: "waspid/claude-opus-4-5-20251101",
             },
           },
         });
@@ -1528,7 +1528,7 @@ describe("LlmSettingsScreen", () => {
       agent_settings_schema: schema,
       agent_settings: {
         llm: {
-          model: "openhands/claude-opus-4-5-20251101",
+          model: "waspid/claude-opus-4-5-20251101",
         },
       },
     });
@@ -1616,7 +1616,7 @@ describe("LlmSettingsScreen", () => {
   });
 
   describe("API key visibility in Basic Settings", () => {
-    it("should hide API key input when SaaS mode is enabled and OpenHands provider is selected", async () => {
+    it("should hide API key input when SaaS mode is enabled and Waspid provider is selected", async () => {
       vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
         buildSettings(),
       );
@@ -1628,7 +1628,7 @@ describe("LlmSettingsScreen", () => {
       const providerInput = within(basicForm).getByTestId("llm-provider-input");
 
       await waitFor(() => {
-        expect(providerInput).toHaveValue("OpenHands");
+        expect(providerInput).toHaveValue("Waspid");
       });
 
       expect(
@@ -1639,7 +1639,7 @@ describe("LlmSettingsScreen", () => {
       ).not.toBeInTheDocument();
     });
 
-    it("should show API key input when SaaS mode is enabled and non-OpenHands provider is selected", async () => {
+    it("should show API key input when SaaS mode is enabled and non-Waspid provider is selected", async () => {
       vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
         buildSettings({
           llm_model: "openai/gpt-4o",
@@ -1665,7 +1665,7 @@ describe("LlmSettingsScreen", () => {
       ).toBeInTheDocument();
     });
 
-    it("should show API key input when OSS mode is enabled and OpenHands provider is selected", async () => {
+    it("should show API key input when OSS mode is enabled and Waspid provider is selected", async () => {
       vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
         buildSettings(),
       );
@@ -1677,7 +1677,7 @@ describe("LlmSettingsScreen", () => {
       const providerInput = within(basicForm).getByTestId("llm-provider-input");
 
       await waitFor(() => {
-        expect(providerInput).toHaveValue("OpenHands");
+        expect(providerInput).toHaveValue("Waspid");
       });
 
       expect(
@@ -1688,7 +1688,7 @@ describe("LlmSettingsScreen", () => {
       ).toBeInTheDocument();
     });
 
-    it("should show API key input when OSS mode is enabled and non-OpenHands provider is selected", async () => {
+    it("should show API key input when OSS mode is enabled and non-Waspid provider is selected", async () => {
       vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
         buildSettings({
           llm_model: "openai/gpt-4o",
@@ -1714,7 +1714,7 @@ describe("LlmSettingsScreen", () => {
       ).toBeInTheDocument();
     });
 
-    it("should hide API key input when switching from non-OpenHands to OpenHands provider in SaaS mode", async () => {
+    it("should hide API key input when switching from non-Waspid to Waspid provider in SaaS mode", async () => {
       vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
         buildSettings({
           llm_model: "openai/gpt-4o",
@@ -1732,7 +1732,7 @@ describe("LlmSettingsScreen", () => {
         ).toBeInTheDocument();
       });
 
-      await selectProvider("OpenHands");
+      await selectProvider("Waspid");
 
       expect(
         within(basicForm).queryByTestId("llm-api-key-input"),
@@ -1742,7 +1742,7 @@ describe("LlmSettingsScreen", () => {
       ).not.toBeInTheDocument();
     });
 
-    it("should show API key input when switching from OpenHands to non-OpenHands provider in SaaS mode", async () => {
+    it("should show API key input when switching from Waspid to non-Waspid provider in SaaS mode", async () => {
       vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
         buildSettings(),
       );

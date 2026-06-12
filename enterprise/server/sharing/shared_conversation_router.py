@@ -1,4 +1,4 @@
-"""Shared Conversation router for OpenHands Server."""
+"""Shared Conversation router for Waspid Server."""
 
 from typing import Annotated
 from uuid import UUID

@@ -11,4 +11,4 @@ sudo apt update && sudo apt install netcat -y
 wget -qO- https://astral.sh/uv/install.sh | sh
 
 # Do common setup tasks
-source .openhands/setup.sh
+source .waspid/setup.sh

@@ -9,9 +9,9 @@ try:
 except ImportError:
     RESEND_AVAILABLE = False
 
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.utils.logger import waspid_logger as logger
 
-DEFAULT_FROM_EMAIL = 'OpenHands <no-reply@openhands.dev>'
+DEFAULT_FROM_EMAIL = 'Waspid <no-reply@waspid.ai>'
 DEFAULT_WEB_HOST = 'https://app.all-hands.dev'
 
 
@@ -68,12 +68,12 @@ class EmailService:
         params = {
             'from': from_email,
             'to': [to_email],
-            'subject': f"You're invited to join {org_name} on OpenHands",
+            'subject': f"You're invited to join {org_name} on Waspid",
             'html': f"""
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
                 <p>Hi,</p>
 
-                <p><strong>{inviter_name}</strong> has invited you to join <strong>{org_name}</strong> on OpenHands as a <strong>{role_name}</strong>.</p>
+                <p><strong>{inviter_name}</strong> has invited you to join <strong>{org_name}</strong> on Waspid as a <strong>{role_name}</strong>.</p>
 
                 <p>Click the button below to accept the invitation:</p>
 
@@ -103,7 +103,7 @@ class EmailService:
 
                 <p style="color: #999; font-size: 12px;">
                     Best,<br>
-                    The OpenHands Team
+                    The Waspid Team
                 </p>
             </div>
             """,

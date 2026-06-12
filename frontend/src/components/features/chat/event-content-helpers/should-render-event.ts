@@ -1,27 +1,27 @@
-import { OpenHandsAction } from "#/types/core/actions";
-import { OpenHandsEventType } from "#/types/core/base";
+import { WaspidAction } from "#/types/core/actions";
+import { WaspidEventType } from "#/types/core/base";
 import {
   isCommandAction,
   isCommandObservation,
-  isOpenHandsAction,
-  isOpenHandsObservation,
+  isWaspidAction,
+  isWaspidObservation,
 } from "#/types/core/guards";
-import { OpenHandsObservation } from "#/types/core/observations";
+import { WaspidObservation } from "#/types/core/observations";
 
-const COMMON_NO_RENDER_LIST: OpenHandsEventType[] = [
+const COMMON_NO_RENDER_LIST: WaspidEventType[] = [
   "system",
   "agent_state_changed",
   "change_agent_state",
 ];
 
-const ACTION_NO_RENDER_LIST: OpenHandsEventType[] = ["recall"];
+const ACTION_NO_RENDER_LIST: WaspidEventType[] = ["recall"];
 
-const OBSERVATION_NO_RENDER_LIST: OpenHandsEventType[] = ["think"];
+const OBSERVATION_NO_RENDER_LIST: WaspidEventType[] = ["think"];
 
 export const shouldRenderEvent = (
-  event: OpenHandsAction | OpenHandsObservation,
+  event: WaspidAction | WaspidObservation,
 ) => {
-  if (isOpenHandsAction(event)) {
+  if (isWaspidAction(event)) {
     if (isCommandAction(event) && event.source === "user") {
       // For user commands, we always hide them from the chat interface
       return false;
@@ -31,7 +31,7 @@ export const shouldRenderEvent = (
     return !noRenderList.includes(event.action);
   }
 
-  if (isOpenHandsObservation(event)) {
+  if (isWaspidObservation(event)) {
     if (isCommandObservation(event) && event.source === "user") {
       // For user commands, we always hide them from the chat interface
       return false;
@@ -47,6 +47,6 @@ export const shouldRenderEvent = (
 };
 
 export const hasUserEvent = (
-  events: (OpenHandsAction | OpenHandsObservation)[],
+  events: (WaspidAction | WaspidObservation)[],
 ) =>
-  events.some((event) => isOpenHandsAction(event) && event.source === "user");
+  events.some((event) => isWaspidAction(event) && event.source === "user");

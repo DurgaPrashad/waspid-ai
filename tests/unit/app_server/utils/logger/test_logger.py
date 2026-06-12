@@ -1,7 +1,7 @@
 import logging
 from unittest.mock import patch
 
-from openhands.app_server.utils.logger import (
+from waspid.app_server.utils.logger import (
     RedactURLParamsFilter,
     SensitiveDataFilter,
     _uvicorn_default_log_config,
@@ -367,8 +367,8 @@ def test_sensitive_filter_applied_to_handler_catches_child_logger_records():
 
     Python only checks the originating logger's filters during propagation,
     not ancestor logger filters. The filter must therefore be attached to
-    the handler as well as to openhands_logger so that child-logger records
-    (e.g. openhands.app_server.*) are still redacted.
+    the handler as well as to waspid_logger so that child-logger records
+    (e.g. waspid.app_server.*) are still redacted.
     """
     import io
 
@@ -379,12 +379,12 @@ def test_sensitive_filter_applied_to_handler_catches_child_logger_records():
     handler.setLevel(logging.DEBUG)
     handler.addFilter(sensitive_filter)
 
-    parent = logging.getLogger('openhands.test_parent')
+    parent = logging.getLogger('waspid.test_parent')
     parent.addHandler(handler)
     parent.setLevel(logging.DEBUG)
     parent.propagate = False
 
-    child = logging.getLogger('openhands.test_parent.child')
+    child = logging.getLogger('waspid.test_parent.child')
     child.setLevel(logging.DEBUG)
 
     # Use a value that matches the SDK's actual redaction patterns (20+ chars)

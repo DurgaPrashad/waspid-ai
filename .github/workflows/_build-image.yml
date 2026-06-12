@@ -6,7 +6,7 @@ on:
   workflow_call:
     inputs:
       image:
-        description: Fully-qualified image name (e.g. "ghcr.io/all-hands-ai/openhands").
+        description: Fully-qualified image name (e.g. "ghcr.io/all-hands-ai/waspid").
         required: true
         type: string
       context:
@@ -19,7 +19,7 @@ on:
         required: true
         type: string
       extra-build-args:
-        description: Additional build-args (newline-separated). OPENHANDS_BUILD_VERSION is added automatically.
+        description: Additional build-args (newline-separated). WASPID_BUILD_VERSION is added automatically.
         required: false
         type: string
         default: ""
@@ -85,7 +85,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/${{ matrix.arch }}
           build-args: |
-            OPENHANDS_BUILD_VERSION=${{ env.RELEVANT_REF_NAME }}
+            WASPID_BUILD_VERSION=${{ env.RELEVANT_REF_NAME }}
             ${{ inputs.extra-build-args }}
           cache-from: |
             type=registry,ref=${{ inputs.image }}:buildcache-${{ steps.meta.outputs.version }}

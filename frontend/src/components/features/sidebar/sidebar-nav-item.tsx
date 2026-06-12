@@ -54,11 +54,7 @@ export function SidebarNavItem({ item, isActive }: SidebarNavItemProps) {
       aria-hidden
       className={cn(
         "h-5 w-5",
-        isActive
-          ? "text-content"
-          : isPlanned
-            ? "text-basic/60"
-            : "text-basic",
+        isActive ? "text-content" : isPlanned ? "text-basic/60" : "text-basic",
         !isPlanned && "group-hover:text-content",
       )}
     />

@@ -9,7 +9,7 @@ class SourceType(str, Enum):
     GITLAB = 'gitlab'
     BITBUCKET = 'bitbucket'
     BITBUCKET_DATA_CENTER = 'bitbucket_data_center'
-    OPENHANDS = 'openhands'
+    WASPID = 'waspid'
     SLACK = 'slack'
     JIRA = 'jira'
     JIRA_DC = 'jira_dc'

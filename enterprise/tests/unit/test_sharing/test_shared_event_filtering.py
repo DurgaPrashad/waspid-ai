@@ -19,10 +19,10 @@ from server.sharing.shared_event_router import (
     search_shared_events,
 )
 
-from openhands.agent_server.models import EventPage
-from openhands.sdk.event.conversation_state import ConversationStateUpdateEvent
-from openhands.sdk.event.llm_convertible import MessageEvent
-from openhands.sdk.llm import Message, TextContent
+from waspid.agent_server.models import EventPage
+from waspid.sdk.event.conversation_state import ConversationStateUpdateEvent
+from waspid.sdk.event.llm_convertible import MessageEvent
+from waspid.sdk.llm import Message, TextContent
 
 # ---------------------------------------------------------------------------
 # Fixtures / helpers

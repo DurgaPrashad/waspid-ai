@@ -10,19 +10,19 @@ import httpx
 import pytest
 from fastapi import status
 
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversation,
 )
-from openhands.app_server.app_conversation.app_conversation_router import (
+from waspid.app_server.app_conversation.app_conversation_router import (
     get_conversation_hooks,
 )
-from openhands.app_server.sandbox.sandbox_models import (
+from waspid.app_server.sandbox.sandbox_models import (
     AGENT_SERVER,
     ExposedUrl,
     SandboxInfo,
     SandboxStatus,
 )
-from openhands.app_server.sandbox.sandbox_spec_models import SandboxSpecInfo
+from waspid.app_server.sandbox.sandbox_spec_models import SandboxSpecInfo
 
 
 @pytest.mark.asyncio
@@ -79,7 +79,7 @@ class TestGetConversationHooks:
                         'hooks': [
                             {
                                 'type': 'command',
-                                'command': '.openhands/hooks/on_stop.sh',
+                                'command': '.waspid/hooks/on_stop.sh',
                                 'timeout': 60,
                                 'async': True,
                             }
@@ -110,7 +110,7 @@ class TestGetConversationHooks:
         assert data['hooks'][0]['matchers'][0]['hooks'][0]['type'] == 'command'
         assert (
             data['hooks'][0]['matchers'][0]['hooks'][0]['command']
-            == '.openhands/hooks/on_stop.sh'
+            == '.waspid/hooks/on_stop.sh'
         )
         assert data['hooks'][0]['matchers'][0]['hooks'][0]['async'] is True
         assert 'async_' not in data['hooks'][0]['matchers'][0]['hooks'][0]

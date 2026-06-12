@@ -14,17 +14,17 @@ from storage.org import Org
 from storage.stored_conversation_metadata_saas import StoredConversationMetadataSaas
 from storage.user import User
 
-from openhands.app_server.app_conversation.app_conversation_models import (
+from waspid.app_server.app_conversation.app_conversation_models import (
     AppConversationInfo,
     ConversationTrigger,
 )
-from openhands.app_server.app_conversation.sql_app_conversation_info_service import (
+from waspid.app_server.app_conversation.sql_app_conversation_info_service import (
     SQLAppConversationInfoService,
 )
-from openhands.app_server.integrations.provider import ProviderType
-from openhands.app_server.user.specifiy_user_context import SpecifyUserContext
-from openhands.app_server.utils.sql_utils import Base
-from openhands.sdk.llm import MetricsSnapshot, TokenUsage
+from waspid.app_server.integrations.provider import ProviderType
+from waspid.app_server.user.specifiy_user_context import SpecifyUserContext
+from waspid.app_server.utils.sql_utils import Base
+from waspid.sdk.llm import MetricsSnapshot, TokenUsage
 
 
 @pytest.fixture

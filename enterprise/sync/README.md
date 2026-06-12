@@ -27,7 +27,7 @@ The service is configured using environment variables:
 
 ## Deployment
 
-The service is deployed as part of the openhands Helm chart. To enable it, set the following in your values.yaml:
+The service is deployed as part of the waspid Helm chart. To enable it, set the following in your values.yaml:
 
 ```yaml
 resendSync:
@@ -37,7 +37,7 @@ resendSync:
 
 ### Prerequisites
 
-- Kubernetes cluster with the openhands chart deployed
+- Kubernetes cluster with the waspid chart deployed
 - Resend.com API key stored in a Kubernetes secret named `resend-api-key`
 - Resend.com audience ID
 

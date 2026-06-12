@@ -7,8 +7,8 @@ from fastapi.testclient import TestClient
 from pydantic import SecretStr
 from server.routes.github_proxy import add_github_proxy_routes
 
-from openhands.app_server.services.jwt_service import JwtService
-from openhands.app_server.utils.encryption_key import EncryptionKey
+from waspid.app_server.services.jwt_service import JwtService
+from waspid.app_server.utils.encryption_key import EncryptionKey
 
 
 def _make_jwt_service() -> JwtService:

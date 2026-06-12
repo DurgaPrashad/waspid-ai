@@ -34,14 +34,14 @@ export const JSON_VIEW_THEME = {
 export const DOCUMENTATION_URL = {
   MICROAGENTS: {
     MICROAGENTS_OVERVIEW:
-      "https://docs.all-hands.dev/usage/prompting/microagents-overview",
+      "https://github.com/DurgaPrashad/waspid-ai/blob/main/docs/AGENTS_GUIDE.md",
     ORGANIZATION_AND_USER_MICROAGENTS:
-      "https://docs.all-hands.dev/usage/prompting/microagents-org",
+      "https://github.com/DurgaPrashad/waspid-ai/blob/main/docs/AGENTS_GUIDE.md",
   },
 };
 
 export const PRODUCT_URL = {
-  PRODUCTION: "https://app.all-hands.dev",
+  PRODUCTION: "https://waspid.ai",
 };
 
 export const SETTINGS_FORM = {

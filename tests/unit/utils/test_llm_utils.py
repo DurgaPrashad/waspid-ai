@@ -1,43 +1,43 @@
-"""Tests for openhands.app_server.utils.llm module."""
+"""Tests for waspid.app_server.utils.llm module."""
 
-from openhands.app_server.utils import llm as llm_utils
-from openhands.app_server.utils.llm import (
+from waspid.app_server.utils import llm as llm_utils
+from waspid.app_server.utils.llm import (
     _assign_provider,
     _derive_verified_models,
     get_provider_api_base,
-    is_openhands_model,
+    is_waspid_model,
 )
 
 
 class TestIsOpenhandsModel:
-    """Tests for the is_openhands_model function."""
+    """Tests for the is_waspid_model function."""
 
-    def test_openhands_model_returns_true(self):
-        """Test that models with 'openhands/' prefix return True."""
-        assert is_openhands_model('openhands/claude-sonnet-4-5-20250929') is True
-        assert is_openhands_model('openhands/gpt-5-2025-08-07') is True
-        assert is_openhands_model('openhands/gemini-2.5-pro') is True
+    def test_waspid_model_returns_true(self):
+        """Test that models with 'waspid/' prefix return True."""
+        assert is_waspid_model('waspid/claude-sonnet-4-5-20250929') is True
+        assert is_waspid_model('waspid/gpt-5-2025-08-07') is True
+        assert is_waspid_model('waspid/gemini-2.5-pro') is True
 
-    def test_non_openhands_model_returns_false(self):
-        """Test that models without 'openhands/' prefix return False."""
-        assert is_openhands_model('gpt-4') is False
-        assert is_openhands_model('claude-3-opus-20240229') is False
-        assert is_openhands_model('anthropic/claude-3-opus-20240229') is False
-        assert is_openhands_model('openai/gpt-4') is False
+    def test_non_waspid_model_returns_false(self):
+        """Test that models without 'waspid/' prefix return False."""
+        assert is_waspid_model('gpt-4') is False
+        assert is_waspid_model('claude-3-opus-20240229') is False
+        assert is_waspid_model('anthropic/claude-3-opus-20240229') is False
+        assert is_waspid_model('openai/gpt-4') is False
 
     def test_none_model_returns_false(self):
         """Test that None model returns False."""
-        assert is_openhands_model(None) is False
+        assert is_waspid_model(None) is False
 
     def test_empty_string_returns_false(self):
         """Test that empty string returns False."""
-        assert is_openhands_model('') is False
+        assert is_waspid_model('') is False
 
     def test_similar_prefix_not_matched(self):
         """Test that similar prefixes don't incorrectly match."""
-        assert is_openhands_model('openhands') is False  # Missing slash
-        assert is_openhands_model('openhandsx/model') is False  # Extra char
-        assert is_openhands_model('OPENHANDS/model') is False  # Wrong case
+        assert is_waspid_model('waspid') is False  # Missing slash
+        assert is_waspid_model('waspidx/model') is False  # Extra char
+        assert is_waspid_model('WASPID/model') is False  # Wrong case
 
 
 class TestAssignProvider:
@@ -111,11 +111,11 @@ class TestAssignProvider:
 class TestDeriveVerifiedModels:
     """Tests for the _derive_verified_models helper."""
 
-    def test_extracts_openhands_model_names(self):
-        """Test that only openhands-prefixed models are returned bare."""
+    def test_extracts_waspid_model_names(self):
+        """Test that only waspid-prefixed models are returned bare."""
         models = [
-            'openhands/claude-opus-4-5-20251101',
-            'openhands/gpt-5',
+            'waspid/claude-opus-4-5-20251101',
+            'waspid/gpt-5',
             'openai/gpt-5',
             'gpt-4o',
         ]

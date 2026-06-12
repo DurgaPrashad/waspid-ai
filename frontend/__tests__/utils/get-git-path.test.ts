@@ -13,8 +13,8 @@ describe("getGitPath", () => {
     });
 
     it("should handle standard owner/repo format (GitHub)", () => {
-      expect(getGitPath(conversationId, "OpenHands/OpenHands", false)).toBe(
-        "/workspace/project/OpenHands",
+      expect(getGitPath(conversationId, "Waspid/Waspid", false)).toBe(
+        "/workspace/project/Waspid",
       );
       expect(getGitPath(conversationId, "facebook/react", false)).toBe(
         "/workspace/project/react",
@@ -55,8 +55,8 @@ describe("getGitPath", () => {
     });
 
     it("should handle standard owner/repo format (GitHub)", () => {
-      expect(getGitPath(conversationId, "OpenHands/OpenHands", true)).toBe(
-        `/workspace/project/${conversationId}/OpenHands`,
+      expect(getGitPath(conversationId, "Waspid/Waspid", true)).toBe(
+        `/workspace/project/${conversationId}/Waspid`,
       );
       expect(getGitPath(conversationId, "facebook/react", true)).toBe(
         `/workspace/project/${conversationId}/react`,

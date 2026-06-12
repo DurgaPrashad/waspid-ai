@@ -59,19 +59,19 @@ def upgrade() -> None:
         ['is_enabled'],
     )
 
-    # Seed with current openhands provider models
+    # Seed with current waspid provider models
     models = [
-        ('claude-opus-4-5-20251101', 'openhands'),
-        ('claude-sonnet-4-5-20250929', 'openhands'),
-        ('gpt-5.2-codex', 'openhands'),
-        ('gpt-5.2', 'openhands'),
-        ('minimax-m2.5', 'openhands'),
-        ('gemini-3-pro-preview', 'openhands'),
-        ('gemini-3-flash-preview', 'openhands'),
-        ('deepseek-chat', 'openhands'),
-        ('devstral-medium-2512', 'openhands'),
-        ('kimi-k2-0711-preview', 'openhands'),
-        ('qwen3-coder-480b', 'openhands'),
+        ('claude-opus-4-5-20251101', 'waspid'),
+        ('claude-sonnet-4-5-20250929', 'waspid'),
+        ('gpt-5.2-codex', 'waspid'),
+        ('gpt-5.2', 'waspid'),
+        ('minimax-m2.5', 'waspid'),
+        ('gemini-3-pro-preview', 'waspid'),
+        ('gemini-3-flash-preview', 'waspid'),
+        ('deepseek-chat', 'waspid'),
+        ('devstral-medium-2512', 'waspid'),
+        ('kimi-k2-0711-preview', 'waspid'),
+        ('qwen3-coder-480b', 'waspid'),
     ]
 
     for model_name, provider in models:

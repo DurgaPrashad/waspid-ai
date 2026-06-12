@@ -18,21 +18,21 @@ from server.routes.org_models import (
 from sqlalchemy import select, text
 from sqlalchemy.orm import joinedload
 from storage.database import a_session_maker
-from storage.lite_llm_manager import LiteLlmManager, get_openhands_cloud_key_alias
+from storage.lite_llm_manager import LiteLlmManager, get_waspid_cloud_key_alias
 from storage.org import Org
 from storage.org_member import OrgMember
 from storage.user import User
 from storage.user_settings import UserSettings
 
-from openhands.app_server.settings.settings_models import (
+from waspid.app_server.settings.settings_models import (
     Settings,
     _load_persisted_agent_settings,
     _load_persisted_conversation_settings,
 )
-from openhands.app_server.utils.jsonpatch_compat import deep_merge
-from openhands.app_server.utils.llm import is_openhands_model
-from openhands.app_server.utils.logger import openhands_logger as logger
-from openhands.sdk.settings import ConversationSettings, OpenHandsAgentSettings
+from waspid.app_server.utils.jsonpatch_compat import deep_merge
+from waspid.app_server.utils.llm import is_waspid_model
+from waspid.app_server.utils.logger import waspid_logger as logger
+from waspid.sdk.settings import ConversationSettings, WaspidAgentSettings
 
 _ORG_SETTINGS_EXCLUDED_FIELDS = {
     'id',
@@ -53,7 +53,7 @@ class OrgStore:
     """Store for managing organizations."""
 
     @staticmethod
-    def get_agent_settings_from_org(org: Org) -> OpenHandsAgentSettings:
+    def get_agent_settings_from_org(org: Org) -> WaspidAgentSettings:
         # Apply persisted-settings migrations via the shared SDK loader,
         # then coerce the legacy ``agent_kind: 'llm'`` discriminator onto
         # the canonical class. Some saved entries still carry that
@@ -61,8 +61,8 @@ class OrgStore:
         # ``LLMAgentSettings``.
         loaded = _load_persisted_agent_settings(dict(org.agent_settings))
         payload = loaded.model_dump(mode='json', context={'expose_secrets': True})
-        payload['agent_kind'] = 'openhands'
-        return OpenHandsAgentSettings.model_validate(payload)
+        payload['agent_kind'] = 'waspid'
+        return WaspidAgentSettings.model_validate(payload)
 
     @staticmethod
     def get_conversation_settings_from_org(org: Org) -> ConversationSettings:
@@ -253,8 +253,8 @@ class OrgStore:
     def _merge_and_validate_settings(
         current_settings: dict[str, Any],
         settings_diff: dict[str, Any],
-        settings_type: type[OpenHandsAgentSettings] | type[ConversationSettings],
-    ) -> OpenHandsAgentSettings | ConversationSettings:
+        settings_type: type[WaspidAgentSettings] | type[ConversationSettings],
+    ) -> WaspidAgentSettings | ConversationSettings:
         """Deep-merge a sparse settings diff and validate the merged result.
 
         The persisted base is routed through the SDK ``from_persisted`` loader
@@ -262,14 +262,14 @@ class OrgStore:
         is merged. Agent settings additionally coerce the legacy
         ``agent_kind: 'llm'`` discriminator onto the canonical class.
         """
-        if settings_type is OpenHandsAgentSettings:
+        if settings_type is WaspidAgentSettings:
             base_settings = _load_persisted_agent_settings(current_settings or {})
             merged_settings = deep_merge(
                 base_settings.model_dump(mode='json', context={'expose_secrets': True}),
                 settings_diff,
             )
-            merged_settings['agent_kind'] = 'openhands'
-            return OpenHandsAgentSettings.model_validate(merged_settings)
+            merged_settings['agent_kind'] = 'waspid'
+            return WaspidAgentSettings.model_validate(merged_settings)
 
         base_settings = _load_persisted_conversation_settings(current_settings)
         merged_settings = deep_merge(
@@ -333,7 +333,7 @@ class OrgStore:
                 org.agent_settings = OrgStore._merge_and_validate_settings(
                     org.agent_settings,
                     agent_settings_diff,
-                    OpenHandsAgentSettings,
+                    WaspidAgentSettings,
                 ).model_dump(mode='json', exclude_unset=True)
 
             if conversation_settings_diff is not None:
@@ -580,10 +580,10 @@ class OrgStore:
         llm_base_url = llm_settings.base_url
         normalized_llm_base_url = llm_base_url.rstrip('/') if llm_base_url else None
         normalized_managed_base_url = LITE_LLM_API_URL.rstrip('/')
-        openhands_type = is_openhands_model(llm_model)
+        waspid_type = is_waspid_model(llm_model)
         uses_managed_llm_key = (
             normalized_llm_base_url == normalized_managed_base_url
-            or (normalized_llm_base_url is None and openhands_type)
+            or (normalized_llm_base_url is None and waspid_type)
         )
         if not uses_managed_llm_key:
             return None
@@ -610,11 +610,11 @@ class OrgStore:
             existing_key_raw,
             user_id,
             str(updated_org.id),
-            openhands_type=openhands_type,
+            waspid_type=waspid_type,
         ):
             return existing_key_raw
 
-        if openhands_type:
+        if waspid_type:
             logger.info(
                 'Generated managed LLM key for acting user on org-defaults save',
                 extra={'user_id': user_id, 'org_id': str(updated_org.id)},
@@ -623,10 +623,10 @@ class OrgStore:
                 user_id,
                 str(updated_org.id),
                 None,
-                {'type': 'openhands'},
+                {'type': 'waspid'},
             )
 
-        key_alias = get_openhands_cloud_key_alias(user_id, str(updated_org.id))
+        key_alias = get_waspid_cloud_key_alias(user_id, str(updated_org.id))
         await LiteLlmManager.delete_key_by_alias(key_alias=key_alias)
         logger.info(
             'Generated managed LLM key for acting user on org-defaults save',

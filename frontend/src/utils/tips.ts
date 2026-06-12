@@ -1,5 +1,7 @@
 import { I18nKey } from "#/i18n/declaration";
 
+const DOCS_BASE = "https://github.com/DurgaPrashad/waspid-ai/blob/main/docs";
+
 export interface Tip {
   key: I18nKey;
   link?: string;
@@ -8,37 +10,37 @@ export interface Tip {
 export const TIPS: Tip[] = [
   {
     key: I18nKey.TIPS$CUSTOMIZE_MICROAGENT,
-    link: "https://docs.all-hands.dev/usage/prompting/microagents-repo",
+    link: `${DOCS_BASE}/AGENTS_GUIDE.md`,
   },
   {
     key: I18nKey.TIPS$SETUP_SCRIPT,
-    link: "https://docs.all-hands.dev/usage/prompting/repository#setup-script",
+    link: `${DOCS_BASE}/AGENTS_GUIDE.md`,
   },
   { key: I18nKey.TIPS$VSCODE_INSTANCE },
   { key: I18nKey.TIPS$SAVE_WORK },
   {
     key: I18nKey.TIPS$SPECIFY_FILES,
-    link: "https://docs.all-hands.dev/usage/prompting/prompting-best-practices",
+    link: `${DOCS_BASE}/AGENTS_GUIDE.md`,
   },
   {
     key: I18nKey.TIPS$HEADLESS_MODE,
-    link: "https://docs.all-hands.dev/usage/how-to/headless-mode",
+    link: `${DOCS_BASE}/CLI.md`,
   },
   {
     key: I18nKey.TIPS$CLI_MODE,
-    link: "https://docs.all-hands.dev/usage/how-to/cli-mode",
+    link: `${DOCS_BASE}/CLI.md`,
   },
   {
     key: I18nKey.TIPS$GITHUB_HOOK,
-    link: "https://docs.all-hands.dev/usage/cloud/github-installation#working-on-github-issues-and-pull-requests-using-openhands",
+    link: `${DOCS_BASE}/INTEGRATIONS_GUIDE.md`,
   },
   {
     key: I18nKey.TIPS$BLOG_SIGNUP,
-    link: "https://www.all-hands.dev/blog",
+    link: "https://github.com/DurgaPrashad/waspid-ai",
   },
   {
     key: I18nKey.TIPS$API_USAGE,
-    link: "https://docs.all-hands.dev/api-reference/health-check",
+    link: `${DOCS_BASE}/API.md`,
   },
 ];
 

@@ -36,7 +36,7 @@ async def test_gitlab_events_deduplication_with_object_id(
         'object_kind': 'note',
         'object_attributes': {
             'discussion_id': 'test_discussion_id',
-            'note': '@openhands help me with this',
+            'note': '@waspid help me with this',
             'id': 12345,
         },
     }
@@ -48,8 +48,8 @@ async def test_gitlab_events_deduplication_with_object_id(
     response = await gitlab_events(
         request=mock_request,
         x_gitlab_token='test_token',
-        x_openhands_webhook_id='test_webhook_id',
-        x_openhands_user_id='test_user_id',
+        x_waspid_webhook_id='test_webhook_id',
+        x_waspid_user_id='test_user_id',
     )
 
     # Verify Redis was called to set the key with the object_attributes.id
@@ -71,8 +71,8 @@ async def test_gitlab_events_deduplication_with_object_id(
     response = await gitlab_events(
         request=mock_request,
         x_gitlab_token='test_token',
-        x_openhands_webhook_id='test_webhook_id',
-        x_openhands_user_id='test_user_id',
+        x_waspid_webhook_id='test_webhook_id',
+        x_waspid_user_id='test_user_id',
     )
 
     # Verify Redis was called to set the key with the object_attributes.id
@@ -128,8 +128,8 @@ async def test_gitlab_events_deduplication_without_object_id(
     response = await gitlab_events(
         request=mock_request,
         x_gitlab_token='test_token',
-        x_openhands_webhook_id='test_webhook_id',
-        x_openhands_user_id='test_user_id',
+        x_waspid_webhook_id='test_webhook_id',
+        x_waspid_user_id='test_user_id',
     )
 
     # Verify Redis was called to set the key with the hash
@@ -151,8 +151,8 @@ async def test_gitlab_events_deduplication_without_object_id(
     response = await gitlab_events(
         request=mock_request,
         x_gitlab_token='test_token',
-        x_openhands_webhook_id='test_webhook_id',
-        x_openhands_user_id='test_user_id',
+        x_waspid_webhook_id='test_webhook_id',
+        x_waspid_user_id='test_user_id',
     )
 
     # Verify Redis was called to set the key with the hash
@@ -197,8 +197,8 @@ async def test_gitlab_events_different_payloads_not_deduplicated(
     response1 = await gitlab_events(
         request=mock_request1,
         x_gitlab_token='test_token',
-        x_openhands_webhook_id='test_webhook_id',
-        x_openhands_user_id='test_user_id',
+        x_waspid_webhook_id='test_webhook_id',
+        x_waspid_user_id='test_user_id',
     )
 
     # Verify Redis was called to set the key with the first ID
@@ -224,8 +224,8 @@ async def test_gitlab_events_different_payloads_not_deduplicated(
     response2 = await gitlab_events(
         request=mock_request2,
         x_gitlab_token='test_token',
-        x_openhands_webhook_id='test_webhook_id',
-        x_openhands_user_id='test_user_id',
+        x_waspid_webhook_id='test_webhook_id',
+        x_waspid_user_id='test_user_id',
     )
 
     # Verify Redis was called to set the key with the second ID
@@ -274,8 +274,8 @@ async def test_gitlab_events_multiple_identical_payloads_deduplicated(
     response1 = await gitlab_events(
         request=mock_request,
         x_gitlab_token='test_token',
-        x_openhands_webhook_id='test_webhook_id',
-        x_openhands_user_id='test_user_id',
+        x_waspid_webhook_id='test_webhook_id',
+        x_waspid_user_id='test_user_id',
     )
 
     # Verify Redis was called to set the key with the object_attributes.id
@@ -299,8 +299,8 @@ async def test_gitlab_events_multiple_identical_payloads_deduplicated(
     response2 = await gitlab_events(
         request=mock_request,
         x_gitlab_token='test_token',
-        x_openhands_webhook_id='test_webhook_id',
-        x_openhands_user_id='test_user_id',
+        x_waspid_webhook_id='test_webhook_id',
+        x_waspid_user_id='test_user_id',
     )
 
     # Verify Redis was called to set the key with the same object_attributes.id
@@ -322,8 +322,8 @@ async def test_gitlab_events_multiple_identical_payloads_deduplicated(
     response3 = await gitlab_events(
         request=mock_request,
         x_gitlab_token='test_token',
-        x_openhands_webhook_id='test_webhook_id',
-        x_openhands_user_id='test_user_id',
+        x_waspid_webhook_id='test_webhook_id',
+        x_waspid_user_id='test_user_id',
     )
 
     # Verify Redis was called to set the key with the same object_attributes.id

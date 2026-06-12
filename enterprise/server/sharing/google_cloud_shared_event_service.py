@@ -30,15 +30,15 @@ from server.sharing.sql_shared_conversation_info_service import (
     SQLSharedConversationInfoService,
 )
 
-from openhands.agent_server.models import EventPage, EventSortOrder
-from openhands.app_server.event.event_service import EventService
-from openhands.app_server.event.google_cloud_event_service import (
+from waspid.agent_server.models import EventPage, EventSortOrder
+from waspid.app_server.event.event_service import EventService
+from waspid.app_server.event.google_cloud_event_service import (
     GoogleCloudEventService,
     _get_shared_storage_client,
 )
-from openhands.app_server.event_callback.event_callback_models import EventKind
-from openhands.app_server.services.injector import InjectorState
-from openhands.sdk import Event
+from waspid.app_server.event_callback.event_callback_models import EventKind
+from waspid.app_server.services.injector import InjectorState
+from waspid.sdk import Event
 
 logger = logging.getLogger(__name__)
 
@@ -139,7 +139,7 @@ class GoogleCloudSharedEventServiceInjector(SharedEventServiceInjector):
         self, state: InjectorState, request: Request | None = None
     ) -> AsyncGenerator[SharedEventService, None]:
         # Define inline to prevent circular lookup
-        from openhands.app_server.config import get_db_session
+        from waspid.app_server.config import get_db_session
 
         async with get_db_session(state, request) as db_session:
             shared_conversation_info_service = SQLSharedConversationInfoService(

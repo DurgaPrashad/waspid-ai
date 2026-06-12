@@ -14,7 +14,7 @@ class BitbucketWebhook(Base):
 
     Each row stores the per-installation ``webhook_uuid`` and the shared
     ``webhook_secret`` used to verify the ``X-Hub-Signature`` header on
-    incoming events. The ``user_id`` is the keycloak id of the OpenHands
+    incoming events. The ``user_id`` is the keycloak id of the Waspid
     user that registered the hook.
     """
 

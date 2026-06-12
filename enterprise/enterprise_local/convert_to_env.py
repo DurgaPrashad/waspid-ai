@@ -99,18 +99,18 @@ os.remove(yaml_file)
 lines = []
 lines.append('KEYCLOAK_SERVER_URL=https://auth.staging.all-hands.dev/')
 lines.append('KEYCLOAK_SERVER_URL_EXT=https://auth.staging.all-hands.dev/')
-lines.append('OPENHANDS_CONFIG_CLS=server.config.SaaSServerConfig')
+lines.append('WASPID_CONFIG_CLS=server.config.SaaSServerConfig')
 lines.append(
-    'OPENHANDS_GITHUB_SERVICE_CLS=integrations.github.github_service.SaaSGitHubService'
+    'WASPID_GITHUB_SERVICE_CLS=integrations.github.github_service.SaaSGitHubService'
 )
 lines.append(
-    'OPENHANDS_GITLAB_SERVICE_CLS=integrations.gitlab.gitlab_service.SaaSGitLabService'
+    'WASPID_GITLAB_SERVICE_CLS=integrations.gitlab.gitlab_service.SaaSGitLabService'
 )
 lines.append(
-    'OPENHANDS_BITBUCKET_SERVICE_CLS=integrations.bitbucket.bitbucket_service.SaaSBitBucketService'
+    'WASPID_BITBUCKET_SERVICE_CLS=integrations.bitbucket.bitbucket_service.SaaSBitBucketService'
 )
 lines.append(
-    'OPENHANDS_BITBUCKET_DATA_CENTER_SERVICE_CLS=integrations.bitbucket_data_center.bitbucket_dc_service.SaaSBitbucketDCService'
+    'WASPID_BITBUCKET_DATA_CENTER_SERVICE_CLS=integrations.bitbucket_data_center.bitbucket_dc_service.SaaSBitbucketDCService'
 )
 lines.append('POSTHOG_CLIENT_KEY=test')
 lines.append('ENABLE_PROACTIVE_CONVERSATION_STARTERS=true')

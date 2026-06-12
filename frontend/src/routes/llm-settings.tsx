@@ -56,7 +56,7 @@ const getSchemaFieldDefaultValue = (
 
 const KNOWN_PROVIDER_DEFAULT_BASE_URLS: Partial<Record<string, Set<string>>> = {
   openai: new Set(["https://api.openai.com", "https://api.openai.com/v1"]),
-  openhands: new Set([
+  waspid: new Set([
     "https://llm-proxy.app.all-hands.dev",
     "https://llm-proxy.app.all-hands.dev/v1",
   ]),
@@ -227,12 +227,12 @@ export function LlmSettingsScreen({
         view === "basic"
           ? (selectedProvider ?? derivedProvider)
           : derivedProvider;
-      const shouldUseOpenHandsKey =
-        isSaasMode && activeProvider === "openhands";
-      const showWaspidApiKeyHelp = modelValue.startsWith("openhands/");
+      const shouldUseWaspidKey =
+        isSaasMode && activeProvider === "waspid";
+      const showWaspidApiKeyHelp = modelValue.startsWith("waspid/");
 
       const renderApiKeyInput = (testId: string, helpTestId: string) => {
-        if (shouldUseOpenHandsKey) {
+        if (shouldUseWaspidKey) {
           return null;
         }
 
@@ -262,7 +262,7 @@ export function LlmSettingsScreen({
               testId={helpTestId}
               text={t(I18nKey.SETTINGS$DONT_KNOW_API_KEY)}
               linkText={t(I18nKey.SETTINGS$CLICK_FOR_INSTRUCTIONS)}
-              href="https://docs.openhands.dev/usage/local-setup#getting-an-api-key"
+              href="https://github.com/DurgaPrashad/waspid-ai/blob/main/docs/INSTALL.md#api-keys"
             />
           </>
         );
@@ -399,11 +399,11 @@ export function LlmSettingsScreen({
         context.view === "basic"
           ? (selectedProvider ?? derivedProvider)
           : derivedProvider;
-      const shouldUseOpenHandsKey =
-        isSaasMode && activeProvider === "openhands";
+      const shouldUseWaspidKey =
+        isSaasMode && activeProvider === "waspid";
 
       const llm = (agentSettings.llm ?? {}) as Record<string, unknown>;
-      if (shouldUseOpenHandsKey && llm.model !== undefined) {
+      if (shouldUseWaspidKey && llm.model !== undefined) {
         llm.api_key = "";
         agentSettings.llm = llm;
       }

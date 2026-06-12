@@ -5,18 +5,18 @@ from unittest.mock import AsyncMock, patch
 import pytest
 from pydantic import SecretStr
 
-from openhands.app_server.integrations.bitbucket.bitbucket_service import (
+from waspid.app_server.integrations.bitbucket.bitbucket_service import (
     BitBucketService,
 )
-from openhands.app_server.integrations.provider import ProviderToken, ProviderType
-from openhands.app_server.integrations.service_types import OwnerType, Repository
-from openhands.app_server.integrations.service_types import (
+from waspid.app_server.integrations.provider import ProviderToken, ProviderType
+from waspid.app_server.integrations.service_types import OwnerType, Repository
+from waspid.app_server.integrations.service_types import (
     ProviderType as ServiceProviderType,
 )
-from openhands.app_server.integrations.utils import validate_provider_token
-from openhands.app_server.secrets.secrets_router import check_provider_tokens
-from openhands.app_server.settings.settings_models import POSTProviderModel
-from openhands.app_server.types import AppMode
+from waspid.app_server.integrations.utils import validate_provider_token
+from waspid.app_server.secrets.secrets_router import check_provider_tokens
+from waspid.app_server.settings.settings_models import POSTProviderModel
+from waspid.app_server.types import AppMode
 
 
 # Provider Token Validation Tests
@@ -29,13 +29,13 @@ async def test_validate_provider_token_with_bitbucket_token():
     # Mock the service classes to avoid actual API calls
     with (
         patch(
-            'openhands.app_server.integrations.utils.GitHubService'
+            'waspid.app_server.integrations.utils.GitHubService'
         ) as mock_github_service,
         patch(
-            'openhands.app_server.integrations.utils.GitLabService'
+            'waspid.app_server.integrations.utils.GitLabService'
         ) as mock_gitlab_service,
         patch(
-            'openhands.app_server.integrations.utils.BitBucketService'
+            'waspid.app_server.integrations.utils.BitBucketService'
         ) as mock_bitbucket_service,
     ):
         # Set up the mocks
@@ -85,7 +85,7 @@ async def test_check_provider_tokens_with_only_bitbucket():
 
     # Call check_provider_tokens with the patched validate_provider_token
     with patch(
-        'openhands.app_server.secrets.secrets_router.validate_provider_token',
+        'waspid.app_server.secrets.secrets_router.validate_provider_token',
         mock_validate,
     ):
         await check_provider_tokens(post_model, None)
@@ -227,13 +227,13 @@ async def test_validate_provider_token_with_empty_tokens():
     # Create a mock for each service
     with (
         patch(
-            'openhands.app_server.integrations.utils.GitHubService'
+            'waspid.app_server.integrations.utils.GitHubService'
         ) as mock_github_service,
         patch(
-            'openhands.app_server.integrations.utils.GitLabService'
+            'waspid.app_server.integrations.utils.GitLabService'
         ) as mock_gitlab_service,
         patch(
-            'openhands.app_server.integrations.utils.BitBucketService'
+            'waspid.app_server.integrations.utils.BitBucketService'
         ) as mock_bitbucket_service,
     ):
         # Configure mocks to raise exceptions for invalid tokens
@@ -410,7 +410,7 @@ async def test_bitbucket_get_repositories_mixed_owner_types():
 @pytest.mark.asyncio
 async def test_resolve_primary_email_selects_primary_confirmed():
     """_resolve_primary_email returns the email marked primary and confirmed."""
-    from openhands.app_server.integrations.bitbucket.service.base import (
+    from waspid.app_server.integrations.bitbucket.service.base import (
         BitBucketMixinBase,
     )
 
@@ -430,7 +430,7 @@ async def test_resolve_primary_email_selects_primary_confirmed():
 @pytest.mark.asyncio
 async def test_resolve_primary_email_returns_none_when_no_primary():
     """_resolve_primary_email returns None when no email is marked primary."""
-    from openhands.app_server.integrations.bitbucket.service.base import (
+    from waspid.app_server.integrations.bitbucket.service.base import (
         BitBucketMixinBase,
     )
 
@@ -445,7 +445,7 @@ async def test_resolve_primary_email_returns_none_when_no_primary():
 @pytest.mark.asyncio
 async def test_resolve_primary_email_returns_none_when_primary_not_confirmed():
     """_resolve_primary_email returns None when primary email is not confirmed."""
-    from openhands.app_server.integrations.bitbucket.service.base import (
+    from waspid.app_server.integrations.bitbucket.service.base import (
         BitBucketMixinBase,
     )
 
@@ -460,7 +460,7 @@ async def test_resolve_primary_email_returns_none_when_primary_not_confirmed():
 @pytest.mark.asyncio
 async def test_resolve_primary_email_returns_none_for_empty_list():
     """_resolve_primary_email returns None for an empty list."""
-    from openhands.app_server.integrations.bitbucket.service.base import (
+    from waspid.app_server.integrations.bitbucket.service.base import (
         BitBucketMixinBase,
     )
 

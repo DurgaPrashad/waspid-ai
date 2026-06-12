@@ -16,13 +16,13 @@ import httpx
 import pytest
 from docker.errors import APIError, NotFound
 
-from openhands.app_server.errors import SandboxError
-from openhands.app_server.sandbox.docker_sandbox_service import (
+from waspid.app_server.errors import SandboxError
+from waspid.app_server.sandbox.docker_sandbox_service import (
     DockerSandboxService,
     ExposedPort,
     VolumeMount,
 )
-from openhands.app_server.sandbox.sandbox_models import (
+from waspid.app_server.sandbox.sandbox_models import (
     AGENT_SERVER,
     VSCODE,
     SandboxPage,
@@ -388,7 +388,7 @@ class TestDockerSandboxService:
         # Verify
         assert result is None
 
-    @patch('openhands.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
     @patch('os.urandom')
     async def test_start_sandbox_success(self, mock_urandom, mock_encodebytes, service):
         """Test successful sandbox startup."""
@@ -485,7 +485,7 @@ class TestDockerSandboxService:
         ):
             await service.start_sandbox(sandbox_spec_id='nonexistent')
 
-    @patch('openhands.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
     @patch('os.urandom')
     async def test_start_sandbox_with_sandbox_id(
         self, mock_urandom, mock_encodebytes, service
@@ -538,7 +538,7 @@ class TestDockerSandboxService:
         ):
             await service.start_sandbox()
 
-    @patch('openhands.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
     @patch('os.urandom')
     async def test_start_sandbox_with_extra_hosts(
         self,
@@ -607,7 +607,7 @@ class TestDockerSandboxService:
             'custom.host': '192.168.1.100',
         }
 
-    @patch('openhands.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
     @patch('os.urandom')
     async def test_start_sandbox_without_extra_hosts(
         self,
@@ -670,7 +670,7 @@ class TestDockerSandboxService:
         call_args = mock_docker_client.containers.run.call_args
         assert call_args[1]['extra_hosts'] is None
 
-    @patch('openhands.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
     @patch('os.urandom')
     async def test_start_sandbox_with_cors_origins(
         self,
@@ -731,7 +731,7 @@ class TestDockerSandboxService:
         assert 'OH_ALLOW_CORS_ORIGINS_0' in env_vars
         assert env_vars['OH_ALLOW_CORS_ORIGINS_0'] == 'http://192.168.1.100:3000'
 
-    @patch('openhands.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
     @patch('os.urandom')
     async def test_start_sandbox_without_cors_origins(
         self,
@@ -909,7 +909,7 @@ class TestDockerSandboxService:
         mock_container.stop.assert_called_once_with(timeout=10)
         mock_container.remove.assert_called_once()
         service.docker_client.volumes.get.assert_called_once_with(
-            'openhands-workspace-oh-test-abc123'
+            'waspid-workspace-oh-test-abc123'
         )
         mock_volume.remove.assert_called_once()
 
@@ -1045,7 +1045,7 @@ class TestDockerSandboxService:
         assert isinstance(result.created_at, datetime)
 
     @patch(
-        'openhands.app_server.utils.docker_utils.is_running_in_docker',
+        'waspid.app_server.utils.docker_utils.is_running_in_docker',
         return_value=True,
     )
     async def test_container_to_checked_sandbox_info_health_check_success(
@@ -1072,7 +1072,7 @@ class TestDockerSandboxService:
         )
 
     @patch(
-        'openhands.app_server.utils.docker_utils.is_running_in_docker',
+        'waspid.app_server.utils.docker_utils.is_running_in_docker',
         return_value=False,
     )
     async def test_container_to_checked_sandbox_info_health_check_success_not_in_docker(
@@ -1195,7 +1195,7 @@ class TestDockerSandboxServiceInjector:
 
     def test_default_values(self):
         """Test default configuration values."""
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxServiceInjector,
         )
 
@@ -1205,7 +1205,7 @@ class TestDockerSandboxServiceInjector:
 
     def test_custom_host_port(self):
         """Test custom host_port configuration."""
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxServiceInjector,
         )
 
@@ -1214,7 +1214,7 @@ class TestDockerSandboxServiceInjector:
 
     def test_custom_container_url_pattern(self):
         """Test custom container_url_pattern configuration."""
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxServiceInjector,
         )
 
@@ -1225,7 +1225,7 @@ class TestDockerSandboxServiceInjector:
 
     def test_custom_configuration_combined(self):
         """Test combined custom configuration for remote access."""
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxServiceInjector,
         )
 
@@ -1238,7 +1238,7 @@ class TestDockerSandboxServiceInjector:
 
     def test_use_host_network_default_value(self):
         """Test that use_host_network field defaults to False."""
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxServiceInjector,
         )
 
@@ -1247,7 +1247,7 @@ class TestDockerSandboxServiceInjector:
 
     def test_use_host_network_can_be_enabled(self):
         """Test that use_host_network field can be set to True."""
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxServiceInjector,
         )
 
@@ -1259,7 +1259,7 @@ class TestDockerSandboxServiceInjector:
         import os
         from unittest.mock import patch
 
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxServiceInjector,
         )
 
@@ -1276,7 +1276,7 @@ class TestDockerSandboxServiceInjector:
         import os
         from unittest.mock import patch
 
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxServiceInjector,
         )
 
@@ -1293,7 +1293,7 @@ class TestDockerSandboxServiceInjector:
         import os
         from unittest.mock import patch
 
-        from openhands.app_server.sandbox.docker_sandbox_service import (
+        from waspid.app_server.sandbox.docker_sandbox_service import (
             DockerSandboxServiceInjector,
         )
 
@@ -1322,8 +1322,8 @@ class TestDockerSandboxServiceInjectorFromEnv:
 
         with patch.dict(os.environ, env_vars, clear=False):
             # Clear the global config to force reload
-            import openhands.app_server.config as config_module
-            from openhands.app_server.config import config_from_env
+            import waspid.app_server.config as config_module
+            from waspid.app_server.config import config_from_env
 
             config_module._global_config = None
 
@@ -1342,8 +1342,8 @@ class TestDockerSandboxServiceInjectorFromEnv:
 
         with patch.dict(os.environ, env_vars, clear=False):
             # Clear the global config to force reload
-            import openhands.app_server.config as config_module
-            from openhands.app_server.config import config_from_env
+            import waspid.app_server.config as config_module
+            from waspid.app_server.config import config_from_env
 
             config_module._global_config = None
 
@@ -1363,8 +1363,8 @@ class TestDockerSandboxServiceInjectorFromEnv:
 
         with patch.dict(os.environ, env_vars, clear=False):
             # Clear the global config to force reload
-            import openhands.app_server.config as config_module
-            from openhands.app_server.config import config_from_env
+            import waspid.app_server.config as config_module
+            from waspid.app_server.config import config_from_env
 
             config_module._global_config = None
 
@@ -1428,7 +1428,7 @@ class TestDockerSandboxServiceHostNetwork:
         }
         return container
 
-    @patch('openhands.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
     @patch('os.urandom')
     async def test_start_sandbox_with_host_network(
         self, mock_urandom, mock_encodebytes, service_with_host_network
@@ -1471,7 +1471,7 @@ class TestDockerSandboxServiceHostNetwork:
         assert call_args[1]['ports'] is None
         assert call_args[1]['extra_hosts'] is None
 
-    @patch('openhands.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
     @patch('os.urandom')
     async def test_start_sandbox_host_network_uses_container_ports(
         self, mock_urandom, mock_encodebytes, service_with_host_network
@@ -1533,8 +1533,8 @@ class TestDockerSandboxServiceHostNetwork:
         )
         assert vscode_url.port == 8001
 
-    @patch('openhands.app_server.sandbox.docker_sandbox_service._logger')
-    @patch('openhands.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service._logger')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
     @patch('os.urandom')
     async def test_start_sandbox_host_network_warns_multiple_sandboxes(
         self,
@@ -1594,8 +1594,8 @@ class TestDockerSandboxServiceHostNetwork:
         )
         assert 'port collision' in warning_message.lower()
 
-    @patch('openhands.app_server.sandbox.docker_sandbox_service._logger')
-    @patch('openhands.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service._logger')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service.base62.encodebytes')
     @patch('os.urandom')
     async def test_start_sandbox_host_network_no_warning_single_sandbox(
         self,
@@ -1650,7 +1650,7 @@ class TestDockerSandboxServiceHostNetwork:
         # Verify no warning was logged about port collision
         mock_logger.warning.assert_not_called()
 
-    @patch('openhands.app_server.sandbox.docker_sandbox_service.utc_now')
+    @patch('waspid.app_server.sandbox.docker_sandbox_service.utc_now')
     async def test_container_to_checked_sandbox_info_uses_container_started_at(
         self, mock_utc_now, service
     ):

@@ -39,7 +39,7 @@ async def test_aenter_passes_env_vars_to_init():
             {
                 'POSTHOG_CLIENT_KEY': 'test-key',
                 'POSTHOG_HOST': 'https://test.posthog.com',
-                'OPENHANDS_CONFIG_CLS': 'enterprise.server.config.SaaSServerConfig',
+                'WASPID_CONFIG_CLS': 'enterprise.server.config.SaaSServerConfig',
             },
         ),
     ):

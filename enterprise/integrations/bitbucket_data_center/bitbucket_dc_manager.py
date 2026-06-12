@@ -15,7 +15,7 @@ from integrations.types import ResolverViewInterface
 from integrations.utils import (
     CONVERSATION_URL,
     HOST_URL,
-    OPENHANDS_RESOLVER_TEMPLATES_DIR,
+    WASPID_RESOLVER_TEMPLATES_DIR,
     get_session_expired_message,
 )
 from integrations.v1_utils import get_saas_user_auth
@@ -24,14 +24,14 @@ from pydantic import SecretStr
 from server.auth.token_manager import TokenManager
 from storage.bitbucket_dc_webhook_store import BitbucketDCWebhookStore
 
-from openhands.app_server.integrations.provider import ProviderToken, ProviderType
-from openhands.app_server.secrets.secrets_models import Secrets
-from openhands.app_server.types import (
+from waspid.app_server.integrations.provider import ProviderToken, ProviderType
+from waspid.app_server.secrets.secrets_models import Secrets
+from waspid.app_server.types import (
     LLMAuthenticationError,
     MissingSettingsError,
     SessionExpiredError,
 )
-from openhands.app_server.utils.logger import openhands_logger as logger
+from waspid.app_server.utils.logger import waspid_logger as logger
 
 
 class BitbucketDCManager(Manager[BitbucketDCViewType]):
@@ -48,7 +48,7 @@ class BitbucketDCManager(Manager[BitbucketDCViewType]):
         # agnostic and the variables (pr_number, branch_name, comments,
         # file_location, line_number) match.
         self.jinja_env = Environment(
-            loader=FileSystemLoader(OPENHANDS_RESOLVER_TEMPLATES_DIR + 'bitbucket')
+            loader=FileSystemLoader(WASPID_RESOLVER_TEMPLATES_DIR + 'bitbucket')
         )
 
     def _confirm_incoming_source_type(self, message: Message) -> None:
@@ -238,7 +238,7 @@ class BitbucketDCManager(Manager[BitbucketDCViewType]):
                 )
                 msg_info = (
                     f'@{user_info.username} please re-login into '
-                    f'[OpenHands Cloud]({HOST_URL}) before starting a job.'
+                    f'[Waspid Cloud]({HOST_URL}) before starting a job.'
                 )
 
             except LLMAuthenticationError as e:
@@ -248,7 +248,7 @@ class BitbucketDCManager(Manager[BitbucketDCViewType]):
                 )
                 msg_info = (
                     f'@{user_info.username} please set a valid LLM API key in '
-                    f'[OpenHands Cloud]({HOST_URL}) before starting a job.'
+                    f'[Waspid Cloud]({HOST_URL}) before starting a job.'
                 )
 
             except SessionExpiredError as e:
