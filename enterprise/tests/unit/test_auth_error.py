@@ -1,3 +1,4 @@
+# Waspid AI OS
 from server.auth.auth_error import (
     AuthError,
     BearerTokenError,

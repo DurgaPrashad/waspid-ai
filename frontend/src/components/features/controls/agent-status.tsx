@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { useActiveConversation } from "#/hooks/query/use-active-conversation";

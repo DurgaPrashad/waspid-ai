@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { defineConfig, devices } from "@playwright/test";
 
 /**

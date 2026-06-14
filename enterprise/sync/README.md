@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Resend Sync Service
 
 This service syncs users from Keycloak to a Resend.com audience. It runs as a Kubernetes CronJob that periodically queries the Keycloak database and adds any new users to the specified Resend audience.

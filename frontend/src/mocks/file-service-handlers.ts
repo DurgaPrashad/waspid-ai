@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { delay, http, HttpResponse } from "msw";
 
 export const FILE_VARIANTS_1 = ["file1.txt", "file2.txt", "file3.txt"];

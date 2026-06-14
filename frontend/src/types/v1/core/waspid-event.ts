@@ -1,3 +1,4 @@
+// Waspid AI OS
 // Import all event types
 import {
   ACPToolCallEvent,

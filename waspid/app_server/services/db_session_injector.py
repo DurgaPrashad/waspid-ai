@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Database configuration and session management for Waspid App Server."""
 
 import asyncio

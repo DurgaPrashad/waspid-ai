@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { FaBitbucket, FaGithub, FaGitlab, FaUserShield } from "react-icons/fa6";
 import { FaCodeBranch } from "react-icons/fa";
 import { IconType } from "react-icons/lib";

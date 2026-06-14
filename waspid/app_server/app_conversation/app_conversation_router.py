@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Sandboxed Conversation router for Waspid App Server."""
 
 import asyncio

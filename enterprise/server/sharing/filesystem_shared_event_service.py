@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Implementation of SharedEventService.
 
 This implementation provides read-only access to events from shared conversations:

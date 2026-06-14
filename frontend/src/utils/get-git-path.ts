@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Get the git repository path for a conversation
  *

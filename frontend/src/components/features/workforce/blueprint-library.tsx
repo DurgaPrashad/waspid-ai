@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Copy, Download, FolderOpen, Trash2 } from "lucide-react";
 import { WorkforceBlueprint } from "#/api/workforce-service/workforce.types";
 import { useWorkforceBlueprints } from "#/hooks/query/use-workforce-blueprints";

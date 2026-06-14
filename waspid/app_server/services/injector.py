@@ -1,3 +1,4 @@
+# Waspid AI OS
 import contextlib
 from abc import ABC, abstractmethod
 from typing import AsyncGenerator, Generic, TypeAlias, TypeVar

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useLocation } from "react-router";
 import { SidebarNavItem } from "./sidebar-nav-item";
 import { resolveActiveNavId, type NavGroup } from "#/constants/navigation";

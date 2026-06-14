@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for SQLPendingMessageService.
 
 This module tests the SQL implementation of PendingMessageService,

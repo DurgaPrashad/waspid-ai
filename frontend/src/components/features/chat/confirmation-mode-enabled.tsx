@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "@heroui/react";
 import { I18nKey } from "#/i18n/declaration";

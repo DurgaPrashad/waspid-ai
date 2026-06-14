@@ -1,3 +1,4 @@
+# Waspid AI OS
 from abc import ABC, abstractmethod
 
 from pydantic import ConfigDict

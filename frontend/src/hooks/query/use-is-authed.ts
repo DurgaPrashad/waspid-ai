@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import AuthService from "#/api/auth-service/auth-service.api";

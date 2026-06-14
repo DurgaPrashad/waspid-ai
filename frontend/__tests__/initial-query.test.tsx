@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect, beforeEach } from "vitest";
 import { useInitialQueryStore } from "../src/stores/initial-query-store";
 

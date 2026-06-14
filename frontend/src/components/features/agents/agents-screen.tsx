@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Link } from "react-router";
 import { Bot, Settings as SettingsIcon } from "lucide-react";
 import { usePaginatedConversations } from "#/hooks/query/use-paginated-conversations";

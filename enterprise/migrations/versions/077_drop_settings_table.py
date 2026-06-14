@@ -1,3 +1,4 @@
+# Waspid AI OS
 """drop settings table
 
 Revision ID: 077

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { cn } from "#/utils/utils";
 import { Text } from "#/ui/typography";
 import type { GitOrg } from "#/types/org";

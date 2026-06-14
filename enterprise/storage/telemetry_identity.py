@@ -1,3 +1,4 @@
+# Waspid AI OS
 """SQLAlchemy model for telemetry identity.
 
 This model stores persistent identity information that must survive container restarts

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { type PropsWithChildren } from "react";
 import { Toaster, type ToasterProps } from "sonner";
 

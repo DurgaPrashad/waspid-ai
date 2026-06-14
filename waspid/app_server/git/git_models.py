@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Git-related models for V1 API pagination responses."""
 
 from enum import StrEnum

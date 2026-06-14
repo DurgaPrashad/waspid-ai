@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useAgentState } from "#/hooks/use-agent-state";
 import {
   RUNTIME_INACTIVE_STATES,

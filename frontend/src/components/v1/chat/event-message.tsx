@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { WaspidEvent, MessageEvent, ActionEvent } from "#/types/v1/core";
 import { FinishAction, ThinkAction } from "#/types/v1/core/base/action";

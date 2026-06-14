@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import SettingsService from "#/api/settings-service/settings-service.api";
 import { useIsOnIntermediatePage } from "#/hooks/use-is-on-intermediate-page";

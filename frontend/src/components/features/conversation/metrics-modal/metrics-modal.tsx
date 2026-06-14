@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { BaseModalTitle } from "#/components/shared/modals/confirmation-modals/base-modal";

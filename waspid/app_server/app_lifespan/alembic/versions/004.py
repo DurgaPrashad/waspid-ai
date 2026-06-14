@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add public column to conversation_metadata
 
 Revision ID: 004

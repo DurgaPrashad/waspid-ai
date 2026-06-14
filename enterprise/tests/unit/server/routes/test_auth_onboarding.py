@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for onboarding-related auth routes and functions.
 
 Tests for:

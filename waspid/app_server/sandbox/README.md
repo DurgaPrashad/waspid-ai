@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Sandbox Management
 
 Manages sandbox environments for secure agent execution within Waspid.

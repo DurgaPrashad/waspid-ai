@@ -1,3 +1,4 @@
+// Waspid AI OS
 export function invariant(condition: boolean, message: string) {
   if (process.env.NODE_ENV !== "development") {
     return;

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Process-based sandbox service implementation.
 
 This service creates sandboxes by spawning separate agent server processes,

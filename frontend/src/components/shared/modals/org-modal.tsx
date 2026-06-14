@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { ModalBackdrop } from "./modal-backdrop";
 import { ModalBody } from "./modal-body";

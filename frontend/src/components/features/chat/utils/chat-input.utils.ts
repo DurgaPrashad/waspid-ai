@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Utility functions for chat input component
  */

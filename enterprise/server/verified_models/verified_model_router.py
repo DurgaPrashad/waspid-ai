@@ -1,3 +1,4 @@
+# Waspid AI OS
 """API routes for managing verified LLM models (admin only)."""
 
 import logging

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { isValidEmail } from "#/utils/input-validation";
 import { cn } from "#/utils/utils";
 

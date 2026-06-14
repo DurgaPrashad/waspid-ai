@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WaspidObservation } from "./types/core/observations";
 import { WaspidAction } from "./types/core/actions";
 

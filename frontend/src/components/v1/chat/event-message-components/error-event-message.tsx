@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { AgentErrorEvent } from "#/types/v1/core";
 import { isAgentErrorEvent } from "#/types/v1/type-guards";

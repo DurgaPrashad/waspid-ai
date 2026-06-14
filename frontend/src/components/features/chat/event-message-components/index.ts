@@ -1,3 +1,4 @@
+// Waspid AI OS
 export { ErrorEventMessage } from "./error-event-message";
 export { UserAssistantEventMessage } from "./user-assistant-event-message";
 export { FinishEventMessage } from "./finish-event-message";

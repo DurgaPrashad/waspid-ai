@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Link } from "react-router";
 import { StatusPill } from "#/components/shared/layout/status-pill";
 import { formatTimeDelta } from "#/utils/format-time-delta";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import ThreeDotsVerticalIcon from "#/icons/three-dots-vertical.svg?react";
 
 interface EllipsisButtonProps {

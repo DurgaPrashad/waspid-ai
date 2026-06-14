@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useState } from "react";
 import { MobileHeader } from "./mobile-header";
 import { SettingsNavigation } from "./settings-navigation";

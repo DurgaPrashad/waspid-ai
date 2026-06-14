@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import ProfilesService from "#/api/settings-service/profiles-service.api";
 import { useIsAuthed } from "./use-is-authed";

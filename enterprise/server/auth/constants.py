@@ -1,3 +1,4 @@
+# Waspid AI OS
 import os
 
 from waspid.app_server.integrations.gitlab.constants import GITLAB_HOST

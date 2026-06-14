@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { render, screen } from "@testing-library/react";
 import { it, describe, expect } from "vitest";
 import { TermsAndPrivacyNotice } from "#/components/shared/terms-and-privacy-notice";

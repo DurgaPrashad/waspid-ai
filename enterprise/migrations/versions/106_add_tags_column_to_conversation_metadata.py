@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add tags column to conversation_metadata table.
 
 Tags store key-value pairs for automation context (trigger type, automation_id),

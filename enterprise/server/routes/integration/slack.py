@@ -1,3 +1,4 @@
+# Waspid AI OS
 import html
 import json
 from urllib.parse import quote

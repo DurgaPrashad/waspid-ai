@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Conversation Management
 
 Manages app conversations and their lifecycle within the Waspid app server.

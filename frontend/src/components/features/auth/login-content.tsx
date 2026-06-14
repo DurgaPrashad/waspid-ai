@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { FaUserShield } from "react-icons/fa";
 import { I18nKey } from "#/i18n/declaration";

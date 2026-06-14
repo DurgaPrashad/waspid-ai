@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add proactive conversation starters column
 
 Revision ID: 030

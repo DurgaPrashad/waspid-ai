@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for SaaSGitLabService."""
 
 from unittest.mock import patch

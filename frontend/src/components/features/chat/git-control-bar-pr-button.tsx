@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import PRIcon from "#/icons/u-pr.svg?react";
 import { cn, getCreatePRPrompt } from "#/utils/utils";

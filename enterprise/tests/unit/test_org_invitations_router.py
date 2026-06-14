@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for organization invitations API router."""
 
 from unittest.mock import AsyncMock, MagicMock, patch

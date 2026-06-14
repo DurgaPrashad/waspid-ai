@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Create user version upgrade tasks
 
 Revision ID: 060

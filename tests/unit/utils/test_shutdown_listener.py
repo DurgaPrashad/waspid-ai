@@ -1,3 +1,4 @@
+# Waspid AI OS
 import signal
 from dataclasses import dataclass, field
 from signal import Signals

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Waspid — enterprise AI workforce operating system.
 
 The agent runtime is provided by the upstream MIT-licensed SDK

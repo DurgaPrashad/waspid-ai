@@ -1,3 +1,4 @@
+// Waspid AI OS
 import deepEqual from "deep-equal";
 import { useCallback, useState } from "react";
 

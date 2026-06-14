@@ -1,3 +1,4 @@
+# Waspid AI OS
 from datetime import datetime
 
 from waspid.app_server.config_api.config_models import AppMode

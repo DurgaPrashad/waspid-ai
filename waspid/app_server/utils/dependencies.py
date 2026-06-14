@@ -1,3 +1,4 @@
+# Waspid AI OS
 import os
 
 from fastapi import Depends, HTTPException, status

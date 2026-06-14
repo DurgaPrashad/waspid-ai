@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for the status router endpoints.
 
 This module tests the status router endpoints (/alive, /health, /server_info, /ready).

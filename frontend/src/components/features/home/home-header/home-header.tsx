@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { GuideMessage } from "./guide-message";
 import { HomeHeaderTitle } from "./home-header-title";
 

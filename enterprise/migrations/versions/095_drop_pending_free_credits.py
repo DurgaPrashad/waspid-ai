@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Drop pending_free_credits column from org table.
 
 Revision ID: 095

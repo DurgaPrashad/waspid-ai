@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { act, renderHook } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { useEventStore } from "#/stores/use-event-store";

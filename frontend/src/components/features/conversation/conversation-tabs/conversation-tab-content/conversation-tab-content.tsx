@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { lazy, useMemo, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { ConversationLoading } from "../../conversation-loading";

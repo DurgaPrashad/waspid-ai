@@ -1,3 +1,4 @@
+// Waspid AI OS
 import LinkExternalIcon from "#/icons/link-external.svg?react";
 import { cn } from "#/utils/utils";
 

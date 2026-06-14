@@ -13,3 +13,4 @@ mcp_tools:
 # We leave the body empty because MCP tools will automatically add the
 # tool description for LLMs in tool calls, so there's no need to add extra descriptions.
 ---
+<!-- Waspid AI OS -->

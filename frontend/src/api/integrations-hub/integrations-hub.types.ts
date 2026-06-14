@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Types for the Integration Hub API (/api/v1/integrations-hub).
  * Mirrors waspid/app_server/integrations_hub/hub_models.py.

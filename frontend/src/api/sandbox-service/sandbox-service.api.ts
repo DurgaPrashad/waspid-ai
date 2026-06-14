@@ -1,3 +1,4 @@
+// Waspid AI OS
 // sandbox-service.api.ts
 // This file contains API methods for /api/v1/sandboxes endpoints.
 

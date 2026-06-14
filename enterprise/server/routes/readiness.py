@@ -1,3 +1,4 @@
+# Waspid AI OS
 from fastapi import APIRouter, HTTPException, status
 from sqlalchemy.sql import text
 from storage.database import a_session_maker

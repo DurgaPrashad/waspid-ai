@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create jira_workspaces table
 
 Revision ID: 063

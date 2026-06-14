@@ -1,3 +1,4 @@
+# Waspid AI OS
 from uuid import UUID
 
 import stripe

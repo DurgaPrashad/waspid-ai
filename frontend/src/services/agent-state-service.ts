@@ -1,3 +1,4 @@
+// Waspid AI OS
 import ActionType from "#/types/action-type";
 import { AgentState } from "#/types/agent-state";
 

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import ConversationService from "#/api/conversation-service/conversation-service.api";
 
 /**

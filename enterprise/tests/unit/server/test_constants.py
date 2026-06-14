@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for enterprise server constants, specifically DEPLOYMENT_MODE detection."""
 
 from unittest.mock import patch

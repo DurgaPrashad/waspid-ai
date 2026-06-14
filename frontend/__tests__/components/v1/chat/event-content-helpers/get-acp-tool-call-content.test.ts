@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect } from "vitest";
 import { getACPToolCallContent } from "#/components/v1/chat/event-content-helpers/get-acp-tool-call-content";
 import { getACPToolCallResult } from "#/components/v1/chat/event-content-helpers/get-observation-result";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 from server.auth.sheets_client import GoogleSheetsClient
 
 from waspid.app_server.utils.logger import waspid_logger

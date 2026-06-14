@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add tags column to conversation_metadata table
 
 Revision ID: 008

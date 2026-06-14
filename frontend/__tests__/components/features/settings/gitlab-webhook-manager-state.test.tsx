@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { GitLabWebhookManagerState } from "#/components/features/settings/git-settings/gitlab-webhook-manager-state";

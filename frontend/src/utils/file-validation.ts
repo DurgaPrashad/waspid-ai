@@ -1,3 +1,4 @@
+// Waspid AI OS
 export const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB maximum file size
 export const MAX_TOTAL_SIZE = 3 * 1024 * 1024; // 3MB maximum total size for all files combined
 

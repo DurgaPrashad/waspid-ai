@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit + integration tests for the sandbox settings endpoints and /users/me expose_secrets.
 
 Tests:

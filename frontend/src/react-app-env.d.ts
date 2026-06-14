@@ -1,3 +1,4 @@
+// Waspid AI OS
 /// <reference types="react-scripts" />
 
 interface Window {

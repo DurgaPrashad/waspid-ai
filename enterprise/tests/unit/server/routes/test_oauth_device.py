@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for OAuth2 Device Flow endpoints."""
 
 from datetime import UTC, datetime, timedelta

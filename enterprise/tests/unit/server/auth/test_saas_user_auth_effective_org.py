@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for SaasUserAuth.get_effective_org_id().
 
 Validates the precedence rules:

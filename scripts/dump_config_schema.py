@@ -1,3 +1,4 @@
+# Waspid AI OS
 import json
 
 from waspid.app_server.config import get_global_config

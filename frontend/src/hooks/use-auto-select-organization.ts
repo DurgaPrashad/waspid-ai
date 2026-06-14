@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { useSelectedOrganizationId } from "#/context/use-selected-organization";
 import { useOrganizations } from "#/hooks/query/use-organizations";

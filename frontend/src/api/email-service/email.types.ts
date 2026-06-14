@@ -1,3 +1,4 @@
+// Waspid AI OS
 export interface ResendEmailVerificationParams {
   userId?: string | null;
   isAuthFlow?: boolean;

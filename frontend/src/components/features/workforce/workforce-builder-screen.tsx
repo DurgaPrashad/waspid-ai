@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import { Download, Rocket, Save, Sparkles, Upload } from "lucide-react";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { TaskItem as TaskItemType } from "#/types/v1/core/base/common";

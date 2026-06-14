@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WaspidAction } from "#/types/core/actions";
 import {
   isUserMessage,

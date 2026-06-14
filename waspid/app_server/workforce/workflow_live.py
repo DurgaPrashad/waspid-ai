@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Production adapters wiring the workflow runtime to real Waspid runs.
 
 - ``LiveAgentGateway`` launches workforce agents as app conversations

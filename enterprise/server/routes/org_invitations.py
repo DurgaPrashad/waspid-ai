@@ -1,3 +1,4 @@
+# Waspid AI OS
 """API routes for organization invitations."""
 
 from uuid import UUID

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router";

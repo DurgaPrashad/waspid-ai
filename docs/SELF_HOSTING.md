@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Self-hosting Waspid
 
 This guide covers running Waspid on your own infrastructure.

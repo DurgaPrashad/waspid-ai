@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Integration tests for the LLM profile endpoints in the settings router.
 
 Covers every endpoint under ``/api/v1/settings/profiles``:

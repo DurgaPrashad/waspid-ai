@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMemo } from "react";
 import { useActiveConversation } from "#/hooks/query/use-active-conversation";
 import { useV1ConversationStateStore } from "#/stores/v1-conversation-state-store";

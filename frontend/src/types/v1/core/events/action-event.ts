@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Action } from "../base/action";
 import { EventID, ToolCallID, SecurityRisk, TextContent } from "../base/common";
 import { CriticResult } from "../base/critic";

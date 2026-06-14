@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create saas conversations table
 
 Revision ID: 003

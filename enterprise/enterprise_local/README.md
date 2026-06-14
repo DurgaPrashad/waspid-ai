@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Instructions for developing SAAS locally
 
 You have a few options here, which are expanded on below:

@@ -7,6 +7,7 @@ triggers:
 - github
 - git
 ---
+<!-- Waspid AI OS -->
 
 You have access to an environment variable, `GITHUB_TOKEN`, which allows you to interact with
 the GitHub API.

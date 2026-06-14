@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { InputSkeleton } from "../input-skeleton";
 import { SubtextSkeleton } from "../subtext-skeleton";
 import { SwitchSkeleton } from "../switch-skeleton";

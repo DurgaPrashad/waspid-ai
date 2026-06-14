@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMemo } from "react";
 import { WaspidEvent } from "#/types/v1/core";
 import {

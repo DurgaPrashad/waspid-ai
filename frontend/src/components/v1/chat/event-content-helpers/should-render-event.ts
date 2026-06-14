@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WaspidParsedEvent } from "#/types/core";
 import { WaspidEvent } from "#/types/v1/core";
 import {

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Device code store for OAuth 2.0 Device Flow."""
 
 from __future__ import annotations

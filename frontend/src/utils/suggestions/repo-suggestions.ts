@@ -1,3 +1,4 @@
+// Waspid AI OS
 const KEY_1 = "INCREASE_TEST_COVERAGE";
 const VALUE_1 = `I want to increase the test coverage of the repository in the current directory.
 

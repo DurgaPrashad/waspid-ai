@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { RemoveButton } from "#/components/shared/buttons/remove-button";
 import { Thumbnail } from "./thumbnail";
 

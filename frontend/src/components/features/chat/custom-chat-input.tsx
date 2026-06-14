@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React, { useEffect } from "react";
 import { useChatInputLogic } from "#/hooks/chat/use-chat-input-logic";
 import { useFileHandling } from "#/hooks/chat/use-file-handling";

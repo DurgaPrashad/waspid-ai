@@ -6,6 +6,7 @@ agent: CodeActAgent
 triggers:
 - /onboard
 ---
+<!-- Waspid AI OS -->
 
 # First-time User Conversation with Waspid
 

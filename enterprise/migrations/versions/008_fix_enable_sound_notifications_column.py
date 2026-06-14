@@ -1,3 +1,4 @@
+# Waspid AI OS
 """fix enable_sound_notifications settings to not be nullable
 
 Revision ID: 008

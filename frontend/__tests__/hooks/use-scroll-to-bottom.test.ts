@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useScrollToBottom } from "#/hooks/use-scroll-to-bottom";

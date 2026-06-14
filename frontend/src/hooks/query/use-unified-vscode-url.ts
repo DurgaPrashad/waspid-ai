@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useConversationId } from "#/hooks/use-conversation-id";

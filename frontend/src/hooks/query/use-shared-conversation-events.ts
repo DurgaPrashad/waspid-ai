@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { sharedConversationService } from "#/api/shared-conversation-service.api";
 

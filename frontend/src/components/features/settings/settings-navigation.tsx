@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { cn } from "#/utils/utils";
 import { Typography } from "#/ui/typography";

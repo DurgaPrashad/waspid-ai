@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { toast as sonnerToast, type ExternalToast } from "sonner";
 import { Icon, type IconProps } from "../icon/Icon";
 import { cn } from "../../shared/utils/cn";

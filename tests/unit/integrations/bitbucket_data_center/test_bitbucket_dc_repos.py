@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for BitbucketDCReposMixin: URL parsing, get_paginated_repos, get_all_repositories."""
 
 from unittest.mock import AsyncMock, patch

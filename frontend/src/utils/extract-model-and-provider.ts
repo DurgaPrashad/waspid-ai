@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Given a model string, extract the provider and model name.
  *

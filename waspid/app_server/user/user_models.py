@@ -1,3 +1,4 @@
+# Waspid AI OS
 from waspid.app_server.integrations.provider import PROVIDER_TOKEN_TYPE
 from waspid.app_server.settings.settings_models import Settings
 

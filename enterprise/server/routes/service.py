@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Service API routes for internal service-to-service communication.
 

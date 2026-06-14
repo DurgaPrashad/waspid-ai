@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid Realignment Audit & Redesign Report
 
 Date: 2026-06-12. Scope: full product audit against the target

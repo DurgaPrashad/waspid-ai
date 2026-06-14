@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useCallback, useEffect, RefObject, useRef } from "react";
 import { IMessageToSend } from "#/stores/conversation-store";
 import { EPS } from "#/utils/constants";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add pending_messages table for server-side message queuing
 
 Revision ID: 101

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Google Cloud Storage-based EventService implementation."""
 
 import json

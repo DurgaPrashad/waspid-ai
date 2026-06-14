@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, it } from "vitest";
 import { getSkillReadyItems } from "#/components/v1/chat/event-content-helpers/get-skill-ready-content";
 import { TextContent } from "#/types/v1/core/base/common";

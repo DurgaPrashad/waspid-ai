@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for WorkforceBlueprintService using in-memory SQLite."""
 
 from typing import AsyncGenerator

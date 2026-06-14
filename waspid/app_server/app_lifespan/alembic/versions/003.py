@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add parent_conversation_id to conversation_metadata
 
 Revision ID: 003

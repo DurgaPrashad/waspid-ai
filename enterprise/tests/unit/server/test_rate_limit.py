@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the rate limit functionality with in-memory storage."""
 
 import time

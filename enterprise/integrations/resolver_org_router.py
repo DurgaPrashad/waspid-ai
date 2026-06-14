@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Resolve which Waspid organization workspace a resolver conversation should be created in.
 
 This module provides a reusable utility for routing resolver conversations

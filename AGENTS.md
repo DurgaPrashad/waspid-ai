@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 This repository contains the code for Waspid — an enterprise AI workforce operating system built on an upstream MIT-licensed agent SDK (see CREDITS.md). It has a Python backend
 (in the `waspid` directory — the package name is preserved for SDK compatibility) and a React frontend (in the `frontend` directory).
 

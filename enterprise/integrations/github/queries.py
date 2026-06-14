@@ -1,3 +1,4 @@
+# Waspid AI OS
 PR_QUERY_BY_NODE_ID = """
 query($nodeId: ID!, $pr_number: Int!, $commits_after: String, $comments_after: String, $reviews_after: String) {
     node(id: $nodeId) {

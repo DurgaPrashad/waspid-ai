@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Event name constants for PostHog analytics.
 
 Naming convention: PostHog recommended object-action, lowercase with spaces.

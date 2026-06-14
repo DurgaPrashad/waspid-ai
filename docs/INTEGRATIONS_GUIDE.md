@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid Integrations Guide
 
 ## Integration Hub

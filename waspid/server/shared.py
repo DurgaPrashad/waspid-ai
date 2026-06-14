@@ -1,3 +1,4 @@
+# Waspid AI OS
 # DEPRECATED: This module is deprecated and will be removed in a future release.
 # Please use waspid.app_server.shared instead.
 #

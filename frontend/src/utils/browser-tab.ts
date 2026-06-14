@@ -1,3 +1,4 @@
+// Waspid AI OS
 let originalTitle = "";
 let titleInterval: number | undefined;
 

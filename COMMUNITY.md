@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Community
 
 Waspid is a community of engineers, operators, and builders rethinking how

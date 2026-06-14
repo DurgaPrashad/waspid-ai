@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the resolve_display_name helper.
 
 The resolve_display_name helper extracts the best available display name from

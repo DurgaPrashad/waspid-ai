@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for SharedConversationInfoService."""
 
 from datetime import UTC, datetime

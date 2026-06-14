@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { screen, within } from "@testing-library/react";
 import { UserEvent } from "@testing-library/user-event";
 

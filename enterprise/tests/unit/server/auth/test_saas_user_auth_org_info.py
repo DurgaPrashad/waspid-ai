@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for SaasUserAuth.get_org_info() using SQLite in-memory database.
 
 These tests exercise the real `get_org_info()` implementation with actual DB queries

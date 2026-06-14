@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { NavLink } from "react-router";
 import { StyledTooltip } from "#/components/shared/buttons/styled-tooltip";
 import { cn } from "#/utils/utils";

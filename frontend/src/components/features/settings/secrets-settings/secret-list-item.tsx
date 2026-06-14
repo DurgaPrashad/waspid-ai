@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { FaPencil, FaTrash } from "react-icons/fa6";
 
 export function SecretListItemSkeleton() {

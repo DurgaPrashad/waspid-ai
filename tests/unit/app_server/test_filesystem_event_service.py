@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for FilesystemEventService.
 
 This module tests the filesystem-based implementation of EventService,

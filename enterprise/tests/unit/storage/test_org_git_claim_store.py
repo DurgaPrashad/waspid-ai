@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for OrgGitClaimStore with real in-memory SQLite database.
 
 Covers CRUD operations and unique constraint enforcement.

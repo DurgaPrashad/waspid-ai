@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React, { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { SettingsDropdownInput } from "../../settings/settings-dropdown-input";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import { integrationService } from "#/api/integration-service/integration-service.api";
 import type { GitLabResourcesResponse } from "#/api/integration-service/integration-service.types";

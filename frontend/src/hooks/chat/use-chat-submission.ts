@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useCallback } from "react";
 import {
   clearTextContent,

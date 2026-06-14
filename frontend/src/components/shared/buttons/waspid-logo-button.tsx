@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
 import { WaspidLogo } from "#/components/shared/branding/waspid-logo";

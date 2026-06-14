@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Parses a date string as UTC if it doesn't have a timezone indicator.
  * This fixes the issue where ISO strings without timezone info are interpreted as local time.

@@ -1,3 +1,4 @@
+// Waspid AI OS
 enum ActionType {
   // Initializes the agent. Only sent by client.
   INIT = "initialize",

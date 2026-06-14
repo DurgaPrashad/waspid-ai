@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect } from "vitest";
 import { isBillingHidden } from "#/utils/org/billing-visibility";
 import { WebClientConfig } from "#/api/option-service/option.types";

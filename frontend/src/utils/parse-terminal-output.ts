@@ -1,3 +1,4 @@
+// Waspid AI OS
 const START = "[Python Interpreter: ";
 
 /**

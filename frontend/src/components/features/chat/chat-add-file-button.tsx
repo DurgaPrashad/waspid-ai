@@ -1,3 +1,4 @@
+// Waspid AI OS
 import PaperclipIcon from "#/icons/paper-clip.svg?react";
 import { cn } from "#/utils/utils";
 

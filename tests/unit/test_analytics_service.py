@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the AnalyticsService and related utilities."""
 
 import uuid

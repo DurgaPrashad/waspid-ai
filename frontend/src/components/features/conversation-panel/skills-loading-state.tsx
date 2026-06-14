@@ -1,3 +1,4 @@
+// Waspid AI OS
 export function SkillsLoadingState() {
   return (
     <div className="flex justify-center items-center py-8">

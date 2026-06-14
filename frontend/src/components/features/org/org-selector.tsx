@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelectedOrganizationId } from "#/context/use-selected-organization";

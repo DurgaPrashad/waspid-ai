@@ -1,3 +1,4 @@
+// Waspid AI OS
 import CloseIcon from "#/icons/u-close.svg?react";
 import { cn, isMobileDevice } from "#/utils/utils";
 

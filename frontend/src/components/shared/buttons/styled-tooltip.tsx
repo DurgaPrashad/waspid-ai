@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Tooltip, TooltipProps } from "@heroui/react";
 import React, { ReactNode } from "react";
 import { cn } from "#/utils/utils";

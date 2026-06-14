@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for Bitbucket repository service URL parsing."""
 
 from unittest.mock import patch

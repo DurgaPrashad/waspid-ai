@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for HttpxClientInjector.
 
 This module tests the HttpxClientInjector service, focusing on:

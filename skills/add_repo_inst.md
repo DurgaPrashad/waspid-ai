@@ -9,6 +9,7 @@ inputs:
   - name: REPO_FOLDER_NAME
     description: "Branch for the agent to work on"
 ---
+<!-- Waspid AI OS -->
 
 Please browse the current repository under /workspace/{{ REPO_FOLDER_NAME }}, look at the documentation and relevant code, and understand the purpose of this repository.
 

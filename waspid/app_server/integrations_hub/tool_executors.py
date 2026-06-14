@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Server-side tool executors: real REST calls per provider.
 
 Every executor takes an ``httpx.AsyncClient`` so tests can inject a

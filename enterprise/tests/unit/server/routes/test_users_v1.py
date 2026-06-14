@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for SAAS-specific /api/v1/users endpoints.
 
 Tests:

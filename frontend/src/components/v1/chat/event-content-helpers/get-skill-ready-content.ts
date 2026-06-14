@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { TextContent } from "#/types/v1/core/base/common";
 
 /**

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for ``effective_org_id`` plumbing through the SaaS stores.
 
 The SaaS settings / secrets stores have historically scoped all reads

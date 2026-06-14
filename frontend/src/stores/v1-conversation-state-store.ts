@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { create } from "zustand";
 import { V1ExecutionStatus } from "#/types/v1/core/base/common";
 

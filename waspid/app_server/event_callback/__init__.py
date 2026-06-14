@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Event callback system for Waspid.
 
 This module provides the event callback system that allows processors to be

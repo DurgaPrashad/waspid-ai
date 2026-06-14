@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 <!-- Keep this PR as draft until it is ready for review. -->
 
 <!-- AI/LLM agents: be concise and specific. Do not check the box below. -->

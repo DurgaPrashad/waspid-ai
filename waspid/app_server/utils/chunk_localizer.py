@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Chunk localizer to help localize the most relevant chunks in a file.
 
 This is primarily used to localize the most relevant chunks in a file

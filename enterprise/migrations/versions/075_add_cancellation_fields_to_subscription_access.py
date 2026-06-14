@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add cancellation fields to subscription_access
 
 Revision ID: 075

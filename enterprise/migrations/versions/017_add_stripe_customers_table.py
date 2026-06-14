@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add a stripe customers table
 
 Revision ID: 017

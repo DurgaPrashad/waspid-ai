@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create org tables from pgerd schema
 
 Revision ID: 089

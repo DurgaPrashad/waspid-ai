@@ -1,3 +1,4 @@
+# Waspid AI OS
 import uuid
 from datetime import UTC, datetime, timedelta
 from unittest.mock import AsyncMock, MagicMock, patch

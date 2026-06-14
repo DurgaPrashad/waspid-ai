@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { handleStatusMessage } from "#/services/actions";
 import { StatusMessage } from "#/types/message";

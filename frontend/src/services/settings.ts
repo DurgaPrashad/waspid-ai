@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Settings } from "#/types/settings";
 
 export const LATEST_SETTINGS_VERSION = 5;

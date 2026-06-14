@@ -1,3 +1,4 @@
+// Waspid AI OS
 export function SwitchSkeleton() {
   return (
     <div className="flex items-center gap-2">

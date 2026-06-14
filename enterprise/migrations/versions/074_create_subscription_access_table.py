@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create subscription_access table
 
 Revision ID: 074

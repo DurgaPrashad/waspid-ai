@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Link } from "react-router";
 import { ArrowUpRight, type LucideIcon } from "lucide-react";
 import { cn } from "#/utils/utils";

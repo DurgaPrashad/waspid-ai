@@ -1,3 +1,4 @@
+// Waspid AI OS
 // Export all base types
 export * from "./action";
 export * from "./base";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 name: Merge multi-arch Docker manifest
 description: Build a multi-arch manifest from per-arch image tags pushed by an earlier build step.
 

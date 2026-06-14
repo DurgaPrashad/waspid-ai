@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { cn } from "../../shared/utils/cn";
 import { BaseTypography, type BaseTypographyProps } from "./BaseTypography";
 

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """User router for Waspid App Server. For the moment, this simply implements the /me endpoint."""
 
 from fastapi import APIRouter, Header, HTTPException, Query, status

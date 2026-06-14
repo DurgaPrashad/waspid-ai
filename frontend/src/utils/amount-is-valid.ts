@@ -1,3 +1,4 @@
+// Waspid AI OS
 const MINIMUM_AMOUNT = 10;
 const MAXIMUM_AMOUNT = 25_000;
 

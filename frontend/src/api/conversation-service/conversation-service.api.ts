@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { AxiosHeaders } from "axios";
 import {
   GetVSCodeUrlResponse,

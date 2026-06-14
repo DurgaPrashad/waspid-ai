@@ -1,3 +1,4 @@
+# Waspid AI OS
 import glob
 import logging
 from dataclasses import dataclass

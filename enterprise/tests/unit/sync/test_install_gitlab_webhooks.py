@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for install_gitlab_webhooks module."""
 
 from unittest.mock import AsyncMock, MagicMock

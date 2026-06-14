@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Service for managing organization invitations."""
 
 import asyncio

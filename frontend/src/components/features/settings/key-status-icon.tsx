@@ -1,3 +1,4 @@
+// Waspid AI OS
 import SuccessIcon from "#/icons/success.svg?react";
 import { cn } from "#/utils/utils";
 

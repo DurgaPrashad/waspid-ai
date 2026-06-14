@@ -1,3 +1,4 @@
+// Waspid AI OS
 export type ConversationStatus =
   | "STARTING"
   | "RUNNING"

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for email service."""
 
 import os

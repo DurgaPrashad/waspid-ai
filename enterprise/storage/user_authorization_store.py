@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Store class for managing user authorizations."""
 
 from typing import Optional

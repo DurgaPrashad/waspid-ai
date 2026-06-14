@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Trans, useTranslation } from "react-i18next";
 import { OrgModal } from "#/components/shared/modals/org-modal";
 import { I18nKey } from "#/i18n/declaration";

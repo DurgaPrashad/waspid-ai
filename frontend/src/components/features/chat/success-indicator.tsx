@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { FaClock } from "react-icons/fa";
 import CheckCircle from "#/icons/check-circle-solid.svg?react";
 import { ObservationResultStatus } from "./event-content-helpers/get-observation-result";

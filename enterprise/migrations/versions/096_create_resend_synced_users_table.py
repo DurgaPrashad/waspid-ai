@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Create resend_synced_users table.
 
 Revision ID: 096

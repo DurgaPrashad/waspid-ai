@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Secrets router for Waspid App Server.
 
 This module provides the V1 API routes for secrets under /api/v1/secrets.

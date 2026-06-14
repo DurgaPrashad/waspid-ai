@@ -1,3 +1,4 @@
+# Waspid AI OS
 from pathlib import Path
 from typing import Annotated
 

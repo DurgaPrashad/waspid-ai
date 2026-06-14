@@ -1,3 +1,4 @@
+# Waspid AI OS
 import logging
 from typing import Callable, Coroutine
 from uuid import UUID

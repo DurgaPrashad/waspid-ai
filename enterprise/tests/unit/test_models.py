@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Test that the models are correctly defined.
 """

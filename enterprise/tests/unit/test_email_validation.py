@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for email validation utilities."""
 
 import re

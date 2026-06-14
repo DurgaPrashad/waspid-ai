@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { DEFAULT_SETTINGS } from "#/services/settings";
 import { Settings } from "#/types/settings";
 import { getAgentSettingValue } from "#/utils/sdk-settings-schema";

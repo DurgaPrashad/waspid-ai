@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { TextContent } from "../base/common";
 import { CriticResult } from "../base/critic";
 import { BaseEvent, Message } from "../base/event";

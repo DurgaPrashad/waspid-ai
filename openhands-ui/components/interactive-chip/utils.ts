@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useEffect, useRef, type ReactNode } from "react";
 import { cn } from "../../shared/utils/cn";
 export type InteractiveChipType = "elevated" | "filled";

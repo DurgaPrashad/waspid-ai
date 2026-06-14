@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMutation } from "@tanstack/react-query";
 import { usePostHog } from "posthog-js/react";
 import { useNavigate } from "react-router";

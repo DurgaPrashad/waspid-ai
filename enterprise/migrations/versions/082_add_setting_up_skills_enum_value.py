@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add SETTING_UP_SKILLS to appconversationstarttaskstatus enum
 
 Revision ID: 082

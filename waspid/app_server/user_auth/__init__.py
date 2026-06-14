@@ -1,3 +1,4 @@
+# Waspid AI OS
 from fastapi import Depends, Request
 from fastapi.security import APIKeyHeader
 from pydantic import SecretStr

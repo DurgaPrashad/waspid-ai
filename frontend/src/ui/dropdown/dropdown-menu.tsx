@@ -1,3 +1,4 @@
+// Waspid AI OS
 /* eslint-disable react/jsx-props-no-spreading */
 import { cn } from "#/utils/utils";
 import { DropdownOption } from "./types";

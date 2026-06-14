@@ -8,6 +8,7 @@ triggers:
 - k8s
 - kube
 ---
+<!-- Waspid AI OS -->
 
 # Kubernetes Local Development with KIND
 

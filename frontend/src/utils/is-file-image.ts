@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Check if a file is an image.
  * @param file - The File object to check.

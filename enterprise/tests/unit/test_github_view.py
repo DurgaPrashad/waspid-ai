@@ -1,3 +1,4 @@
+# Waspid AI OS
 from unittest import TestCase, mock
 from unittest.mock import MagicMock, patch
 from uuid import UUID

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the Integration Hub: executors (mocked HTTP) and the service."""
 
 import json

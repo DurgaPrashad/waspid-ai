@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for UserBase Protocol structural typing compatibility."""
 
 from dataclasses import dataclass

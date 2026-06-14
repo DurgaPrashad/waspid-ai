@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Deploying Waspid
 
 This guide covers production deployment topologies. For a quick local

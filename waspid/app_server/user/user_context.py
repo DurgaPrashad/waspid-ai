@@ -1,3 +1,4 @@
+# Waspid AI OS
 from abc import ABC, abstractmethod
 
 from waspid.app_server.integrations.provider import PROVIDER_TOKEN_TYPE, ProviderType

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for the V1 hooks endpoint in app_conversation_router.
 
 This module tests the GET /{conversation_id}/hooks endpoint functionality.

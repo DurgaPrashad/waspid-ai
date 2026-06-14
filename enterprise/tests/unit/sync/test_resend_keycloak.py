@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for Resend Keycloak sync functionality."""
 
 import os

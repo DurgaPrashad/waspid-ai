@@ -1,4 +1,5 @@
 #!/bin/bash
+# Waspid AI OS
 # This hook was installed by Waspid
 # It calls the pre-commit script in the .waspid directory
 

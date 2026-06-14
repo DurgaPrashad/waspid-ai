@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * @deprecated This type is deprecated and will be removed in a future version.
  * Use types in `frontend/src/types/core` instead.

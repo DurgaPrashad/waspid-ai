@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { openHands } from "#/api/open-hands-axios";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add github_user_id field and rename user_id to github_user_id.
 
 This migration:

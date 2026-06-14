@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect } from "vitest";
 import { getObservationContent } from "#/components/v1/chat/event-content-helpers/get-observation-content";
 import { ObservationEvent } from "#/types/v1/core";

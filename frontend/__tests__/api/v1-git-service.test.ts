@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, test, expect, vi, beforeEach } from "vitest";
 import axios from "axios";
 import V1GitService from "../../src/api/git-service/v1-git-service.api";

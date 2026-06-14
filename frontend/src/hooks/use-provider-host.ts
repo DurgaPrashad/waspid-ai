@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useConfig } from "#/hooks/query/use-config";
 import { useSettings } from "#/hooks/query/use-settings";
 import { Provider } from "#/types/settings";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Extracts the next page number from a GitHub API link header.
  * @param link The GitHub API link header

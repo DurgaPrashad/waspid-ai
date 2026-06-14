@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import SkillsService from "#/api/skills-service";
 import { SkillInfo } from "#/types/settings";

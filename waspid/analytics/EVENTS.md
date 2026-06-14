@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # PostHog Analytics — Event Catalog
 
 *Last updated: 2026-05-01*

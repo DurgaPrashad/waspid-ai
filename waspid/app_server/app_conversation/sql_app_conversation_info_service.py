@@ -1,3 +1,4 @@
+# Waspid AI OS
 """SQL implementation of AppConversationService.
 
 This implementation provides CRUD operations for sandboxed conversations focused purely

@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Contributing
 
 Thanks for your interest in contributing to Waspid! Waspid is an enterprise AI workforce operating system, built on top of an upstream MIT-licensed open-source agent SDK (see [CREDITS.md](CREDITS.md)).

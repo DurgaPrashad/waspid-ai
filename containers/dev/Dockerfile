@@ -1,4 +1,5 @@
 # syntax=docker/dockerfile:1
+# Waspid AI OS
 
 ###
 FROM ubuntu:22.04 AS dind

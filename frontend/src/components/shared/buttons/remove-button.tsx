@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { cn } from "#/utils/utils";
 import CloseIcon from "#/icons/close.svg?react";
 

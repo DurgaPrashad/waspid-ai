@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { SdkSectionPage } from "#/components/features/settings/sdk-settings/sdk-section-page";
 import { SettingsScope } from "#/types/settings";
 import { createPermissionGuard } from "#/utils/org/permission-guard";

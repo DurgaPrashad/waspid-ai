@@ -1,3 +1,4 @@
+# Waspid AI OS
 import json
 from typing import Any, cast
 

@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid App Server
 
 FastAPI-based application server that provides REST API endpoints for Waspid V1 integration.

@@ -1,3 +1,4 @@
+# Waspid AI OS
 from waspid.app_server.integrations.github.service.base import GitHubMixinBase
 from waspid.app_server.integrations.service_types import RequestMethod
 from waspid.app_server.utils.logger import waspid_logger as logger

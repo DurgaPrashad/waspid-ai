@@ -1,3 +1,4 @@
+# Waspid AI OS
 from waspid.app_server.integrations.gitlab.service.base import GitLabMixinBase
 from waspid.app_server.integrations.service_types import (
     ProviderType,

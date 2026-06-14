@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { organizationService } from "#/api/organization-service/organization-service.api";

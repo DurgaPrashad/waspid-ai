@@ -1,3 +1,4 @@
+# Waspid AI OS
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import Response
 from starlette.types import Scope

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for DbSessionInjector.
 
 This module tests the database service implementation, focusing on:

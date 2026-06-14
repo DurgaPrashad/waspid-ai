@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useEffect } from "react";
 import { BrowserSnapshot } from "./browser-snapshot";
 import { EmptyBrowserMessage } from "./empty-browser-message";

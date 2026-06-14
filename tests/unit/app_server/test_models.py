@@ -1,3 +1,4 @@
+# Waspid AI OS
 from unittest.mock import MagicMock
 from uuid import UUID, uuid4
 

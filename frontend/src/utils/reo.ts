@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Reo.dev tracking service for SaaS mode
  * Tracks developer activity and engagement in the product

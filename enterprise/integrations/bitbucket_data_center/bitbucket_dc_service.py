@@ -1,3 +1,4 @@
+# Waspid AI OS
 from pydantic import SecretStr
 from server.auth.token_manager import TokenManager
 

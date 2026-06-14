@@ -1,3 +1,4 @@
+# Waspid AI OS
 # Workflow that builds and pushes the Waspid app and enterprise Docker images to ghcr.io.
 # Per-image build logic lives in .github/workflows/_build-image.yml.
 name: Docker

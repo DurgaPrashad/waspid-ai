@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { FitAddon } from "@xterm/addon-fit";
 import { Terminal } from "@xterm/xterm";
 import React from "react";

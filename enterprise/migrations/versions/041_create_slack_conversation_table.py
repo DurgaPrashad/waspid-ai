@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create slack conversation table
 
 Revision ID: 041

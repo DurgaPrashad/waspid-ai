@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useAgentNotification } from "#/hooks/use-agent-notification";

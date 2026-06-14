@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Test Helpers
 
 This directory contains reusable test utilities and components for the Waspid frontend test suite.

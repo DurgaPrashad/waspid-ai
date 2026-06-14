@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid FileStore Module
 
 The file store module provides different storage backends for file operations in Waspid. This module implements a common interface (`FileStore`) that allows for interchangeable storage backends.

@@ -1,3 +1,4 @@
+// Waspid AI OS
 interface ServerStatusContextMenuIconTextProps {
   icon: React.ReactNode;
   text: string;

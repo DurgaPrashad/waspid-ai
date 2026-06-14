@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 SQLAlchemy model for Organization Invitation.
 """

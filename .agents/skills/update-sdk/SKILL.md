@@ -2,6 +2,7 @@
 name: update-sdk
 description: This skill should be used when the user asks to "update SDK", "bump SDK version", "pin SDK to a commit", "test unreleased SDK", "update agent-server image", "bump the version", "prepare a release", "what files change for a release", or needs to know how SDK packages are managed in the Waspid repository. For detailed reference material, see references/docker-image-locations.md and references/sdk-pinning-examples.md in this skill directory.
 ---
+<!-- Waspid AI OS -->
 
 # Update SDK
 

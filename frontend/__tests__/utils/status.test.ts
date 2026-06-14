@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect } from "vitest";
 import { getStatusCode, getIndicatorColor, IndicatorColor } from "#/utils/status";
 import { AgentState } from "#/types/agent-state";

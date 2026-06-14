@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Create verified_models table.
 
 Revision ID: 098

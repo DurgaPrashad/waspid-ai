@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { type PlaceholderProps } from "react-select";
 import { Typography } from "../../typography/Typography";
 import { cn } from "../../../shared/utils/cn";

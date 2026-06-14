@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, vi, beforeEach, it } from "vitest";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

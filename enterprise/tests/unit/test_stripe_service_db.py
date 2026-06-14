@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 This test file verifies that the stripe_service functions properly use the database
 to store and retrieve customer IDs.

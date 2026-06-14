@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ObservationMessage } from "#/types/message";
 import { useCommandStore } from "#/stores/command-store";
 import ObservationType from "#/types/observation-type";

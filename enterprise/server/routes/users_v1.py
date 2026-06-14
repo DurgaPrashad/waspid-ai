@@ -1,3 +1,4 @@
+# Waspid AI OS
 """SAAS-specific extensions for the /api/v1/users endpoints.
 
 This module provides SAAS-specific implementations that extend the OSS

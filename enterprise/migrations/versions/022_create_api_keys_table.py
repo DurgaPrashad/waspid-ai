@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Create API keys table
 
 Revision ID: 022

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for ResendSyncedUserStore."""
 
 from unittest.mock import MagicMock

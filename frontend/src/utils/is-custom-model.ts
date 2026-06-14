@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { extractModelAndProvider } from "./extract-model-and-provider";
 
 const isEquivalentOpenAIModel = (left: string, right: string) => {

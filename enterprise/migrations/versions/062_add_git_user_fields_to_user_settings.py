@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add git_user_name and git_user_email to user_settings
 
 Revision ID: 062

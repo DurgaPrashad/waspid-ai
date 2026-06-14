@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, it } from "vitest";
 import { isLikelyDirectory } from "#/components/features/chat/path-component";
 

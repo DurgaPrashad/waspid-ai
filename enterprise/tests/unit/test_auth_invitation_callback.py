@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for auth callback invitation acceptance - EmailMismatchError handling."""
 
 import pytest

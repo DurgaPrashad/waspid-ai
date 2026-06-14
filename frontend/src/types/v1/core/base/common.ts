@@ -1,3 +1,4 @@
+// Waspid AI OS
 export interface TaskItem {
   /**
    * A brief title for the task.

@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Core Services
 
 Provides essential services for authentication, security, and system operations.

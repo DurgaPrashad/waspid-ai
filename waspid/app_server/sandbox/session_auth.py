@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Shared session-key authentication for sandbox-scoped endpoints.
 
 Both the sandbox router and the user router need to validate

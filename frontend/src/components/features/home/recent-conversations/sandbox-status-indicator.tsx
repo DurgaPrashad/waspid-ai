@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { V1SandboxStatus } from "#/api/sandbox-service/sandbox-service.types";

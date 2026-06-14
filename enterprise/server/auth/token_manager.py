@@ -1,3 +1,4 @@
+# Waspid AI OS
 import asyncio
 import base64
 import json

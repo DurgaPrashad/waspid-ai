@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { SdkSectionPage } from "#/components/features/settings/sdk-settings/sdk-section-page";
 import { OrgDefaultsBanner } from "#/components/features/settings/org-defaults-banner";
 import { createPermissionGuard } from "#/utils/org/permission-guard";

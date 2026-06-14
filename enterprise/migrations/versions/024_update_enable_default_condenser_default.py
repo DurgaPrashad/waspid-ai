@@ -1,3 +1,4 @@
+# Waspid AI OS
 """update enable_default_condenser default to True
 
 Revision ID: 024

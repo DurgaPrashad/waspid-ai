@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create user secrets table
 
 Revision ID: 031

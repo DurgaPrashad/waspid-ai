@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Protocol for User models across OSS and Enterprise.
 
 This module provides a Protocol that defines the minimal interface required

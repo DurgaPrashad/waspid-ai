@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 This test file verifies that the billing routes correctly use the stripe_service
 functions with the new database-first approach.

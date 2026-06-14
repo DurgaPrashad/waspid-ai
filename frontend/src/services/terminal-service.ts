@@ -1,3 +1,4 @@
+// Waspid AI OS
 import ActionType from "#/types/action-type";
 
 export function getTerminalCommand(command: string, hidden: boolean = false) {

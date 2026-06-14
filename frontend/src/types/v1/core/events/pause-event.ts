@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { BaseEvent } from "../base/event";
 
 // Pause event - indicates that agent execution was paused by user request

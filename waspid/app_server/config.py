@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Configuration for the Waspid App Server."""
 
 import os

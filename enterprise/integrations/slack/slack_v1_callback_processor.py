@@ -1,3 +1,4 @@
+# Waspid AI OS
 import logging
 from uuid import UUID
 

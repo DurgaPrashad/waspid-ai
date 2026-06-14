@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { cn } from "../../../shared/utils/cn";
 import { Icon, type IconProps } from "../../icon/Icon";
 

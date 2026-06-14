@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Waspid AI OS
 """Sync script to add Keycloak users to Resend.com audience.
 
 This script uses the Keycloak admin client to fetch users and adds them to a

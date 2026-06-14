@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ActionSecurityRisk } from "#/stores/security-analyzer-store";
 import {
   FileWriteAction,

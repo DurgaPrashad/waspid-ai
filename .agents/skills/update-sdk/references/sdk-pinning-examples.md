@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # SDK Pinning Examples
 
 Examples from real commits showing how to pin SDK packages to unreleased commits, branches, or released versions.

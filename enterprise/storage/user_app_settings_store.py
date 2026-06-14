@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Store class for managing user app settings."""
 
 from __future__ import annotations

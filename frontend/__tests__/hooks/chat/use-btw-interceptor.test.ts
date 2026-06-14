@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useBtwInterceptor } from "#/hooks/chat/use-btw-interceptor";

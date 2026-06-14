@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Mock Service Worker (MSW) Guide
 
 ## Overview

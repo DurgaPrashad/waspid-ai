@@ -1,3 +1,4 @@
+// Waspid AI OS
 // sandbox-service.types.ts
 // This file contains types for Sandbox API.
 

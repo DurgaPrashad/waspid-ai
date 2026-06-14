@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { V1AppConversationStartTaskStatus } from "#/api/conversation-service/v1-conversation-service.types";
 import { StartTaskStatusIndicator } from "./start-task-status-indicator";
 import { StartTaskStatusBadge } from "./start-task-status-badge";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { WaspidApiKeyHelp } from "#/components/features/settings/waspid-api-key-help";

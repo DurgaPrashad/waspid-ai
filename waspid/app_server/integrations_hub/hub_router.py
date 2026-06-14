@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Integration Hub router under /api/v1/integrations-hub."""
 
 import logging

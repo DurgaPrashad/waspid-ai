@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the custom secrets API endpoints."""
 # flake8: noqa: E501
 

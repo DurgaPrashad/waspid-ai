@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Waspid shared layout primitives — the application-shell building
  * blocks that future feature pages compose with.

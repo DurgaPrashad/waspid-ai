@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { cn } from "../../../shared/utils/cn";
 import { type DropdownIndicatorProps } from "react-select";
 import { Icon } from "../../icon/Icon";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 export interface GitLabResource {
   id: string;
   name: string;

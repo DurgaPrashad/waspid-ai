@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import V1GitService from "#/api/git-service/v1-git-service.api";

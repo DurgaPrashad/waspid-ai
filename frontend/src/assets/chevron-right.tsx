@@ -1,3 +1,4 @@
+// Waspid AI OS
 interface ChevronRightProps {
   width?: number;
   height?: number;

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { WaspidObservation } from "#/types/core/observations";
 import { isMcpObservation } from "#/types/core/guards";

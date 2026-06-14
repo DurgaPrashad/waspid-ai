@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useRuntimeIsReady } from "#/hooks/use-runtime-is-ready";

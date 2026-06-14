@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { IoLockClosed } from "react-icons/io5";
 import { Tooltip } from "@heroui/react";
 import { useTranslation } from "react-i18next";

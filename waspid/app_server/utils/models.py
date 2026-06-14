@@ -1,3 +1,4 @@
+# Waspid AI OS
 from pydantic import BaseModel
 
 

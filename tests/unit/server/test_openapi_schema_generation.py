@@ -1,3 +1,4 @@
+# Waspid AI OS
 import json
 from unittest.mock import AsyncMock, MagicMock, patch
 

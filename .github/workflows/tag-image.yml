@@ -1,3 +1,4 @@
+# Waspid AI OS
 # Adds a git-tag name to existing Docker images.
 # Triggered when a tag is pushed: finds the images built at the tag's commit
 # (tagged `sha-<full>`) and adds the tag name as an alias for the same manifest.

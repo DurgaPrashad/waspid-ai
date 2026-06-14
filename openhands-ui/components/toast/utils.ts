@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { IconProps } from "../icon/Icon";
 
 type ToastType = "error" | "success" | "info" | "warning";

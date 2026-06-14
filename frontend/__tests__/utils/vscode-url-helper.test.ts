@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { transformVSCodeUrl } from "#/utils/vscode-url-helper";
 

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """User authorization model for managing email/provider based access control."""
 
 from datetime import UTC, datetime

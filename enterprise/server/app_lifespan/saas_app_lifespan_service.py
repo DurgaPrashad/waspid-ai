@@ -1,3 +1,4 @@
+# Waspid AI OS
 """SaaS-specific application lifespan service.
 
 Initializes PostHog analytics on startup and flushes buffered events on

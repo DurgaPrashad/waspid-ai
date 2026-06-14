@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add sandbox_grouping_strategy column to user, org, and user_settings tables.
 
 Revision ID: 100

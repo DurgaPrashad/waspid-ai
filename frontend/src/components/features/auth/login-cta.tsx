@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { useClientAnalytics } from "#/hooks/use-client-analytics";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 import asyncio
 import json
 import logging

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { ModalBody } from "../modal-body";
 import { ModalButton } from "../../buttons/modal-button";

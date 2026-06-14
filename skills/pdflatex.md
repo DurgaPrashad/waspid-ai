@@ -6,6 +6,7 @@ agent: CodeActAgent
 triggers:
 - pdflatex
 ---
+<!-- Waspid AI OS -->
 
 PdfLatex is a tool that converts Latex sources into PDF. This is specifically very important for researchers, as they use it to publish their findings. It could be installed very easily using Linux terminal, though this seems an annoying task on Windows. Installation commands are given below.
 

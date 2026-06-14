@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useEffect, useRef, type ReactNode } from "react";
 import type { ComponentVariant } from "../../shared/types";
 import { cn } from "../../shared/utils/cn";

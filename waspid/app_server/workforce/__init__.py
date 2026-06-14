@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Workforce module: the Waspid agent factory.
 
 Turns a natural-language business objective into a complete workforce

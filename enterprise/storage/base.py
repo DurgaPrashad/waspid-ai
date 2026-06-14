@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Unified SQLAlchemy declarative base for all models.
 

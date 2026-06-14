@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import TerminalIcon from "#/icons/terminal.svg?react";

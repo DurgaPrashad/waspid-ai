@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Connection store, tool-call log, and execution orchestration."""
 
 from __future__ import annotations

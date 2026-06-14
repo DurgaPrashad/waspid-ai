@@ -1,3 +1,4 @@
+# Waspid AI OS
 """AnalyticsContext: resolution helper for analytics call sites.
 
 Provides a dataclass that bundles user_id, consent status, org_id, and the

@@ -7,6 +7,7 @@ triggers:
 - E501
 - line too long
 ---
+<!-- Waspid AI OS -->
 
 # Instructions for fixing "E501 Line too long"
 

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for SlackConversationStore."""
 
 from unittest.mock import patch

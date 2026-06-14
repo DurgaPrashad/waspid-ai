@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Calculate toast duration based on message length
  * @param message - The message to display

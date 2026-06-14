@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for shared_event_router provider selection.
 
 This module tests the get_shared_event_service_injector function which

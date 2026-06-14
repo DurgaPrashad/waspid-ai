@@ -1,3 +1,4 @@
+# Waspid AI OS
 import warnings
 
 from pydantic import BaseModel

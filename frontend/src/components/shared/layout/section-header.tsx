@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { ReactNode } from "react";
 import { Typography } from "#/ui/typography";
 import { cn } from "#/utils/utils";

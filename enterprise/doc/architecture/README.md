@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Enterprise Architecture Documentation
 
 Architecture diagrams specific to the Waspid SaaS/Enterprise deployment.

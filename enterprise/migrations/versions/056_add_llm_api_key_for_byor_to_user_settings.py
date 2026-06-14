@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add llm_api_key_for_byor column to user_settings table.
 
 Revision ID: 056

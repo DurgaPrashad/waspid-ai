@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add v1 column to slack conversation table
 
 Revision ID: 086

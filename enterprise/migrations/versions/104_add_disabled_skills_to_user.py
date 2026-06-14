@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add disabled_skills column to user table.
 
 Migration 102 added disabled_skills to the legacy user_settings table,

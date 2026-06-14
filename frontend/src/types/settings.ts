@@ -1,3 +1,4 @@
+// Waspid AI OS
 export const ProviderOptions = {
   github: "github",
   gitlab: "gitlab",

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for :class:`LLMProfiles` (pure profile operations).
 
 Settings-integration tests (``switch_to_profile`` + serializer round-trip

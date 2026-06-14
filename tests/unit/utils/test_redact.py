@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for waspid.sdk.utils.redact redaction utilities.
 
 These tests verify that MCP config secrets are properly redacted before logging.

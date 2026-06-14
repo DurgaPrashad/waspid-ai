@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { LucideIcon } from "lucide-react";
 import type { StatusPillTone } from "#/components/shared/layout/status-pill";
 

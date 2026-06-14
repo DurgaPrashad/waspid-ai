@@ -1,3 +1,4 @@
+# Waspid AI OS
 import ssl
 
 _verify_certificates: bool = True

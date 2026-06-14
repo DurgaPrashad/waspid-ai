@@ -8,6 +8,7 @@ triggers:
 - docs
 - document
 ---
+<!-- Waspid AI OS -->
 
 # Documentation Guidelines
 

@@ -1,3 +1,4 @@
+# Waspid AI OS
 from urllib.parse import urlparse, urlunparse
 
 from waspid.app_server.utils.environment import is_running_in_docker

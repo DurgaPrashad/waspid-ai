@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { expect, test } from "vitest";
 import { organizeModelsAndProviders } from "../../src/utils/organize-models-and-providers";
 

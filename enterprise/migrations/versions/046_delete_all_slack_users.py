@@ -1,3 +1,4 @@
+# Waspid AI OS
 """delete all slack users
 
 Revision ID: 046

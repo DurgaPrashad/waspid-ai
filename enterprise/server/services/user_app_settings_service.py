@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Service class for managing user app settings.
 
 Separates business logic from route handlers.

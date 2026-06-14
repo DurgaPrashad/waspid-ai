@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { redirect } from "react-router";
 

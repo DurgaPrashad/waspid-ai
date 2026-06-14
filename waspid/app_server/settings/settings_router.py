@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Settings router for Waspid App Server.
 
 This module provides the V1 API routes for user settings under /api/v1/settings.

@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid Enterprise Server
 > [!WARNING]
 > This software is licensed under the [Polyform Free Trial License](./LICENSE). This is **NOT** an open source license. Usage is limited to 30 days per calendar year without a commercial license. If you want to use it beyond 30 days, a commercial Waspid Enterprise license is required.

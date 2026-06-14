@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Link } from "react-router";
 import { ArrowUpRight } from "lucide-react";
 import type { V1AppConversation } from "#/api/conversation-service/v1-conversation-service.types";

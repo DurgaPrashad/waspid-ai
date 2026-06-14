@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the SlackV1CallbackProcessor.
 
 Focuses on high-impact scenarios:

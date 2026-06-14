@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useCallback } from "react";
 import { useConversationWebSocket } from "#/contexts/conversation-websocket-context";
 import { useConversationId } from "#/hooks/use-conversation-id";

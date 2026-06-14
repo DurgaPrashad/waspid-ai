@@ -1,4 +1,5 @@
 #!/bin/bash
+# Waspid AI OS
 set -euo pipefail
 
 # Check if DEPLOY_DIR argument was provided

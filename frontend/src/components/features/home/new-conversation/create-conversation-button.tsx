@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { BrandButton } from "../../settings/brand-button";

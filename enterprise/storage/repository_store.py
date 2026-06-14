@@ -1,3 +1,4 @@
+# Waspid AI OS
 from __future__ import annotations
 
 from sqlalchemy import select

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Typography } from "#/ui/typography";
 
 interface FeatureListProps {

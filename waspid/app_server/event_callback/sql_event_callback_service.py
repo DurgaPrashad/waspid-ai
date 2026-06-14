@@ -1,3 +1,4 @@
+# Waspid AI OS
 # pyright: reportArgumentType=false
 """SQL implementation of EventCallbackService."""
 

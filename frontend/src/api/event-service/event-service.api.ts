@@ -1,3 +1,4 @@
+// Waspid AI OS
 import axios from "axios";
 import { buildHttpBaseUrl } from "#/utils/websocket-url";
 import { buildSessionHeaders } from "#/utils/utils";

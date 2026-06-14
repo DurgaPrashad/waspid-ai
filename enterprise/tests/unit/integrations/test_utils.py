@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for enterprise integrations utils module."""
 
 from integrations.utils import (

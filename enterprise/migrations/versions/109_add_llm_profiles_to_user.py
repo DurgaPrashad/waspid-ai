@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add llm_profiles column to user table.
 
 The Settings model exposes ``llm_profiles`` (saved LLM configurations plus

@@ -1,4 +1,5 @@
 #!/bin/bash
+# Waspid AI OS
 
 echo "Running Waspid pre-commit hook..."
 echo "This hook runs selective linting based on changed files."

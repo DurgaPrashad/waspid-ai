@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Split a command line into tokens, respecting single/double quotes so
  * paths and arguments with spaces survive a round-trip — e.g.

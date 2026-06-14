@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, it } from "vitest";
 import { SETTINGS_QUERY_KEYS } from "./query-keys";
 

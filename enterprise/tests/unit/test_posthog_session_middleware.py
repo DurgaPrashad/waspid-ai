@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for PostHogSessionMiddleware."""
 
 from unittest.mock import AsyncMock, MagicMock

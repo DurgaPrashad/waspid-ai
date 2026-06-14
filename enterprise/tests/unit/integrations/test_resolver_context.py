@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Test for ResolverUserContext get_secrets and get_latest_token logic.
 
 This test focuses on testing the actual ResolverUserContext implementation.

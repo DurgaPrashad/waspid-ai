@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Shared Event router for Waspid Server.
 
 All endpoints in this router are unauthenticated — shared conversations are

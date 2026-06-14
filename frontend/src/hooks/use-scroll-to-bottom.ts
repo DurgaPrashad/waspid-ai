@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { RefObject, useState, useCallback, useRef } from "react";
 
 export function useScrollToBottom(scrollRef: RefObject<HTMLDivElement | null>) {

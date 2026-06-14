@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import ProfilesService from "#/api/settings-service/profiles-service.api";
 import { LLM_PROFILES_QUERY_KEY } from "#/hooks/query/use-llm-profiles";

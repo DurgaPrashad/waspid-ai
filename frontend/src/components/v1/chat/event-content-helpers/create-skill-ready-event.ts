@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { MessageEvent } from "#/types/v1/core";
 import { BaseEvent } from "#/types/v1/core/base/event";
 import {

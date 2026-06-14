@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { createEvent, fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { AutomationsButton } from "#/components/shared/buttons/automations-button";

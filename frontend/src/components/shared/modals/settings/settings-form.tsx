@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import React from "react";

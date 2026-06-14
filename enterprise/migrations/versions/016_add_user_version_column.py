@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add user settings version which acts as a hint of external db state
 
 Revision ID: 016

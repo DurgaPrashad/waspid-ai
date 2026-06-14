@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add accepted_tos to user_settings
 
 Revision ID: 029

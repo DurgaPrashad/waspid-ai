@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add pending_free_credits flag to org table.
 
 Revision ID: 093

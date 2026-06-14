@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { createPermissionGuard } from "#/utils/org/permission-guard";
 import { LlmSettingsScreen } from "./llm-settings";
 

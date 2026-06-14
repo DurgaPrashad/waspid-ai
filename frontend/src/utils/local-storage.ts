@@ -1,3 +1,4 @@
+// Waspid AI OS
 // Local storage keys
 export const LOCAL_STORAGE_KEYS = {
   LOGIN_METHOD: "waspid_login_method",

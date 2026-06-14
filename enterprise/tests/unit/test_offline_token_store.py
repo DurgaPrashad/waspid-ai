@@ -1,3 +1,4 @@
+# Waspid AI OS
 import pytest
 from sqlalchemy import select
 from storage.offline_token_store import OfflineTokenStore

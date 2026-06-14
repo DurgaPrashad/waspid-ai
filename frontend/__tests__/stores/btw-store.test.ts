@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { beforeEach, describe, expect, it } from "vitest";
 import { useBtwStore } from "#/stores/btw-store";
 

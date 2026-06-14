@@ -1,3 +1,4 @@
+# Waspid AI OS
 import asyncio
 import os
 from abc import ABC, abstractmethod

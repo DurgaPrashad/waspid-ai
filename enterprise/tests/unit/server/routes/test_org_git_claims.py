@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for Git organization claim API endpoints.
 
 Tests the following endpoints:

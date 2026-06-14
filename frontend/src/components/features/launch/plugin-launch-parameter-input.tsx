@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { SettingsInput } from "#/components/features/settings/settings-input";
 
 export interface PluginLaunchParameterInputProps {

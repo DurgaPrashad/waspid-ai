@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for OrgMemberFinancialService."""
 
 import uuid

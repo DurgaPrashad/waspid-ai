@@ -1,3 +1,4 @@
+// Waspid AI OS
 /// <reference types="vitest" />
 /// <reference types="vite-plugin-svgr/client" />
 import { defineConfig, loadEnv } from "vite";

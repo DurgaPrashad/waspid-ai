@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for service API routes."""
 
 import uuid

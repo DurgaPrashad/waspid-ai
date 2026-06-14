@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, it } from "vitest";
 import { shouldRenderEvent } from "#/components/v1/chat/event-content-helpers/should-render-event";
 import {

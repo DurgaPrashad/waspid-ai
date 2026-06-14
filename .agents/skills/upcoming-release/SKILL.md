@@ -2,6 +2,7 @@
 name: upcoming-release
 description: This skill should be used when the user asks to "generate release notes", "list upcoming release PRs", "summarize upcoming release", "/upcoming-release", or needs to know what changes are part of an upcoming release.
 ---
+<!-- Waspid AI OS -->
 
 # Upcoming Release Summary
 

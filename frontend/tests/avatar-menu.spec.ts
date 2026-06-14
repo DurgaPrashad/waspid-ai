@@ -1,3 +1,4 @@
+// Waspid AI OS
 import test, { expect } from "@playwright/test";
 
 /**

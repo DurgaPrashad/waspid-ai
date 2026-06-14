@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for stats event processing in webhook_router.
 
 This module tests the stats event processing functionality introduced for

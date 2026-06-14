@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Pydantic models for user app settings API.
 """

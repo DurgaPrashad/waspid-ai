@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { usePostHog } from "posthog-js/react";
 
 /**

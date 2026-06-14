@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Unit tests for user app settings API routes.
 

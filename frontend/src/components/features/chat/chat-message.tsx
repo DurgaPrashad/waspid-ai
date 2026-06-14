@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { cn } from "#/utils/utils";
 import { CopyToClipboardButton } from "#/components/shared/buttons/copy-to-clipboard-button";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import * as icons from "react-bootstrap-icons";
 
 export type IconProps = icons.IconProps & {

@@ -1,3 +1,4 @@
+# Waspid AI OS
 from datetime import datetime
 from typing import TYPE_CHECKING
 from uuid import UUID

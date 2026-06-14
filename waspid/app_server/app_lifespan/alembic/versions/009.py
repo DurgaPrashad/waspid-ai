@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add agent_kind column to conversation_metadata table
 
 Revision ID: 009

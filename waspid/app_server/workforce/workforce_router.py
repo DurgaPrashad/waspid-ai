@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Workforce router: agent factory and blueprint endpoints under /api/v1."""
 
 import logging

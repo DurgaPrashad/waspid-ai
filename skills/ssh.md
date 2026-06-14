@@ -12,6 +12,7 @@ triggers:
   - secure shell
   - ssh keys
 ---
+<!-- Waspid AI OS -->
 
 # SSH Microagent
 

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { render } from "@testing-library/react";
 import { Trans } from "react-i18next";
 import { describe, it, expect, beforeAll } from "vitest";

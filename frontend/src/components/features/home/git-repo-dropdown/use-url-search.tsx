@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useState, useEffect } from "react";
 import { Provider } from "#/types/settings";
 import { GitRepository } from "#/types/git";

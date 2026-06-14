@@ -4,6 +4,7 @@ description: Repo-specific code review guidelines for All-Hands-AI/Waspid. Provi
 triggers:
 - /codereview
 ---
+<!-- Waspid AI OS -->
 
 # All-Hands-AI/Waspid Code Review Guidelines
 

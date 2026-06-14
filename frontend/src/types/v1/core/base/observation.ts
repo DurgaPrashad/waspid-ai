@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ObservationBase } from "./base";
 import {
   CmdOutputMetadata,

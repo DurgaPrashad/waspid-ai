@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Store class for managing Resend synced users."""
 
 from dataclasses import dataclass

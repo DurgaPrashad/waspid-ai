@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { ACPProviderConfig } from "#/api/option-service/option.types";
 import type { AgentKind, ConversationTags } from "#/api/open-hands.types";
 

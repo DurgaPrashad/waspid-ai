@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { delay, http, HttpResponse } from "msw";
 
 export const BILLING_HANDLERS = [

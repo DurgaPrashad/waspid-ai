@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Pagination utilities for Waspid App Server.
 
 This module provides utilities for handling pagination in API responses.

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Database connection module for enterprise storage.
 

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Centralized error handling for Slack integration.
 
 This module provides:

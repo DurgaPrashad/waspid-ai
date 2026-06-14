@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Integration Hub: connections, tool registry, and tool execution.
 
 One interface for every external system. Each provider in the registry

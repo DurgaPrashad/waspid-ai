@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import { useTranslation } from "react-i18next";

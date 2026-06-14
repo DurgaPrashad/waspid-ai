@@ -1,3 +1,4 @@
+# Waspid AI OS
 import uuid
 from contextlib import asynccontextmanager
 from unittest.mock import AsyncMock, MagicMock, patch

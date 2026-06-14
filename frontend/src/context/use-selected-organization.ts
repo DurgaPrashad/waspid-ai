@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useRevalidator } from "react-router";
 import { useSelectedOrganizationStore } from "#/stores/selected-organization-store";
 

@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Installing Waspid
 
 Waspid is the enterprise AI workforce operating system. This guide covers

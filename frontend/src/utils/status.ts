@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { I18nKey } from "#/i18n/declaration";
 import { AgentState } from "#/types/agent-state";
 import { ConversationStatus } from "#/types/conversation-status";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Models and the provider/tool registry for the Integration Hub."""
 
 from __future__ import annotations

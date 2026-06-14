@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { Dispatch, SetStateAction } from "react";
 import { useClientAnalytics } from "#/hooks/use-client-analytics";

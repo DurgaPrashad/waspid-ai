@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import { useConfig } from "./use-config";
 import BillingService from "#/api/billing-service/billing-service.api";

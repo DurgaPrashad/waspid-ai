@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { TaskItem } from "./task-item";
 import LessonPlanIcon from "#/icons/lesson-plan.svg?react";

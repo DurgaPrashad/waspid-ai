@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WaspidEvent, ActionEvent } from "#/types/v1/core";
 import { GenericEventMessage } from "../../../features/chat/generic-event-message";
 import { getEventContent } from "../event-content-helpers/get-event-content";

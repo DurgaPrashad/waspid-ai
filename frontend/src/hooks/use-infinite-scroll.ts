@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useEffect, useRef, useCallback } from "react";
 
 interface UseInfiniteScrollOptions {

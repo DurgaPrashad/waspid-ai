@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for AuthTokenStore using SQLite in-memory database."""
 
 import time

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePostHog } from "posthog-js/react";
 import AuthService from "#/api/auth-service/auth-service.api";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Runtime Images router for Waspid App Server."""
 
 from typing import Annotated

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the GET /api/v1/users/git-organizations SAAS endpoint.
 
 This endpoint returns the Git organizations / groups / workspaces the user

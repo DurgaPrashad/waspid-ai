@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Waspid AI OS
 set -o pipefail
 
 function get_docker() {

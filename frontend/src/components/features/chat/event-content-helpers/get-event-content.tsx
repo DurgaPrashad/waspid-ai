@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Trans } from "react-i18next";
 import { WaspidAction } from "#/types/core/actions";
 import { isWaspidAction, isWaspidObservation } from "#/types/core/guards";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 from abc import abstractmethod
 from dataclasses import dataclass
 

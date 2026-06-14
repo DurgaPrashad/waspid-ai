@@ -16,6 +16,7 @@ triggers:
   - add a microagent
   - microagent template
 ---
+<!-- Waspid AI OS -->
 
 This agent helps create new microagents in the `.waspid/microagents` directory by providing guidance and templates.
 

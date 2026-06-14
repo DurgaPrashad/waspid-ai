@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Onboarding submission endpoint.
 
 Receives user onboarding selections and fires analytics event.

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useTranslation } from "react-i18next";

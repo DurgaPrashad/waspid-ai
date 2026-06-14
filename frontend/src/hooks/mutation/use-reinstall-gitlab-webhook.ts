@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { integrationService } from "#/api/integration-service/integration-service.api";

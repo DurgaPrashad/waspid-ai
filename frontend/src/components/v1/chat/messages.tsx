@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { useParams } from "react-router";
 import { WaspidEvent } from "#/types/v1/core";

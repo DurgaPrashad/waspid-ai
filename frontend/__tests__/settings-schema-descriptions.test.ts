@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, it } from "vitest";
 import { MOCK_DEFAULT_USER_SETTINGS } from "#/mocks/handlers";
 

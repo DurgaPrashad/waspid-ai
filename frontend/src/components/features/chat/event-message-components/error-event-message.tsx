@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WaspidObservation } from "#/types/core/observations";
 import { isErrorObservation } from "#/types/core/guards";
 import { ErrorMessage } from "../error-message";

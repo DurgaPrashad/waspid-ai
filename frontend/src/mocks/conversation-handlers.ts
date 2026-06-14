@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { http, delay, HttpResponse } from "msw";
 import {
   Conversation,

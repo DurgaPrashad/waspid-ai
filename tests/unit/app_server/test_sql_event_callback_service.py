@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for SQLEventCallbackService.
 
 This module tests the SQL implementation of EventCallbackService,

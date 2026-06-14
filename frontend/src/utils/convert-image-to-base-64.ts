@@ -1,3 +1,4 @@
+// Waspid AI OS
 export const convertImageToBase64 = (file: File): Promise<string> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();

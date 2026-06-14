@@ -15,6 +15,7 @@ inputs:
   - name: FILE_FOR_FUNCTION
     description: "The path of the file that contains the function"
 ---
+<!-- Waspid AI OS -->
 
 Can you check out branch "{{ BRANCH_NAME }}", and run {{ TEST_COMMAND_TO_RUN }}.
 

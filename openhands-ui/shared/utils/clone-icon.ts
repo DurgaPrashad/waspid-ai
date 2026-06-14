@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { cloneElement, isValidElement, type ReactElement } from "react";
 import type { BaseProps, HTMLProps } from "../../shared/types";
 

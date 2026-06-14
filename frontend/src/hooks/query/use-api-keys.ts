@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import ApiKeysClient from "#/api/api-keys";
 import { useConfig } from "./use-config";

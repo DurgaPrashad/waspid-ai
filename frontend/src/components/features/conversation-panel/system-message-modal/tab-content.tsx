@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { SystemMessageContent } from "./system-message-content";
 import { ToolsList } from "./tools-list";
 import { EmptyToolsState } from "./empty-tools-state";

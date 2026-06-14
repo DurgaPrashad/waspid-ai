@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { WaspidObservation } from "#/types/core/observations";
 import { isRejectObservation } from "#/types/core/guards";

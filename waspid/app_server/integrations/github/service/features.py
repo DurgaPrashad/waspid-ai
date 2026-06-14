@@ -1,3 +1,4 @@
+# Waspid AI OS
 from waspid.app_server.integrations.github.queries import (
     suggested_task_issue_graphql_query,
     suggested_task_pr_graphql_query,

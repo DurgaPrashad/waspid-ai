@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { type OptionProps } from "react-select";
 import type { IOption } from "../../../shared/types";
 import { Typography } from "../../typography/Typography";

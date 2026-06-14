@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { heroui } from "@heroui/react";
 
 /*

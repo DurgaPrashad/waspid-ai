@@ -1,3 +1,4 @@
+// Waspid AI OS
 export const getLanguageFromPath = (path: string): string => {
   const extension = path.split(".").pop()?.toLowerCase();
   switch (extension) {

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { MessageEvent } from "#/types/v1/core";
 import i18n from "#/i18n";
 

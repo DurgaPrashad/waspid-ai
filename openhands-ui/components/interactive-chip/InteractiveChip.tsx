@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { type PropsWithChildren, type ReactElement } from "react";
 import type { BaseProps, HTMLProps } from "../../shared/types";
 import { cn } from "../../shared/utils/cn";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Routes for user app settings API.
 
 Provides endpoints for managing user-level app preferences:

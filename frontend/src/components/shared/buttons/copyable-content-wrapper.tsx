@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { CopyToClipboardButton } from "./copy-to-clipboard-button";
 

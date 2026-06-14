@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Email domain validation utilities for enterprise endpoints.
 """

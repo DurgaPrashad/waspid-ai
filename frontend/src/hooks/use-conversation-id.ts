@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useParams } from "react-router";
 
 export function useConversationId() {

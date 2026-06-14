@@ -1,3 +1,4 @@
+# Waspid AI OS
 """SQL-backed store for workforce blueprints."""
 
 from __future__ import annotations

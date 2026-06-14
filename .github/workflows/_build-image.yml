@@ -1,3 +1,4 @@
+# Waspid AI OS
 # Reusable workflow: build a multi-arch Docker image and publish a merged manifest.
 # Called per image from .github/workflows/ghcr-build.yml.
 name: Build and push multi-arch image

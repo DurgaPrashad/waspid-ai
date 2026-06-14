@@ -8,6 +8,7 @@
  - swift-debian
  - swift-installation
 ---
+<!-- Waspid AI OS -->
 
 # Swift Installation Guide for Debian Linux
 

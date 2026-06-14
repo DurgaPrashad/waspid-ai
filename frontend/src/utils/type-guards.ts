@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { AxiosError } from "axios";
 
 export const isAxiosErrorWithErrorField = (

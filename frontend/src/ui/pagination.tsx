@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ChevronLeft } from "#/assets/chevron-left";
 import { ChevronRight } from "#/assets/chevron-right";
 import { cn } from "#/utils/utils";

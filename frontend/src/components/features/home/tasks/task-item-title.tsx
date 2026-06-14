@@ -1,3 +1,4 @@
+// Waspid AI OS
 export function TaskItemTitle({ children: title }: React.PropsWithChildren) {
   return (
     <div className="py-3">

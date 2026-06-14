@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add integration hub tables (connections, tool call log)
 
 Revision ID: 012

@@ -1,3 +1,4 @@
+# Waspid AI OS
 # Workflow that runs lint on the frontend and python code
 name: Lint
 

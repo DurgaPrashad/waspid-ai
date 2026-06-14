@@ -1,3 +1,4 @@
+# Waspid AI OS
 import os
 from typing import Literal
 

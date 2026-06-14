@@ -1,3 +1,4 @@
+# Waspid AI OS
 # pyright: reportArgumentType=false, reportAttributeAccessIssue=false, reportOptionalMemberAccess=false
 """SQL implementation of AppConversationStartTaskService.
 

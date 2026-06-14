@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { AgentState } from "../agent-state";
 import { WaspidObservationEvent } from "./base";
 

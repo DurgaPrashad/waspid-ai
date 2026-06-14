@@ -1,3 +1,4 @@
+// Waspid AI OS
 // Backend-enforced pattern: ^[A-Za-z0-9._-]{1,64}$
 // Matches settings_router.py — keep them in sync.
 const ALLOWED_CHARS = /[^A-Za-z0-9._-]/g;

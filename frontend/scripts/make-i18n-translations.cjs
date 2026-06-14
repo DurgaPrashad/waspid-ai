@@ -1,3 +1,4 @@
+// Waspid AI OS
 const fs = require("fs");
 const path = require("path");
 const i18n = require("../src/i18n/translation.json");

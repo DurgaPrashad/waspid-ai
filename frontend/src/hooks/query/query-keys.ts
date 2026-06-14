@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Centralized query keys and cache configuration for TanStack Query.
  * Using constants ensures type safety and prevents typos.

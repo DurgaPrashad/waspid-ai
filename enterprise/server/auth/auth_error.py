@@ -1,3 +1,4 @@
+# Waspid AI OS
 class AuthError(Exception):
     """Generic auth error"""
 

@@ -1,3 +1,4 @@
+# Waspid AI OS
 import sys
 from datetime import datetime
 from enum import IntEnum

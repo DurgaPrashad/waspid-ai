@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for AnalyticsContext dataclass and resolve_analytics_context factory."""
 
 from unittest.mock import MagicMock, patch

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useInfiniteQuery } from "@tanstack/react-query";
 import V1ConversationService from "#/api/conversation-service/v1-conversation-service.api";
 import { useIsAuthed } from "./use-is-authed";

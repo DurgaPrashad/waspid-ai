@@ -1,3 +1,4 @@
+# Waspid AI OS
 """make user secrets table one row per secret
 
 Revision ID: 037

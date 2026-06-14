@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { ActionEvent } from "#/types/v1/core";
 import { ChatMessage } from "../../../features/chat/chat-message";

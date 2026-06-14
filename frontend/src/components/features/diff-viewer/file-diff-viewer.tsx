@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { DiffEditor, Editor, Monaco } from "@monaco-editor/react";
 import React from "react";
 import { editor as editor_t } from "monaco-editor";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create linear_conversations table
 
 Revision ID: 071

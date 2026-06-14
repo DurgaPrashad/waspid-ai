@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid Skills
 
 Skills are specialized prompts that enhance Waspid with domain-specific knowledge and task-specific workflows. They help developers by providing expert guidance, automating common tasks, and ensuring consistent practices across projects. Each skill is designed to excel in a specific area, from Git operations to code review processes.

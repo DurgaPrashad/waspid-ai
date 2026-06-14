@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ObservationEvent } from "#/types/v1/core";
 import { ACPToolCallEvent } from "#/types/v1/core/events/acp-tool-call-event";
 

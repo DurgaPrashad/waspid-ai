@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { GitRepository } from "#/types/git";

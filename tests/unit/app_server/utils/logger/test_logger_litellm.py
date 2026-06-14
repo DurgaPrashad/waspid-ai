@@ -1,3 +1,4 @@
+# Waspid AI OS
 import importlib
 import os
 import sys

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Git router for Waspid App Server V1 API.
 
 This module provides V1 API endpoints for Git operations (installations, repositories)

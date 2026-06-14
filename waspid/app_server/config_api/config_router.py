@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Config router for Waspid App Server V1 API.
 
 This module provides V1 API endpoints for configuration, including model and

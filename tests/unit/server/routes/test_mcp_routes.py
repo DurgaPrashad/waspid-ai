@@ -1,3 +1,4 @@
+# Waspid AI OS
 import warnings
 from unittest.mock import AsyncMock, MagicMock, patch
 

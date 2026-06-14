@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Jira integration manager.
 
 This module orchestrates the processing of Jira webhook events:

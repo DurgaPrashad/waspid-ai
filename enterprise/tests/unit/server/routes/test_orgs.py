@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Integration tests for organization API routes.
 

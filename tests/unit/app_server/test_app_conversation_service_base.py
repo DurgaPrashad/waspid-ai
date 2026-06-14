@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for git and security functionality in AppConversationServiceBase.
 
 This module tests the git-related functionality, specifically the clone_or_init_git_repo method

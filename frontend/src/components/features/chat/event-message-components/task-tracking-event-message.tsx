@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WaspidObservation } from "#/types/core/observations";
 import { isTaskTrackingObservation } from "#/types/core/guards";
 import { TaskTrackingObservationContent } from "../task-tracking-observation-content";

@@ -7,6 +7,7 @@ triggers:
 - bitbucket
 - git
 ---
+<!-- Waspid AI OS -->
 
 You have access to an environment variable, `BITBUCKET_TOKEN`, which allows you to interact with
 the Bitbucket API.

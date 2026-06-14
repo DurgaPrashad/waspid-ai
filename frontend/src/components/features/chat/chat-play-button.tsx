@@ -1,3 +1,4 @@
+// Waspid AI OS
 import PlayIcon from "#/icons/play-solid.svg?react";
 import { cn } from "#/utils/utils";
 

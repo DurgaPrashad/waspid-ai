@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { ConversationWebSocketProvider } from "#/contexts/conversation-websocket-context";
 import { useActiveConversation } from "#/hooks/query/use-active-conversation";

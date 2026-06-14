@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for the send_message_to_conversation endpoint.
 
 This module tests the send-message endpoint, focusing on:

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """OSS install ID utility.
 
 Provides a stable distinct_id for OSS installations by persisting a UUID

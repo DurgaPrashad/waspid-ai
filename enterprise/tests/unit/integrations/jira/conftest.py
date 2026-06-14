@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Shared fixtures for Jira integration tests.
 """

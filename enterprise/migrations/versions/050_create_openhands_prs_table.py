@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Create waspid_prs table
 
 Revision ID: 050

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create conversation_work table
 
 Revision ID: 058

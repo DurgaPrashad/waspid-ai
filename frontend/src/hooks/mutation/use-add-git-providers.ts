@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { SecretsService } from "#/api/secrets-service";
 import { Provider, ProviderToken } from "#/types/settings";

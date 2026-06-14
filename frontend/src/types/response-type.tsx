@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ActionMessage, ObservationMessage, StatusMessage } from "./message";
 
 type SocketMessage = ActionMessage | ObservationMessage | StatusMessage;

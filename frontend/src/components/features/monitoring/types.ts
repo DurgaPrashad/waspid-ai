@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { V1AppConversation } from "#/api/conversation-service/v1-conversation-service.types";
 import type { StatusPillTone } from "#/components/shared/layout/status-pill";
 import {

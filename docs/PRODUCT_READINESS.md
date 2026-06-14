@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid Product Readiness Report
 
 Date: 2026-06-12. Method: the full backend was booted from source on a

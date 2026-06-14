@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { SuggestionItem, type Suggestion } from "./suggestion-item";
 
 interface SuggestionsProps {

@@ -1,3 +1,4 @@
+# Waspid AI OS
 from abc import abstractmethod
 from typing import Any
 from urllib.parse import quote
