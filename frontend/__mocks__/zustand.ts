@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { act } from "@testing-library/react";
 import { vi, afterEach } from "vitest";
 import type * as ZustandExportedTypes from "zustand";

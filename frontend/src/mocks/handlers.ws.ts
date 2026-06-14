@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { delay, WebSocketHandler, ws } from "msw";
 import { toSocketIo } from "@mswjs/socket.io-binding";
 import { AgentState } from "#/types/agent-state";

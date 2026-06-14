@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { I18nKey } from "#/i18n/declaration";
 
 export type OnboardingAppMode = "cloud" | "self-hosted" | "oss";

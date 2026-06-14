@@ -1,3 +1,4 @@
+// Waspid AI OS
 /* eslint-disable react/react-in-jsx-scope */
 /**
  * By default, Remix will handle hydrating your app on the client for you.

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Provider, ProviderToken } from "#/types/settings";
 
 export type CustomSecret = {

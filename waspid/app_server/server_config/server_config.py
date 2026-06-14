@@ -1,3 +1,4 @@
+# Waspid AI OS
 # TODO: Merge this module with waspid.app_server.config
 import os
 

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { render, screen } from "@testing-library/react";
 import { createRoutesStub } from "react-router";

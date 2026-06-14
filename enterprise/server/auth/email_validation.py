@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Email validation utilities for preventing duplicate signups with + modifier."""
 
 import re

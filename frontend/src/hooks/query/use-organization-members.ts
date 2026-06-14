@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { organizationService } from "#/api/organization-service/organization-service.api";
 import { useSelectedOrganizationId } from "#/context/use-selected-organization";

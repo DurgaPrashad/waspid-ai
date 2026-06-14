@@ -11,6 +11,7 @@ inputs:
   - name: TEST_COMMAND_TO_RUN
     description: "The test command you want the agent to work on. For example, `pytest tests/unit/test_bash_parsing.py`"
 ---
+<!-- Waspid AI OS -->
 
 Can you check out branch "{{ BRANCH_NAME }}", and run {{ TEST_COMMAND_TO_RUN }}.
 

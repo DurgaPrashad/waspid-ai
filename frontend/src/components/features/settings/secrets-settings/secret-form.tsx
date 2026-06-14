@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { useTranslation } from "react-i18next";

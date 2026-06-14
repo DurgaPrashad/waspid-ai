@@ -1,3 +1,4 @@
+# Waspid AI OS
 import pytest
 
 from waspid.app_server.utils import environment

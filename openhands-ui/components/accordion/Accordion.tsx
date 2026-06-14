@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React, { useCallback, type PropsWithChildren } from "react";
 
 import {

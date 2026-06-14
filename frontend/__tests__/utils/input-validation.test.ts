@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, test } from "vitest";
 import {
   isValidEmail,

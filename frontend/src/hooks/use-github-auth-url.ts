@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useAuthUrl } from "./use-auth-url";
 import { WebClientConfig } from "#/api/option-service/option.types";
 

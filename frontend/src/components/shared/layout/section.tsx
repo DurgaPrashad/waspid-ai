@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { JSX, ReactNode } from "react";
 import { cn } from "#/utils/utils";
 import { SectionHeader } from "./section-header";

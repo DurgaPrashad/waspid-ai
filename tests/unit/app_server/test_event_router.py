@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for the event_router endpoints.
 
 This module tests the event router endpoints,

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useClickOutsideElement } from "#/hooks/use-click-outside-element";

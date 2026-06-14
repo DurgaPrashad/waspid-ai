@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import CodeBranchIcon from "#/icons/u-code-branch.svg?react";

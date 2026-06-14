@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid API
 
 The Waspid control plane is a FastAPI application. All functionality in

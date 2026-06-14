@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import { TaskTrackingObservationContent } from "#/components/features/chat/task-tracking-observation-content";

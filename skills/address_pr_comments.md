@@ -11,6 +11,7 @@ inputs:
   - name: BRANCH_NAME
     description: "Branch name corresponds to the pull request"
 ---
+<!-- Waspid AI OS -->
 
 First, check the branch {{ BRANCH_NAME }} and read the diff against the main branch to understand the purpose.
 

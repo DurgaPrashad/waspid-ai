@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add a table for tracking output from maintainance scripts. These are basically migrations that are not sql centric.
 Revision ID: 018
 Revises: 017

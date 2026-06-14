@@ -1,3 +1,4 @@
+# Waspid AI OS
 from abc import abstractmethod
 
 from waspid.agent_server.env_parser import ABC, DiscriminatedUnionMixin

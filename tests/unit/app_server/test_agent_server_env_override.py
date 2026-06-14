@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for agent server environment variable override functionality.
 
 This module tests the environment variable override functionality that allows

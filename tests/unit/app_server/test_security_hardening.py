@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Security tests: SSRF guard, rate limits, size caps, tenant isolation."""
 
 from typing import AsyncGenerator

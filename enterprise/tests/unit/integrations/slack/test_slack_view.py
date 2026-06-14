@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the Slack view classes and V1 conversation handling.
 
 Focuses on V1 conversation scenarios:

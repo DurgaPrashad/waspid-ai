@@ -7,6 +7,7 @@ triggers:
 - bitbucket_data_center
 - bitbucket data center
 ---
+<!-- Waspid AI OS -->
 
 You have access to an environment variable, `BITBUCKET_DATA_CENTER_TOKEN`, which contains
 a basic auth token in the format `username:your-token` that allows you to interact with the git repository.

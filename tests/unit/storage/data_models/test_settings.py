@@ -1,3 +1,4 @@
+# Waspid AI OS
 import importlib
 import warnings
 from unittest.mock import patch

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create auth tokens table
 
 Revision ID: 021

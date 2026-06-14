@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import { useConfig } from "./use-config";
 import { organizationService } from "#/api/organization-service/organization-service.api";

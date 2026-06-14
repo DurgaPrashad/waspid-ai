@@ -1,3 +1,4 @@
+// Waspid AI OS
 export type OrganizationUserRole = "member" | "admin" | "owner";
 
 export interface Organization {

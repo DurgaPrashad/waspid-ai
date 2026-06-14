@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Getting Started with the Waspid Frontend
 
 ## Overview

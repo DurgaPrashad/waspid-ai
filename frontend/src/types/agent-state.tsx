@@ -1,3 +1,4 @@
+// Waspid AI OS
 export enum AgentState {
   LOADING = "loading",
   INIT = "init",

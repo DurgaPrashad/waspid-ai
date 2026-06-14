@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Typography } from "../../typography/Typography";
 import { cn } from "../../../shared/utils/cn";
 import type { SingleValueProps } from "react-select";

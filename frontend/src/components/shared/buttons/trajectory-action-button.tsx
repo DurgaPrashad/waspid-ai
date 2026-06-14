@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Tooltip } from "@heroui/react";
 
 interface TrajectoryActionButtonProps {

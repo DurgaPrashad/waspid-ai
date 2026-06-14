@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect } from "vitest";
 import { adaptSystemMessage } from "#/utils/system-message-adapter";
 import { EventState } from "#/stores/use-event-store";

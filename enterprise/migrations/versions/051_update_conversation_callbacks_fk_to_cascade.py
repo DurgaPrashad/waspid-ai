@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Update conversation_callbacks foreign key to cascade deletes
 
 Revision ID: 051

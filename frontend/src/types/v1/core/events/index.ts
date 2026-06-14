@@ -1,3 +1,4 @@
+// Waspid AI OS
 // Export all event types
 export * from "./acp-tool-call-event";
 export * from "./action-event";

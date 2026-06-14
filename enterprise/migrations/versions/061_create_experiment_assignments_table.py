@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Create experiment assignments table
 
 Revision ID: 061

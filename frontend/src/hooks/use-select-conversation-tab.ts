@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useConversationLocalStorageState } from "#/utils/conversation-local-storage";
 import {
   useConversationStore,

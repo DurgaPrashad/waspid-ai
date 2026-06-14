@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { create } from "zustand";
 import { StatusMessage } from "#/types/message";
 

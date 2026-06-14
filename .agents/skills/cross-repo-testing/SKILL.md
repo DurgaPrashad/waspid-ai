@@ -8,6 +8,7 @@ triggers:
 - test against cloud
 - e2e cloud
 ---
+<!-- Waspid AI OS -->
 
 # Cross-Repo Testing: SDK ↔ Waspid Cloud
 

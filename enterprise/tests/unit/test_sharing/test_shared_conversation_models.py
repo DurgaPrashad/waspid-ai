@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for public conversation models."""
 
 from datetime import datetime

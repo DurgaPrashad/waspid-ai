@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Mock implementation of the stripe_service module for testing.
 """

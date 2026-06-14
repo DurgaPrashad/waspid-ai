@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # User Management
 
 Handles user authentication, authorization, and profile management for the Waspid app server.

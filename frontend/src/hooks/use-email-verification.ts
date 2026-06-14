@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { useSearchParams } from "react-router";
 import { useResendEmailVerification } from "#/hooks/mutation/use-resend-email-verification";

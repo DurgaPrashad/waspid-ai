@@ -1,3 +1,4 @@
+# Waspid AI OS
 # pyright: reportIncompatibleMethodOverride=false
 from __future__ import annotations
 

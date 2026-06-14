@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Outbound URL validation (SSRF protection).
 
 Webhook-style connections store a user-supplied URL that the server

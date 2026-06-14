@@ -1,3 +1,4 @@
+// Waspid AI OS
 type EventType =
   | "MCPTool"
   | "Finish"

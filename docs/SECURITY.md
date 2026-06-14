@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid Security Report
 
 Date: 2026-06-12. Scope: the Waspid platform additions (agent factory,

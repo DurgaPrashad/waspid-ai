@@ -1,3 +1,4 @@
+// Waspid AI OS
 enum ArgConfigType {
   LLM_MODEL = "LLM_MODEL",
   AGENT = "AGENT",

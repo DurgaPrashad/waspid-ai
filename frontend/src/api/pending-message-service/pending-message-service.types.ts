@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Types for the pending message service
  */

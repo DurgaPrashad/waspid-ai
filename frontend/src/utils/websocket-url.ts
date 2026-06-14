@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Extracts the base host from conversation URL
  * @param conversationUrl The conversation URL containing host/port (e.g., "http://localhost:3000/api/conversations/123")

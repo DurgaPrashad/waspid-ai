@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React, { useState } from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { useNavigate } from "react-router";

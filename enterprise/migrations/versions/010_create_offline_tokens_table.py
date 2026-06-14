@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create offline tokens table.
 
 Revision ID: 010

@@ -1,3 +1,4 @@
+# Waspid AI OS
 from abc import ABC, abstractmethod
 
 from integrations.models import JobContext

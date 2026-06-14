@@ -1,3 +1,4 @@
+# Waspid AI OS
 """SQLAlchemy model for telemetry metrics data.
 
 This model stores individual metric collection records with upload tracking

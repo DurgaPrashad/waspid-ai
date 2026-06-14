@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React, { PropsWithChildren } from "react";
 import {
   act,

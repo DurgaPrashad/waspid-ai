@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { TextContent } from "../base/common";
 import { BaseEvent, ChatCompletionToolParam } from "../base/event";
 

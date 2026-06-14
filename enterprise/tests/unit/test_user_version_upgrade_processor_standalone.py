@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Standalone tests for the UserVersionUpgradeProcessor.
 

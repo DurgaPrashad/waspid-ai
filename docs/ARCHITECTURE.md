@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid Architecture
 
 Waspid is an enterprise AI workforce operating system: a control plane

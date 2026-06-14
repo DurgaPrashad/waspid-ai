@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { render } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { SettingsNavDivider } from "#/components/features/settings/settings-nav-divider";

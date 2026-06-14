@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { openHands } from "../open-hands-axios";
 import { AuthenticateResponse, GitHubAccessTokenResponse } from "./auth.types";
 import { WebClientConfig } from "../option-service/option.types";

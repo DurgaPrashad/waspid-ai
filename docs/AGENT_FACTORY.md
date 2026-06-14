@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid Agent Factory
 
 Describe a business objective in plain English — Waspid designs the AI

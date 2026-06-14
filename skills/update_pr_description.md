@@ -15,6 +15,7 @@ inputs:
     description: "Branch name corresponds to the pull request"
     type: string
 ---
+<!-- Waspid AI OS -->
 
 Please check the branch "{{ BRANCH_NAME }}" and look at the diff against the main branch. This branch belongs to this PR "{{ PR_URL }}".
 

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add max_budget_per_task to user_settings
 
 Revision ID: 048

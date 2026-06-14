@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Waspid AI OS
 from __future__ import annotations
 
 import argparse

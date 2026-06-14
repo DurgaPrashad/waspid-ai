@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { Typography } from "#/ui/typography";
 

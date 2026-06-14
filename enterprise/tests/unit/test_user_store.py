@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Tests for UserStore following the async pattern from test_api_key_store.py.
 Uses SQLite database with standard fixtures.

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { SdkSectionPage } from "#/components/features/settings/sdk-settings/sdk-section-page";
 import { createPermissionGuard } from "#/utils/org/permission-guard";
 import { requireOrgDefaultsRedirect } from "#/utils/org/saas-redirect-to-org-defaults-guard";

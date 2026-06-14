@@ -1,3 +1,4 @@
+# Waspid AI OS
 import logging
 from unittest.mock import patch
 

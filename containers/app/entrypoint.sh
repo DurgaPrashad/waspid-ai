@@ -1,4 +1,5 @@
 #!/bin/bash
+# Waspid AI OS
 set -eo pipefail
 
 echo "Starting Waspid..."

@@ -1,3 +1,4 @@
+# Waspid AI OS
 from dotenv import load_dotenv
 
 from waspid.app_server.secrets.secrets_store import SecretsStore

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import { useSelectedOrganizationId } from "#/context/use-selected-organization";
 import { useIsOnIntermediatePage } from "#/hooks/use-is-on-intermediate-page";

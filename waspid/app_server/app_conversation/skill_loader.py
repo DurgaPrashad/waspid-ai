@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Utilities for loading skills for V1 conversations.
 
 This module provides functions to load skills from the agent-server,

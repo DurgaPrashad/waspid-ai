@@ -1,3 +1,4 @@
+// Waspid AI OS
 /* eslint-disable react/jsx-props-no-spreading */
 import { ChevronDown } from "lucide-react";
 import { cn } from "#/utils/utils";

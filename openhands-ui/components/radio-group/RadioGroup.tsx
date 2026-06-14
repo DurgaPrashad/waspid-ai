@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useId } from "react";
 import type { BaseProps, HTMLProps, IOption } from "../../shared/types";
 import { cn } from "../../shared/utils/cn";

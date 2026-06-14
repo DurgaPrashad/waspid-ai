@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Event Callback router for Waspid App Server."""
 
 import asyncio

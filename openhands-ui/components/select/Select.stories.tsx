@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Select, type SelectProps } from "./Select";
 import type { IOption } from "../../shared/types";

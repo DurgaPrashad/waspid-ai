@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add workforce_blueprint table for the agent factory
 
 Revision ID: 010

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import V1ConversationService from "#/api/conversation-service/v1-conversation-service.api";
 import { useSettings } from "#/hooks/query/use-settings";

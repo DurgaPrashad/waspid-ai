@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { queryClient } from "#/query-client-config";
 import { OrganizationMember } from "#/types/org";
 

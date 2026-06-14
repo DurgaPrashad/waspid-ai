@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useQueryClient } from "@tanstack/react-query";

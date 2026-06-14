@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the Bitbucket Cloud resolver factory and view dispatch."""
 
 import pytest

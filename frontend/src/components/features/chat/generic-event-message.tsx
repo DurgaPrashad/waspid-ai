@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import ArrowDown from "#/icons/angle-down-solid.svg?react";
 import ArrowUp from "#/icons/angle-up-solid.svg?react";

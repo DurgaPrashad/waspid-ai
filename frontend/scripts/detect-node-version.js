@@ -1,3 +1,4 @@
+// Waspid AI OS
 function parseVersion(version) {
   return version.split('.').map(Number);
 }

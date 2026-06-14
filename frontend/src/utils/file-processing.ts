@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Real file processing utilities using FileReader API
  * These functions perform actual file reading operations that take time for large files

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import BranchIcon from "#/icons/u-code-branch.svg?react";
 import { constructBranchUrl, cn } from "#/utils/utils";

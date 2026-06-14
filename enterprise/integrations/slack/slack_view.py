@@ -1,3 +1,4 @@
+# Waspid AI OS
 import asyncio
 from dataclasses import dataclass
 from uuid import UUID, uuid4

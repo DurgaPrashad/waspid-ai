@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for skill_loader module.
 
 This module tests the loading of skills from the agent-server,

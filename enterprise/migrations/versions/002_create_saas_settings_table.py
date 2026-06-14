@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create saas settings table
 
 Revision ID: 002

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { OrgWideSettingsBadge } from "#/components/features/settings/org-wide-settings-badge";

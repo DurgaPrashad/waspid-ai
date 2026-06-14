@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Permission-based authorization dependencies for API endpoints.
 

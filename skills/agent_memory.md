@@ -6,6 +6,7 @@ agent: CodeActAgent
 triggers:
 - /remember
 ---
+<!-- Waspid AI OS -->
 
 * Repository memory: Use .waspid/microagents/repo.md under each repository root to store and access important information.
   - If this file exists, it will be added to your context automatically.

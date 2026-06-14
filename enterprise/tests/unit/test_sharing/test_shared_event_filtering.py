@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for ConversationStateUpdateEvent filtering in shared_event_router.
 
 The shared-events endpoints are unauthenticated, so internal system state

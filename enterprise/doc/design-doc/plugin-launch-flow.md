@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Plugin Launch Flow
 
 This document traces the complete data flow for launching plugins in Waspid, from the source marketplace through to agent execution. Each section shows the exact endpoints, payloads, and transformations.

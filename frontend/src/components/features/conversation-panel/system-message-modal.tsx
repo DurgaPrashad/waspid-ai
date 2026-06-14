@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useState } from "react";
 import { ModalBackdrop } from "#/components/shared/modals/modal-backdrop";
 import { ModalBody } from "#/components/shared/modals/modal-body";

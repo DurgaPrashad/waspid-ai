@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for BitbucketDCManager.receive_message and send_message dispatch."""
 
 from unittest.mock import AsyncMock, patch

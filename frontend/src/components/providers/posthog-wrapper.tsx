@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { PostHogProvider } from "posthog-js/react";
 import { queryClient } from "#/query-client-config";

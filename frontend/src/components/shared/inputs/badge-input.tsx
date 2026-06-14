@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { cn } from "#/utils/utils";
 import { BrandBadge } from "../badge";

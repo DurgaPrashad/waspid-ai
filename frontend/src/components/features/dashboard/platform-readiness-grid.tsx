@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Cpu, GitBranch, Mail, Wrench } from "lucide-react";
 import { useConfig } from "#/hooks/query/use-config";
 import { useSettings } from "#/hooks/query/use-settings";

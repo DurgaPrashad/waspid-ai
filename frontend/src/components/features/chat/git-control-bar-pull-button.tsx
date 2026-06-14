@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import ArrowDownIcon from "#/icons/u-arrow-down.svg?react";
 import { cn, getGitPullPrompt } from "#/utils/utils";

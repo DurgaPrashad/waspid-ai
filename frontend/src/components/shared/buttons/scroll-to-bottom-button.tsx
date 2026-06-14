@@ -1,3 +1,4 @@
+// Waspid AI OS
 import ArrowSendIcon from "#/icons/arrow-send.svg?react";
 
 interface ScrollToBottomButtonProps {

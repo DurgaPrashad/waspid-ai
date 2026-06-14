@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add branch column to convo metadata table
 
 Revision ID: 006

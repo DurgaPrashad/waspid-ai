@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Resolve the *effective* organization ID for the current request.
 
 Precedence (highest first):

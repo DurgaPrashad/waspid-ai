@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import ReactJsonView from "@microlink/react-json-view";
 import { JSON_VIEW_THEME } from "#/utils/constants";

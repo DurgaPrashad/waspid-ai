@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React, { useRef, useCallback, useState, useEffect } from "react";
 
 interface UseFileHandlingReturn {

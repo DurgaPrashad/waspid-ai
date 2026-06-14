@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Bot, Play } from "lucide-react";
 import { AgentSpec } from "#/api/workforce-service/workforce.types";
 

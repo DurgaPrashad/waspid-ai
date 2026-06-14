@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Store for managing verified LLM models in the database."""
 
 from dataclasses import dataclass

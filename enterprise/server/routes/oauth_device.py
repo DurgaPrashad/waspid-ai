@@ -1,3 +1,4 @@
+# Waspid AI OS
 """OAuth 2.0 Device Flow endpoints for CLI authentication."""
 
 from datetime import UTC, datetime, timedelta

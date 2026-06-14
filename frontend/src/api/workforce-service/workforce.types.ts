@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Types for the workforce agent factory API (/api/v1/workforce).
  * Mirrors waspid/app_server/workforce/workforce_models.py.

@@ -7,6 +7,7 @@ triggers:
 - azure_devops
 - azure
 ---
+<!-- Waspid AI OS -->
 
 You have access to an environment variable, `AZURE_DEVOPS_TOKEN`, which allows you to interact with
 the Azure DevOps API.

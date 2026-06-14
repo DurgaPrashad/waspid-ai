@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Test that the translation completeness check works correctly."""
 
 import os

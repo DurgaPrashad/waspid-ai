@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useSelectedOrganizationId } from "#/context/use-selected-organization";
 import { useOrganizations } from "#/hooks/query/use-organizations";
 

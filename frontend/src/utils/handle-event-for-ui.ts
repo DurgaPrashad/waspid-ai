@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WaspidEvent } from "#/types/v1/core";
 import { isACPToolCallEvent, isObservationEvent } from "#/types/v1/type-guards";
 

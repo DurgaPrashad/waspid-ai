@@ -1,3 +1,4 @@
+# Waspid AI OS
 loaders:
   - type: python
     search_path: [.]

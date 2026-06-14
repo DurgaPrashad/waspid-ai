@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Checks if the current page is the Terms of Service acceptance page.
  * This function works outside of React Router context by checking window.location directly.

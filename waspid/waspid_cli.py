@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Waspid command-line interface.
 
 A lightweight, cross-platform entry point for operating a Waspid

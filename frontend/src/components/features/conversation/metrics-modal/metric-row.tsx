@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ReactNode } from "react";
 
 interface MetricRowProps {

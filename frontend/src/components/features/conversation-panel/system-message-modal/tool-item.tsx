@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ToolParameters } from "./tool-parameters";
 import { ToggleButton } from "./toggle-button";
 import { ChatCompletionToolParam } from "#/types/v1/core";

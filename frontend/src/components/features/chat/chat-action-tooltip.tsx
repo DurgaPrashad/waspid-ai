@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { StyledTooltip } from "#/components/shared/buttons/styled-tooltip";
 
 interface ChatActionTooltipProps {

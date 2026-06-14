@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect, vi, test } from "vitest";
 import { getStatusText } from "#/utils/utils";
 import { AgentState } from "#/types/agent-state";

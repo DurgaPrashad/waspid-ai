@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the workflow runtime engine (agent execution faked).
 
 The fake gateway records every launch and lets tests fire completions,

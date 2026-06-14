@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { render, screen, waitFor } from "@testing-library/react";
 import { createRoutesStub } from "react-router";
 import { beforeEach, describe, expect, it, vi } from "vitest";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { isWaspidAction, isActionOrObservation } from "#/types/core/guards";
 import { useEventStore } from "#/stores/use-event-store";

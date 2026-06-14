@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMutation } from "@tanstack/react-query";
 import { useActiveConversation } from "#/hooks/query/use-active-conversation";
 import { useV1UploadFiles } from "./use-v1-upload-files";

@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Develop in Docker
 
 > [!WARNING]

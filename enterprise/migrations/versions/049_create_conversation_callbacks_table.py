@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Create conversation callbacks table
 
 Revision ID: 049

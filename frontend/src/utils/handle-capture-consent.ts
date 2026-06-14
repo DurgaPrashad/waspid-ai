@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { PostHog } from "posthog-js";
 
 /**

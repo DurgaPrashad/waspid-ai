@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { useIsAuthed } from "./query/use-is-authed";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add onboarding_completed column to user table.
 
 Tracks whether a user has completed the onboarding flow.

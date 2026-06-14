@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { useConversationWebSocket } from "#/contexts/conversation-websocket-context";
 import { useEventStore } from "#/stores/use-event-store";

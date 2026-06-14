@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Service for forwarding Git provider webhook events to the automation service.
 

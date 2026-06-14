@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Trans } from "react-i18next";
 import React from "react";
 import { WaspidEvent, ObservationEvent, ActionEvent } from "#/types/v1/core";

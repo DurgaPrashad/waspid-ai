@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for conversation tags processing in webhook_router.
 
 This module tests the tag persistence, merging, and automation trigger detection

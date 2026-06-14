@@ -1,3 +1,4 @@
+# Waspid AI OS
 ---
 apiVersion: apps/v1
 kind: Deployment

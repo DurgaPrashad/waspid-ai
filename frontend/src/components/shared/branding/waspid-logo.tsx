@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { ComponentProps } from "react";
 import waspidLogoSrc from "#/assets/branding/waspid-logo.png";
 

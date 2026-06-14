@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Settings models for Waspid App Server.
 
 This module contains:

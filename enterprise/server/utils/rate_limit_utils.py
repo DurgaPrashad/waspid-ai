@@ -1,3 +1,4 @@
+# Waspid AI OS
 from fastapi import HTTPException, Request, status
 from storage.redis import get_redis_client_async
 

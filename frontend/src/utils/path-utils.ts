@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Path manipulation utilities
  */

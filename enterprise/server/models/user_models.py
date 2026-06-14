@@ -1,3 +1,4 @@
+# Waspid AI OS
 """SAAS-specific user models that extend OSS UserInfo with organization fields."""
 
 from pydantic import BaseModel

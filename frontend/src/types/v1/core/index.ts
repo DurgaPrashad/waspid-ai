@@ -1,3 +1,4 @@
+// Waspid AI OS
 // Export all core types
 
 // Base types (primitive types like Action, Observation, common interfaces)

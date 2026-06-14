@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useRef, useState, useCallback } from "react";
 import { useAutoResize } from "#/hooks/use-auto-resize";
 import { CHAT_INPUT } from "#/utils/constants";

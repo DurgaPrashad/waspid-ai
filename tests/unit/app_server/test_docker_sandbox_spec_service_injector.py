@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for DockerSandboxSpecServiceInjector.
 
 This module tests the Docker sandbox spec service injector implementation, focusing on:

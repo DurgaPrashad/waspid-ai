@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ActionEvent } from "#/types/v1/core";
 import { FinishAction } from "#/types/v1/core/base/action";
 import { ChatMessage } from "../../../features/chat/chat-message";

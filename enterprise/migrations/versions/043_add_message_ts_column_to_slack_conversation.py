@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add parent_id column and index to slack conversation table
 
 Revision ID: 043

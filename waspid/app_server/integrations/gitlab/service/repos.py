@@ -1,3 +1,4 @@
+# Waspid AI OS
 from waspid.app_server.config_api.config_models import AppMode
 from waspid.app_server.integrations.gitlab.service.base import GitLabMixinBase
 from waspid.app_server.integrations.service_types import (

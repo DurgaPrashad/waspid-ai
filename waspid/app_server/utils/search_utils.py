@@ -1,3 +1,4 @@
+# Waspid AI OS
 import base64
 from typing import AsyncIterator, Callable
 

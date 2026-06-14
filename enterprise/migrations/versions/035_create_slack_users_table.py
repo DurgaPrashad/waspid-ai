@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create slack users table
 
 Revision ID: 035

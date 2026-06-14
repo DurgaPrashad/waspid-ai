@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 
 import { browserTab } from "#/utils/browser-tab";

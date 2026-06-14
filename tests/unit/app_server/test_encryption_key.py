@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for encryption key utilities.
 
 This module tests the get_default_encryption_keys function which handles:

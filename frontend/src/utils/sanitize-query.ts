@@ -1,3 +1,4 @@
+// Waspid AI OS
 export const sanitizeQuery = (query: string) =>
   query
     .trim()

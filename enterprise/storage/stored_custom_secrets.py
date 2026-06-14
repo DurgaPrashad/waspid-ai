@@ -1,3 +1,4 @@
+# Waspid AI OS
 from typing import TYPE_CHECKING
 from uuid import UUID
 

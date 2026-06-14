@@ -1,3 +1,4 @@
+// Waspid AI OS
 /** V1 Config API types for models and providers */
 
 export interface LLMModel {

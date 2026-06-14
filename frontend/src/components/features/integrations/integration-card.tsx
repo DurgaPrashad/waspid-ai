@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Link } from "react-router";
 import { ArrowUpRight } from "lucide-react";
 import { StatusPill } from "#/components/shared/layout/status-pill";

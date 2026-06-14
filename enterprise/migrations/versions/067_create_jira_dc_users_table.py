@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create jira_dc_users table
 
 Revision ID: 067

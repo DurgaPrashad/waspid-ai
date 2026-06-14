@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect, afterEach, vi, beforeEach } from "vitest";
 import { renderHook, waitFor, act } from "@testing-library/react";
 import { useHandlePlanClick } from "#/hooks/use-handle-plan-click";

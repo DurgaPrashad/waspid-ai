@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for GitLab integration routes."""
 
 from unittest.mock import AsyncMock, MagicMock, patch

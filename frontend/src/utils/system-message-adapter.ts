@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { OHEvent } from "#/stores/use-event-store";
 import { isActionOrObservation, isSystemMessage } from "#/types/core/guards";
 import { ChatCompletionToolParam } from "#/types/v1/core";

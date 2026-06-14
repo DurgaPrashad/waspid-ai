@@ -1,3 +1,4 @@
+# Waspid AI OS
 import hashlib
 import hmac
 import json

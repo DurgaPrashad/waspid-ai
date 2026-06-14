@@ -1,3 +1,4 @@
+# Waspid AI OS
 from waspid.app_server.integrations.github.queries import (
     search_branches_graphql_query,
 )

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Utilities for loading hooks for V1 conversations.
 
 This module provides functions to load hooks from the agent-server,

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Enterprise injector for PendingMessageService with SAAS filtering."""
 
 from typing import AsyncGenerator

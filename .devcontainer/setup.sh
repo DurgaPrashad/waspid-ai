@@ -1,4 +1,5 @@
 #!/bin/bash
+# Waspid AI OS
 
 # Mark the current repository as safe for Git to prevent "dubious ownership" errors,
 # which can occur in containerized environments when directory ownership doesn't match the current user.

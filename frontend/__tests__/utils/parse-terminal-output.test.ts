@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect } from "vitest";
 import { parseTerminalOutput } from "../../src/utils/parse-terminal-output";
 

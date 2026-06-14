@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
 import { screen } from "@testing-library/react";
 import { EventMessage } from "#/components/v1/chat/event-message";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * TODO: Fix flaky WebSocket tests (https://github.com/Waspid/Waspid/issues/11944)
  *

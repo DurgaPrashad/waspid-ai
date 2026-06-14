@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { UserAvatar } from "#/components/features/sidebar/user-avatar";

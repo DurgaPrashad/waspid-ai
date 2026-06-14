@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Shared identity helpers for resolving user profile fields from Keycloak claims."""
 
 

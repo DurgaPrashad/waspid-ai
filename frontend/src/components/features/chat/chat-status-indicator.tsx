@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { cn } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import DebugStackframeDot from "#/icons/debug-stackframe-dot.svg?react";

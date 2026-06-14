@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, it } from "vitest";
 import { Provider } from "#/types/settings";
 import { convertRawProvidersToList } from "#/utils/convert-raw-providers-to-list";

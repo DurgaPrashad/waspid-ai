@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import SettingsIcon from "#/icons/settings-gear.svg?react";
 import { Typography } from "#/ui/typography";

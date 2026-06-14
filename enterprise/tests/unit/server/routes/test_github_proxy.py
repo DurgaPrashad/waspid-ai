@@ -1,3 +1,4 @@
+# Waspid AI OS
 from unittest.mock import patch
 from urllib.parse import parse_qs, urlparse
 

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { WebhookStatusBadge } from "#/components/features/settings/git-settings/webhook-status-badge";

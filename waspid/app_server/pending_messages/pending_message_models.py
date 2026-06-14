@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Models for pending message queue functionality."""
 
 from datetime import datetime

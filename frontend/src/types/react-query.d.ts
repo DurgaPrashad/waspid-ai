@@ -1,3 +1,4 @@
+// Waspid AI OS
 import "@tanstack/react-query";
 import type { AxiosError } from "axios";
 

@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 
 # Contributor Covenant Code of Conduct
 

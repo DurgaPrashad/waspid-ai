@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useSelectConversationTab } from "#/hooks/use-select-conversation-tab";

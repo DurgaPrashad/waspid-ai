@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create user-repos table
 
 Revision ID: 027

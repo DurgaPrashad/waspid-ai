@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type {
   GitChangeStatus,
   V1GitChangeStatus,

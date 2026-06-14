@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useConfig } from "#/hooks/query/use-config";
 import {
   SAAS_NAV_ITEMS,

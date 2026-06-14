@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for SaasAppLifespanService."""
 
 from unittest.mock import MagicMock, patch

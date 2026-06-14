@@ -1,3 +1,4 @@
+// Waspid AI OS
 export type RuntimeStatus =
   | "STATUS$STOPPED"
   | "STATUS$BUILDING_RUNTIME"

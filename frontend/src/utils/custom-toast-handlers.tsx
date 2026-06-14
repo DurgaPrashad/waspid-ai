@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { CSSProperties } from "react";
 import toast, { ToastOptions } from "react-hot-toast";
 import { calculateToastDuration } from "./toast-duration";

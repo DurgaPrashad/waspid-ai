@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Conversation path helpers for consistent path construction.
 
 This module provides helper functions for constructing conversation-related

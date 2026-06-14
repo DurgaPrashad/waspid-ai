@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add email and email_verified columns to user_settings table.
 
 Revision ID: 054

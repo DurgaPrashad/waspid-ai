@@ -1,3 +1,4 @@
+// Waspid AI OS
 import LoadingSpinnerOuter from "#/icons/loading-outer.svg?react";
 import { cn } from "#/utils/utils";
 

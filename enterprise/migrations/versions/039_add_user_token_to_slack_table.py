@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add user token to conversation metadata table
 
 Revision ID: 039

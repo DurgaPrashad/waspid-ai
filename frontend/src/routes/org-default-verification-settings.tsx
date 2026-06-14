@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { OrgDefaultsBanner } from "#/components/features/settings/org-defaults-banner";
 import { createPermissionGuard } from "#/utils/org/permission-guard";
 import { VerificationSettingsScreen } from "./verification-settings";

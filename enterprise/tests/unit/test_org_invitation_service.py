@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for organization invitation service - email validation."""
 
 from unittest.mock import AsyncMock, MagicMock, patch

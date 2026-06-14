@@ -1,3 +1,4 @@
+# Waspid AI OS
 from keycloak.keycloak_admin import KeycloakAdmin
 from keycloak.keycloak_openid import KeycloakOpenID
 from server.auth.constants import (

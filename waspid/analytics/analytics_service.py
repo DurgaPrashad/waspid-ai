@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Core analytics service for Waspid.
 
 Provides a thin wrapper around the PostHog SDK with:

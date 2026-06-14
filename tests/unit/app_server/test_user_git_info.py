@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for the GET /users/git-info endpoint in user_router.py.
 
 Tests:

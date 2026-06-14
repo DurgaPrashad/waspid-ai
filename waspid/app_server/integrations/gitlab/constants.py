@@ -1,3 +1,4 @@
+# Waspid AI OS
 """GitLab configuration constants.
 
 GITLAB_HOST is the hostname of the GitLab instance (e.g. 'gitlab.example.com').

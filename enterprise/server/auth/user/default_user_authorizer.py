@@ -1,3 +1,4 @@
+# Waspid AI OS
 import logging
 from dataclasses import dataclass
 from typing import AsyncGenerator

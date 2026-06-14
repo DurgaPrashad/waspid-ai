@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ACPToolCallEvent } from "#/types/v1/core/events/acp-tool-call-event";
 import i18n from "#/i18n";
 import { MAX_CONTENT_LENGTH } from "./shared";

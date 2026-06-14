@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { IoChevronDown, IoChevronForward } from "react-icons/io5";
 import { I18nKey } from "#/i18n/declaration";

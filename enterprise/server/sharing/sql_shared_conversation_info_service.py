@@ -1,3 +1,4 @@
+# Waspid AI OS
 """SQL implementation of SharedConversationInfoService.
 
 This implementation provides read-only access to shared conversations:

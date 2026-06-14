@@ -1,3 +1,4 @@
+# Waspid AI OS
 # waspid/app_server/integrations/github/service/__init__.py
 
 from .base import GitHubMixinBase

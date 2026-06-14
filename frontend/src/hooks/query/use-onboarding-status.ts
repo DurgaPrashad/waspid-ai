@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import { onboardingService } from "#/api/onboarding-service/onboarding-service.api";
 import { useConfig } from "./use-config";

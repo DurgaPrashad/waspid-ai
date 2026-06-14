@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Unit tests for permission-based authorization (authorization.py).
 

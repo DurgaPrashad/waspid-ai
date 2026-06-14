@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add disabled_skills to user_settings.
 
 Revision ID: 102

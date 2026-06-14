@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, it, test } from "vitest";
 import { hasAdvancedSettingsSet } from "#/utils/has-advanced-settings-set";
 import { DEFAULT_SETTINGS } from "#/services/settings";

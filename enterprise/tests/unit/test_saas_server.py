@@ -1,3 +1,4 @@
+# Waspid AI OS
 import os
 import subprocess
 import sys

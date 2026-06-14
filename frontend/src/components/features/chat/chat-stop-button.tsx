@@ -1,3 +1,4 @@
+// Waspid AI OS
 import PauseIcon from "#/icons/pause.svg?react";
 
 export interface ChatStopButtonProps {

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { act, render, screen, waitFor } from "@testing-library/react";
 import React, { StrictMode } from "react";
 import { createRoutesStub, MemoryRouter } from "react-router";

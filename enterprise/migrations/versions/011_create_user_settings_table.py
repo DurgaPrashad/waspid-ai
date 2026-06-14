@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create user settings table
 
 Revision ID: 011

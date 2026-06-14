@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { SlashCommandItem } from "#/hooks/chat/use-slash-command";
 
 export const ASSET_FILE_TYPES = [

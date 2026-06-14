@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { HTMLProps } from "../../../shared/types";
 import { cn } from "../../../shared/utils/cn";
 import React from "react";

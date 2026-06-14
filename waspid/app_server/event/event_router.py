@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Event router for Waspid App Server."""
 
 from datetime import datetime

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Autocomplete, AutocompleteItem } from "@heroui/react";
 import React, { ReactNode } from "react";
 import { useTranslation } from "react-i18next";

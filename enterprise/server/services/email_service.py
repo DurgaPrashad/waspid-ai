@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Email service for sending transactional emails via Resend."""
 
 import os

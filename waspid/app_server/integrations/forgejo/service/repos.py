@@ -1,3 +1,4 @@
+# Waspid AI OS
 from __future__ import annotations
 
 from waspid.app_server.integrations.forgejo.service.base import ForgejoMixinBase

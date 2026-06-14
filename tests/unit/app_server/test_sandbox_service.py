@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for SandboxService base class.
 
 This module tests the SandboxService base class implementation, focusing on:

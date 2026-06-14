@@ -1,3 +1,4 @@
+# Waspid AI OS
 name: Compute Docker image tags
 description: Produce the canonical Waspid Docker tag set (ref name, short SHA, full SHA — each in bare and `sha-` prefixed form) for a given image, with optional suffix and extra raw tags.
 

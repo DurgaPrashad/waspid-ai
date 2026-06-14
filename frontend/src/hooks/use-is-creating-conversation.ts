@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useIsMutating } from "@tanstack/react-query";
 import { useNavigation } from "react-router";
 

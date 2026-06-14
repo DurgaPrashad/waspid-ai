@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Device code storage model for OAuth 2.0 Device Flow."""
 
 from datetime import datetime, timezone

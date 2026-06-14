@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for web_client_deployment_mode module."""
 
 from unittest.mock import patch

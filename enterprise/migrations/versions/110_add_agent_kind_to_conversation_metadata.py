@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add agent_kind column to conversation_metadata table.
 
 Stores the agent type ('llm' or 'acp') for each conversation so the

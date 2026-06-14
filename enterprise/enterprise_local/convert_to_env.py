@@ -1,3 +1,4 @@
+# Waspid AI OS
 import base64
 import os
 import sys

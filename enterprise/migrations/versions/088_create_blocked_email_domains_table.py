@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create blocked_email_domains table
 
 Revision ID: 088

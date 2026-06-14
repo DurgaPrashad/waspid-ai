@@ -1,3 +1,4 @@
+# Waspid AI OS
 import re
 import sys
 import textwrap

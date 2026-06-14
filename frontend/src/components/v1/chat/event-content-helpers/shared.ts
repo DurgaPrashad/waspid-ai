@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WaspidEvent } from "#/types/v1/core";
 
 export const MAX_CONTENT_LENGTH = 1000;

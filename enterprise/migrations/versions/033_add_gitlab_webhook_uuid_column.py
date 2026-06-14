@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add status column to gitlab-webhook table
 
 Revision ID: 033

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add search_api_key to user_settings
 
 Revision ID: 040

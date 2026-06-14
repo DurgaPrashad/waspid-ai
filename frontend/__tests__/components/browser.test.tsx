@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect, afterEach, vi } from "vitest";
 import { screen, render } from "@testing-library/react";
 import React from "react";

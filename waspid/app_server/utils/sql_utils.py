@@ -1,3 +1,4 @@
+# Waspid AI OS
 from datetime import UTC, datetime
 from enum import Enum
 from typing import TypeVar

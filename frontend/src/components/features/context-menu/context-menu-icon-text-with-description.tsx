@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { ContextMenuIconText } from "./context-menu-icon-text";
 import { Typography } from "#/ui/typography";

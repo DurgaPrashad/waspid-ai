@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useEffect } from "react";
 import { useConversationId } from "#/hooks/use-conversation-id";
 import { useUserConversation } from "./use-user-conversation";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, expect, it, vi, beforeEach, afterEach, Mock } from "vitest";
 import axios from "axios";
 import V1ConversationService from "#/api/conversation-service/v1-conversation-service.api";

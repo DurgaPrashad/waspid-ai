@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid Enterprise Usage Telemetry Service
 
 ## Table of Contents

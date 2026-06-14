@@ -1,3 +1,4 @@
+// Waspid AI OS
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";

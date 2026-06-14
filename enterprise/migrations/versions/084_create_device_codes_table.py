@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Create device_codes table for OAuth 2.0 Device Flow
 
 Revision ID: 084

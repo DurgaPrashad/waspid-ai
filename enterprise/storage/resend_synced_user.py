@@ -1,3 +1,4 @@
+# Waspid AI OS
 """SQLAlchemy model for tracking users synced to Resend audiences."""
 
 from datetime import UTC, datetime

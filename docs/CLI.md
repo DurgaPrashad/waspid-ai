@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid CLI
 
 The `waspid` command is installed with the Python package

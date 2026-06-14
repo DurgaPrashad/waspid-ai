@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Pydantic models and custom exceptions for organization invitations.
 """

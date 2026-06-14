@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useOrganizations } from "#/hooks/query/use-organizations";
 import { useConfig } from "#/hooks/query/use-config";
 

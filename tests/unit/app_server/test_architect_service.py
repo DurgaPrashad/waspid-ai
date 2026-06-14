@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the Workforce Architect service (LLM stubbed)."""
 
 import json

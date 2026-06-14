@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for SetTitleCallbackProcessor registration in webhook_router.
 
 This module tests that SetTitleCallbackProcessor is correctly registered

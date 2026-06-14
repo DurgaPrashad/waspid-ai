@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for waspid.app_server.constants module."""
 
 import os

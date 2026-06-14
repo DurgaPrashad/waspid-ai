@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # External Integrations
 
 Waspid integrates with external services (GitHub, Slack, Jira, etc.) through webhook-based event handling:

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for the methods in LiveStatusAppConversationService."""
 
 import io

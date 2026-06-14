@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useLocation } from "react-router";
 
 const INTERMEDIATE_PAGE_PATHS = ["/accept-tos", "/information-request"];

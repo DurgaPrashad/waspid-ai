@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Sync DB with Models
 
 Revision ID: 076

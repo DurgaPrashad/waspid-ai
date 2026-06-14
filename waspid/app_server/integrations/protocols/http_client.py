@@ -1,3 +1,4 @@
+# Waspid AI OS
 """HTTP Client Protocol for Git Service Integrations."""
 
 from abc import ABC, abstractmethod

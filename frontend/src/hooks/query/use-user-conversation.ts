@@ -1,3 +1,4 @@
+// Waspid AI OS
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Query, useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";

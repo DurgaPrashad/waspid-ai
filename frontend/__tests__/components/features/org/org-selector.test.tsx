@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { screen, render, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi, beforeEach } from "vitest";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { openHands } from "../open-hands-axios";
 import { Settings, SettingsSchema } from "#/types/settings";
 

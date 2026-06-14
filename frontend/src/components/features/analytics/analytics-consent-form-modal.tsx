@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { usePostHog } from "posthog-js/react";
 import {

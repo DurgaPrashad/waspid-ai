@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Development Guide
 
 This guide is for people working on the Waspid codebase and editing the source code.

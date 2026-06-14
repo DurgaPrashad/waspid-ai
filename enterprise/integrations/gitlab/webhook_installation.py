@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Shared utilities for GitLab webhook installation.
 
 This module contains reusable functions and classes for installing GitLab webhooks

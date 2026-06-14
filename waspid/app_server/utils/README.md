@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid Utilities
 
 Common utility functions and helpers for Waspid app server.

@@ -1,3 +1,4 @@
+// Waspid AI OS
 export interface ConfirmationResponseRequest {
   accept: boolean;
   reason?: string;

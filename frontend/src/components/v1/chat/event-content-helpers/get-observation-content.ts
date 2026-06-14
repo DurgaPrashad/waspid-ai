@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ObservationEvent } from "#/types/v1/core";
 import { getObservationResult } from "./get-observation-result";
 import { getDefaultEventContent, MAX_CONTENT_LENGTH } from "./shared";

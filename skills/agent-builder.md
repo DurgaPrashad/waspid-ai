@@ -9,6 +9,7 @@ inputs:
   - name: INITIAL_PROMPT
     description: "Initial SDK requirements"
 ---
+<!-- Waspid AI OS -->
 
 # Agent Builder and Interviewer Role
 

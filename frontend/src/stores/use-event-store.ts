@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { create } from "zustand";
 import { WaspidEvent } from "#/types/v1/core";
 import { handleEventForUI } from "#/utils/handle-event-for-ui";

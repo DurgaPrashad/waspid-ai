@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMemo } from "react";
 import { useEventStore } from "#/stores/use-event-store";
 import type { OHEvent } from "#/stores/use-event-store";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 export { Messages } from "./messages";
 export { EventMessage } from "./event-message";
 export * from "./event-message-components";

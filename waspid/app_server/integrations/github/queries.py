@@ -1,3 +1,4 @@
+# Waspid AI OS
 suggested_task_pr_graphql_query = """
     query GetUserPRs($login: String!) {
         user(login: $login) {

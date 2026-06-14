@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for TelemetryIdentity model.
 
 Tests the persistent identity storage for the Waspid Enterprise Telemetry Service.

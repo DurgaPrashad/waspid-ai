@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add type column to billing_sessions
 
 Revision ID: 073

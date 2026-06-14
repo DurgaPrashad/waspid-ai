@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Integration test for user auth settings flow."""
 
 from unittest.mock import AsyncMock, patch

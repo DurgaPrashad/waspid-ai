@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add session_api_key_hash to v1_remote_sandbox table
 
 Revision ID: 097

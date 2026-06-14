@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for URL utility functions that prevent URL hijacking attacks."""
 
 from unittest.mock import MagicMock, patch

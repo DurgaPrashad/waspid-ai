@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BrandButton } from "#/components/features/settings/brand-button";

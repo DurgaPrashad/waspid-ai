@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create proactive conversation starters commits table
 
 Revision ID: 034

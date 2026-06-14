@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add enable_sound_notifications column to settings table
 
 Revision ID: 007

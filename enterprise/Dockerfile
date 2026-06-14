@@ -1,3 +1,4 @@
+# Waspid AI OS
 ARG WASPID_VERSION=latest
 ARG BASE="ghcr.io/waspid/waspid"
 FROM ${BASE}:${WASPID_VERSION}

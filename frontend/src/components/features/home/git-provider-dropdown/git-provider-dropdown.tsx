@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React, { useState, useMemo, useEffect } from "react";
 import { useCombobox } from "downshift";
 import { Provider } from "#/types/settings";

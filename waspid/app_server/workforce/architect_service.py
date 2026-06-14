@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Workforce Architect: generates a workforce definition from an objective.
 
 The architect is deliberately decoupled from any specific LLM client: it

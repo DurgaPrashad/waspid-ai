@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { LoaderCircle } from "lucide-react";
 import FileIcon from "#/icons/file.svg?react";
 import { RemoveFileButton } from "./remove-file-button";

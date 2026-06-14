@@ -1,3 +1,4 @@
+# Waspid AI OS
 """REST API router for pending messages."""
 
 import logging

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for resolve_provider_llm_base_url in waspid.app_server.config."""
 
 from waspid.app_server.config import (

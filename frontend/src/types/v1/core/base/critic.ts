@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * A single feature detected by the critic (e.g., "Insufficient Testing").
  */

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useState, useEffect, useRef } from "react";
 
 const MOBILE_BREAKPOINT = 1024;

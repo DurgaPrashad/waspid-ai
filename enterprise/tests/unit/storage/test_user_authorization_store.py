@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for UserAuthorizationStore using SQLite in-memory database."""
 
 from unittest.mock import patch

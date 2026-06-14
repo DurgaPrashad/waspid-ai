@@ -1,3 +1,4 @@
+# Waspid AI OS
 from unittest.mock import patch
 
 from waspid.app_server.utils.docker_utils import (

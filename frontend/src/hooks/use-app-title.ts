@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useParams } from "react-router";
 import { useConfig } from "#/hooks/query/use-config";
 import { useUserConversation } from "#/hooks/query/use-user-conversation";

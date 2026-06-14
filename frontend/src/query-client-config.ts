@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { QueryCache, MutationCache, QueryClient } from "@tanstack/react-query";
 import i18next from "i18next";
 import { AxiosError } from "axios";

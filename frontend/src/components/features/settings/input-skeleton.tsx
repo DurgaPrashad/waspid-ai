@@ -1,3 +1,4 @@
+// Waspid AI OS
 export function InputSkeleton() {
   return (
     <div className="flex flex-col gap-2.5">

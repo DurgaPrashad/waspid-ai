@@ -1,3 +1,4 @@
+// Waspid AI OS
 export type MockSessionMessaage = {
   source: "assistant" | "user";
   message: string;

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Utility functions for LLM metadata in Waspid V1 conversations."""
 
 import os

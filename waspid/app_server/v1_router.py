@@ -1,3 +1,4 @@
+# Waspid AI OS
 from fastapi import APIRouter
 
 from waspid.app_server.app_conversation import app_conversation_router

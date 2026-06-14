@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for resolver org routing logic.
 
 Tests the resolve_org_for_repo function which determines which Waspid

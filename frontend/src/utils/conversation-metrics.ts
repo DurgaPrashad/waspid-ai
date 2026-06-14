@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type {
   V1MetricsSnapshot,
   V1RuntimeConversationInfo,

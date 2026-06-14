@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import toast from "react-hot-toast";
 import {

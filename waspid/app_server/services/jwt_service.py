@@ -1,3 +1,4 @@
+# Waspid AI OS
 import binascii
 import hashlib
 import json

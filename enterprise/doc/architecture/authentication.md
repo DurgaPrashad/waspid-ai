@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Authentication Flow (SaaS Deployment)
 
 Waspid uses Keycloak for identity management in the SaaS deployment. The authentication flow involves multiple services:

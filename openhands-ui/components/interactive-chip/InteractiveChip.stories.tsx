@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { InteractiveChip, type InteractiveChipProps } from "./InteractiveChip";
 import { Icon } from "../icon/Icon";

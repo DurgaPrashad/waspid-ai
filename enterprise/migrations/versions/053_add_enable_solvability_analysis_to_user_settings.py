@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add enable_solvability_analysis column to user_settings table.
 
 Revision ID: 053

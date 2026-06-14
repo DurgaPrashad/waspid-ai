@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMemo } from "react";
 import { Activity } from "lucide-react";
 import { usePaginatedConversations } from "#/hooks/query/use-paginated-conversations";

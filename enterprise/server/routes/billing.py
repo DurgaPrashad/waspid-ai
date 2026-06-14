@@ -1,3 +1,4 @@
+# Waspid AI OS
 # billing.py - Handles all billing-related operations including credit management and Stripe integration
 import typing
 from datetime import UTC, datetime

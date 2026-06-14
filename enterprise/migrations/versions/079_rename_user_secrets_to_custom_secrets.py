@@ -1,3 +1,4 @@
+# Waspid AI OS
 """rename user_secrets table to custom_secrets
 
 Revision ID: 079

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { trackError } from "#/utils/error-handler";
 import useMetricsStore from "#/stores/metrics-store";
 import { useStatusStore } from "#/stores/status-store";

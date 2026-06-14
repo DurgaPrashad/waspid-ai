@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// Waspid AI OS
 
 /**
  * Pre-commit hook script to check for translation completeness

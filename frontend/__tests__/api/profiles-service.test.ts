@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { openHands } from "#/api/open-hands-axios";
 import ProfilesService from "#/api/settings-service/profiles-service.api";

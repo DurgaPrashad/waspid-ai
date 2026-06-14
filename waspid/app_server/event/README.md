@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Event Management
 
 Handles event storage, retrieval, and streaming for the Waspid app server.

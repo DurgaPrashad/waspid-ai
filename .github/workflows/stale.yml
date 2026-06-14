@@ -1,3 +1,4 @@
+# Waspid AI OS
 # Workflow that marks issues and PRs with no activity for 30 days with "Stale" and closes them after 7 more days of no activity
 name: 'Close stale issues'
 

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMemo } from "react";
 import { OrganizationUserRole } from "#/types/org";
 import { rolePermissions, PermissionKey } from "#/utils/org/permissions";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Config-related models for Waspid App Server V1 API."""
 
 from enum import Enum

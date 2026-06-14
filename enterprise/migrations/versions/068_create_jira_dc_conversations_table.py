@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create jira_dc_conversations table
 
 Revision ID: 068

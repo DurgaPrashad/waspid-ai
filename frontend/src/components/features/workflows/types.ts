@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Waspid workflows domain helpers.
  *

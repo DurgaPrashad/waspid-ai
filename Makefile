@@ -1,3 +1,4 @@
+# Waspid AI OS
 SHELL=/usr/bin/env bash
 # Makefile for Waspid
 

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add mcp_config to org_member for user-specific MCP settings.
 
 Revision ID: 103

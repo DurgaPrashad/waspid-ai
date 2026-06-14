@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Create conversation feedback table
 
 Revision ID: 046

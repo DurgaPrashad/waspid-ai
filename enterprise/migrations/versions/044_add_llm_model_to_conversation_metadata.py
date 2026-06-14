@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add llm_model to conversation_metadata
 
 Revision ID: 044

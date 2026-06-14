@@ -1,4 +1,5 @@
 #!/bin/bash
+# Waspid AI OS
 
 set -euxo pipefail
 

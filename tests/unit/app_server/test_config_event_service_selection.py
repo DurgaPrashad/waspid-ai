@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for config_from_env event service provider selection.
 
 This module tests the event service provider selection logic in config_from_env,

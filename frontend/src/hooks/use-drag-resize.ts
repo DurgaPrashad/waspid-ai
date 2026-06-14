@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { RefObject } from "react";
 import { EPS } from "#/utils/constants";
 import { isMobileDevice } from "#/utils/utils";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 export function TypingIndicator() {
   return (
     <div className="flex items-center space-x-1.5 bg-tertiary px-3 py-1.5 rounded-full">

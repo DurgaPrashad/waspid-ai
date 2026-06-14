@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ProfileActionsMenu } from "#/components/features/settings/profile-actions-menu";

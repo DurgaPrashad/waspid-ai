@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ReactNode } from "react";
 import { cn } from "#/utils/utils";
 

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Service for managing pending messages in SQL database."""
 
 from abc import ABC, abstractmethod

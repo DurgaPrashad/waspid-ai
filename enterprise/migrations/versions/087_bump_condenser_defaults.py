@@ -1,3 +1,4 @@
+# Waspid AI OS
 """bump condenser defaults: max_size 120->240
 
 Revision ID: 087

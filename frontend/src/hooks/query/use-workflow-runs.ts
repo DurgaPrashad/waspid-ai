@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useQuery } from "@tanstack/react-query";
 import WorkforceService from "#/api/workforce-service/workforce-service.api";
 import { useIsAuthed } from "./use-is-authed";

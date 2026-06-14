@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Enable solvability analysis for all users
 
 Revision ID: 057

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { AxiosError } from "axios";
 import { useTranslation } from "react-i18next";

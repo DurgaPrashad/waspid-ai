@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add mcp_config to user_settings
 
 Revision ID: 036

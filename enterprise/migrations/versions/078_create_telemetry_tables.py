@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create telemetry tables
 
 Revision ID: 078

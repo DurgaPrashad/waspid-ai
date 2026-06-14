@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Service for managing organization members."""
 
 from uuid import UUID

@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Sharing Package
 
 This package contains functionality for sharing conversations.

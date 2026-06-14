@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Constants for the Waspid App Server.
 
 This module contains constants that are used across the app server,

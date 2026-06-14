@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for the onboarding route.
 
 Covers:

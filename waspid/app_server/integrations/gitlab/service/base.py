@@ -1,3 +1,4 @@
+# Waspid AI OS
 from typing import Any
 
 import httpx

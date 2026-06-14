@@ -1,3 +1,4 @@
+// Waspid AI OS
 enum ObservationType {
   // The contents of a file
   READ = "read",

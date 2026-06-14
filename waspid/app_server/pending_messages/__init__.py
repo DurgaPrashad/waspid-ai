@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Pending messages module for server-side message queuing."""
 
 from waspid.app_server.pending_messages.pending_message_models import (

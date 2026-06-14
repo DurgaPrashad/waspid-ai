@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Remove duplicates from stripe. This is a non standard alembic migration for non sql resources.
 
 Revision ID: 019

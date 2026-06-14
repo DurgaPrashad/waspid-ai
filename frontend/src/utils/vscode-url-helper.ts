@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Helper function to transform VS Code URLs
  *

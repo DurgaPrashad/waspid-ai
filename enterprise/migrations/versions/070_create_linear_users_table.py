@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create linear_users table
 
 Revision ID: 070

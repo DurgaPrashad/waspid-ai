@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { UpgradeButton } from "./upgrade-button";
 import { BannerMessage } from "./banner-message";
 import { cn } from "#/utils/utils";

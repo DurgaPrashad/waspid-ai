@@ -1,3 +1,4 @@
+// Waspid AI OS
 enum TabOption {
   PLANNER = "planner",
   BROWSER = "browser",

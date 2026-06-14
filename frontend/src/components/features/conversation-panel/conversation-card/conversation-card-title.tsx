@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { cn } from "#/utils/utils";
 
 export type ConversationCardTitleMode = "view" | "edit";

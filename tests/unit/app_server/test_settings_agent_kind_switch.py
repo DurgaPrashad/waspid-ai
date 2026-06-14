@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for ``Settings.update`` agent-kind switch behaviour.
 
 The discriminated ``WaspidAgentSettings | ACPAgentSettings`` union means a

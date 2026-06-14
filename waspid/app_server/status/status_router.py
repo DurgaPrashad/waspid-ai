@@ -1,3 +1,4 @@
+# Waspid AI OS
 from fastapi import APIRouter
 
 from waspid.app_server.status.system_stats import get_system_info

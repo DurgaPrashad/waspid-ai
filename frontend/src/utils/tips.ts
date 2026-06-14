@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { I18nKey } from "#/i18n/declaration";
 
 const DOCS_BASE = "https://github.com/DurgaPrashad/waspid-ai/blob/main/docs";

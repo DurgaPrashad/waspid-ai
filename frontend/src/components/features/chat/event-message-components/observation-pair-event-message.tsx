@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { WaspidAction } from "#/types/core/actions";
 import { isWaspidAction } from "#/types/core/guards";

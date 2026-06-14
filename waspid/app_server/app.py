@@ -1,3 +1,4 @@
+# Waspid AI OS
 import contextlib
 import os
 import warnings

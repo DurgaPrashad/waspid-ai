@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for RecaptchaService."""
 
 import hashlib

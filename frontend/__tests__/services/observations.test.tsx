@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, vi, beforeEach, afterEach } from "vitest";
 
 // Mock the store module

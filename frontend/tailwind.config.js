@@ -1,3 +1,4 @@
+// Waspid AI OS
 /** @type {import('tailwindcss').Config} */
 import typography from "@tailwindcss/typography";
 

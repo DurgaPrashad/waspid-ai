@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for ApiKeyStore system key functionality."""
 
 import uuid

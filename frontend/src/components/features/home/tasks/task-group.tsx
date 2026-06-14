@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { FaBitbucket, FaGithub, FaGitlab } from "react-icons/fa6";
 import { TaskCard } from "./task-card";
 import { TaskItemTitle } from "./task-item-title";

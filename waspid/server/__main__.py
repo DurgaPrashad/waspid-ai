@@ -1,3 +1,4 @@
+# Waspid AI OS
 # DEPRECATED: This module is deprecated. Use uvicorn directly:
 #   uvicorn waspid.app_server.app:app --host 0.0.0.0 --port 3000
 #

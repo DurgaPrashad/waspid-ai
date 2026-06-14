@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { V1SandboxStatus } from "#/api/sandbox-service/sandbox-service.types";
 
 /**

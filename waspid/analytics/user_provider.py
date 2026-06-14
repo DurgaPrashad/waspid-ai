@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Abstract base class for analytics user lookup.
 
 This module provides an extension point for user lookup in analytics contexts.

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import {
   useConversationWebSocket,
   V1_WebSocketConnectionState,

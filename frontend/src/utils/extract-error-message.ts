@@ -1,3 +1,4 @@
+// Waspid AI OS
 /**
  * Pull a user-facing message off an unknown error, preferring FastAPI's
  * `detail` field, then a generic `message` body field, then `Error.message`,

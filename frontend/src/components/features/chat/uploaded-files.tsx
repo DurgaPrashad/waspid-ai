@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { UploadedFile } from "./uploaded-file";
 import { UploadedImage } from "./uploaded-image";
 import { useConversationStore } from "#/stores/conversation-store";

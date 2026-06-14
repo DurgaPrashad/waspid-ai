@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useEffect, useRef, useCallback, useState } from "react";
 import {
   useConversationLocalStorageState,

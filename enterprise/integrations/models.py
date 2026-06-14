@@ -1,3 +1,4 @@
+# Waspid AI OS
 from enum import Enum
 from typing import Any
 

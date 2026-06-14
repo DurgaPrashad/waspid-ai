@@ -1,3 +1,4 @@
+# Waspid AI OS
 from uuid import UUID
 
 from waspid.app_server.integrations.provider import (

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ComponentType } from "react";
 import { cn } from "#/utils/utils";
 

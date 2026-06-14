@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useId } from "react";
 import type { BaseProps, HTMLProps } from "../../shared/types";
 import { Typography } from "../typography/Typography";

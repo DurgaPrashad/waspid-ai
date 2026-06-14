@@ -1,3 +1,4 @@
+// Waspid AI OS
 // Main component
 export { GitRepoDropdown } from "./git-repo-dropdown";
 export type { GitRepoDropdownProps } from "./git-repo-dropdown";

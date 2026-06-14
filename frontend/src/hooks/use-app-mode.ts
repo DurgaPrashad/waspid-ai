@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMemo } from "react";
 import { useConfig } from "#/hooks/query/use-config";
 

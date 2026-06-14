@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { isHookExecutionEvent } from "#/types/v1/type-guards";

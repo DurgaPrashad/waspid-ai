@@ -1,3 +1,4 @@
+// Waspid AI OS
 import axios from "axios";
 import { openHands } from "../open-hands-axios";
 import { ConversationTrigger, GetVSCodeUrlResponse } from "../open-hands.types";

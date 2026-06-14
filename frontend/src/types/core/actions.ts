@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WaspidActionEvent } from "./base";
 import { ActionSecurityRisk } from "#/stores/security-analyzer-store";
 

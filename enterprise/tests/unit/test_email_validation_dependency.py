@@ -1,3 +1,4 @@
+# Waspid AI OS
 """
 Unit tests for email validation dependency (get_admin_user_id).
 

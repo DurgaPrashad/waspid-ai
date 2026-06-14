@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { act, screen } from "@testing-library/react";
 import { renderWithProviders } from "test-utils";
 import { vi, describe, afterEach, it, expect } from "vitest";

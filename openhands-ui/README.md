@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # @waspid/ui
 
 The shared React component library used by the Waspid frontend. Built with TypeScript and Tailwind CSS.

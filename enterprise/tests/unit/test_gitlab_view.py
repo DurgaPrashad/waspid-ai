@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for GitLab resolver org routing logic.
 
 Tests that the GitLab resolver correctly resolves the target organization

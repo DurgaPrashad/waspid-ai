@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { describe, it, expect } from "vitest";
 
 describe("GitControlBar clone prompt format", () => {

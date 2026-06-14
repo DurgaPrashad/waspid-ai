@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Credits
 
 This file is the single home for Waspid's upstream attribution. Waspid is an

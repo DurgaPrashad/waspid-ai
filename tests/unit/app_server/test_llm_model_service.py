@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for the LLM model service."""
 
 from unittest.mock import AsyncMock, MagicMock, patch

@@ -1,3 +1,4 @@
+# Waspid AI OS
 from datetime import datetime
 
 # Simplified imports to avoid dependency chain issues

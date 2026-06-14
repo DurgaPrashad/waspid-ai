@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add v1_enabled column to user_settings
 
 Revision ID: 083

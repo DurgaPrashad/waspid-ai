@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Provider } from "#/types/settings";

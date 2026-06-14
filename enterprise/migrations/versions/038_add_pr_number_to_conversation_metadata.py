@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add pr_number to conversation metadata table
 
 Revision ID: 038

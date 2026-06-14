@@ -1,3 +1,4 @@
+# Waspid AI OS
 import asyncio
 
 from pydantic import SecretStr

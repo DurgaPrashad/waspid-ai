@@ -1,3 +1,4 @@
+// Waspid AI OS
 import posthog from "posthog-js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { handleCaptureConsent } from "#/utils/handle-capture-consent";

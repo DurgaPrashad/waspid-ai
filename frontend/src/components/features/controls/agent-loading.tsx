@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { LoaderCircle } from "lucide-react";
 
 export function AgentLoading() {

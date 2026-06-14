@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { redirect } from "react-router";
 import { queryClient } from "#/query-client-config";
 import OptionService from "#/api/option-service/option-service.api";

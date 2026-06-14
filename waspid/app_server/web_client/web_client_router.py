@@ -1,3 +1,4 @@
+# Waspid AI OS
 from fastapi import APIRouter
 
 from waspid.app_server.config import get_global_config

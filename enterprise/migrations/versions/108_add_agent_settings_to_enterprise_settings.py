@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add agent_settings columns to enterprise settings tables.
 
 Revision ID: 108

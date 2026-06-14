@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WaspidAction } from "./actions";
 import { WaspidObservation } from "./observations";
 import { WaspidVariance } from "./variances";

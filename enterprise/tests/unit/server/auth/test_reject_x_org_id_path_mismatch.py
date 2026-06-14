@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for the ``reject_x_org_id_path_mismatch`` FastAPI dependency.
 
 The guard's job is narrow: when a route has ``{org_id}`` in its path

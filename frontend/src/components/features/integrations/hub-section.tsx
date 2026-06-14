@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useState } from "react";
 import {
   Activity,

@@ -1,3 +1,4 @@
+// Waspid AI OS
 export interface AuthenticateResponse {
   message?: string;
   error?: string;

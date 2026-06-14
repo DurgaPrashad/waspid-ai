@@ -1,3 +1,4 @@
+# Waspid AI OS
 import datetime
 import hashlib
 import os

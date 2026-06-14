@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import IntegrationsHubService from "#/api/integrations-hub/integrations-hub.api";
 import { useIsAuthed } from "./use-is-authed";

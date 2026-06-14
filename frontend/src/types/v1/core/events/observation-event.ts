@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { EventID, ToolCallID } from "../base/common";
 import { BaseEvent } from "../base/event";
 import { Observation } from "../base/observation";

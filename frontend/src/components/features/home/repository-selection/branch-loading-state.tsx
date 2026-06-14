@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { Spinner } from "@heroui/react";
 import { cn } from "#/utils/utils";

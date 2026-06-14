@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Waspid Agents Guide
 
 ## What an agent is in Waspid

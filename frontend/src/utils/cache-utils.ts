@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { QueryClient } from "@tanstack/react-query";
 import type { ActionEvent } from "#/types/v1/core/events/action-event";
 import { stripWorkspacePrefix } from "./path-utils";

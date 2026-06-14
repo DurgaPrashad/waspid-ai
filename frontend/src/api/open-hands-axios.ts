@@ -1,3 +1,4 @@
+// Waspid AI OS
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 export const openHands = axios.create({

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Pydantic models for the workforce agent factory."""
 
 from __future__ import annotations

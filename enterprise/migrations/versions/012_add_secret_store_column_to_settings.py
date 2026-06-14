@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add secret_store column to settings table
 Revision ID: 012
 Revises: 011

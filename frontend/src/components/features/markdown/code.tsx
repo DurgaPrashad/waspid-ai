@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { ExtraProps } from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { useNavigate, useSearchParams, useLocation } from "react-router";
 import { useIsAuthed } from "#/hooks/query/use-is-authed";

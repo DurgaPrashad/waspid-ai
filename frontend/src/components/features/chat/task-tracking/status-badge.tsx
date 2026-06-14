@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { getStatusClassName } from "#/utils/utils";
 
 interface StatusBadgeProps {

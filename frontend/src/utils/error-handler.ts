@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { handleStatusMessage } from "#/services/actions";
 import { displayErrorToast } from "./custom-toast-handlers";
 

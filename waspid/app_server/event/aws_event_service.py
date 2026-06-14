@@ -1,3 +1,4 @@
+# Waspid AI OS
 """AWS S3-based EventService implementation.
 
 This implementation uses role-based authentication (no credentials needed).

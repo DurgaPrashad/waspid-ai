@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Per-user sliding-window rate limiter for expensive endpoints.
 
 Complements the global per-IP ``RateLimitMiddleware``: that protects

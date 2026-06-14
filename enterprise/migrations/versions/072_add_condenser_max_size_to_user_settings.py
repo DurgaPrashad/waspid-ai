@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add condenser_max_size to user_settings
 
 Revision ID: 072

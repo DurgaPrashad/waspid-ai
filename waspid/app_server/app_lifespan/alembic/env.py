@@ -1,3 +1,4 @@
+# Waspid AI OS
 import logging
 import os
 import sys

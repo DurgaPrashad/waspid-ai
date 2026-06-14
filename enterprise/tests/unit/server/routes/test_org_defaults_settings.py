@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Unit tests for organization-default settings models and serialization."""
 
 from unittest.mock import MagicMock

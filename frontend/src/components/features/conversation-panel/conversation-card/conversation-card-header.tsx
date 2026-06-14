@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { V1SandboxStatus } from "#/api/sandbox-service/sandbox-service.types";
 import { ConversationCardTitle } from "./conversation-card-title";
 import { SandboxStatusIndicator } from "../../home/recent-conversations/sandbox-status-indicator";

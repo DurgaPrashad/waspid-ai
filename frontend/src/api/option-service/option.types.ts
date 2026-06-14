@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Provider } from "#/types/settings";
 
 export type DeploymentMode = "cloud" | "self_hosted";

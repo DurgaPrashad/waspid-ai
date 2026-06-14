@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Create user_authorizations table and migrate blocked_email_domains
 
 Revision ID: 099

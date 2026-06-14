@@ -1,3 +1,4 @@
+# Waspid AI OS
 """SaaS implementation of AnalyticsUserProvider.
 
 This module provides the enterprise implementation of AnalyticsUserProvider

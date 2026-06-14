@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Event Callbacks
 
 Manages webhooks and event callbacks for external system integration.

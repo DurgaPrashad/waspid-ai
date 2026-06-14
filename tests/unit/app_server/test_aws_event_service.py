@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for AwsEventService.
 
 This module tests the AWS S3-based implementation of EventService,

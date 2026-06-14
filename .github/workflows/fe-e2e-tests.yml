@@ -1,3 +1,4 @@
+# Waspid AI OS
 # Workflow that runs frontend e2e tests with Playwright
 name: Run Frontend E2E Tests
 

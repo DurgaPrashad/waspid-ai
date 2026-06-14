@@ -1,3 +1,4 @@
+# Waspid AI OS
 import time
 from dataclasses import dataclass
 from types import MappingProxyType

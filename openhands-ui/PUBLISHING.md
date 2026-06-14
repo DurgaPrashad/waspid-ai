@@ -1,3 +1,4 @@
+<!-- Waspid AI OS -->
 # Publishing Process
 
 1. **Version Check**: The workflow first checks if the version in `package.json` has changed compared to the previous commit

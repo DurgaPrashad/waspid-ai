@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Waspid analytics package.
 
 Provides a module-level singleton pattern for the AnalyticsService.

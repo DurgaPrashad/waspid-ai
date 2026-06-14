@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import { useLocation, useNavigate } from "react-router";
 import { useOnboardingStatus } from "#/hooks/query/use-onboarding-status";

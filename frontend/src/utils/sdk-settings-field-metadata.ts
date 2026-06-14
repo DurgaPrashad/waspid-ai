@@ -1,3 +1,4 @@
+// Waspid AI OS
 import type { TFunction } from "i18next";
 
 export interface SettingsFieldConstraints {

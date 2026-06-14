@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create slack team table
 
 Revision ID: 045

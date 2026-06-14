@@ -1,3 +1,4 @@
+// Waspid AI OS
 import CheckCircle from "#/icons/check-circle-solid.svg?react";
 import { useBtwStore } from "#/stores/btw-store";
 import { GenericEventMessage } from "./generic-event-message";

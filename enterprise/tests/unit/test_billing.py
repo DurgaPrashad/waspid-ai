@@ -1,3 +1,4 @@
+# Waspid AI OS
 import uuid
 from decimal import Decimal
 from unittest.mock import AsyncMock, MagicMock, patch

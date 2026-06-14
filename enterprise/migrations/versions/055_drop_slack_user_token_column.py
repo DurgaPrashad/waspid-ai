@@ -1,3 +1,4 @@
+# Waspid AI OS
 """drop slack_user_token column from slack_users table
 
 Revision ID: 055

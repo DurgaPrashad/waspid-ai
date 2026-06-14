@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Type definitions and interfaces for Jira integration."""
 
 from abc import ABC, abstractmethod

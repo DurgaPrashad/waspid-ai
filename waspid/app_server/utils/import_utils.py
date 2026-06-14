@@ -1,3 +1,4 @@
+# Waspid AI OS
 import importlib
 from functools import lru_cache
 from typing import TypeVar

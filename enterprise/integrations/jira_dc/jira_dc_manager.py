@@ -1,3 +1,4 @@
+# Waspid AI OS
 import hashlib
 import hmac
 from typing import Dict, Optional, Tuple

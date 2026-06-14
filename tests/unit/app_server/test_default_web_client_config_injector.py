@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for DefaultWebClientConfigInjector.
 
 This module tests environment variable handling in DefaultWebClientConfigInjector.

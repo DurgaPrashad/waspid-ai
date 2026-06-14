@@ -1,3 +1,4 @@
+// Waspid AI OS
 interface FileSystemWritableFileStream extends WritableStream {
   write(data: BufferSource | Blob | string): Promise<void>;
   seek(position: number): Promise<void>;

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { BrowserPanel } from "#/components/features/browser/browser";
 
 function Browser() {

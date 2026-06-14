@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ws } from "msw";
 import { setupServer } from "msw/node";
 

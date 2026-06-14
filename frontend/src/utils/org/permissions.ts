@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { OrganizationUserRole } from "#/types/org";
 
 /* PERMISSION TYPES */

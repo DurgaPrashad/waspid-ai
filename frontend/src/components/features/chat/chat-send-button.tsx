@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ArrowUp } from "lucide-react";
 import { cn } from "#/utils/utils";
 

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Rename 'user' role to 'member' in role table.
 
 Revision ID: 092

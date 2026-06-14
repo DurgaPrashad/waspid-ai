@@ -1,3 +1,4 @@
+// Waspid AI OS
 import Refresh from "#/icons/refresh.svg?react";
 
 interface RefreshButtonProps {

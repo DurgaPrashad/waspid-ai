@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { beforeEach, describe, expect, it } from "vitest";
 import { useModelStore } from "#/stores/model-store";
 import type { LlmProfileSummary } from "#/api/settings-service/profiles-service.api";

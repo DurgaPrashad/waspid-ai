@@ -1,3 +1,4 @@
+// Waspid AI OS
 import React from "react";
 import ReactDOM from "react-dom";
 import { UserAvatar } from "./user-avatar";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { openHands } from "../open-hands-axios";
 import { GitUser } from "#/types/git";
 import { UserGitOrganizationsResponse } from "#/types/org";

@@ -1,3 +1,4 @@
+# Waspid AI OS
 """add git_provider to conversation_metadata
 
 Revision ID: 042

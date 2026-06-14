@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Update conversation_metadata table to match StoredConversationMetadata dataclass
 
 Revision ID: 005

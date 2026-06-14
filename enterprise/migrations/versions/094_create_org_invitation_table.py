@@ -1,3 +1,4 @@
+# Waspid AI OS
 """create org_invitation table
 
 Revision ID: 094

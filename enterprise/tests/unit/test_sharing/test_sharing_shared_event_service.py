@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for SharedEventService."""
 
 import os

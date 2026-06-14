@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Add cost and token metrics columns to conversation_metadata table.
 
 Revision ID: 023

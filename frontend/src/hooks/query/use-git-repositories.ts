@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useInfiniteQuery, InfiniteData } from "@tanstack/react-query";
 import { useConfig } from "./use-config";
 import { useUserProviders } from "../use-user-providers";

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WaspidObservation } from "#/types/core/observations";
 
 export type ObservationResultStatus = "success" | "error" | "timeout";

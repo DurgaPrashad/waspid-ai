@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Default LLM model discovery service.
 
 Discovers models from litellm's built-in catalogue, optional AWS Bedrock,

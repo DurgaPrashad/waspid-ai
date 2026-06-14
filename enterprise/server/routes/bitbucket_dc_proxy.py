@@ -1,3 +1,4 @@
+# Waspid AI OS
 import httpx
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse

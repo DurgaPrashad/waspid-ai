@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { organizationService } from "#/api/organization-service/organization-service.api";
 import { getSelectedOrganizationIdFromStore } from "#/stores/selected-organization-store";
 import {

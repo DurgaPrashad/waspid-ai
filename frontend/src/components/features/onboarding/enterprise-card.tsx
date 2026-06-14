@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { Link } from "react-router";
 import { Card } from "#/ui/card";
 import { Typography } from "#/ui/typography";

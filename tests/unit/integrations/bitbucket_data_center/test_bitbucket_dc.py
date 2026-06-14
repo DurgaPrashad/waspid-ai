@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for BitbucketDCService core: init, headers, get_user, pagination, email."""
 
 import base64

@@ -1,3 +1,4 @@
+# Waspid AI OS
 import json
 import logging
 from io import StringIO

@@ -10,6 +10,7 @@ triggers:
   - authorization
   - permissions
 ---
+<!-- Waspid AI OS -->
 This document provides guidance on security best practices
 
 You should always be considering security implications when developing.

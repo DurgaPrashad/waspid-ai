@@ -1,3 +1,4 @@
+# Waspid AI OS
 import asyncio  # noqa: I001
 
 # This must be before the import of storage

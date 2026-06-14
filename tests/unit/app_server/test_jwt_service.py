@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Tests for JwtService.
 
 This module tests the JWT service functionality including:

@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { BaseModal } from "./base-modal";
 
 interface DangerModalProps {

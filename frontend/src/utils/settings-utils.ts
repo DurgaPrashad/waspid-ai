@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { WebClientFeatureFlags } from "#/api/option-service/option.types";
 import { Settings, SettingsValue } from "#/types/settings";
 import { getProviderId } from "#/utils/map-provider";

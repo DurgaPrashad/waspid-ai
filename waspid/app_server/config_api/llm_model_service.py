@@ -1,3 +1,4 @@
+# Waspid AI OS
 """LLM model discovery service.
 
 Provides an abstract interface for discovering available LLM models.

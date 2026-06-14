@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { ActionEvent } from "#/types/v1/core";
 import { getDefaultEventContent, MAX_CONTENT_LENGTH } from "./shared";
 import i18n from "#/i18n";

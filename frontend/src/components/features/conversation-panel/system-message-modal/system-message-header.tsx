@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import { BaseModalTitle } from "#/components/shared/modals/confirmation-modals/base-modal";
 import { Typography } from "#/ui/typography";

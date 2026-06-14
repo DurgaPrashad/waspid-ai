@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { cn } from "#/utils/utils";
 import ChevronDownSmallIcon from "#/icons/chevron-down-small.svg?react";
 

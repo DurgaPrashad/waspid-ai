@@ -1,3 +1,4 @@
+// Waspid AI OS
 import { useTranslation } from "react-i18next";
 import type { V1AppConversationStartTask } from "#/api/conversation-service/v1-conversation-service.types";
 import { cn } from "#/utils/utils";

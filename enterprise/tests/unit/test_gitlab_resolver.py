@@ -1,3 +1,4 @@
+# Waspid AI OS
 # mypy: disable-error-code="unreachable"
 """
 Tests for the GitLab resolver.

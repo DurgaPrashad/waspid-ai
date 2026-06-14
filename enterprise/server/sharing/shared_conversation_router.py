@@ -1,3 +1,4 @@
+# Waspid AI OS
 """Shared Conversation router for Waspid Server."""
 
 from typing import Annotated

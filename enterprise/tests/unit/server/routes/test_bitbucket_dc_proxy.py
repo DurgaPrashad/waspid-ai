@@ -1,3 +1,4 @@
+# Waspid AI OS
 from unittest.mock import AsyncMock, MagicMock, call, patch
 
 import pytest
