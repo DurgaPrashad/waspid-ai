@@ -7,7 +7,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 from storage.base import Base
 
 
-class OpenhandsPR(Base):
+class WaspidPR(Base):
     """
     Represents a pull request created by Waspid.
     """

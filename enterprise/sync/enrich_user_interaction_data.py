@@ -2,34 +2,34 @@
 import asyncio
 
 from integrations.github.data_collector import GitHubDataCollector
-from storage.waspid_pr import OpenhandsPR
-from storage.waspid_pr_store import OpenhandsPRStore
+from storage.waspid_pr import WaspidPR
+from storage.waspid_pr_store import WaspidPRStore
 
 from waspid.app_server.utils.logger import waspid_logger as logger
 
 PROCESS_AMOUNT = 50
 MAX_RETRIES = 3
 
-store = OpenhandsPRStore.get_instance()
+store = WaspidPRStore.get_instance()
 data_collector = GitHubDataCollector()
 
 
-async def get_unprocessed_prs() -> list[OpenhandsPR]:
+async def get_unprocessed_prs() -> list[WaspidPR]:
     """
-    Get unprocessed PR entries from the OpenhandsPR table.
+    Get unprocessed PR entries from the WaspidPR table.
 
     Args:
         limit: Maximum number of PRs to retrieve (default: 50)
 
     Returns:
-        List of OpenhandsPR objects that need processing
+        List of WaspidPR objects that need processing
     """
     unprocessed_prs = await store.get_unprocessed_prs(PROCESS_AMOUNT, MAX_RETRIES)
     logger.info(f'Retrieved {len(unprocessed_prs)} unprocessed PRs for enrichment')
     return unprocessed_prs
 
 
-async def process_pr(pr: OpenhandsPR):
+async def process_pr(pr: WaspidPR):
     """
     Process a single PR to enrich its data.
     """

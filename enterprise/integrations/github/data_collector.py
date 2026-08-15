@@ -17,8 +17,8 @@ from integrations.types import PRStatus, ResolverViewInterface
 from integrations.utils import HOST
 from pydantic import SecretStr
 from server.auth.constants import GITHUB_APP_CLIENT_ID, GITHUB_APP_PRIVATE_KEY
-from storage.waspid_pr import OpenhandsPR
-from storage.waspid_pr_store import OpenhandsPRStore
+from storage.waspid_pr import WaspidPR
+from storage.waspid_pr_store import WaspidPRStore
 
 from waspid.app_server.config import get_global_config
 from waspid.app_server.conversation_paths import get_conversation_dir
@@ -415,7 +415,7 @@ class GitHubDataCollector:
             },
         }
 
-    async def save_full_pr(self, waspid_pr: OpenhandsPR) -> None:
+    async def save_full_pr(self, waspid_pr: WaspidPR) -> None:
         """
         Save PR information including metadata and commit details using GraphQL
 
@@ -443,9 +443,7 @@ class GitHubDataCollector:
         try:
             installation_token = self._get_installation_access_token(installation_id)
         except Exception as e:
-            logger.warning(
-                f'Failed to generate token for {waspid_pr.repo_name}: {e}'
-            )
+            logger.warning(f'Failed to generate token for {waspid_pr.repo_name}: {e}')
             return
 
         gh_client = GithubServiceImpl(token=SecretStr(installation_token))
@@ -566,8 +564,8 @@ class GitHubDataCollector:
             waspid_general_comment_count,
         )
 
-        # Update the OpenhandsPR object with Waspid statistics
-        store = OpenhandsPRStore.get_instance()
+        # Update the WaspidPR object with Waspid statistics
+        store = WaspidPRStore.get_instance()
         waspid_helped_author = waspid_commit_count > 0
 
         # Update the PR with Waspid statistics
@@ -647,9 +645,9 @@ class GitHubDataCollector:
         # Determine status based on whether it was merged
         status = PRStatus.MERGED if merged else PRStatus.CLOSED
 
-        store = OpenhandsPRStore.get_instance()
+        store = WaspidPRStore.get_instance()
 
-        pr = OpenhandsPR(
+        pr = WaspidPR(
             repo_name=repo_name,
             repo_id=repo_id,
             pr_number=pr_number,

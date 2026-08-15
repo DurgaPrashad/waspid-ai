@@ -74,15 +74,11 @@ def upgrade() -> None:
     )
 
     # Create indexes for efficient querying
-    op.create_index(
-        'ix_waspid_prs_repo_id', 'waspid_prs', ['repo_id'], unique=False
-    )
+    op.create_index('ix_waspid_prs_repo_id', 'waspid_prs', ['repo_id'], unique=False)
     op.create_index(
         'ix_waspid_prs_pr_number', 'waspid_prs', ['pr_number'], unique=False
     )
-    op.create_index(
-        'ix_waspid_prs_status', 'waspid_prs', ['status'], unique=False
-    )
+    op.create_index('ix_waspid_prs_status', 'waspid_prs', ['status'], unique=False)
 
     # Create unique constraint on repo_id + pr_number combination
     op.create_index(
