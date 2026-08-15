@@ -8,6 +8,7 @@
     "python.terminal.activateEnvironment": true,
     "python.analysis.autoImportCompletions": true,
     "python.analysis.autoSearchPaths": true,
+    // Keep Waspid agent imports discoverable for VS Code, Cursor, and Codex workflows.
     "python.analysis.extraPaths": [
         "./.venv/lib/python3.12/site-packages"
     ],

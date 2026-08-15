@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Waspid agent workspace local artifacts are handled by explicit project config.
+
 # C extensions
 *.so
 

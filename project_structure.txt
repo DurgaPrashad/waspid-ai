@@ -1,6 +1,7 @@
 .
 ./CODE_OF_CONDUCT.md
 ./.waspid
+./.waspid/agent-workspace.md
 ./.waspid/setup.sh
 ./.waspid/microagents
 ./.waspid/microagents/glossary.md

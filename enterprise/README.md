@@ -8,6 +8,8 @@
 
 This directory contains the multi-tenant SaaS server for Waspid Enterprise — the enterprise deployment surface of the Waspid AI workforce platform. It is built on top of the upstream [Waspid](https://github.com/Waspid/Waspid) open-source agent SDK (MIT-licensed).
 
+Enterprise agents coordinate SaaS operations, customer workflows, audit trails, billing events, and organization automation from the same Waspid OS agent workspace.
+
 ## Extension of the Waspid SDK
 
 The code in `/enterprise` builds on top of the Waspid SDK (MIT-licensed), extending it with the enterprise concerns required by Waspid: multi-tenancy, billing, organizations, RBAC, audit, and integrations. The enterprise layer is entangled with the Waspid SDK in two ways:
