@@ -16,11 +16,18 @@
 <hr>
 
 <p align="center">
-  <video src="docs/videos/waspid-autonomous-workforce.mp4" controls width="100%" title="Waspid autonomous workforce demo"></video>
+  <a href="https://youtu.be/839BXOTiHvg" title="Watch the Waspid autonomous workforce video">
+    <img src="https://img.youtube.com/vi/839BXOTiHvg/maxresdefault.jpg" alt="Watch the Waspid autonomous workforce video" width="100%">
+  </a>
 </p>
 
 <p align="center">
-  <strong>Waspid autonomous workforce demo:</strong> launch, connect, and coordinate AI agents across providers, tools, and real business workflows.
+  <a href="https://youtu.be/839BXOTiHvg"><strong>Watch the Waspid autonomous workforce video</strong></a>
+  - launch, connect, and coordinate AI agents across providers, tools, and real business workflows.
+</p>
+
+<p align="center">
+  <video src="docs/videos/waspid-autonomous-workforce.mp4" controls width="100%" title="Waspid autonomous workforce demo"></video>
 </p>
 
 <p align="center">
