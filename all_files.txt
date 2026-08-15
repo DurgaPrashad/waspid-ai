@@ -6,6 +6,7 @@
 ./.waspid/pre-commit.sh
 ./ISSUE_TRIAGE.md
 ./all_files.txt
+./docs/videos/waspid-autonomous-workforce.mp4
 ./pytest.ini
 ./cache/playwright_chromium_is_installed.txt
 ./frontend/.husky/_/pre-rebase

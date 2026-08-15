@@ -16,6 +16,14 @@
 <hr>
 
 <p align="center">
+  <video src="docs/videos/waspid-autonomous-workforce.mp4" controls width="100%" title="Waspid autonomous workforce demo"></video>
+</p>
+
+<p align="center">
+  <strong>Waspid autonomous workforce demo:</strong> launch, connect, and coordinate AI agents across providers, tools, and real business workflows.
+</p>
+
+<p align="center">
   <img src="docs/images/readme/openai-provider-swarm.png" alt="Waspid multi-agent provider swarm with OpenAI and connected model providers" width="100%">
 </p>
 

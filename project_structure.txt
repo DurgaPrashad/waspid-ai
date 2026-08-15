@@ -8,6 +8,9 @@
 ./.waspid/microagents/documentation.md
 ./.waspid/pre-commit.sh
 ./ISSUE_TRIAGE.md
+./docs
+./docs/videos
+./docs/videos/waspid-autonomous-workforce.mp4
 ./pytest.ini
 ./cache
 ./cache/playwright_chromium_is_installed.txt
