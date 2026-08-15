@@ -15,6 +15,10 @@
 
 <hr>
 
+<p align="center">
+  <img src="docs/images/readme/openai-provider-swarm.png" alt="Waspid multi-agent provider swarm with OpenAI and connected model providers" width="100%">
+</p>
+
 **Waspid** is an enterprise **AI Workforce Operating System** for building,
 deploying, orchestrating, and managing AI agents. Create real AI workers for
 software engineering, support, sales, marketing, research, operations, hardware,
@@ -28,6 +32,12 @@ Bring your most-used **ChatGPT**, **OpenAI**, and **Codex** workflows into one
 workspace. Connect multiple model providers once, select the best model per
 agent, and run fleets of agents across the web dashboard, terminal CLI, and
 developer tools with realtime sync.
+
+Run a **multi-agent swarm** that can connect with **Anthropic, OpenAI, Google,
+Groq, Mistral, xAI, DeepSeek, Moonshot, NVIDIA, or any OpenAI-compatible
+endpoint**. Waspid also fits into developer tools and coding workflows around
+**VS Code**, **Cursor**, and **Codex**, so engineering agents can plan, edit,
+review, test, and ship work from the same AI workforce layer.
 
 <p align="center">
   <img src="docs/images/readme/waspid-agents-hero.png" alt="Waspid Agents landing page" width="100%">
@@ -63,9 +73,15 @@ history, approvals, versioning, teams, and observability.
 - **OpenAI and Codex highlighted** - use Codex as a first-class engineering
   worker for code, tests, reviews, debugging, documentation, release notes, and
   production maintenance.
+- **Multi-agent swarm execution** - coordinate many specialized agents together
+  so research, coding, review, design, analysis, and operations can move in
+  parallel.
 - **Connect multi-model providers once** - add OpenAI, Anthropic, NVIDIA,
   Google, Groq, Mistral, xAI, DeepSeek, Moonshot, or your own compatible
   endpoint one time, then use those providers everywhere.
+- **Developer-tool ready** - connect Waspid workflows with VS Code, Cursor,
+  Codex, terminal sessions, and web chat so agents can work where builders
+  already live.
 - **Per-agent model selection** - each agent can run on its own provider and
   model, so a coding agent, support agent, and marketing agent can all use the
   right model for their job.
@@ -86,6 +102,11 @@ Connect every model provider once and switch models per agent or per chat.
 Waspid keeps provider configuration centralized so teams can use ChatGPT,
 Codex, OpenAI, Claude, Gemini, Groq, NVIDIA, Mistral, DeepSeek, xAI, Kimi, and
 self-hosted models without copying keys into every workflow.
+
+Use Waspid as the provider control layer for **Anthropic, OpenAI, Google, Groq,
+Mistral, xAI, DeepSeek, Moonshot, NVIDIA, and any OpenAI-compatible endpoint**.
+One agent can run on OpenAI, another on Anthropic, another on Groq or NVIDIA,
+and the whole swarm can still coordinate as one workforce.
 
 <p align="center">
   <img src="docs/images/readme/agent-fleet.png" alt="Waspid agent fleet dashboard" width="100%">
