@@ -38,6 +38,7 @@ developer tools with realtime sync.
 - [Why Waspid](#why-waspid)
 - [Product Screens](#product-screens)
 - [What You Can Build](#what-you-can-build)
+- [Agent Catalog](#agent-catalog)
 - [Platform Highlights](#platform-highlights)
 - [AI Agents](#ai-agents)
 - [Multi-Agent Orchestration](#multi-agent-orchestration)
@@ -117,6 +118,10 @@ chat, and terminal-first execution.
 ## What You Can Build
 
 Waspid is for creating any agent your team needs, not only coding agents.
+Create one worker or coordinate a full AI workforce: Waspid can plan, write,
+research, design, analyze, operate, monitor, and automate work across software,
+creative production, engineering, science, finance, healthcare, operations, and
+startup execution.
 
 | Agent type | Example use cases |
 | --- | --- |
@@ -130,6 +135,42 @@ Waspid is for creating any agent your team needs, not only coding agents.
 | **Research agents** | Web research, report writing, source comparison, market intelligence |
 | **Operations agents** | Status monitoring, incident summaries, runbooks, recurring business processes |
 | **Custom agents** | Any specialized worker with its own prompt, model, tools, permissions, and max-step budget |
+
+## Agent Catalog
+
+Waspid can create and run specialized agents across these roles. Each agent can
+have its own prompt, tools, model, memory, permissions, workflow, and max-step
+budget, then collaborate with other agents in a multi-agent team.
+
+| Core AI Agents | Creative Agents | Engineering Agents |
+| --- | --- | --- |
+| AI Coding Agent | AI Video Editor | AI Hardware Engineer |
+| AI Software Engineer | AI Graphic Designer | AI Robotics Engineer |
+| AI Research Agent | AI UI/UX Designer | AI Electronics Engineer |
+| AI Data Analyst | AI 3D Designer | AI Mechanical Engineer |
+| AI Machine Learning Engineer | AI Animator | AI Embedded Systems Engineer |
+| AI DevOps Agent | AI VFX Artist | AI Semiconductor Engineer |
+| AI Cybersecurity Agent | AI Content Creator | AI Simulation Engineer |
+| AI Product Manager | AI Copywriter |  |
+| AI Business Analyst | AI Brand Designer |  |
+| AI Automation Agent |  |  |
+
+| Advanced / Industry Agents | Business Agents |
+| --- | --- |
+| AI Aerospace Engineer | AI Sales Agent |
+| AI Space Systems Engineer | AI Marketing Agent |
+| AI Mission Planning Agent | AI Customer Support Agent |
+| AI Scientific Researcher | AI Recruiter |
+| AI Energy Engineer | AI Legal Research Agent |
+| AI Manufacturing Engineer | AI Strategy Consultant |
+| AI Healthcare Research Agent | AI Project Manager |
+| AI Financial Analyst | AI Operations Manager |
+|  | AI Founder/Startup Agent |
+
+Use these as templates, teams, or one-off workers. A single company can run a
+Codex engineering team, social media team, YouTube production team, robotics
+team, hardware team, sales team, support team, and operations team from the
+same Waspid account.
 
 ## Platform Highlights
 
@@ -200,6 +241,7 @@ Codex is especially useful for:
 
 - Reading and editing code.
 - Writing and fixing tests.
+- Generating, reviewing, and refactoring 1,000+ lines of production code.
 - Debugging failures.
 - Refactoring modules.
 - Reviewing pull requests.
@@ -329,9 +371,11 @@ docker compose up --build
 
 ## Licensing
 
-- The MIT license in [LICENSE](LICENSE) covers code outside the
-  `enterprise/` directory.
-- The code in [`enterprise/`](enterprise) is licensed under the
+Waspid uses a dual-license structure:
+
+- The MIT license in [LICENSE](LICENSE) covers the open-source Waspid code
+  outside the `enterprise/` directory.
+- The enterprise layer in [`enterprise/`](enterprise) is licensed under the
   [Polyform Free Trial License](enterprise/LICENSE).
 
 ## Contributing
