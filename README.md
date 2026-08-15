@@ -18,11 +18,31 @@ build, deploy, orchestrate, and scale AI agents across voice, browser
 automation, workflows, APIs, customer support, sales, and enterprise
 operations — under one control plane.
 
+Bring your most-used **ChatGPT** and **Codex** workflows into one place: connect
+providers once, choose the best model for each job, and run real agent fleets
+from the web dashboard, terminal, or IDE.
+
+<p align="center">
+  <img src="docs/images/readme/waspid-agents-hero.png" alt="Waspid Agents landing page" width="100%">
+</p>
+
+## Why Waspid
+
 Waspid is designed for organizations that want to run AI as infrastructure,
-not as a chatbot:
+not as a chatbot. It gives teams a production control plane for specialized
+agents that can plan, execute, hand work to each other, and report back with
+observable logs.
 
 - **AI workforce dashboard** — deploy, monitor, and manage fleets of agents
   the way you manage employees.
+- **Codex-first agent workflows** — make Codex a first-class worker for code,
+  reviews, refactors, debugging, docs, and release tasks.
+- **Connect multi-model providers once** — add OpenAI, Anthropic, NVIDIA,
+  Google, Groq, Mistral, xAI, DeepSeek, Moonshot, or your own compatible
+  endpoint one time, then use them everywhere.
+- **Build any kind of agent** — create social media posting agents, YouTube
+  agents, hardware agents, robotics agents, research agents, support agents,
+  code agents, sales agents, and custom operations agents.
 - **Workflow orchestration** — long-running, multi-step, multi-agent
   workflows with retries, audit trails, and observability.
 - **Voice + browser automation** — agents that can take phone calls,
@@ -34,6 +54,45 @@ not as a chatbot:
   Bitbucket, Keycloak, Stripe, and a pluggable connector framework.
 - **Realtime, observable, auditable** — websocket-streamed events,
   structured logs, OpenTelemetry, analytics.
+
+## Product Screens
+
+<p align="center">
+  <img src="docs/images/readme/ai-providers.png" alt="Waspid AI providers screen" width="100%">
+</p>
+
+Connect all model providers once and switch models per agent or per chat. Waspid
+keeps provider configuration centralized so teams can use ChatGPT, Codex, Claude,
+Gemini, Groq, NVIDIA, Mistral, DeepSeek, xAI, and self-hosted models without
+copying keys into every workflow.
+
+<p align="center">
+  <img src="docs/images/readme/agent-fleet.png" alt="Waspid agent fleet dashboard" width="100%">
+</p>
+
+Run a live fleet of terminal, web, and workflow agents. Track status, provider,
+model, tools, versions, and run history from the same command center.
+
+<p align="center">
+  <img src="docs/images/readme/agent-chat.png" alt="Waspid smart agent chat" width="100%">
+</p>
+
+Chat with an agent directly, invoke skills and tools, switch providers, and keep
+human control over the execution path.
+
+<p align="center">
+  <img src="docs/images/readme/agent-network.png" alt="Waspid connected agent network" width="100%">
+</p>
+
+Scale from one agent to a connected operating system: define the outcome, let
+specialists assemble, and keep every approval auditable.
+
+<p align="center">
+  <img src="docs/images/readme/waspid-cli.png" alt="Waspid terminal CLI" width="80%">
+</p>
+
+Use the `waspid` CLI for local agent work, provider selection, project setup,
+and terminal-first execution.
 
 ## Repository structure
 
